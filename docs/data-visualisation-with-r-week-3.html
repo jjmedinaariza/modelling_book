@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 4 Data visualisation with R (Week 3) | Modelling Criminological Data LAWS20452</title>
+  <meta name="description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 4 Data visualisation with R (Week 3) | Modelling Criminological Data LAWS20452" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Data visualisation with R (Week 3) | Modelling Criminological Data LAWS20452" />
+  
+  <meta name="twitter:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Juanjo Medina and Reka Solymosi">
+
+
+<meta name="date" content="2019-01-24">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="causality-in-randomised-experiments-week-2.html">
+<link rel="next" href="data-carpentry-week-4.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Modelling Criminological Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html"><i class="fa fa-check"></i><b>2</b> A first lesson about R (Week 1)</a><ul>
+<li class="chapter" data-level="2.1" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#install-r-rstudio"><i class="fa fa-check"></i><b>2.1</b> Install R &amp; RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#open-up-and-explore-rstudio"><i class="fa fa-check"></i><b>2.2</b> Open up and explore RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#customising-the-rstudio-look"><i class="fa fa-check"></i><b>2.3</b> Customising the RStudio look</a></li>
+<li class="chapter" data-level="2.4" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#getting-organised-r-projects"><i class="fa fa-check"></i><b>2.4</b> Getting organised: R Projects</a></li>
+<li class="chapter" data-level="2.5" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#talk-to-your-computer"><i class="fa fa-check"></i><b>2.5</b> Talk to your computer</a></li>
+<li class="chapter" data-level="2.6" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#more-on-packages"><i class="fa fa-check"></i><b>2.6</b> More on packages</a></li>
+<li class="chapter" data-level="2.7" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#using-objects"><i class="fa fa-check"></i><b>2.7</b> Using objects</a></li>
+<li class="chapter" data-level="2.8" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#more-on-objects"><i class="fa fa-check"></i><b>2.8</b> More on objects</a></li>
+<li class="chapter" data-level="2.9" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#vectors"><i class="fa fa-check"></i><b>2.9</b> Vectors</a></li>
+<li class="chapter" data-level="2.10" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#on-comments"><i class="fa fa-check"></i><b>2.10</b> On comments</a></li>
+<li class="chapter" data-level="2.11" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#factors"><i class="fa fa-check"></i><b>2.11</b> Factors</a></li>
+<li class="chapter" data-level="2.12" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>2.12</b> Naming conventions for objects in R</a></li>
+<li class="chapter" data-level="2.13" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#dataframes"><i class="fa fa-check"></i><b>2.13</b> Dataframes</a></li>
+<li class="chapter" data-level="2.14" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#exploring-data"><i class="fa fa-check"></i><b>2.14</b> Exploring data</a></li>
+<li class="chapter" data-level="2.15" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#quitting-rstudio"><i class="fa fa-check"></i><b>2.15</b> Quitting RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html"><i class="fa fa-check"></i><b>3</b> Causality in randomised experiments (Week 2)</a><ul>
+<li class="chapter" data-level="3.1" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#causality-in-social-sciences"><i class="fa fa-check"></i><b>3.1</b> Causality in social sciences</a></li>
+<li class="chapter" data-level="3.2" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#getting-data-thanks-to-reproducibility"><i class="fa fa-check"></i><b>3.2</b> Getting data thanks to reproducibility</a></li>
+<li class="chapter" data-level="3.3" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#getting-a-sense-for-your-data"><i class="fa fa-check"></i><b>3.3</b> Getting a sense for your data</a></li>
+<li class="chapter" data-level="3.4" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#data-wrangling-with-dplyr"><i class="fa fa-check"></i><b>3.4</b> Data wrangling with dplyr</a></li>
+<li class="chapter" data-level="3.5" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#using-dplyr-single-verbs"><i class="fa fa-check"></i><b>3.5</b> Using dplyr single verbs</a></li>
+<li class="chapter" data-level="3.6" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#using-dplyr-for-grouped-operations"><i class="fa fa-check"></i><b>3.6</b> Using dplyr for grouped operations</a></li>
+<li class="chapter" data-level="3.7" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#making-comparisons-with-numerical-outcomes"><i class="fa fa-check"></i><b>3.7</b> Making comparisons with numerical outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html"><i class="fa fa-check"></i><b>4</b> Data visualisation with R (Week 3)</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#anatomy-of-a-plot"><i class="fa fa-check"></i><b>4.2</b> Anatomy of a plot</a></li>
+<li class="chapter" data-level="4.3" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#what-graph-should-i-use"><i class="fa fa-check"></i><b>4.3</b> What graph should I use?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#histograms"><i class="fa fa-check"></i><b>4.4</b> Histograms</a></li>
+<li class="chapter" data-level="4.5" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#density-plots"><i class="fa fa-check"></i><b>4.5</b> Density plots</a></li>
+<li class="chapter" data-level="4.6" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#box-plots"><i class="fa fa-check"></i><b>4.6</b> Box plots</a></li>
+<li class="chapter" data-level="4.7" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#scatter-plots-with-two-variables"><i class="fa fa-check"></i><b>4.7</b> Scatter plots with two variables</a></li>
+<li class="chapter" data-level="4.8" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#scatter-plots-conditioning-in-a-third-variable"><i class="fa fa-check"></i><b>4.8</b> Scatter plots conditioning in a third variable</a></li>
+<li class="chapter" data-level="4.9" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#scatterplot-matrix"><i class="fa fa-check"></i><b>4.9</b> Scatterplot matrix</a></li>
+<li class="chapter" data-level="4.10" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#titles-and-legends-in-ggplot2"><i class="fa fa-check"></i><b>4.10</b> Titles and legends in ggplot2</a></li>
+<li class="chapter" data-level="4.11" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#plotting-categorical-data-bar-charts"><i class="fa fa-check"></i><b>4.11</b> Plotting categorical data: bar charts</a></li>
+<li class="chapter" data-level="4.12" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#further-resources"><i class="fa fa-check"></i><b>4.12</b> Further resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html"><i class="fa fa-check"></i><b>5</b> Data Carpentry (Week 4)</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#thinking-about-your-data"><i class="fa fa-check"></i><b>5.2</b> Thinking about your data</a></li>
+<li class="chapter" data-level="5.3" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#selecting-variables"><i class="fa fa-check"></i><b>5.3</b> Selecting variables</a></li>
+<li class="chapter" data-level="5.4" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#creating-summated-scales"><i class="fa fa-check"></i><b>5.4</b> Creating summated scales</a></li>
+<li class="chapter" data-level="5.5" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#collapsing-categories-in-character-variables"><i class="fa fa-check"></i><b>5.5</b> Collapsing categories in character variables</a></li>
+<li class="chapter" data-level="5.6" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#working-with-apparently-cryptic-variable-names-and-levels"><i class="fa fa-check"></i><b>5.6</b> Working with apparently cryptic variable names and levels</a></li>
+<li class="chapter" data-level="5.7" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#recoding-factors"><i class="fa fa-check"></i><b>5.7</b> Recoding factors</a></li>
+<li class="chapter" data-level="5.8" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#further-resources-1"><i class="fa fa-check"></i><b>5.8</b> Further resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html"><i class="fa fa-check"></i><b>6</b> Foundations of statistical inference: confidence intervals (Week 5)</a><ul>
+<li class="chapter" data-level="6.1" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#generating-random-data"><i class="fa fa-check"></i><b>6.2</b> Generating random data</a></li>
+<li class="chapter" data-level="6.3" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#sampling-data-and-sampling-variability"><i class="fa fa-check"></i><b>6.3</b> Sampling data and sampling variability</a></li>
+<li class="chapter" data-level="6.4" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#sampling-distributions-and-sampling-experiments"><i class="fa fa-check"></i><b>6.4</b> Sampling distributions and sampling experiments</a></li>
+<li class="chapter" data-level="6.5" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#the-normal-distribution-and-confidence-intervals-with-known-standard-errors"><i class="fa fa-check"></i><b>6.5</b> The normal distribution and confidence intervals with known standard errors</a></li>
+<li class="chapter" data-level="6.6" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#asymptotic-confidence-intervals-for-means-and-proportions-using-r"><i class="fa fa-check"></i><b>6.6</b> Asymptotic confidence intervals for means and proportions using R</a></li>
+<li class="chapter" data-level="6.7" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#a-brief-intro-to-resampling-and-bootstraping"><i class="fa fa-check"></i><b>6.7</b> A brief intro to resampling and bootstraping</a></li>
+<li class="chapter" data-level="6.8" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#what-about-comparisons-sampling-distribution-for-the-difference-of-two-means"><i class="fa fa-check"></i><b>6.8</b> What about comparisons? Sampling distribution for the difference of two means</a></li>
+<li class="chapter" data-level="6.9" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye"><i class="fa fa-check"></i><b>6.9</b> Comparing means visually by using error bars representing confidence intervals: inference by eye</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between a categorical and a quantitative variable (Week 6)</a><ul>
+<li class="chapter" data-level="7.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#the-logic-of-hypothesis-testing"><i class="fa fa-check"></i><b>7.1</b> The logic of hypothesis testing</a></li>
+<li class="chapter" data-level="7.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#comparing-means-across-two-groups-the-t-test"><i class="fa fa-check"></i><b>7.2</b> Comparing means across two groups (the t test)</a></li>
+<li class="chapter" data-level="7.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>7.3</b> Comparing means across several groups (ANOVA)</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>7.3.1</b> The problem with multiple comparisons</a></li>
+<li class="chapter" data-level="7.3.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#visual-exploration-of-differences-in-the-distributions-across-the-groups"><i class="fa fa-check"></i><b>7.3.2</b> Visual exploration of differences in the distributions across the groups</a></li>
+<li class="chapter" data-level="7.3.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#anova"><i class="fa fa-check"></i><b>7.3.3</b> ANOVA</a></li>
+<li class="chapter" data-level="7.3.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>7.3.4</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
+<li class="chapter" data-level="7.3.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>7.3.5</b> Checking normality and dealing with problems</a></li>
+<li class="chapter" data-level="7.3.6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#robust-anova"><i class="fa fa-check"></i><b>7.3.6</b> Robust ANOVA</a></li>
+<li class="chapter" data-level="7.3.7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>7.3.7</b> Post Hoc Comparisons</a></li>
+<li class="chapter" data-level="7.3.8" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#effect-size-for-anova"><i class="fa fa-check"></i><b>7.3.8</b> Effect size for ANOVA</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html"><i class="fa fa-check"></i><b>8</b> Studying relationships between two factors (Week 7)</a><ul>
+<li class="chapter" data-level="8.1" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#producing-cross-tabulations"><i class="fa fa-check"></i><b>8.1</b> Producing cross tabulations</a></li>
+<li class="chapter" data-level="8.2" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#expected-frequencies-and-chi-square"><i class="fa fa-check"></i><b>8.2</b> Expected frequencies and Chi-Square</a></li>
+<li class="chapter" data-level="8.3" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#residuals"><i class="fa fa-check"></i><b>8.3</b> Residuals</a></li>
+<li class="chapter" data-level="8.4" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#gamma"><i class="fa fa-check"></i><b>8.4</b> Gamma</a></li>
+<li class="chapter" data-level="8.5" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#odds-and-odd-ratios"><i class="fa fa-check"></i><b>8.5</b> Odds and odd ratios</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html"><i class="fa fa-check"></i><b>9</b> An introduction to regression (Week 8)</a><ul>
+<li class="chapter" data-level="9.1" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#introduction-3"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#motivating-regression"><i class="fa fa-check"></i><b>9.2</b> Motivating regression</a></li>
+<li class="chapter" data-level="9.3" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>9.3</b> Fitting a simple regression model</a></li>
+<li class="chapter" data-level="9.4" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#residuals-revisited-r-squared"><i class="fa fa-check"></i><b>9.4</b> Residuals revisited: R squared</a></li>
+<li class="chapter" data-level="9.5" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#inference-with-regression"><i class="fa fa-check"></i><b>9.5</b> Inference with regression</a></li>
+<li class="chapter" data-level="9.6" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-regression-with-categorical-predictors"><i class="fa fa-check"></i><b>9.6</b> Fitting regression with categorical predictors</a></li>
+<li class="chapter" data-level="9.7" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#motivating-multiple-regression"><i class="fa fa-check"></i><b>9.7</b> Motivating multiple regression</a></li>
+<li class="chapter" data-level="9.8" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-and-interpreting-a-multiple-regression-model"><i class="fa fa-check"></i><b>9.8</b> Fitting and interpreting a multiple regression model</a></li>
+<li class="chapter" data-level="9.9" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#presenting-your-regression-results."><i class="fa fa-check"></i><b>9.9</b> Presenting your regression results.</a></li>
+<li class="chapter" data-level="9.10" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#rescaling-input-variables-to-assist-interpretation"><i class="fa fa-check"></i><b>9.10</b> Rescaling input variables to assist interpretation</a></li>
+<li class="chapter" data-level="9.11" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>9.11</b> Testing conditional hypothesis: interactions</a></li>
+<li class="chapter" data-level="9.12" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>9.12</b> Model building and variable selection</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html"><i class="fa fa-check"></i><b>10</b> Logistic regression (Week 9)</a><ul>
+<li class="chapter" data-level="10.1" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#introduction-4"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#fitting-logistic-regression"><i class="fa fa-check"></i><b>10.2</b> Fitting logistic regression</a></li>
+<li class="chapter" data-level="10.3" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-i-deviance-and-pseudo-r-squared"><i class="fa fa-check"></i><b>10.3</b> Assessing model fit I: deviance and pseudo r squared</a></li>
+<li class="chapter" data-level="10.4" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-ii-confusion-matrix-and-roc-curves"><i class="fa fa-check"></i><b>10.4</b> Assessing model fit II: confusion matrix and ROC curves</a></li>
+<li class="chapter" data-level="10.5" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#interactions"><i class="fa fa-check"></i><b>10.5</b> Interactions</a></li>
+<li class="chapter" data-level="10.6" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#further-resources-2"><i class="fa fa-check"></i><b>10.6</b> Further resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelling Criminological Data LAWS20452</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-visualisation-with-r-week-3" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Data visualisation with R (Week 3)</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<p>A picture is worth a thousand words; when presenting and interpreting data this basic idea also applies. There has been, indeed, a growing shift in data analysis toward more visual approaches to both interpretation and dissemination of numerical analysis. Part of the new data revolution consists in the mixing of ideas from visualisation of statistical analysis and visual design. Indeed data visualisation is one of the most interesting areas of development in the field.</p>
+<p>Good graphics not only help researchers to make their data easier to understand by the general public. They are also a useful way for understanding the data ourselves. In many ways it is very often a more intuitive way to understand patterns in our data than trying to look at numerical results presented in a tabular form.</p>
+<p>Recent research has revealed that papers which have good graphics are perceived as overall more clear and more interesting, and their authors perceived as smarter (see <a href="https://vimeo.com/181771433">this presentation</a>)</p>
+<p>The preparation for this session includes many great resources on visualising quantitative information, and if you have not had time to go thorugh them, I recommend that you take some time to do so.</p>
+<p>As with other aspects of R, there are a number of core functions that can be used to produced graphics. However these offer limited possibilities for building graphs.</p>
+<p>The package we will be using throughout this tutorial is <code>ggplot2</code>. The aim of ggplot is to implement the <a href="http://www.springer.com/statistics/computational+statistics/book/978-0-387-24544-7">grammar of graphics</a>. The <code>ggplot2</code> package has excellent online <a href="http://ggplot2.org/">documentation</a>.</p>
+<p>If you don’t already have the package installed, you will need to do so using the <code>install.packages()</code> function.</p>
+<p>You will then need to load up the package</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)                                  </code></pre></div>
+<p>The grammar of graphics defines various components of the graphic. Some of the most important are:</p>
+<p>-<strong>The data</strong>: For using <code>ggplot2</code> the data has to be stored as a data frame</p>
+<p>-<strong>The geoms</strong>: They describe the objects that represent the data (e.g., points, lines, polygons, etc.).</p>
+<p>-<strong>The aesthetics</strong>: They describe the visual characteristics that represent data (e.g., position, size, colour, shape, transparency).</p>
+<p>-<strong>Facets</strong>: They describe how data is split into subsets and displayed as multiple small graphs.</p>
+<p>-<strong>Stats</strong>: They describe statistical transformations that typically summarise data.</p>
+</div>
+<div id="anatomy-of-a-plot" class="section level2">
+<h2><span class="header-section-number">4.2</span> Anatomy of a plot</h2>
+<p>Essentially the philosophy behind this as that all graphics are made up of layers. The package ggplot2 is based on the grammar of graphics, the idea that you can build every graph from the same few components: a data set, a set of geoms—visual marks that represent data points, and a coordinate system.</p>
+<p>Take this example (all taken from <em>Wickham, H. (2010). A layered grammar of graphics. Journal of Computational and Graphical Statistics, 19(1), 3-28.</em>)</p>
+<p>You have a table such as:</p>
+<div class="figure">
+<img src="imgs/table.png" />
+
+</div>
+<p>You then want to plot this. To do so, you want to create a plot that combines the following layers:</p>
+<div class="figure">
+<img src="imgs/layers.png" />
+
+</div>
+<p>This will result in a final plot:</p>
+<div class="figure">
+<img src="imgs/combined.png" />
+
+</div>
+<p>Let’s have a look at what this looks like for a graph.</p>
+<p>Let’s have a look at some data about <a href="https://www.gov.uk/government/publications/football-related-arrests-and-banning-orders-england-and-wales-season-2016-to-2017/football-related-arrests-and-banning-order-statistics-england-and-wales-2016-to-2017-season">banning orders</a> for different football clubs.</p>
+<p>First you need to read the data. We keep this data in a website and you can download it with the following code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fbo_url &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/maczokni/R-for-Criminologists/master/fbo-by-club-supported-cleaned.csv&quot;</span>
+fbo &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">url</span>(fbo_url))</code></pre></div>
+<p>Now let’s explore the question of number of banning orders for clubs in different leagues. But as a first step, let’s just plot the number of banning orders for each club. Let’s build this plot:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> fbo, <span class="kw">aes</span>(<span class="dt">x =</span> Club.Supported, <span class="dt">y=</span>Banning.Orders)) <span class="op">+</span><span class="st">          </span><span class="co">#data</span>
+<span class="st">   </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st">                           </span><span class="co">#geometry</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()                                    <span class="co">#backgroud coordinate system</span></code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The first line above begins a plot by calling the <code>ggplot()</code> function, and putting the data into it. You have to name your dataframe, and then, within the <code>aes()</code> command you pass the specific variables which you want to plot. In this case, we only want to see the distribution of one variable, banning orders, in the y axis and we will plot the club supported in the x axis.</p>
+<p>The second line is where we add the geometry. This is where we tell R what we want the graph to be. Here we say we want it to be points by using geom_points. You can see a list of all possible geoms <a href="http://docs.ggplot2.org/current/">here</a>.</p>
+<p>The third line is where we can tweak the display of the graph. Here I used theme_bw() which is a nice clean theme. You can try with other themes. To get a list of themes you can also see the resource <a href="http://docs.ggplot2.org/current/">here</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> fbo, <span class="kw">aes</span>(<span class="dt">x =</span> Club.Supported, <span class="dt">y=</span>Banning.Orders)) <span class="op">+</span><span class="st">     </span><span class="co">#data</span>
+<span class="st">   </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st">                                                   </span><span class="co">#geometry</span>
+<span class="st">  </span><span class="kw">theme_dark</span>()                                                      <span class="co">#backgroud coordinate system</span></code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Changing the theme is not all you can do with the third element. For example here you can’t really read the axis labels, because they’re all overlapping. One solution would be to rotate your axis labels 90 degrees, with the following code: <code>axis.text.x = element_text(angle = 90, hjust = 1)</code>. You pass this code to the theme argument.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> fbo, <span class="kw">aes</span>(<span class="dt">x =</span> Club.Supported, <span class="dt">y=</span>Banning.Orders)) <span class="op">+</span><span class="st">     </span>
+<span class="st">   </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st">                                                   </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))                                   </code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>OK what if we don’t want it to be points, but instead we wanted it to be a bar graph?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> fbo, <span class="kw">aes</span>(<span class="dt">x =</span> Club.Supported, <span class="dt">y=</span>Banning.Orders)) <span class="op">+</span><span class="st">   </span><span class="co">#data</span>
+<span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st">                                  </span><span class="co">#geometry</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))                                                       <span class="co">#backgroud coordinate system</span></code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>You might notice here we pass an argument <code>stat = &quot;identity&quot;</code> to <code>geo_bar()</code> function. This is because you can have a bar graph where the height of the bar shows frequency (stat = “count”), or where the height is taken from a variable in your dataframe (stat = “identity”). Here we specified a y-value (height) as the Banning.Orders variable.</p>
+<p>So this is cool! But what if I like both?</p>
+<p>Well this is the beauty of the layering approach of ggplot2. You can layer on as many geoms as your little heart desires! XD</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> fbo, <span class="kw">aes</span>(<span class="dt">x =</span> Club.Supported, <span class="dt">y=</span>Banning.Orders)) <span class="op">+</span><span class="st">  </span><span class="co">#data</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st">                                  </span><span class="co">#geometry 1 </span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span><span class="st">                                                  </span><span class="co">#geometry 2</span>
+<span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))                                                      <span class="co">#backgroud coordinate system</span></code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>You can add other things too. For example you can add the mean number of Banning.Orders:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> fbo, <span class="kw">aes</span>(<span class="dt">x =</span> Club.Supported, <span class="dt">y=</span>Banning.Orders)) <span class="op">+</span><span class="st">  </span><span class="co">#data</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st">                                  </span><span class="co">#geometry 1 </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st">                                                 </span><span class="co">#geometry 2</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(fbo<span class="op">$</span>Banning.Orders)) <span class="op">+</span><span class="st">            </span><span class="co">#mean line</span>
+<span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))                                                      <span class="co">#backgroud coordinate system</span></code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>This is basically all you need to know to build a graph! So far we have introduced a lot of code some of which you may not fully understand. Don’t worry too much, we just wanted to give you a quick introduction to some of the possibilities. Later in the session we will go back to some of these functions in a slower way.</p>
+</div>
+<div id="what-graph-should-i-use" class="section level2">
+<h2><span class="header-section-number">4.3</span> What graph should I use?</h2>
+<p>There are a lot of points to consider when you are choosing what graph to use to visually represent your data. There are some best practice guidelines, but at the end of the day, you need to consider what is best for your data. What do you want to show? What graph will best communicate your message? Is it a comparison between groups? Is it the frequency distribution of 1 variable?</p>
+<p>As some guidance, you can use the below <a href="https://flowingdata.com/2009/01/15/flow-chart-shows-you-what-chart-to-use/">cheatsheet, taken from Nathan Yau’s blog Flowingdata</a>:</p>
+<div class="figure">
+<img src="imgs/chart-chart.jpg" />
+
+</div>
+<p>However, keep in mind that this is more of a guideline, aimed to nudge you in the right direction. There are many ways to visualise the same data, and sometimes you might want to experiment with some of these, see what the differences are.</p>
+<p>There is also a vast amount of research into what works in displaying quantitative information. The classic book is by Edward Tufte,<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> but since him there are many other researchers as well who focus on approaches to displaying data. Two useful books you may want to consider are Few (2012)<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> and Cairo (2016).<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> Claus Wilke is also producing a textbook that is work in progress but freely available <a href="https://serialmentor.com/dataviz/">in the internet</a>. These authors tend to produce recommendations on what to use (and not use) in certain contexts.</p>
+<p>For example, most data visualisation experts agree that you should not use 3D graphics unless there is a meaning to the third dimension. So using 3D graphics just for decoration, as in <a href="https://mir-s3-cdn-cf.behance.net/project_modules/disp/2505dd10837923.56030acd2ef20.jpg">this case</a> is normally frowned upon. However there are cases when including a third dimension is vital to communicating your findings. See this <a href="http://www.visualisingdata.com/2015/03/when-3d-works/">example</a>.</p>
+<p>Also often certain chart types are villanified. For example, the pie chart is one such example. A lot of people really dislike pie charts, eg see <a href="http://www.storytellingwithdata.com/blog/2011/07/death-to-pie-charts">here</a> or <a href="http://www.businessinsider.com/pie-charts-are-the-worst-2013-6?IR=T">here</a>. If you want to display proportion, research indicates that a square pie chart is more likely to be interpreted correctly by viewers see <a href="https://eagereyes.org/blog/2016/a-reanalysis-of-a-study-about-square-pie-charts-from-2009">here</a></p>
+<p>Also, in some cases bar plots can hide important features of your data, and might not be the most appropriate means for comparison:</p>
+<div class="figure">
+<img src="imgs/barbarplots.jpg" />
+
+</div>
+<p>This has lead to a <a href="https://www.kickstarter.com/projects/1474588473/barbarplots/description">kickstarter campaign</a> around actually banning bar plots…!</p>
+<p>So choosing the right plot and how to design the different elements of a plot is somehow of an art that requires practice and a good understanding of the data visualisation literature. Here we can only provide you with an introduction to some of these issues. Other books that focus on</p>
+<p>An important consideration is that the plot that you use depends on the data you are plotting, as well as the message you want to convey with the plot, the audience that is intended for, and even the format in which it will be presented (a website, a printed report, a power point presentation, etc.). So for example, returning again to the difference between number of banning orders between clubs in different leagues, what are some ways of plotting these?</p>
+<p>One suggestion is to make a histogram for each one. You can use ggplot’s facet_wrap() option to split graphs by a grouping variable. For example, to create a histogram of banning orders you write:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> fbo, <span class="kw">aes</span>(<span class="dt">x =</span> Banning.Orders)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Now to split this by League.of.the.Club.Supported, you use facet_wrap() in the coordinate layer of the plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> fbo, <span class="kw">aes</span>(<span class="dt">x =</span> Banning.Orders)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>League.of.the.Club.Supported)</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Well you can see there’s different distribution in each league. But is this easy to compare? Maybe another approach would make it easier? Personally I like boxplots for showing distribution. So let’s try:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> fbo, <span class="kw">aes</span>(<span class="dt">x =</span> League.of.the.Club.Supported, <span class="dt">y =</span> Banning.Orders)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() </code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>This makes the comparison significantly easier, right? But the order is strange! Remember we talked about factors in previous weeks? Well the good thing about factors is that we can arrange them in their natural order. If we dont’ describe an order, then R uses the alphabetical order. So let’s reorder our factor. To do that we are specifying the levels in the order in which we want to be embedded witin the factor. We use code we introduced last week to do this.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fbo<span class="op">$</span>League.of.the.Club.Supported &lt;-<span class="st"> </span><span class="kw">factor</span>(fbo<span class="op">$</span>League.of.the.Club.Supported, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Premier League&quot;</span>, <span class="st">&quot;Championship&quot;</span>, <span class="st">&quot;League One&quot;</span>, <span class="st">&quot;League Two&quot;</span>, <span class="st">&quot;Other clubs&quot;</span>))</code></pre></div>
+<p>And now create the plot again!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> fbo, <span class="kw">aes</span>(<span class="dt">x =</span> League.of.the.Club.Supported, <span class="dt">y =</span> Banning.Orders)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() </code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Now this is great! We can see that the higher the league the more banning orders they have. Any ideas why?</p>
+<p>We’ll now go through some examples of making graphs using ggplot package stopping a bit more on each of them.</p>
+</div>
+<div id="histograms" class="section level2">
+<h2><span class="header-section-number">4.4</span> Histograms</h2>
+<p><a href="http://www.learner.org/courses/againstallodds/unitpages/unit03.html">Histograms</a> are useful ways of representing quantitative variables visually.</p>
+<p>As mentioned earlier, we will emphasise in this course the use of the <code>ggplot()</code> function. With <code>ggplot()</code> you start with a blank canvass and keep adding specific layers. The <code>ggplot()</code> function can specify the dataset and the aesthetics (the visual characteristics that represent the data).</p>
+<p>To get the data we’re going to use here, load up the package “MASS” and then call the Boston data into your environment.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
+<span class="kw">data</span>(Boston)</code></pre></div>
+<p>This package has a dataframe called “Boston”. This has data about Housing Values in suburbs of Boston (USA). To access the codebook (how you find out what variables are) use the “?”.</p>
+<p>OK so let’s make a graph about the variable which represents the per capita crime rate by town (‘crim’).</p>
+<p>If you want to produce a histogram with the <code>ggplot</code> function you would use the following equivalent code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> crim)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>So you can see that <code>ggplot</code> works in a way that you can add a series of additional specifications (layers, annotations). In this simple plot the <code>ggplot</code> function simply maps <em>crim</em> as the variable to be displayed (as one of the aesthetics) and the dataset. Then you add the <code>geom_histogram</code> to tell R that you want this variable to be represented as a histogram. Later we will see what other things you can add.</p>
+<p>A histogram is simply putting cases in “bins” and then creates a bar for each bin. You can think of it as a visual grouped frequency distribution. The code we have used so far has used a bin-width of size range/30 as R kindly reminded us in the output. But you can modify this parameter if you want to get a rougher or a more granular picture. In fact, you should <em>always</em> play around with different specifications of the bin-width until you find one that tells the full story in a parsimonious way.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> crim)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>) </code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>We can pass arguments to the the geoms, here we are changing the size of the bins (for further details on other arguments you can check the help files). Using bin-width of 1 we are essentially creating a bar for every one unit increase in the percent rate of crime. We can still see that most towns have a very low level of crime.</p>
+<p>Let’s sum the number of towns with a value lower than 1 in the per capita crime rate. We use the sum function for this, specifying we are only interested in adding cases where the value of the variable crim is lower than 1.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(Boston<span class="op">$</span>crim <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 332</code></pre>
+<p>We can see that the large majority of towns, 332 out of 506, have a per capita crime rate below 1%. But we can also see that there are some towns that have a high concentration of crime. This is a spatial feature of crime; it tends to concentrate in particular areas and places. You can see how we can use visualisations to show the data and get a first feeling for how it may be distributed.</p>
+<p>When plotting a continuous variable we are interested in the following features:</p>
+<ul>
+<li><strong>Asymmetry</strong>: whether the distribution is skewed to the right or to the left.</li>
+<li><strong>Outliers</strong>: Are there one or more values that seem very unlike the others?</li>
+<li><strong>Multimodality</strong>: How many peaks has the distribution? More than one peak may indicate that the variable is measuring different groups.</li>
+<li><strong>Impossibilities or other anomalies</strong>: Values that are simply unrealistic given what we are measuring (e.g., somebody with an age of a 1000 years). Sometimes you may come across a distribution of data with a very high (and implausible) frequency count for a particular value. Maybe you measure age and you have a large number of cases aged 99 (which is often a code used for missing data).</li>
+<li><strong>Spread</strong>: this gives us an idea of variability in our data.</li>
+</ul>
+<p>Often we visualise data because we want to compare distributions. <strong>Most of data analysis is about making comparisons</strong>. We are going to explore whether the distribution of crime in this dataset is different for less affluent areas. The variable <em>medv</em> measures in the Boston dataset the median value of owner-occupied homes. For the purposes of this illustration I want to dichotomise<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> this variable, to create a group of towns with particularly low values versus all the others. For further details in how to recode variables with R you may want to read the relevant sections in <a href="http://www.statmethods.net/management/variables.html">Quick R</a> or the <a href="http://www.cookbook-r.com/Manipulating_data/Recoding_data/">R Cookbook</a>. We will learn more about recoding and transforming variables in R soon.</p>
+<p>How can we create a categorical variable based on information from a quantitative variable? Let’s see the following code and pay attention to it and the explanation below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Boston<span class="op">$</span>lowval[Boston<span class="op">$</span>medv <span class="op">&lt;=</span><span class="st"> </span><span class="fl">17.02</span>] &lt;-<span class="st"> &quot;Low value&quot;</span> 
+Boston<span class="op">$</span>lowval[Boston<span class="op">$</span>medv <span class="op">&gt;</span><span class="st"> </span><span class="fl">17.02</span>] &lt;-<span class="st"> &quot;Higher value&quot;</span></code></pre></div>
+<p>First we tell R to create a new vector (“lowval”) in the Boston data frame. This vector will be assigned the character value “Low value” when the condition within the square brackets is met. That is, we are saying that whenever the value in “medv” is below 17.02 then the new variable lowval will equal “Low value”. I have chosen 17.02 as this is the first quartile for medv. Then we tell R that when the value is greater than 17.02 we will assign those cases to a new textual category called “Higher Value”.</p>
+<p>The variable we created was a character vector (as we can see if we run the class function). so we are going to transform it into a factor using the as.factor function (many functions designed to work with categorical variables expect a factor as an input, not just a character vector). If we rerun the class function we will see we changed the original variable</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(Boston<span class="op">$</span>lowval)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Boston<span class="op">$</span>lowval &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Boston<span class="op">$</span>lowval)
+<span class="kw">class</span>(Boston<span class="op">$</span>lowval)</code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<p>Now we can produce the plot. We will do this using facets. Facets are another element of the grammar of graphics, we use it to define subsets of the data to be represented as multiple groups, here we are asking R to produce two plots defined by the two levels of the factor we just created.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> crim)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(lowval <span class="op">~</span><span class="st"> </span>.) </code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>Visually this may not look great, but it begins to tell a story. We can see that there is a considerable lower proportion of towns with low levels of crime in the group of towns that have cheaper homes. It is a flatter, less skewed distribution. You can see how the <code>facet_grid()</code> expression is telling R to create the histogram of the variable mentioned in the ggplot function for the groups defined by the categorical input of interest (the factor “lowval”).</p>
+<p>Instead of using facets, we could overlay the histograms with a bit of transparency. Transparencies work better in screens than in printed document, so keep in mind this when deciding whether to use them instead of facets. The code is as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> crim, <span class="dt">fill =</span> lowval)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>In the code above, the <code>fill</code> argument identifies the factor variable in the dataset grouping the cases. Also, <code>position = identity</code> tells R to overlay the distributions and <code>alpha</code> asks for the degree of transparency, a lower value (e.g., 0.2) will be more transparent.</p>
+<p>In this case, part of the problem we have is that the skew can make it difficult to appreciate the differences. When you are dealing with skewed distributions such as this, it is sometimes convenient to use a transformation.<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> We will come back to this later this semester. For now suffice to say, that taking the logarithm of a skewed variable helps to reduce the skew and to see patterns more clearly. In order to visualise the differences here a bit better we could ask for the logarithm of the crime per capita rate. Notice how I also add a constant of 1 to the variable <em>crim</em>, this is to avoid NA values in the newly created variable if the value in <em>crim</em> is zero (you cannot take the log of 0).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log10</span>(crim <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), <span class="dt">fill =</span> lowval)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>)</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>The plot now is a bit clearer. It seems pretty evident that the distribution of crime is slightly different between these two types of towns.</p>
+</div>
+<div id="density-plots" class="section level2">
+<h2><span class="header-section-number">4.5</span> Density plots</h2>
+<p>For smoother distributions, you can use density plot. You should have a healthy amount of data to use these or you could end up with a lot of unwanted noise. Let’s first look at the single density plot for all cases. Notice all we are doing is invoking a different kind of geom:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> crim)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density</span>() </code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>In a density plot, we attempt to visualize the underlying probability distribution of the data by drawing an appropriate continuous curve. So in a density plot then the area under the lines sum to 1 and the Y, vertical, axis now gives you the estimated (guessed) probability for the different values in the X, horizontal, axis. This curve is guessed from the data and the method we use for this guessing or estimation is called kernel density estimation. You can read more about density plots <a href="https://serialmentor.com/dataviz/histograms-density-plots.html">here</a>.</p>
+<p>In this plot we can see that there is a high estimated probability of observing a town with near zero per capita crime rate and a low estimated probability of seeing towns with large per capita crime rates. As you can observe it provides a smoother representation of the distribution (as compared to the histograms).</p>
+<p>You can also use this to compare the distribution of a quantitative variable across the levels in a categorical variable (factor) and, as before, is possibly better to take the log of skewed variables such as crime:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#We are mapping &quot;lowval&quot; as the variable colouring the lines </span>
+<span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log10</span>(crim <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), <span class="dt">colour =</span> lowval)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>() </code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>Or you could use transparencies:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log10</span>(crim <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), <span class="dt">fill =</span> lowval)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> .<span class="dv">3</span>)</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Did you notice the difference with the comparative histograms? By using density plots we are rescaling to ensure the same area for each of the levels in our grouping variable. This makes it easier to compare two groups that have different frequencies. The areas under the curve add up to 1 for both of the groups, whereas in the histogram the area within the bars represent the number of cases in each of the groups. If you have many more cases in one group than the other it may be difficult to make comparisons or to clearly see the distribution for the group with fewer cases. So, this is one of the reasons why you may want to use density plots.</p>
+<p>Density plots are a good choice when you want to compare up to three groups. If you have many more groups you may want to consider other alternatives. One such alternative is the ridgeline plot, also often called the Joy Division plot (since it was immortalised in the cover of one of their albums):</p>
+<div class="figure">
+<img src="imgs/joydivision.png" />
+
+</div>
+<p>They can be produced with the <code>ggridges</code> package. BEfore we dichotomised the variable medv in a manual way, we can use more direct ways of splitting nummerica variables into various categories using information already embedded on them. Say we want to split medv into deciles. We could use the <code>mutate</code> function in dplyr for this.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:MASS&#39;:
+## 
+##     select</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Boston &lt;-<span class="st"> </span><span class="kw">mutate</span>(Boston, <span class="dt">dec_medv =</span> <span class="kw">ntile</span>(medv, <span class="dv">10</span>))</code></pre></div>
+<p>The <code>mutate</code> function adds a new variable to our existing data frame object. We are naming this variable dec_medv because we are going to split medv into ten groups of equal size. To do this we will use the <code>ntile</code> function as an argument within mutate. We will define the new dec_medv variable explaining to R that this variable will be the result of passing the <code>ntile</code> function to medv. So that <code>ntile</code> breaks medv into 10 we pass this value as an argument to the function. So that the result of executing <code>mutate</code> are stored we assign this to the Boston object.</p>
+<p>Check the results:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(Boston<span class="op">$</span>dec_medv)</code></pre></div>
+<pre><code>## 
+##  1  2  3  4  5  6  7  8  9 10 
+## 51 51 50 51 50 51 51 50 51 50</code></pre>
+<p>We can now use this new variable to illustrate the use of the <code>ggridge</code> package. First you will need to install this package and then load it. You will see all this package does is to extend the functionality of ggplot by adding a new type of geom. Here the variable defining the groups needs to be a factor, so we will tell ggplot to treat dec_medv as a factor using <code>as.factor</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggridges)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;ggridges&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     scale_discrete_manual</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log10</span>(crim <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), <span class="dt">y =</span> <span class="kw">as.factor</span>(dec_medv))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density_ridges</span>()</code></pre></div>
+<pre><code>## Picking joint bandwidth of 0.072</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>We can see that the distribution of crime is particularly different when we focus in the three deciles with the lowest level of income. For more details you can read the <a href="https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html">vignette</a> for this package.</p>
+</div>
+<div id="box-plots" class="section level2">
+<h2><span class="header-section-number">4.6</span> Box plots</h2>
+<p><a href="http://tomhopper.me/2014/07/04/the-most-useful-data-plot-youve-never-used/">Box plots</a> are an interesting way of presenting the 5 number summary in a visual way. <a href="http://www.learner.org/courses/againstallodds/unitpages/unit05.html">This video</a> may help you to understand them better. If we want to use <code>ggplot</code> for plotting a single numerical variable we need some convoluted code, since <code>ggplot</code> assumes you want a boxplot to compare various groups. Therefore we need to set some arbitrary value for the grouping variable and we also may want to remove the x-axis tick markers and label.</p>
+<p>For this illustration, I am going to display the distribution of the median value of property in the various towns instead of crime.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> medv)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span><span class="co">#removes the tick markers from the x axis</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.x =</span> <span class="kw">element_blank</span>())</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>Boxplots, however, really come to life when you do use them to compare the distribution of a quantitative variable across various groups. Let’s look at the distribution of log(crime) across cheaper and more expensive areas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> lowval, <span class="dt">y=</span><span class="kw">log10</span>(crim <span class="op">+</span><span class="st"> </span><span class="dv">1</span>))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p>With a boxplot like this you can see straight away that the bulk of cheaper areas are very different from the bulk of more expensive areas. The first quartile of the distribution for low areas about matches the point at which we start to see <strong>outliers</strong> for the more expensive areas.</p>
+<p>This can be even more helpful when you have various groups. Let’s try an example using the <code>BCS0708</code> data frame. This is a dataset from the 207/08 British Crime Survey.You can use the code below to download it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##R in Windows have some problems with https addresses, that&#39;s why we need to do this first:
+urlfile&lt;-<span class="st">&#39;https://raw.githubusercontent.com/jjmedinaariza/LAWS70821/master/BCS0708.csv&#39;</span>
+<span class="co">#We create a data frame object reading the data from the remote .csv file</span>
+BCS0708&lt;-<span class="kw">read.csv</span>(<span class="kw">url</span>(urlfile))</code></pre></div>
+<p>This dataset contains a quantitative variable that measures the level of worry for crime (<code>tcviolent</code>): high scores represent high levels of worry. We are going to see how the score in this variable changes according to ethnicity (<code>ethgrp2</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#A comparative boxplot of ethnicity and worry about violent crime</span>
+<span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> ethgrp2, <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<pre><code>## Warning: Removed 3242 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>Nice. But could be nicer. To start with we could order the groups along the X axis so that the ethnic groups are positioned according to their level of worry. Secondly, we may want to exclude the information for the NA cases on ethnicity (represented by a flat line).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#A nicer comparative boxplot (excluding NA and reordering the X variable)</span>
+<span class="kw">ggplot</span>(<span class="kw">subset</span>(BCS0708, <span class="op">!</span><span class="kw">is.na</span>(ethgrp2) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(tcviolent)), 
+       <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(ethgrp2, tcviolent, <span class="dt">FUN =</span> median), <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>The <code>subset</code> function is using a logical argument to tell R to only use the cases that do not have NA values in the two variables that we are using. The exclamation mark followed by is.na and then the name of a variable is R way os saying “the contrary of is NA for the specified variable”. The <code>reorder</code> function on the other hand is asking R to reorder the levels in ethnicity according to the median value of worry of violent crime. Since we are using those functions <em>within</em> the <code>ggplot</code> function this subsetting and this reordering are not introducing permanent changes in your original dataset. If you prefer to reorder according to the mean you only need to change that parameter after the <code>FUN</code> option (e.g, <code>FUN = mean</code>).</p>
+</div>
+<div id="scatter-plots-with-two-variables" class="section level2">
+<h2><span class="header-section-number">4.7</span> Scatter plots with two variables</h2>
+<p>When looking at the relationship between two quantitative variables nothing beats the <strong>scatterplot</strong>. <a href="http://www.datavis.ca/papers/friendly-scat.pdf">This</a> is a lovely article in the history of the scatterplot and <a href="http://www.learner.org/courses/againstallodds/unitpages/unit10.html">this video</a> may help you to understand them better.</p>
+<p>A scatterplot plots one variable in the Y axis, and another in the X axis. Typically, if you have a clear outcome or response variable in mind, you place it in the Y axis, and you place the explanatory variable in the X axis.</p>
+<p>This is how you produce a scatterplot with <code>ggplot()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#A scatterplot of crime versus median value of the properties</span>
+<span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> medv, <span class="dt">y =</span> crim)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>Each point represents a case in our dataset and the coordinates attached to it in this two dimensional plane are given by their value in the Y (crime) and X (median value of the properties) variables.</p>
+<p>What do you look for in a scatterplot? You want to assess global and local patterns, as well as deviations. We can see clearly that at low levels of <code>medv</code> there is a higher probability in this data that the level of crime is higher. Once the median value of the property hits $30,000 the level of crime is nearly zero for all towns. So far so good, and surely predictable. The first reason why we look at scatterplots is to check our hypothesis (e.g., poorer areas, more crime).</p>
+<p>However, something odd seems to be going on when the median property value is around $50,000. All of the sudden the variability for crime goes up. We seem to have some of the more expensive areas also exhibiting some decent level of crime. What’s going on? To be honest I have no clue (although I have some hypothesis)! This is my first look at this dataset. But the pattern at the higher level of property value is indeed odd.</p>
+<p>This is the second reason why you want to plot your data before you do anything else. It helps you to detect apparent anomalies. I say this is an anomaly because the break in pattern is quite noticeable. It is hard to think of a natural process that would generate this sudden radical increase in crime once the median property value reaches the $50k mark. If you were analysing this for real, you would want to know what’s driving this pattern (e.g., find out about the original data collection, the codebook, etc.): perhaps the maximum median value was capped at $50K and we are seeing this as a dramatic increase when the picture is more complex? For now we are going to let this rest.</p>
+<p>One of the things you may notice with a scatterplot is that even with a smallish dataset such as this, with just about 500 cases, <strong>overplotting</strong> may be a problem. When you have many cases with similar (or even worse the same) value, it is difficult to tell them apart. There’s a variety of ways of dealing with overplotting. One possibility is to add some <strong>transparency</strong> to the points:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> medv, <span class="dt">y =</span> crim)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">4</span>) <span class="co">#you will have to test different values for alpha</span></code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p>Why this is an issue may be more evident with the <code>BCS0708 data</code>. Compare the two plots:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<pre><code>## Warning: Removed 3252 rows containing missing values (geom_point).</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">2</span>)</code></pre></div>
+<pre><code>## Warning: Removed 3252 rows containing missing values (geom_point).</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p>The second plot gives us a better idea of where the observations seem to concentrate in a way that we could not see with the first.</p>
+<p>Overplotting can occur when a continuous measurement is rounded to some convenient unit. This has the effect of changing a continuous variable into a discrete ordinal variable. For example, age is measured in years and body weight is measured in pounds or kilograms. Age is a discrete variable, it only takes integer values. That’s why you see the points lined up in parallel vertical lines. This also contributes to the overplotting in this case.</p>
+<p>One way of dealing with this particular problem is by <strong>jittering</strong>. Jittering is the act of adding random noise to data in order to prevent overplotting in statistical graphs. In <code>ggplot</code> one way of doing this is by passing an argument to <code>geom_point</code> specifying you want to jitter the points. This will introduce some random noise so that age looks less discrete.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">2</span>, <span class="dt">position=</span><span class="st">&quot;jitter&quot;</span>) <span class="co">#Alternatively you could replace geom_point() with geom_jitter() in which case you don&#39;t need to specify the position</span></code></pre></div>
+<pre><code>## Warning: Removed 3252 rows containing missing values (geom_point).</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<p>Another alternative for solving overplotting is to <strong>bin the data</strong> into rectangles and map the density of the points to the fill of the colour of the rectangles.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_bin2d</span>()</code></pre></div>
+<pre><code>## Warning: Removed 3252 rows containing non-finite values (stat_bin2d).</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#The same but with nicer graphical parameters</span>
+<span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_bin2d</span>(<span class="dt">bins=</span><span class="dv">50</span>) <span class="op">+</span><span class="st"> </span><span class="co">#by increasing the number of bins we get more granularity</span>
+<span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>) <span class="co">#change colors</span></code></pre></div>
+<pre><code>## Warning: Removed 3252 rows containing non-finite values (stat_bin2d).</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p>What this is doing is creating boxes within the two dimensional plane; counting the number of points within those boxes; and attaching a colour to the box in function of the density of points within each of the rectangles.</p>
+<p>When looking at scatterplots, sometimes it is useful to summarise the relationships by mean of drawing lines. You could for example add a line representing the <strong>conditional mean</strong>. A conditional mean is simply mean of your Y variable for each value of X. Let’s go back to the Boston dataset. We can ask R to plot a line connecting these means using <code>geom_line()</code> and specifying you want the conditional means.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> medv, <span class="dt">y =</span> crim)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">4</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">stat=</span><span class="st">&#39;summary&#39;</span>, <span class="dt">fun.y=</span>mean)</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>With only about 500 cases there are loads of ups and downs. If you have many more cases for each level of X the line would look less rough. You can, in any case, produce a smoother line using <code>geom_smooth</code> instead. We will discuss later this semester how this line is computed (although you will see the R output tells you, you are using something call the “loess” method). For now just know that is a line that tries to <em>estimate</em>, to guess, the typical value for Y for each value of X.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> medv, <span class="dt">y =</span> crim)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">4</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>, <span class="dt">se=</span><span class="ot">FALSE</span>) <span class="co">#We&#39;ll explain later this semester what the se argument does, colour is simply asking for a red line instead of blue (which I personally find harder to see. I&#39;m also making the line a bit thicker with size 1)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p>As you can see here you produce a smoother line than with the conditional means. The line, as the scatterplot, seems to be suggesting an overall curvilinear relationship that almost flattens out once property values hit $20k.</p>
+</div>
+<div id="scatter-plots-conditioning-in-a-third-variable" class="section level2">
+<h2><span class="header-section-number">4.8</span> Scatter plots conditioning in a third variable</h2>
+<p>There are various ways to plot a third variable in a scatterplot. You could go 3D and in some contexts that may be appropriate. But more often than not it is preferable to use only a two dimensional plot.</p>
+<p>If you have a grouping variable you could map it to the colour of the points as one of the aesthetics arguments. Here we return to the Boston scatterplot but will add a third variable, that indicates whether the town is located by the river or not.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Scatterplot with two quantitative variables and a grouping variable, we are telling R to tell &quot;chas&quot;, a numeric vector, as a factor. </span>
+<span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> medv, <span class="dt">y =</span> crim, <span class="dt">colour =</span> <span class="kw">as.factor</span>(chas))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() </code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>Curiously, we can see that there’s quite a few of those expensive areas with high levels of crime that seem to be located by the river.</p>
+<p>As before you can add smooth lines to capture the relationship. What happens now, though, is that <code>ggplot</code> will produce a line for each of the levels in the categorical variable grouping the cases:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> medv, <span class="dt">y =</span> crim, <span class="dt">colour =</span> <span class="kw">as.factor</span>(chas))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">4</span>) <span class="op">+</span><span class="st"> </span><span class="co">#I am doing the points semi-transparent to see the lines better</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se=</span><span class="ot">FALSE</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="co">#I am doing the lines thicker to see them better</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>You can see how the relationship between crime and property values is more marked for areas not bordering the river, mostly because you have considerably fewer cheaper areas bordering the river. Notice as well the upward trend in the green line at high values of <code>medv</code>. As we saw there seems to be quite a few of those particularly more expensive areas that have high crime and seem to be by the river.</p>
+<p>We can also map a quantitative variable to the colour aesthetic. When we do that, instead of different colours for each category we have a gradation in colour from darker to lighter depending on the value of the quantitative variable. Below we display the relationship between crime and property values conditioning on the status of the area (high values in <code>lstat</code> represent lower status).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> medv, <span class="dt">y =</span> crim, <span class="dt">colour =</span> lstat)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() </code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p>As one could predict <code>lstat</code> and <code>medv</code> seem to be correlated. The areas with low status tend to be the areas with cheaper properties (and more crime) and the areas with higher status tend to be the areas with more expensive properties (and less crime).</p>
+<p>You could map the third variable to a different aesthetic (rather than colour). For example, you could map <code>lstat</code> to size of the points. This is called a <strong>bubblechart</strong>. The problem with this, however, is that it can make overplotting more acute sometimes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> medv, <span class="dt">y =</span> crim, <span class="dt">size =</span> lstat)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="co">#You may want to add alpha for some transparency here.</span></code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p>If you have larger samples and the patterns are not clear (as we saw when looking at the relationship between age and worry of violent crime) conditioning in a third variable can produce hard to read scatterplots (even if you use transparencies and jittering). Let’s look at the relationship between worry for violent crime and age conditioned on victimisation during the previous year:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> tcviolent, <span class="dt">colour =</span> bcsvictim)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">4</span>, <span class="dt">position=</span><span class="st">&quot;jitter&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 3252 rows containing missing values (geom_point).</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>You can possibly notice that there are more green points in the left hand side (since victimisation tend to be more common among youth). But it is hard to read the relationship with age. We could try to use facets instead using <code>facet_grid</code>?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">4</span>, <span class="dt">position=</span><span class="st">&quot;jitter&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>( .<span class="op">~</span><span class="st"> </span>bcsvictim)</code></pre></div>
+<pre><code>## Warning: Removed 3252 rows containing missing values (geom_point).</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p>It is still hard to see anything, though perhaps you can notice the lower density the points in the bottom right corner in the facet displaying victims of crime. In a case like this may be helpful to draw a smooth line</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> tcviolent, <span class="dt">colour =</span> bcsvictim)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha=</span>.<span class="dv">1</span>, <span class="dt">position=</span><span class="st">&quot;jitter&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">size=</span><span class="fl">1.5</span>, <span class="dt">se=</span><span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<pre><code>## Warning: Removed 3252 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 3252 rows containing missing values (geom_point).</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>What we see here is that for the most part the relationship of age and worry for violent crime looks quite flat, regardless of whether you have been a victim of crime or not. At least, for most people. However, once we get to the 60s things seem to change a bit. Those over 62 that have not been a victim of crime in the past year start to manifest a lower concern with crime as they age (in comparison with those that have been a victim of crime).</p>
+</div>
+<div id="scatterplot-matrix" class="section level2">
+<h2><span class="header-section-number">4.9</span> Scatterplot matrix</h2>
+<p>Sometimes you want to produce many scatterplots simultaneously to have a first peak at the relationship between the various variables in your data frame. The way to do this is by using a scatterplot matrix. Unfortunately, <code>ggplot2</code> doesn’t do scatterplot matrix too well. For this it is better to use the graphics tools of base R.</p>
+<p>Not to overcomplicate things we will only use a few variables from the <code>Boston</code> dataset:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#I create a new data frame that only contains 4 variables included in the Boston dataset and I am calling this new data frame object BostonSM</span>
+Boston_SM &lt;-<span class="st"> </span><span class="kw">subset</span>(Boston, <span class="dt">select =</span> <span class="kw">c</span>(crim, medv, indus, lstat))</code></pre></div>
+<p>Then we run the scatterplot matrix using the <strong>pairs()</strong> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(Boston_SM)</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p>We can modify this code to put additional information in the matrix. As you may have noticed the matrix is symmetrical, for every scatterplot in the upper left side there is a similar on the the bottom right side. We are going to modify this matrix so that the diagonal boxes not only display the name of the variable but also a histogram for the variables and to display the correlation coefficients in the upper left side (instead of printing twice the same scatterplot). We will also make the points smaller and will add a smooth line within each scatterplot.</p>
+<p>The code for this is a bit complicated. We are going to introduce <strong>customised functions</strong> for the panels (I took them from Winston Chang book). First we are going to create these two customised functions. One to produce the correlations between each pair of variables and another for producing the histograms for each of the variables.</p>
+<p>After that we will use the <code>pairs()</code> function inserting the inputs that result form using these customised functions. You are likely not to understand the code for the first part. Particularly because apart from doing computations is controlling the aspect of the results. Don’t worry, I’m not expecting to understand this code. Just cut and paste. But I think it is important you understand that apart from using the functions created by others and included in packages, once you become proficient in R you can start producing your own functions to expand the range of what you can do with R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">panel.cor &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, <span class="dt">digits=</span><span class="dv">2</span>, <span class="dt">prefix=</span><span class="st">&quot;&quot;</span>, cex.cor, ...){
+  usr &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>)
+  <span class="kw">on.exit</span>(<span class="kw">par</span>(usr))
+  <span class="kw">par</span>(<span class="dt">usr =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>))
+  r &lt;-<span class="st"> </span><span class="kw">abs</span>(<span class="kw">cor</span>(x, y, <span class="dt">use=</span><span class="st">&quot;complete.obs&quot;</span>))
+  txt &lt;-<span class="st"> </span><span class="kw">format</span>(<span class="kw">c</span>(r, <span class="fl">0.123456789</span>), <span class="dt">digits=</span>digits)[<span class="dv">1</span>]
+  txt &lt;-<span class="st"> </span><span class="kw">paste</span>(prefix, txt, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
+  <span class="cf">if</span>(<span class="kw">missing</span>(cex.cor)) cex.cor &lt;-<span class="st"> </span><span class="fl">0.8</span><span class="op">/</span><span class="kw">strwidth</span>(txt)
+  <span class="kw">text</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, txt, <span class="dt">cex =</span> cex.cor <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span>r)<span class="op">/</span><span class="dv">2</span>)
+}
+panel.hist &lt;-<span class="cf">function</span>(x, ...){
+  usr &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>)
+  <span class="kw">on.exit</span>(<span class="kw">par</span>(usr))
+  <span class="kw">par</span>(<span class="dt">usr =</span> <span class="kw">c</span>(usr[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dv">0</span>, <span class="fl">1.5</span>))
+  h &lt;-<span class="st"> </span><span class="kw">hist</span>(x, <span class="dt">plot =</span> <span class="ot">FALSE</span>)
+  breaks &lt;-<span class="st"> </span>h<span class="op">$</span>breaks
+  nB &lt;-<span class="st"> </span><span class="kw">length</span>(breaks)
+  y &lt;-<span class="st"> </span>h<span class="op">$</span>counts
+  y &lt;-<span class="st"> </span>y<span class="op">/</span><span class="kw">max</span>(y)
+  <span class="kw">rect</span>(breaks[<span class="op">-</span>nB], <span class="dv">0</span>, breaks[<span class="op">-</span><span class="dv">1</span>], y, <span class="dt">col=</span><span class="st">&quot;white&quot;</span>, ...)
+}</code></pre></div>
+<p>We can now run the <code>pairs()</code> function using our customised functions as inputs.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(Boston_SM, <span class="dt">pch=</span><span class="st">&quot;.&quot;</span>, <span class="co">#Produces smaller points to make it easier to see</span>
+      <span class="dt">upper.panel=</span>panel.smooth, <span class="co">#Adds for smoothed lines to be added to the lower panel scatterplots </span>
+      <span class="dt">lower.panel=</span>panel.cor, <span class="co">#Ask for correlation coeffients in the upper panel using our customised functions (the size of the numer is bigger is the correlation is bigger, but notice that the coefficient does not include the sign, whether is positve or negative, you need to infer that from the scatterplot)</span>
+      <span class="dt">diag.panel=</span>panel.hist) <span class="co">#Ask for histograms in the diagonal using our customised function</span></code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p>We will explain what correlation coefficients are and when they are appropriate later this semester. For now just focus in trying to understand what the plots show. What do you think may be going on with the distribution of “indus” (proportion of non-retail business acres per town)?</p>
+<p>As you can see getting results, once you get the knack of it, is only half of the way. The other, and more important, half is trying to make sense of the results. R cannot do that for you. For this you need to use a better tool: <strong>your brain</strong> (scepticism, curiosity, creativity, a lifetime of knowledge) and what Kaiser Fung calls <a href="http://www.amazon.co.uk/Numbersense-How-Data-Your-Advantage/dp/0071799664">“numbersense”</a>.</p>
+</div>
+<div id="titles-and-legends-in-ggplot2" class="section level2">
+<h2><span class="header-section-number">4.10</span> Titles and legends in ggplot2</h2>
+<p>We have introduced a number of various graphical tools, but what if you want to customise the way the produce graphic looks like? Here I am just going to give you some code for how to modify the titles and legends you use. For adding a title for a <code>ggplot</code> graph you use <code>ggtitle()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Notice how here we are using an additional function to ask R to treat the variable chas, which is numeric in our dataset, as if it were a factor (as.factor()). You need to do this if your variable is categorical but is encoded as numeric in your dataframe.</span>
+<span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> medv, <span class="dt">y =</span> crim, <span class="dt">colour =</span> <span class="kw">as.factor</span>(chas))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fig 1.Crime, Property Value and River Proximity of Boston Towns&quot;</span>)</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p>If you don’t like the default background theme for <code>ggplot</code> you can use a theme as discussed at the start, for example with creating a black and white background by adding <code>theme_bw()</code> as a layer:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> medv, <span class="dt">y =</span> crim, <span class="dt">colour =</span> <span class="kw">as.factor</span>(chas))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fig 1.Crime, Property Value and River Proximity of Boston Towns&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p>Using <code>labs()</code> you can change the text of axis labels (and the legend title), which may be handy if your variables have cryptic names. Equally you can manually name the labels in a legend. The value for “chas” are 0 and 1. This is not informative. We can change that.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(Boston, <span class="kw">aes</span>(<span class="dt">x =</span> medv, <span class="dt">y =</span> crim, <span class="dt">colour =</span> <span class="kw">as.factor</span>(chas))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fig 1.Crime, Property Value and River Proximity of Boston Towns&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Median Property Value (in US Dollars x 1000)&quot;</span>,
+       <span class="dt">y =</span> <span class="st">&quot;Per capita crime rate&quot;</span>,
+       <span class="dt">colour =</span> <span class="st">&quot;Borders the river&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_colour_discrete</span>(<span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>))</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p>Sometimes you may want to present several plots together. For this the <code>gridExtra</code> package is very good. You will first need to install it and then load it. You can then create several plots and put them all in the same image.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#You may need to install first with install.packages(&quot;gridExtra&quot;)</span>
+<span class="kw">library</span>(gridExtra)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;gridExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     combine</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Store your plots in various objects</span>
+p1 &lt;-<span class="st"> </span><span class="kw">qplot</span>(<span class="dt">x=</span>crim, <span class="dt">data=</span>Boston)
+p2 &lt;-<span class="st"> </span><span class="kw">qplot</span>(<span class="dt">x=</span>indus, <span class="dt">data=</span>Boston)
+p3 &lt;-<span class="st"> </span><span class="kw">qplot</span>(<span class="dt">x=</span>medv, <span class="dt">data=</span>Boston)
+<span class="co">#Then put them all together using grid.arrange()</span>
+<span class="kw">grid.arrange</span>(p1, p2, p3, <span class="dt">ncol=</span><span class="dv">3</span>) <span class="co">#ncol tells R we want them side by side, if you want them one in top of the other try ncol=1, in this case, however ncol=2 would possibly be the better solution. Try it!</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+</div>
+<div id="plotting-categorical-data-bar-charts" class="section level2">
+<h2><span class="header-section-number">4.11</span> Plotting categorical data: bar charts</h2>
+<p>You may be wondering what about categorical data? So far we have only discussed various visualisations where at least one of your variables is quantitative. When your variable is categorical you can use bar plots (similar to histograms). We map the factor variable in the aesthetics and then use the <code>geom_bar()</code> function to ask for a bar chart.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x=</span>walkday)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p>Unfortunately, the levels in this factor are ordered by alphabetical order, which is confusing. We can modify this by reordering the factors levels first -click <a href="http://www.cookbook-r.com/Manipulating_data/Changing_the_order_of_levels_of_a_factor/">here</a> for more details. You could do this within the ggplot function (just for the visualisation), but in real life you would want to sort out your factor levels in an appropriate manner more permanently. As discussed last week, this is the sort of thing you do as part of pre-processing your data. And then plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Print the original order</span>
+<span class="kw">print</span>(<span class="kw">levels</span>(BCS0708<span class="op">$</span>walkday))</code></pre></div>
+<pre><code>## [1] &quot;a bit unsafe&quot;   &quot;fairly safe&quot;    &quot;or very unsafe&quot; &quot;very safe&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Reordering the factor levels from very safe to very unsafe (rather than by alphabet). Notice that I am creating a new variable, it is often not unwise to do this to avoid messing up your original data.</span>
+BCS0708<span class="op">$</span>walkdayR &lt;-<span class="st"> </span><span class="kw">factor</span>(BCS0708<span class="op">$</span>walkday, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&#39;very safe&#39;</span>,
+  <span class="st">&#39;fairly safe&#39;</span>,<span class="st">&#39;a bit unsafe&#39;</span>,<span class="st">&#39;or very unsafe&#39;</span>))
+<span class="co">#Plotting the variable again (and subsetting out the NA data)</span>
+<span class="kw">ggplot</span>(<span class="kw">subset</span>(BCS0708, <span class="op">!</span><span class="kw">is.na</span>(walkdayR)), <span class="kw">aes</span>(<span class="dt">x=</span>walkdayR)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p>We can also map a second variable to the aesthetics, for example, let’s look at victimisation in relation to feelings of safety. For this we produce a <strong>stacked bar chart</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">subset</span>(BCS0708, <span class="op">!</span><span class="kw">is.na</span>(walkdayR)), <span class="kw">aes</span>(<span class="dt">x=</span>walkdayR, <span class="dt">fill=</span>bcsvictim)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p>These sort of stacked bar charts are not terribly helpful if you are interested in understanding the relationship between these two variables. Instead what you want is a <strong>proportional stacked bar chart</strong>, that gives you the proportion of your “explanatory variable” (here victimisation in the past 12 months) within each of the levels of your “response variable” (here feelings of safety).</p>
+<p>First we need to scale the data to 100% within each stack and then plot. The code here is also more complex. Again, I’m not expecting you to fully understand all of it. In your early days of using R, you will find yourself cutting and pasting chunks of code that you will only fully understand with practice.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#First we create a subset with the relevant data</span>
+.df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> BCS0708<span class="op">$</span>walkdayR, <span class="dt">z =</span> BCS0708<span class="op">$</span>bcsvictim)
+<span class="co">#Then we compute the proportions within the stacks</span>
+.df1 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">with</span>(.df1, <span class="kw">prop.table</span>(<span class="kw">table</span>(x, z), <span class="dt">margin =</span> <span class="ot">NULL</span>)))
+<span class="co">#Finally we plot</span>
+stbcf &lt;-<span class="st"> </span><span class="kw">ggplot</span>(.df1, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> Freq, <span class="dt">fill =</span> z)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>, <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="fl">0.01</span>, <span class="dv">0</span>), <span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">percent_format</span>()) <span class="op">+</span><span class="st"> </span><span class="co">#Adapts the scale of the y axis and express the values in percentage terms</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Feelings of safety&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#Another way of changing the label for the x axis</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Percent&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#Change the label for the Y axis</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">title =</span> <span class="ot">NULL</span>)) <span class="co">#This removes the title of the legent (bcsvictim), since the labels of the categories are self-explanatory</span>
+stbcf <span class="co">#autoprint the plot, notice how earlier rather than printing directly I stored the plot in the object with this name (the reason is that I want to use this plot later and don&#39;t want to rerun all the code again)</span></code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(.df1) <span class="co">#to remove the data frame we created</span></code></pre></div>
+<p>Here we can see that the those that express less feelings of safety are more likely to have experienced a victimisation in the past 12 months.</p>
+<p>Sometimes, you may want to flip the axis, so that the bars are displayed horizontally. You can use the <code>coord_flip()</code> function for that.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#First we invoke the plot we created and stored earlier and then we add an additional specification with coord_flip()</span>
+stbcf <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</code></pre></div>
+<p><img src="03-visualisation_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p>You can also use <code>coord_flip()</code> with other <code>ggplot</code> plots (e.g., boxplots).</p>
+<p>A particular type of bar chart is the divergent stacked bar chart, often used to visualise <a href="http://en.wikipedia.org/wiki/Likert_scale"><strong>Likert scales</strong></a>. You may want to look at some of the options available for it via the <a href="http://www.jstatsoft.org/v57/i05/paper">HH package</a>, the <a href="http://jason.bryer.org/likert/">likert package</a> or <a href="http://strengejacke.wordpress.com/2013/07/17/plotting-likert-scales-net-stacked-distributions-with-ggplot-rstats/">sjPlot</a>. But we won’t cover them here in detail.</p>
+<p>Keep in mind that knowing <em>how</em> to get R to produce a particular visualisation is only half the job. The other half is knowing <em>when</em> to produce a particular kind of visualisation. <a href="https://solomonmessing.wordpress.com/2014/10/11/when-to-use-stacked-barcharts/">This blog</a>, for example, discusses some of the problems with stacked bar charts and the exceptional circumstances in which you may want to use them.</p>
+<p>There are other tools sometimes used for visualising categorical data. Pie charts is one of them. However, as mentioned at the beginning, many people advocate strongly against using pie charts and therefore this is the only pie chart you will see in this course:</p>
+<div class="figure">
+<img src="https://pbs.twimg.com/media/BsymGJJCYAE-oTd.jpg" alt="cute pie chart" />
+<p class="caption">cute pie chart</p>
+</div>
+<p>Also increasingly popular are <strong>mosaic plots</strong>. R is pretty good at doing them. However, we have covered already a lot of ground, plus I have some sympathy for <a href="http://www.perceptualedge.com/articles/visual_business_intelligence/are_mosaic_plots_worthwhile.pdf">Stephen Few’s arguments</a> against mosaic plots.</p>
+<p>What I would use instead are waffle charts. They’re super easy to make with the “waffle” package but I don’t think there’s time for them at this point, but look into them <a href="https://www.r-bloggers.com/making-waffle-charts-in-r-with-the-new-waffle-package/">here</a>.</p>
+</div>
+<div id="further-resources" class="section level2">
+<h2><span class="header-section-number">4.12</span> Further resources</h2>
+<p>By now you should know the path to data analysis wisdom will take time. The good news is that we live in a time where there are multiple (very often free) resources to help you along the way. The time where this knowledge was just the preserve of a few is long distant. If you are a motivated and disciplined person there is a lot that you can do to further consolidate and expand your data visualisation skills without spending money. I already recommended you the excellent ggplot2 online documentation. Here I just want to point you to a a few useful resources that you can pursue in the future.</p>
+<p>First <strong>MOOCS (Massive Online Open Courses)</strong>. There are loads of useful MOOCS that provide training in data visualisation for free (well, you can pay if you want a certificate, but you can also use the resources and learn for free).</p>
+<ul>
+<li><p><a href="https://www.coursera.org/specializations/information-visualization">Information visualisation</a>. This course offers an introduction to some more advanced concepts to those presented in our tutorial. It also covers more advanced software for visualisations in the web.</p></li>
+<li><p>You may also want to keep your eyes open for any new edition of Alberto Cairo’s MOOC on <a href="https://journalismcourses.org/data-viz-course-material.html">“Data Visualisation for Storytelling and Discovery”</a> which covers not the software but the principles and theory of good static and interactive visualisation. But you can find the free materials for the course posted in the linked site (including the videolectures).</p></li>
+</ul>
+<p>Second, <strong>online tutorials</strong>. One of the things you will also soon discover is that R users are keen to write “how to” guides in some of the <a href="http://www.r-bloggers.com/">750 R devoted blogs</a> or as part of <a href="https://rpubs.com/">Rpubs</a>. Using google or similar you will often find solutions to almost any problem you will encounter using R. For example, in this blog there are a few tutorials that you may want to look to complement my own:</p>
+<ul>
+<li><a href="http://rforpublichealth.blogspot.co.uk/2013/11/ggplot2-cheatsheet-for-scatterplots.html">Cheatsheet for visualising scatterplots</a><br />
+</li>
+<li><a href="http://rforpublichealth.blogspot.co.uk/2014/02/ggplot2-cheatsheet-for-visualizing.html">Cheatsheet for visualizing distributions</a><br />
+</li>
+<li><a href="http://rforpublichealth.blogspot.co.uk/2014_01_01_archive.html">Cheatsheet for barplots</a></li>
+</ul>
+<p>Third, <em>blogs on data visualisation</em>. If you use <a href="https://feedly.com/index.html#discover">Feedly</a> or a similar blog aggregator, you should add the following blogs to your reading list. They are written by leading people in the field and are full of useful advice: + <a href="http://flowingdata.com/">Flowing Data</a> + <a href="http://www.thefunctionalart.com/">The Functional Art</a> + <a href="http://www.perceptualedge.com/blog/">Visual Business Intelligence</a> + <a href="https://kpq.github.io/chartsnthings/">chartsnthings</a> + <a href="http://www.datarevelations.com/category/blog">Data Revelations</a></p>
+<p>Fourth, <strong>resources for visualisations we don’t have the time to cover</strong>. R is way ahead some of the more popular data analysis programs you may be more familiar with (e.g SPSS or Excel). There’s many things you can do.</p>
+<p>For example, if you like maps, <strong>R can also be used to produce visualisations of spatial data</strong>. There are various resources to learn how to do this and we teach this in our Crime Mapping module in the third year.</p>
+<p>Also, you may be interested in producing interactive graphics in the internet. Data journalism is making big inroads into this area. You may want to have a look at the <a href="http://ggvis.rstudio.com/">ggvis</a> package, produced by the R Studio team, or <a href="http://rcharts.io/">rcharts</a>.</p>
+<p><strong>Homework:</strong></p>
+<p>Download the NCOVR dataset from blackboard. You can look at the pdf provided there to understand better the variables in the dataset. Then read the data into R. You can use the read.csv function for this. So, provided you have the dataset sitting in your working directory you could use the following code to read the data into R:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ncovr &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;NAT.csv&quot;</span>)</code></pre></div>
+<p>Produce an appropriate visualisation to compare the distribution of homicide rate in the 1990s comparing Southern and Northern counties. Discuss the results.</p>
+<p>Produce a scatterplot to explore the relationship between the homicide rate in the 1970s and the level of unemployment. Make sure you use geom_smooth to draw a line summarising the relationship. Discuss the results.</p>
+<p>Is the relationship between homicide in 1970 and unemployment different in Southern and Northern counties? Produce a visualisation to explore this question. Remember the code we use above to look at conditioning on a third variable.</p>
+<p>Now that you have selected a dataset for your essay you should aim to read it into R. Download the files (using code or manually) and then try to read it into R. You may come into problems, don’t worry. At least do try. Submit the code you use to do this and let us know, as part of your submission, if you were succesful or not in reading the data into an R object.</p>
+<p>In the first lecture we introduced the idea that R is an object-oriented language, it is important you understand it is also <em>polymorphic</em>; which means that a single function can be applied to different types of inputs, which the function processes in the appropriate way. This will become clearer in a later example when we pass different inputs to the qplot function. In this case, since qplot only sees one quantitative variable it produces the histogram, an appropriate visualisation for this scenario.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Various of these can be obtained invoking the <code>pR2()</code> function from the <code>pscl</code> package.<a href="data-visualisation-with-r-week-3.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Alternatively one could use the <code>ROCR</code> package. For details, see <a href="http://rocr.bioinf.mpi-sb.mpg.de/">here</a>.<a href="data-visualisation-with-r-week-3.html#fnref2">↩</a></p></li>
+<li id="fn3"><p><a href="http://blog.minitab.com/blog/adventures-in-statistics/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit">This</a> is a reasonable explanation of how to interpret R-Squared.<a href="data-visualisation-with-r-week-3.html#fnref3">↩</a></p></li>
+<li id="fn4"><p><a href="http://www.sumsar.net/blog/2013/12/an-animation-of-the-construction-of-a-confidence-interval/">This blog post</a> provides a nice animation of the confidence interval and hypothesis testing.<a href="data-visualisation-with-r-week-3.html#fnref4">↩</a></p></li>
+<li id="fn5"><p><a href="http://vudlab.com/simpsons/">This</a> is a nice illustration of the Simpon’s Paradox, a well known example of ommitted variable bias.<a href="data-visualisation-with-r-week-3.html#fnref5">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="causality-in-randomised-experiments-week-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-carpentry-week-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["book.pdf", "book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 5 Data Carpentry (Week 4) | Modelling Criminological Data LAWS20452</title>
+  <meta name="description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 5 Data Carpentry (Week 4) | Modelling Criminological Data LAWS20452" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Data Carpentry (Week 4) | Modelling Criminological Data LAWS20452" />
+  
+  <meta name="twitter:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Juanjo Medina and Reka Solymosi">
+
+
+<meta name="date" content="2019-01-24">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="data-visualisation-with-r-week-3.html">
+<link rel="next" href="foundations-of-statistical-inference-confidence-intervals-week-5.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Modelling Criminological Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html"><i class="fa fa-check"></i><b>2</b> A first lesson about R (Week 1)</a><ul>
+<li class="chapter" data-level="2.1" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#install-r-rstudio"><i class="fa fa-check"></i><b>2.1</b> Install R &amp; RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#open-up-and-explore-rstudio"><i class="fa fa-check"></i><b>2.2</b> Open up and explore RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#customising-the-rstudio-look"><i class="fa fa-check"></i><b>2.3</b> Customising the RStudio look</a></li>
+<li class="chapter" data-level="2.4" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#getting-organised-r-projects"><i class="fa fa-check"></i><b>2.4</b> Getting organised: R Projects</a></li>
+<li class="chapter" data-level="2.5" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#talk-to-your-computer"><i class="fa fa-check"></i><b>2.5</b> Talk to your computer</a></li>
+<li class="chapter" data-level="2.6" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#more-on-packages"><i class="fa fa-check"></i><b>2.6</b> More on packages</a></li>
+<li class="chapter" data-level="2.7" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#using-objects"><i class="fa fa-check"></i><b>2.7</b> Using objects</a></li>
+<li class="chapter" data-level="2.8" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#more-on-objects"><i class="fa fa-check"></i><b>2.8</b> More on objects</a></li>
+<li class="chapter" data-level="2.9" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#vectors"><i class="fa fa-check"></i><b>2.9</b> Vectors</a></li>
+<li class="chapter" data-level="2.10" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#on-comments"><i class="fa fa-check"></i><b>2.10</b> On comments</a></li>
+<li class="chapter" data-level="2.11" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#factors"><i class="fa fa-check"></i><b>2.11</b> Factors</a></li>
+<li class="chapter" data-level="2.12" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>2.12</b> Naming conventions for objects in R</a></li>
+<li class="chapter" data-level="2.13" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#dataframes"><i class="fa fa-check"></i><b>2.13</b> Dataframes</a></li>
+<li class="chapter" data-level="2.14" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#exploring-data"><i class="fa fa-check"></i><b>2.14</b> Exploring data</a></li>
+<li class="chapter" data-level="2.15" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#quitting-rstudio"><i class="fa fa-check"></i><b>2.15</b> Quitting RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html"><i class="fa fa-check"></i><b>3</b> Causality in randomised experiments (Week 2)</a><ul>
+<li class="chapter" data-level="3.1" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#causality-in-social-sciences"><i class="fa fa-check"></i><b>3.1</b> Causality in social sciences</a></li>
+<li class="chapter" data-level="3.2" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#getting-data-thanks-to-reproducibility"><i class="fa fa-check"></i><b>3.2</b> Getting data thanks to reproducibility</a></li>
+<li class="chapter" data-level="3.3" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#getting-a-sense-for-your-data"><i class="fa fa-check"></i><b>3.3</b> Getting a sense for your data</a></li>
+<li class="chapter" data-level="3.4" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#data-wrangling-with-dplyr"><i class="fa fa-check"></i><b>3.4</b> Data wrangling with dplyr</a></li>
+<li class="chapter" data-level="3.5" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#using-dplyr-single-verbs"><i class="fa fa-check"></i><b>3.5</b> Using dplyr single verbs</a></li>
+<li class="chapter" data-level="3.6" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#using-dplyr-for-grouped-operations"><i class="fa fa-check"></i><b>3.6</b> Using dplyr for grouped operations</a></li>
+<li class="chapter" data-level="3.7" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#making-comparisons-with-numerical-outcomes"><i class="fa fa-check"></i><b>3.7</b> Making comparisons with numerical outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html"><i class="fa fa-check"></i><b>4</b> Data visualisation with R (Week 3)</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#anatomy-of-a-plot"><i class="fa fa-check"></i><b>4.2</b> Anatomy of a plot</a></li>
+<li class="chapter" data-level="4.3" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#what-graph-should-i-use"><i class="fa fa-check"></i><b>4.3</b> What graph should I use?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#histograms"><i class="fa fa-check"></i><b>4.4</b> Histograms</a></li>
+<li class="chapter" data-level="4.5" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#density-plots"><i class="fa fa-check"></i><b>4.5</b> Density plots</a></li>
+<li class="chapter" data-level="4.6" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#box-plots"><i class="fa fa-check"></i><b>4.6</b> Box plots</a></li>
+<li class="chapter" data-level="4.7" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#scatter-plots-with-two-variables"><i class="fa fa-check"></i><b>4.7</b> Scatter plots with two variables</a></li>
+<li class="chapter" data-level="4.8" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#scatter-plots-conditioning-in-a-third-variable"><i class="fa fa-check"></i><b>4.8</b> Scatter plots conditioning in a third variable</a></li>
+<li class="chapter" data-level="4.9" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#scatterplot-matrix"><i class="fa fa-check"></i><b>4.9</b> Scatterplot matrix</a></li>
+<li class="chapter" data-level="4.10" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#titles-and-legends-in-ggplot2"><i class="fa fa-check"></i><b>4.10</b> Titles and legends in ggplot2</a></li>
+<li class="chapter" data-level="4.11" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#plotting-categorical-data-bar-charts"><i class="fa fa-check"></i><b>4.11</b> Plotting categorical data: bar charts</a></li>
+<li class="chapter" data-level="4.12" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#further-resources"><i class="fa fa-check"></i><b>4.12</b> Further resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html"><i class="fa fa-check"></i><b>5</b> Data Carpentry (Week 4)</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#thinking-about-your-data"><i class="fa fa-check"></i><b>5.2</b> Thinking about your data</a></li>
+<li class="chapter" data-level="5.3" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#selecting-variables"><i class="fa fa-check"></i><b>5.3</b> Selecting variables</a></li>
+<li class="chapter" data-level="5.4" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#creating-summated-scales"><i class="fa fa-check"></i><b>5.4</b> Creating summated scales</a></li>
+<li class="chapter" data-level="5.5" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#collapsing-categories-in-character-variables"><i class="fa fa-check"></i><b>5.5</b> Collapsing categories in character variables</a></li>
+<li class="chapter" data-level="5.6" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#working-with-apparently-cryptic-variable-names-and-levels"><i class="fa fa-check"></i><b>5.6</b> Working with apparently cryptic variable names and levels</a></li>
+<li class="chapter" data-level="5.7" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#recoding-factors"><i class="fa fa-check"></i><b>5.7</b> Recoding factors</a></li>
+<li class="chapter" data-level="5.8" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#further-resources-1"><i class="fa fa-check"></i><b>5.8</b> Further resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html"><i class="fa fa-check"></i><b>6</b> Foundations of statistical inference: confidence intervals (Week 5)</a><ul>
+<li class="chapter" data-level="6.1" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#generating-random-data"><i class="fa fa-check"></i><b>6.2</b> Generating random data</a></li>
+<li class="chapter" data-level="6.3" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#sampling-data-and-sampling-variability"><i class="fa fa-check"></i><b>6.3</b> Sampling data and sampling variability</a></li>
+<li class="chapter" data-level="6.4" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#sampling-distributions-and-sampling-experiments"><i class="fa fa-check"></i><b>6.4</b> Sampling distributions and sampling experiments</a></li>
+<li class="chapter" data-level="6.5" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#the-normal-distribution-and-confidence-intervals-with-known-standard-errors"><i class="fa fa-check"></i><b>6.5</b> The normal distribution and confidence intervals with known standard errors</a></li>
+<li class="chapter" data-level="6.6" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#asymptotic-confidence-intervals-for-means-and-proportions-using-r"><i class="fa fa-check"></i><b>6.6</b> Asymptotic confidence intervals for means and proportions using R</a></li>
+<li class="chapter" data-level="6.7" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#a-brief-intro-to-resampling-and-bootstraping"><i class="fa fa-check"></i><b>6.7</b> A brief intro to resampling and bootstraping</a></li>
+<li class="chapter" data-level="6.8" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#what-about-comparisons-sampling-distribution-for-the-difference-of-two-means"><i class="fa fa-check"></i><b>6.8</b> What about comparisons? Sampling distribution for the difference of two means</a></li>
+<li class="chapter" data-level="6.9" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye"><i class="fa fa-check"></i><b>6.9</b> Comparing means visually by using error bars representing confidence intervals: inference by eye</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between a categorical and a quantitative variable (Week 6)</a><ul>
+<li class="chapter" data-level="7.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#the-logic-of-hypothesis-testing"><i class="fa fa-check"></i><b>7.1</b> The logic of hypothesis testing</a></li>
+<li class="chapter" data-level="7.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#comparing-means-across-two-groups-the-t-test"><i class="fa fa-check"></i><b>7.2</b> Comparing means across two groups (the t test)</a></li>
+<li class="chapter" data-level="7.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>7.3</b> Comparing means across several groups (ANOVA)</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>7.3.1</b> The problem with multiple comparisons</a></li>
+<li class="chapter" data-level="7.3.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#visual-exploration-of-differences-in-the-distributions-across-the-groups"><i class="fa fa-check"></i><b>7.3.2</b> Visual exploration of differences in the distributions across the groups</a></li>
+<li class="chapter" data-level="7.3.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#anova"><i class="fa fa-check"></i><b>7.3.3</b> ANOVA</a></li>
+<li class="chapter" data-level="7.3.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>7.3.4</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
+<li class="chapter" data-level="7.3.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>7.3.5</b> Checking normality and dealing with problems</a></li>
+<li class="chapter" data-level="7.3.6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#robust-anova"><i class="fa fa-check"></i><b>7.3.6</b> Robust ANOVA</a></li>
+<li class="chapter" data-level="7.3.7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>7.3.7</b> Post Hoc Comparisons</a></li>
+<li class="chapter" data-level="7.3.8" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#effect-size-for-anova"><i class="fa fa-check"></i><b>7.3.8</b> Effect size for ANOVA</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html"><i class="fa fa-check"></i><b>8</b> Studying relationships between two factors (Week 7)</a><ul>
+<li class="chapter" data-level="8.1" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#producing-cross-tabulations"><i class="fa fa-check"></i><b>8.1</b> Producing cross tabulations</a></li>
+<li class="chapter" data-level="8.2" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#expected-frequencies-and-chi-square"><i class="fa fa-check"></i><b>8.2</b> Expected frequencies and Chi-Square</a></li>
+<li class="chapter" data-level="8.3" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#residuals"><i class="fa fa-check"></i><b>8.3</b> Residuals</a></li>
+<li class="chapter" data-level="8.4" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#gamma"><i class="fa fa-check"></i><b>8.4</b> Gamma</a></li>
+<li class="chapter" data-level="8.5" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#odds-and-odd-ratios"><i class="fa fa-check"></i><b>8.5</b> Odds and odd ratios</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html"><i class="fa fa-check"></i><b>9</b> An introduction to regression (Week 8)</a><ul>
+<li class="chapter" data-level="9.1" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#introduction-3"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#motivating-regression"><i class="fa fa-check"></i><b>9.2</b> Motivating regression</a></li>
+<li class="chapter" data-level="9.3" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>9.3</b> Fitting a simple regression model</a></li>
+<li class="chapter" data-level="9.4" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#residuals-revisited-r-squared"><i class="fa fa-check"></i><b>9.4</b> Residuals revisited: R squared</a></li>
+<li class="chapter" data-level="9.5" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#inference-with-regression"><i class="fa fa-check"></i><b>9.5</b> Inference with regression</a></li>
+<li class="chapter" data-level="9.6" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-regression-with-categorical-predictors"><i class="fa fa-check"></i><b>9.6</b> Fitting regression with categorical predictors</a></li>
+<li class="chapter" data-level="9.7" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#motivating-multiple-regression"><i class="fa fa-check"></i><b>9.7</b> Motivating multiple regression</a></li>
+<li class="chapter" data-level="9.8" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-and-interpreting-a-multiple-regression-model"><i class="fa fa-check"></i><b>9.8</b> Fitting and interpreting a multiple regression model</a></li>
+<li class="chapter" data-level="9.9" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#presenting-your-regression-results."><i class="fa fa-check"></i><b>9.9</b> Presenting your regression results.</a></li>
+<li class="chapter" data-level="9.10" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#rescaling-input-variables-to-assist-interpretation"><i class="fa fa-check"></i><b>9.10</b> Rescaling input variables to assist interpretation</a></li>
+<li class="chapter" data-level="9.11" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>9.11</b> Testing conditional hypothesis: interactions</a></li>
+<li class="chapter" data-level="9.12" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>9.12</b> Model building and variable selection</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html"><i class="fa fa-check"></i><b>10</b> Logistic regression (Week 9)</a><ul>
+<li class="chapter" data-level="10.1" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#introduction-4"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#fitting-logistic-regression"><i class="fa fa-check"></i><b>10.2</b> Fitting logistic regression</a></li>
+<li class="chapter" data-level="10.3" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-i-deviance-and-pseudo-r-squared"><i class="fa fa-check"></i><b>10.3</b> Assessing model fit I: deviance and pseudo r squared</a></li>
+<li class="chapter" data-level="10.4" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-ii-confusion-matrix-and-roc-curves"><i class="fa fa-check"></i><b>10.4</b> Assessing model fit II: confusion matrix and ROC curves</a></li>
+<li class="chapter" data-level="10.5" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#interactions"><i class="fa fa-check"></i><b>10.5</b> Interactions</a></li>
+<li class="chapter" data-level="10.6" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#further-resources-2"><i class="fa fa-check"></i><b>10.6</b> Further resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelling Criminological Data LAWS20452</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-carpentry-week-4" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Data Carpentry (Week 4)</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Introduction</h2>
+<p>There are many situation in the process of data analysis where you have to work around your data to get it in shape ready for analysis.You may need for example to change your existing variables or create new variables (often using information stored in existing ones) in order to achieve your analytical goals. In this session, we are going to discuss and cover some of the scenarios in which this may be required and also explain how to do this. These skills will be particularly useful for getting your data ready for your coursework assignment.</p>
+<p>For this practical we will use the data from a Eurobarometer. Eurobarometers are opinon polls conducted regularly on behalf of the European Commission since 1973. Some of them ask the same questions over time to evaluate changes in European’s views in a variety of subjects (standard Eurobarometers). Others are focused on special topics and are conducted less regularly (special Eurobarometers). They are a useful source of datasets that you could use for your undergraduate dissertation.</p>
+<p>The data from these surveys is accessible through the data catalog of GESIS, a data warehouse at the Leibniz Institute for the Social Sciences in Germany. For downloading data from GESIS you have to register with them (following the registration link) <a href="https://dbk.gesis.org/dbksearch/register.asp">here</a>. Once you activate your registration you should be able to access the data at GESIS.</p>
+<div class="figure">
+<img src="imgs/register.PNG" />
+
+</div>
+<p>GESIS has a section of their website devoted to the Eurobarometer survey. You can access that section <a href="https://www.gesis.org/eurobarometer-data-service/home/">here</a>. You could navigate this webpage to find the data we will be using for this tutorial, but to save time I will provide you a direct link to it. We will be using the special Eurobarometer 85.3 form 2016. This survey among other things asked Europeans about their views on gender violence.</p>
+<div class="figure">
+<img src="imgs/eb.PNG" />
+
+</div>
+<p>You can access the data for this eurobarometer <a href="https://dbk.gesis.org/dbksearch/sdesc2.asp?no=6695&amp;db=e&amp;doi=10.4232/1.13169">here</a>.</p>
+<div class="figure">
+<img src="imgs/gesis.PNG" />
+
+</div>
+<p>You will see here that there are links to the files with the data in SPSS and STATA format. You can also see a tab where you could obtain the questionnaire for the survey. Once you are registered download the STATA version of the file and also an English version of the questionnaire. Make sure you place the file in your working directory. Once you do this you should be able to use the code we are using in this session.</p>
+<p>First, we will load the data into our session. Since the data is in STATA format we will need to read the data into R using the <code>haven</code> package. Specifically, we will use the <code>read_dta</code> function for importing STATA data into R. As an argument we need to write the name of the file with the data (and if it is not in your working directory, the appropriate pathfile).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(haven)
+eb85_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">read_dta</span>(<span class="st">&quot;ZA6695_v1-1-0.dta&quot;</span>)
+<span class="kw">dim</span>(eb85_<span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 27818   483</code></pre>
+<p>We can see there are over 27000 cases (survey participants) and 483 variables.</p>
+</div>
+<div id="thinking-about-your-data" class="section level2">
+<h2><span class="header-section-number">5.2</span> Thinking about your data</h2>
+<p>For the final coursework assignment, you will need to download other datasets but the process will be similar in that once you have the datasets you will need to think about what cases and what variables you want to work with. Imagine that we had to write our final assignment using this dataset and that we had to write a report about attitudes to sexual violence.</p>
+<p>First, we would need to think if we wanted to use all cases in the data or only a subset of the cases. For example, when using something like the Eurobarometer we would need to consider if we are interested in exploring the substantive topic across Europe or only for some countries. Or alternatively you may want to focus your analysis only on men attitudes to sexual violence. In a situation like this you would need to filter cases.</p>
+<p>So, for example, if we only wanted to work with the UK sample we would need tho figure out if there is a variable that identifies the country in the dataset. In the questionnaire you can see indeed that there is such a variable:</p>
+<div class="figure">
+<img src="imgs/question1.PNG" />
+
+</div>
+<p>What we do not know is how this variable is named in the dataset. For this we need to look at the codebook. In this case, we can look at the interactive facility provided for GESIS for online data analysis, which provides an interactive online codebook for this dataset. You can access this facility in the link higlighted in the image below:</p>
+<div class="figure">
+<img src="imgs/linktoonline.PNG" />
+
+</div>
+<p>You can access similar applications for the two datasets that you need to use for the final coursework assignment. If you will use the ESS you can use an online facility <a href="http://nesstar.ess.nsd.uib.no/webview/">here</a> and if you are using the CSEW you can acccess a similar tool <a href="http://nesstar.ukdataservice.ac.uk/webview/">here</a>.</p>
+<p>Let’s explore the online facility for the Eurobarometer. If we expand the menus in the left hand side by clickin in variable description, and then in standard nation id variables, you will see there is a variable that provides a “country code”. This must be it. click on it and then you will see in the right hand side some information about this variable. You see the name of this variable (as it will appear in the dataset) “isocntry” and we can see this variable uses <a href="https://en.wikipedia.org/wiki/ISO_3166">ISO 3166</a> codes to designate the country. This is an international standard set of abbreviations for country names. For the UK these codes are GB-GBN and GB-NIR (for Northern Ireland).</p>
+<div class="figure">
+<img src="imgs/country.PNG" />
+
+</div>
+<p>Now that we have this information we can run the code to select only the cases that have these values in the dataset. For doing something like that we would use the <code>dplyr::filter</code> function. We used the <code>filter</code> function in week 2. You can read more about it in the <code>dplyr</code> vignette.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#First, let&#39;s see what type of vector isocntry is</span>
+<span class="kw">class</span>(eb85_<span class="dv">3</span><span class="op">$</span>isocntry)</code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">uk_eb85_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">filter</span>(eb85_<span class="dv">3</span>, isocntry <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GB-GBN&quot;</span>, <span class="st">&quot;GB-NIR&quot;</span>))</code></pre></div>
+<p>The variable <code>isocntry</code> is a character vector with codes for the different participating countries. Here we want to select all the cases in the survey that have either of two values in this vector (GB-GBN or GB-NIR). Since these values are text we need to use quotes to wrappen them up. Because we are selecting more one value we cannot simply say <code>isocntry == &quot;GB-BGN&quot;</code>. We also need the cases from Northern Ireland. So, we use a particular operator introduced by <code>dplyr</code> called the piping operator (<code>%in%</code>). Basically, here we are creating a vector with the values we want and then asking R to look at those values within the isocntry vector so that we can filter everything else out. We will come back to the piping operator in greater detail later on.</p>
+<p>If you run this code you will end up with a new object called <code>uk_eb85_3</code> that only has 1306 observations. We have now a dataset that only has the British participants.</p>
+</div>
+<div id="selecting-variables" class="section level2">
+<h2><span class="header-section-number">5.3</span> Selecting variables</h2>
+<p>Perhaps for your coursework you define your essay question in such a way that you do not need to do any a priori filtering. Perhaps, for the sake of this example, we decide to do an analysis that focuses on looking at attitudes toward sexual violence for all of Europe and for all participants. Yet, you won’t be using 483 variables for certain. Among other reasons because our guidelines for the essay suggest you use fewer variables. The first thing you need to do is think about what variables you are going to use. This involves first thinking about what variables are available in the dataset that measure your outcome of interest.</p>
+<p>The thing you are interested in explaining or better understanding is attitudes regarding sexual violence. So, you would need to spend some time thinking about how this survey measures these attitudes. You would need to screen the questionnaire and the codebook to identify these variables and their names in the dataset. Have a look at the questionnaire. The questions about gender violence start at the bottom of page 7. Which of these questions are questions about attitudes towards sexual violence?</p>
+<p><strong>Homework 1: Identify the name of all the variables that pertain to attitudes toward sexual violence. You will need this list in front of you when doing the Blackboard test</strong></p>
+<p>Once you have all of this you would need to think about which of these survey questions and items make more sense for your research question. This is something where you will need to use your common sense but also your understanding of the literature in the topic. Criminologists and survey researchers spend a lot of time thinking about what is the best way of asking questions about topics or concepts of interest. They often debate and write about this. So, as part of your essay, you will need to consider what do researchers consider are good questions to tap into the concepts you are studying.</p>
+<p>There are many items in this survey that relate to this topic (and you need to identify as part of homework 1), but for purposes of continuing our illustration we are going to focus on the answers to question QB10. This question asks respondents to identify in what circumstances may be justified to have sexual intercourse without consent. The participants are read a list of items (e.g., “flirting before hand”) and they can select various of them if so they wish.</p>
+<div class="figure">
+<img src="imgs/qb10.PNG" />
+
+</div>
+<p>Ok, so we have now selected our variable. Say that we have done so on the basis of our understanding of the literature. Next we need to identify these variables in the dataset. What name is associated with this variable? Let’s look at the online interactive facility.</p>
+<div class="figure">
+<img src="imgs/qb10codes.PNG" />
+
+</div>
+<p>Damn! We have one question but several variables! This is common when the question in the survey allows for multiple responses. Typically when this is read into a dataset, survey researchers create a variable for each of the possible multiple responses. If the respondent identified one of those potential responses they will be assigned a “yes” or a “1” for that column. If they did not they will be assigned a “no” or a “0”. Let’s see how this was done in this case:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(eb85_<span class="dv">3</span><span class="op">$</span>qb10_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] &quot;haven_labelled&quot;</code></pre>
+<p>This is a vector labelled by haven. We could see what labels were used using the <code>attributes</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(eb85_<span class="dv">3</span><span class="op">$</span>qb10_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## $label
+## [1] &quot;INTERCOURSE W/O CONSENT APPROPRIATE WHEN: WEARING SEXY CLOTHES&quot;
+## 
+## $format.stata
+## [1] &quot;%8.0g&quot;
+## 
+## $class
+## [1] &quot;haven_labelled&quot;
+## 
+## $labels
+## Not mentioned     Mentioned 
+##             0             1</code></pre>
+<p>We can see here that the value 1 corresponds to cases where this circumstance was mentioned. Let’s see how many people considered this a valid circumstance to have sex without consent.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(eb85_<span class="dv">3</span><span class="op">$</span>qb10_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## 
+##     0     1 
+## 24787  3031</code></pre>
+<p>Fortunately, only a minority of respondents.</p>
+<p>Apart from thinking about the variables we will use to measure our outcome of interest for the coursework assignment you will need to select some variables that you think may be associated with this outcome. In the essay you will need to select a wider set. Here we will only do a few. Again, this is something that needs to be informed by the literature (what variables does the literature considers important) and your own interest. Let’s say we are going to look at gender, political background of the respondent, country of origin, age, occupation of the respondents, and type of community they live in. Most of these are demographic variables (not always the more fun or theoretically interesting), but that’s all we have in this eurobarometer and so they will do. The same way you try to identify the names of the variables for your outcome variable, you would need to do this for the variables you use to “explain” your outcome. Once you have done your variable selection you can subset your data to only include these.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">select</span>(eb85_<span class="dv">3</span>, qb10_<span class="dv">1</span>, qb10_<span class="dv">2</span>, qb10_<span class="dv">3</span>, qb10_<span class="dv">4</span>,
+             qb10_<span class="dv">5</span>, qb10_<span class="dv">6</span>, qb10_<span class="dv">7</span>, qb10_<span class="dv">8</span>, qb10_<span class="dv">9</span>,
+             qb10_<span class="dv">10</span>, qb10_<span class="dv">11</span>, qb10_<span class="dv">12</span>, d10, d11,
+             isocntry, d1, d25, d15a, uniqid)</code></pre></div>
+<p>Ta-da! We now have a new object called df with only the variables we will be working with. In this format, it is easier to visualise the data. Notice we have also added a variable called <code>uniqid</code>. With many datasets like this you will have a unique id value that allows you to identify individuals. This id may be handy later on, so we will preserve it in our object.</p>
+</div>
+<div id="creating-summated-scales" class="section level2">
+<h2><span class="header-section-number">5.4</span> Creating summated scales</h2>
+<p>Now comes the next part. What are going to do with this variables? How are we going to use them? Here you need to do some thinking using your common sense and also considering how other researchers may have used this question. There’s always many possibilities. We could, for example, consider that we are going to split the sample in two: those that consider any of these circumstances valid and those that didn’t. We would then end up with a binary indicator that we could use as our outcome variable in our analysis. The thing is that doing that implies loosing information. We may think that someone that consider many circumstances as valid is not the same than the person that only considers one as valid. Yet, creating a global binary indicator would treat these two individuals in the same way.</p>
+<p>Another alternative could be to see how many of these circumstances are considered valid excuses for each individual and to produce a sum then for every respondent. Since there are 9 “excuses” we could have a sum from 0 to 9. Let’s do this. We are going to create a new variable that add up the responses to qb10_1 all the way to qb10_9. For this we use the <code>mutate</code> function from the <code>dplyr</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">mutate</span>(df, 
+       <span class="dt">at_sexviol =</span> qb10_<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>qb10_<span class="dv">2</span> <span class="op">+</span><span class="st"> </span>qb10_<span class="dv">3</span> <span class="op">+</span><span class="st"> </span>qb10_<span class="dv">4</span> <span class="op">+</span>
+<span class="st">         </span>qb10_<span class="dv">5</span> <span class="op">+</span><span class="st"> </span>qb10_<span class="dv">6</span> <span class="op">+</span><span class="st"> </span>qb10_<span class="dv">7</span> <span class="op">+</span><span class="st"> </span>qb10_<span class="dv">8</span> <span class="op">+</span><span class="st"> </span>qb10_<span class="dv">9</span>)
+<span class="kw">table</span>(df<span class="op">$</span>at_sexviol)</code></pre></div>
+<pre><code>## 
+##     0     1     2     3     4     5     6     7     8     9 
+## 19681  2529  2117  1643   841   416   255   155    57   124</code></pre>
+<p>We have a skewed distribution. Most people in the survey consider that none of the identified circumstances are valid excuses for having sexual intercourse without consent. On the other hand, only a minority of individuals (124) consider that all of these 9 circumstances are valid excuses for having sex without consent. A high score in this count variable is telling you the participant is more likely to accept a number of circumstances in which sexual intercourse without consent is acceptable. You may read more about count data of this kind <a href="https://en.wikipedia.org/wiki/Count_data">here</a>.</p>
+<p>Hold on for a second, though. There is a variable <code>qb10_10</code> that specifies people that answered “none of these” circumstnaces. In theory the number of people with a “1” in that variable (that is, selected this item) should equal 19681 (the number of zeros in our new variable). Let’s check this out:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(df<span class="op">$</span>qb10_<span class="dv">10</span>)</code></pre></div>
+<pre><code>## 
+##     0     1 
+##  9400 18418</code></pre>
+<p>Oops! Something does’t add up! Only 18418 people said that none of these circumstances were valid. So why when we add all the other items we end up with 19681 rather than 18418? Notice that there is also a qb10_11 and a qb10_12. These two items identify the people that refused to answer this question and those which did not know how to answer it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(df<span class="op">$</span>qb10_<span class="dv">11</span>)</code></pre></div>
+<pre><code>## 
+##     0     1 
+## 27563   255</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(df<span class="op">$</span>qb10_<span class="dv">12</span>)</code></pre></div>
+<pre><code>## 
+##     0     1 
+## 26810  1008</code></pre>
+<p>There are 255 people that refused to answer and 1008 that did not know how to answer. If you add 1008, 255, and 18418 you get 19681. So our new variable is actually computing as zeroes people that did not know how to answer this question or refused to answer it. We do not want that. We do not know what these people think, so it would be wrong to assume that they consider that none of these circumstances are valid excuses for sexual intercourse without consent.</p>
+<p>There are many ways to deal with this. He could simply filter out cases where we have values of 1 in these two variables (since we don’t know their answers we could as well get rid of them). But We could also recode the variable to define this values as what they are NA (missing data, cases for whivh we have no valid information).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>at_sexviol[df<span class="op">$</span>qb10_<span class="dv">11</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>qb10_<span class="dv">12</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+<span class="kw">table</span>(df<span class="op">$</span>at_sexviol)</code></pre></div>
+<pre><code>## 
+##     0     1     2     3     4     5     6     7     8     9 
+## 18418  2529  2117  1643   841   416   255   155    57   124</code></pre>
+<p>Pay attention to the code above. When we want to recode based in a condition we use something like data. What we are saying with that code is that we are going to assign as NA (missing data) the cases for which the condition between the square brackets are met. Those conditions are as defined, when the participants answered don’t know or refused to answer the question (that is when qb10_11 or qb10_12 equals 1). You can see other scenarios for recoding using this kind of syntax in the resources we link below. The | sign is used to denote the logical condition “OR”. You can see other logical operators used in R <a href="https://www.datamentor.io/r-programming/operator/">here</a>.</p>
+<p>Notice that once we do the recoding and rerun the frequency distribution you will see we achieved what we wanted. Now all those missing cases are not counted as zero.</p>
+</div>
+<div id="collapsing-categories-in-character-variables" class="section level2">
+<h2><span class="header-section-number">5.5</span> Collapsing categories in character variables</h2>
+<p>One of the variables we selected is the country in which the participant lives. Let’s have a look at this variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(df<span class="op">$</span>isocntry)</code></pre></div>
+<pre><code>## 
+##     AT     BE     BG     CY     CZ   DE-E   DE-W     DK     EE     ES 
+##   1016   1029   1001    501   1060    533   1052   1010   1001   1008 
+##     FI     FR GB-GBN GB-NIR     GR     HR     HU     IE     IT     LT 
+##   1042   1009   1006    300   1000   1026   1046   1002   1013   1004 
+##     LU     LV     MT     NL     PL     PT     RO     SE     SI     SK 
+##    508   1010    500   1003   1002   1000   1007   1109   1012   1008</code></pre>
+<p>There are 30 countries in the sample. You may consider that for the purposes of your analysis maybe that is too much. For the sake of this tutotial, let’s say that maybe you are not really interested in national differences but in regional differences across different parts of Europe. Say you may want to explore whether these attitudes are different across Western/Central Europe, Scandinavian countries, Mediterranean countries, and Eastern Europe. You do not have a variable with these categories but since you have a variable that gives you the nations you could create such a variable. How would you do that?</p>
+<p>First, you need to consider what the new categories are going to be and how you are going to distribute the countries in your sample across those categories. You may do that in a piece of paper. Then you would need to write the code to have a new variable with this information.</p>
+<p>We are going to group the countries in 4 regions: Western (AT, BE, CZ, DE-E, DE-W, FR, GB-GBN, GB-NIR, IE, LU, NL), Eastern (BG, EE, HU, LT, LV, PL, RO, SK), Southern (CY, ES, GR, HR, IT, MT, PT, SI), and Northern Europe (DK, FI, SE).</p>
+<p>Here we use code similar to the one above. We will have a variable with four new categories (Western, Southern, Eastern, and Northern) whenever the right conditions are met. See the code below:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>region[df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;AT&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;BE&quot;</span> <span class="op">|</span><span class="st"> </span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;CZ&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;DE-E&quot;</span> <span class="op">|</span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;DE-W&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;FR&quot;</span> <span class="op">|</span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;GB-GBN&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;GB-NIR&quot;</span> <span class="op">|</span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;IE&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;LU&quot;</span> <span class="op">|</span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;NL&quot;</span>] &lt;-<span class="st"> &quot;Western&quot;</span></code></pre></div>
+<pre><code>## Warning: Unknown or uninitialised column: &#39;region&#39;.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>region[df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;BG&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;EE&quot;</span> <span class="op">|</span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;HU&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;LT&quot;</span> <span class="op">|</span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;LV&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;PL&quot;</span> <span class="op">|</span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;RO&quot;</span> <span class="op">|</span><span class="st"> </span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;SK&quot;</span>] &lt;-<span class="st"> &quot;Eastern&quot;</span>
+df<span class="op">$</span>region[df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;DK&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st">&quot;FI&quot;</span> <span class="op">|</span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;SE&quot;</span>] &lt;-<span class="st"> &quot;Northern&quot;</span>
+df<span class="op">$</span>region[df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;CY&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;ES&quot;</span> <span class="op">|</span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;GR&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st">&quot;HR&quot;</span> <span class="op">|</span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;IT&quot;</span> <span class="op">|</span><span class="st"> </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st">&quot;MT&quot;</span> <span class="op">|</span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st"> &quot;PT&quot;</span> <span class="op">|</span><span class="st"> </span>
+<span class="st">            </span>df<span class="op">$</span>isocntry <span class="op">==</span><span class="st">&quot;SI&quot;</span>] &lt;-<span class="st"> &quot;Southern&quot;</span>
+
+<span class="kw">table</span>(df<span class="op">$</span>region)</code></pre></div>
+<pre><code>## 
+##  Eastern Northern Southern  Western 
+##     8079     3161     7060     9518</code></pre>
+<p>What we are doing above is initialising a new variable in the <code>df</code> object that we are calling <code>region</code>. We are then assigning to each of the four categories in this character vector those participants in the survey that have the corresponding values in the <code>isocntry</code> variable as defined for each category within the square brackets. So for example if Austria) we are telling R we want this person to be assign the value of “Western” in the <code>region</code> variable. And so on. You can see the list of ISO country codes <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">here</a>.</p>
+<p>Once you have created the variable you could start exploring if there is any association with our outcome variable. For example, using mosaic plots from tje <code>vcd</code> package (if you don’t have it installed the code won’t run).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(vcd)</code></pre></div>
+<pre><code>## Loading required package: grid</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mosaic</span>(<span class="op">~</span>region <span class="op">+</span><span class="st"> </span>at_sexviol, <span class="dt">data =</span> df)</code></pre></div>
+<p><img src="04-carpentry_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>In a mosaic plot like this the height of the region levels indicate how big that group is. You can see there are many more observations in our sample that come from Western countries than from Northern countries. Here what we are interested is the lenght. We see that Northern countries have proportionally more people in the zero category than any other group. On the other hand, Eastern countries have the fewer zeros (so looking as if attitudes more permisive towards sexual violence are more common there, even if still minoritary). We will come back to this kind of plots later on this semester.</p>
+</div>
+<div id="working-with-apparently-cryptic-variable-names-and-levels" class="section level2">
+<h2><span class="header-section-number">5.6</span> Working with apparently cryptic variable names and levels</h2>
+<p>Let’s look at the variable d10 in our dataset:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(df<span class="op">$</span>d10)</code></pre></div>
+<pre><code>## 
+##     1     2 
+## 12230 15588</code></pre>
+<p>What is this? Unclear, isn’t it? If you look at the questionnaire you will see that this variable measures gender, that values of 1 correspond to men and that values of 2 corresponds to woman. But this is far from straighforward just by looking a the printed table or the name of the variable.</p>
+<p>To start with we may want to change the name of the variable. One way to do this is the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(data)[<span class="kw">colnames</span>(data)<span class="op">==</span><span class="st">&quot;old_name&quot;</span>] &lt;-<span class="st"> &quot;new_name&quot;</span></code></pre></div>
+<p>Of course, we need to change the names for valid ones in our case. So adapting that code we would write as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(df)[<span class="kw">colnames</span>(df)<span class="op">==</span><span class="st">&quot;d10&quot;</span>] &lt;-<span class="st"> &quot;gender&quot;</span></code></pre></div>
+<p>If you now check the names of the variables in <code>df</code> you will see what has happened:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(df)</code></pre></div>
+<pre><code>##  [1] &quot;qb10_1&quot;     &quot;qb10_2&quot;     &quot;qb10_3&quot;     &quot;qb10_4&quot;     &quot;qb10_5&quot;    
+##  [6] &quot;qb10_6&quot;     &quot;qb10_7&quot;     &quot;qb10_8&quot;     &quot;qb10_9&quot;     &quot;qb10_10&quot;   
+## [11] &quot;qb10_11&quot;    &quot;qb10_12&quot;    &quot;gender&quot;     &quot;d11&quot;        &quot;isocntry&quot;  
+## [16] &quot;d1&quot;         &quot;d25&quot;        &quot;d15a&quot;       &quot;uniqid&quot;     &quot;at_sexviol&quot;
+## [21] &quot;region&quot;</code></pre>
+<p>If you want to change many variable names it may be more efficient doing it all at once. First we are going to select fewer variables and retain only the ones will continue using:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">select</span>(df, uniqid, at_sexviol, gender, d11, d1, d25, d15a, region)</code></pre></div>
+<p>Now we can change a bunch of names all at once with the following code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(df)[<span class="dv">4</span><span class="op">:</span><span class="dv">7</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;politics&quot;</span>, <span class="st">&quot;urban&quot;</span>, <span class="st">&quot;occupation&quot;</span>)
+<span class="kw">names</span>(df)</code></pre></div>
+<pre><code>## [1] &quot;uniqid&quot;     &quot;at_sexviol&quot; &quot;gender&quot;     &quot;age&quot;        &quot;politics&quot;  
+## [6] &quot;urban&quot;      &quot;occupation&quot; &quot;region&quot;</code></pre>
+<p>You may have seen we wrote <code>[4:7]</code> above. That is indicating to R that we only wanted to change the name of the variables defining column 4 to 7 in the dataframe, those corresponded to d11, d1, d25, and d15a, which respectively (we can see in the questionnaire) correspond to age, politics, whether the respondent live in a urban setting, and occupation. We assign to those columns the names we specify (in the appropriate order) in the list that follows. Now we will be less likely to confuse ourselves, since we have columns with meaningful names (which will appear in any output and plots we produce).</p>
+<p>Let’s look at occupation:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(df<span class="op">$</span>occupation)</code></pre></div>
+<pre><code>## 
+##    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15 
+## 1588 1864 1845 8916  129   14  384  768  517  878  313 1921 2202  856 2062 
+##   16   17   18 
+##  271 2471  819</code></pre>
+<p>There are 18 categories here. And it is not clear what they mean.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(df<span class="op">$</span>occupation)</code></pre></div>
+<pre><code>## [1] &quot;haven_labelled&quot;</code></pre>
+<p>Remember that this is haven_labelled. If we look at the attributes we can see the correspondence between the numbers above and the labels.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(df<span class="op">$</span>occupation)</code></pre></div>
+<pre><code>## $label
+## [1] &quot;OCCUPATION OF RESPONDENT&quot;
+## 
+## $format.stata
+## [1] &quot;%8.0g&quot;
+## 
+## $class
+## [1] &quot;haven_labelled&quot;
+## 
+## $labels
+##       Responsible for ordinary shopping, etc. 
+##                                             1 
+##                                       Student 
+##                                             2 
+##           Unemployed, temporarily not working 
+##                                             3 
+##                       Retired, unable to work 
+##                                             4 
+##                                        Farmer 
+##                                             5 
+##                                     Fisherman 
+##                                             6 
+##                   Professional (lawyer, etc.) 
+##                                             7 
+##              Owner of a shop, craftsmen, etc. 
+##                                             8 
+##                    Business proprietors, etc. 
+##                                             9 
+## Employed professional (employed doctor, etc.) 
+##                                            10 
+##                      General management, etc. 
+##                                            11 
+##                       Middle management, etc. 
+##                                            12 
+##                    Employed position, at desk 
+##                                            13 
+##                 Employed position, travelling 
+##                                            14 
+##                Employed position, service job 
+##                                            15 
+##                                    Supervisor 
+##                                            16 
+##                         Skilled manual worker 
+##                                            17 
+##                 Unskilled manual worker, etc. 
+##                                            18</code></pre>
+<p>Having to look at this every time is not very convenient. You may prefer to simply use the labels directly. For this we can use the <code>to_factor</code> function from the <code>labelled</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(labelled)</code></pre></div>
+<pre><code>## 
+## LABELLED 2.0.0: BREAKING CHANGE
+## 
+## Following version 2.0.0 of `haven`, `labelled()` and `labelled_spss()` now produce objects with class &#39;haven_labelled&#39; and &#39;haven_labelled_spss&#39;, due to conflict between the previous &#39;labelled&#39; class and the &#39;labelled&#39; class used by `Hmisc`.
+## 
+## A new function `update_labelled()` could be used to convert data imported with an older version of `haven`/`labelled` to the new classes.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>f_occup &lt;-<span class="st"> </span><span class="kw">to_factor</span>(df<span class="op">$</span>occupation)
+<span class="kw">class</span>(df<span class="op">$</span>f_occup)</code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(df<span class="op">$</span>f_occup)</code></pre></div>
+<pre><code>## 
+##       Responsible for ordinary shopping, etc. 
+##                                          1588 
+##                                       Student 
+##                                          1864 
+##           Unemployed, temporarily not working 
+##                                          1845 
+##                       Retired, unable to work 
+##                                          8916 
+##                                        Farmer 
+##                                           129 
+##                                     Fisherman 
+##                                            14 
+##                   Professional (lawyer, etc.) 
+##                                           384 
+##              Owner of a shop, craftsmen, etc. 
+##                                           768 
+##                    Business proprietors, etc. 
+##                                           517 
+## Employed professional (employed doctor, etc.) 
+##                                           878 
+##                      General management, etc. 
+##                                           313 
+##                       Middle management, etc. 
+##                                          1921 
+##                    Employed position, at desk 
+##                                          2202 
+##                 Employed position, travelling 
+##                                           856 
+##                Employed position, service job 
+##                                          2062 
+##                                    Supervisor 
+##                                           271 
+##                         Skilled manual worker 
+##                                          2471 
+##                 Unskilled manual worker, etc. 
+##                                           819</code></pre>
+<p>Now you have easier to interpret output.</p>
+</div>
+<div id="recoding-factors" class="section level2">
+<h2><span class="header-section-number">5.7</span> Recoding factors</h2>
+<p>As we said there are many different types of objects in R and depending on their nature the recoding procedures may vary. You may remember that many times categorical variables will be encoded as factors. Let’s lgo back our newly created <code>f_occup</code>. We have 18 categories here. These are possibly too many. Some of them have to few cases, like <code>fisherman</code>. Although this is a fairly large dataset we only have 14 fisherman. It would be a bit brave to guess what fishermen across Europe think about sexual violence based in a sample of just 14 of them. This is a very common scenario when you analyse data. In these cases is helpful to think of ways of adding the groups with small counts (like fishermen in this case) to a broader but still meaningful category. You also have to think theoretically, do you have good enough reasons to think that there’s ought to be meaningful categories in attitudes to sexual violence among these 18 groups? If you don’t you may want to collapse into fewer categories that may make more sense.</p>
+<p>As when we created the <code>region</code> variable the first thing to do is to come out with a new coding scheme for this variable. We are going to use the following.</p>
+<pre><code>1   Self-employed (5 to 9 in d15a)  
+2   Managers (10 to 12 in d15a) 
+3   Other white collars (13 or 14 in d15a)  
+4   Manual workers (15 to 18 in d15a)   
+5   House persons (1 in d15a)   
+6   Unemployed (3 in d15a)  
+7   Retired (4 in d15a) 
+8   Students (2 in d15a)</code></pre>
+<p>In right life it would be quicker to recode from <code>d15a</code> into a new variable. But here we are going to use this to show you how to recode from a factor variable, so instead we will recode form <code>f_occup</code>. As often in R, there are multiple ways of doing this. Here we will show you how to do this using the <code>recode</code> function from the <code>car</code> library.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>occup2 &lt;-<span class="st"> </span>df<span class="op">$</span>f_occup
+<span class="kw">levels</span>(df<span class="op">$</span>occup2) &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Self-employed&quot;</span> =<span class="st"> </span>
+<span class="st">                            </span><span class="kw">c</span>(<span class="st">&quot;Farmer&quot;</span> , <span class="st">&quot;Fisherman&quot;</span> ,
+                              <span class="st">&quot;Professional (lawyer, etc.)&quot;</span> ,
+                              <span class="st">&quot;Owner of a shop, craftsmen, etc.&quot;</span>,
+                              <span class="st">&quot;Business proprietors, etc.&quot;</span>),
+                          <span class="st">&quot;Managers&quot;</span> =<span class="st"> </span>
+<span class="st">                            </span><span class="kw">c</span>(<span class="st">&quot;Employed professional (employed doctor, etc.)&quot;</span>,
+                              <span class="st">&quot;General management, etc.&quot;</span>, 
+                              <span class="st">&quot;Middle management, etc.&quot;</span>),
+                          <span class="st">&quot;Other white collar&quot;</span> =<span class="st"> </span>
+<span class="st">                            </span><span class="kw">c</span>(<span class="st">&quot;Employed position, at desk&quot;</span>, 
+                              <span class="st">&quot;Employed position, travelling&quot;</span>),
+                          <span class="st">&quot;Manual workers&quot;</span> =<span class="st"> </span>
+<span class="st">                            </span><span class="kw">c</span>(<span class="st">&quot;Employed position, service job&quot;</span>,
+                              <span class="st">&quot;Supervisor&quot;</span>,
+                              <span class="st">&quot;Skilled manual worker&quot;</span>,
+                              <span class="st">&quot;Unskilled manual worker, etc.&quot;</span>),
+                          <span class="st">&quot;House persons&quot;</span> =<span class="st"> &quot;Responsible for ordinary shopping, etc.&quot;</span>,
+                          <span class="st">&quot;Unemployed&quot;</span> =<span class="st"> &quot;Unemployed, temporarily not working&quot;</span>,
+                          <span class="st">&quot;Retired&quot;</span> =<span class="st">  &quot;Retired, unable to work&quot;</span>,
+                          <span class="st">&quot;Student&quot;</span> =<span class="st"> &quot;Student&quot;</span>)
+
+<span class="kw">table</span>(df<span class="op">$</span>occup2)</code></pre></div>
+<pre><code>## 
+##      Self-employed           Managers Other white collar 
+##               1812               3112               3058 
+##     Manual workers      House persons         Unemployed 
+##               5623               1588               1845 
+##            Retired            Student 
+##               8916               1864</code></pre>
+<p>One of the things you need to be very careful with when recoding factors or character variables is that you need to input the chunk of texts in the existing variables exactly as they appear in the variable. Otherwise you will get into trouble. So, for example, if in the code above you wrote <code>fishermen</code> instead of <code>Fisherman</code> you would have 14 less cases in the <code>Self-Employed</code> level than you should have.</p>
+</div>
+<div id="further-resources-1" class="section level2">
+<h2><span class="header-section-number">5.8</span> Further resources</h2>
+<p>There are many other ways to recode variables and create new variables based in existing ones. Here we only provided some examples. We cannot exhaust all possibilities in this tutorial. For the purposes of the assignment you may have specific ideas of how you may want to combine variables or recode existing ones. You can find additional examples and code for how to do the recoding of variables in the following links. Please make sure that you spend some time looking at these additional resources. They are not optional.</p>
+<p><a href="https://peerj.com/preprints/3163.pdf">Wrangling categorical data in R</a></p>
+<p><a href="http://rprogramming.net/recode-data-in-r/" class="uri">http://rprogramming.net/recode-data-in-r/</a></p>
+<p><a href="http://www.cookbook-r.com/Manipulating_data/Recoding_data/" class="uri">http://www.cookbook-r.com/Manipulating_data/Recoding_data/</a></p>
+<p><a href="https://mgimond.github.io/ES218/Week03a.html" class="uri">https://mgimond.github.io/ES218/Week03a.html</a></p>
+<p><a href="https://www.r-bloggers.com/from-continuous-to-categorical/" class="uri">https://www.r-bloggers.com/from-continuous-to-categorical/</a></p>
+<p>You should also look for the dplyr documentation for the functions mutate() and recode().</p>
+<p>If you would like to combine several variables into one for your analysis in more complex ways but do not know how to do that, please do get in touch. Also do not hesitate to approach us if you have any other specific queries.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-visualisation-with-r-week-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="foundations-of-statistical-inference-confidence-intervals-week-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["book.pdf", "book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

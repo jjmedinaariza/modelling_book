@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Modelling Criminological Data LAWS20452</title>
+  <meta name="description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Modelling Criminological Data LAWS20452" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Modelling Criminological Data LAWS20452" />
+  
+  <meta name="twitter:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Juanjo Medina and Reka Solymosi">
+
+
+<meta name="date" content="2019-01-24">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="a-first-lesson-about-r-week-1.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Modelling Criminological Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html"><i class="fa fa-check"></i><b>2</b> A first lesson about R (Week 1)</a><ul>
+<li class="chapter" data-level="2.1" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#install-r-rstudio"><i class="fa fa-check"></i><b>2.1</b> Install R &amp; RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#open-up-and-explore-rstudio"><i class="fa fa-check"></i><b>2.2</b> Open up and explore RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#customising-the-rstudio-look"><i class="fa fa-check"></i><b>2.3</b> Customising the RStudio look</a></li>
+<li class="chapter" data-level="2.4" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#getting-organised-r-projects"><i class="fa fa-check"></i><b>2.4</b> Getting organised: R Projects</a></li>
+<li class="chapter" data-level="2.5" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#talk-to-your-computer"><i class="fa fa-check"></i><b>2.5</b> Talk to your computer</a></li>
+<li class="chapter" data-level="2.6" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#more-on-packages"><i class="fa fa-check"></i><b>2.6</b> More on packages</a></li>
+<li class="chapter" data-level="2.7" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#using-objects"><i class="fa fa-check"></i><b>2.7</b> Using objects</a></li>
+<li class="chapter" data-level="2.8" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#more-on-objects"><i class="fa fa-check"></i><b>2.8</b> More on objects</a></li>
+<li class="chapter" data-level="2.9" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#vectors"><i class="fa fa-check"></i><b>2.9</b> Vectors</a></li>
+<li class="chapter" data-level="2.10" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#on-comments"><i class="fa fa-check"></i><b>2.10</b> On comments</a></li>
+<li class="chapter" data-level="2.11" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#factors"><i class="fa fa-check"></i><b>2.11</b> Factors</a></li>
+<li class="chapter" data-level="2.12" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>2.12</b> Naming conventions for objects in R</a></li>
+<li class="chapter" data-level="2.13" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#dataframes"><i class="fa fa-check"></i><b>2.13</b> Dataframes</a></li>
+<li class="chapter" data-level="2.14" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#exploring-data"><i class="fa fa-check"></i><b>2.14</b> Exploring data</a></li>
+<li class="chapter" data-level="2.15" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#quitting-rstudio"><i class="fa fa-check"></i><b>2.15</b> Quitting RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html"><i class="fa fa-check"></i><b>3</b> Causality in randomised experiments (Week 2)</a><ul>
+<li class="chapter" data-level="3.1" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#causality-in-social-sciences"><i class="fa fa-check"></i><b>3.1</b> Causality in social sciences</a></li>
+<li class="chapter" data-level="3.2" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#getting-data-thanks-to-reproducibility"><i class="fa fa-check"></i><b>3.2</b> Getting data thanks to reproducibility</a></li>
+<li class="chapter" data-level="3.3" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#getting-a-sense-for-your-data"><i class="fa fa-check"></i><b>3.3</b> Getting a sense for your data</a></li>
+<li class="chapter" data-level="3.4" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#data-wrangling-with-dplyr"><i class="fa fa-check"></i><b>3.4</b> Data wrangling with dplyr</a></li>
+<li class="chapter" data-level="3.5" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#using-dplyr-single-verbs"><i class="fa fa-check"></i><b>3.5</b> Using dplyr single verbs</a></li>
+<li class="chapter" data-level="3.6" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#using-dplyr-for-grouped-operations"><i class="fa fa-check"></i><b>3.6</b> Using dplyr for grouped operations</a></li>
+<li class="chapter" data-level="3.7" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#making-comparisons-with-numerical-outcomes"><i class="fa fa-check"></i><b>3.7</b> Making comparisons with numerical outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html"><i class="fa fa-check"></i><b>4</b> Data visualisation with R (Week 3)</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#anatomy-of-a-plot"><i class="fa fa-check"></i><b>4.2</b> Anatomy of a plot</a></li>
+<li class="chapter" data-level="4.3" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#what-graph-should-i-use"><i class="fa fa-check"></i><b>4.3</b> What graph should I use?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#histograms"><i class="fa fa-check"></i><b>4.4</b> Histograms</a></li>
+<li class="chapter" data-level="4.5" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#density-plots"><i class="fa fa-check"></i><b>4.5</b> Density plots</a></li>
+<li class="chapter" data-level="4.6" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#box-plots"><i class="fa fa-check"></i><b>4.6</b> Box plots</a></li>
+<li class="chapter" data-level="4.7" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#scatter-plots-with-two-variables"><i class="fa fa-check"></i><b>4.7</b> Scatter plots with two variables</a></li>
+<li class="chapter" data-level="4.8" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#scatter-plots-conditioning-in-a-third-variable"><i class="fa fa-check"></i><b>4.8</b> Scatter plots conditioning in a third variable</a></li>
+<li class="chapter" data-level="4.9" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#scatterplot-matrix"><i class="fa fa-check"></i><b>4.9</b> Scatterplot matrix</a></li>
+<li class="chapter" data-level="4.10" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#titles-and-legends-in-ggplot2"><i class="fa fa-check"></i><b>4.10</b> Titles and legends in ggplot2</a></li>
+<li class="chapter" data-level="4.11" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#plotting-categorical-data-bar-charts"><i class="fa fa-check"></i><b>4.11</b> Plotting categorical data: bar charts</a></li>
+<li class="chapter" data-level="4.12" data-path="data-visualisation-with-r-week-3.html"><a href="data-visualisation-with-r-week-3.html#further-resources"><i class="fa fa-check"></i><b>4.12</b> Further resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html"><i class="fa fa-check"></i><b>5</b> Data Carpentry (Week 4)</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#thinking-about-your-data"><i class="fa fa-check"></i><b>5.2</b> Thinking about your data</a></li>
+<li class="chapter" data-level="5.3" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#selecting-variables"><i class="fa fa-check"></i><b>5.3</b> Selecting variables</a></li>
+<li class="chapter" data-level="5.4" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#creating-summated-scales"><i class="fa fa-check"></i><b>5.4</b> Creating summated scales</a></li>
+<li class="chapter" data-level="5.5" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#collapsing-categories-in-character-variables"><i class="fa fa-check"></i><b>5.5</b> Collapsing categories in character variables</a></li>
+<li class="chapter" data-level="5.6" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#working-with-apparently-cryptic-variable-names-and-levels"><i class="fa fa-check"></i><b>5.6</b> Working with apparently cryptic variable names and levels</a></li>
+<li class="chapter" data-level="5.7" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#recoding-factors"><i class="fa fa-check"></i><b>5.7</b> Recoding factors</a></li>
+<li class="chapter" data-level="5.8" data-path="data-carpentry-week-4.html"><a href="data-carpentry-week-4.html#further-resources-1"><i class="fa fa-check"></i><b>5.8</b> Further resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html"><i class="fa fa-check"></i><b>6</b> Foundations of statistical inference: confidence intervals (Week 5)</a><ul>
+<li class="chapter" data-level="6.1" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#generating-random-data"><i class="fa fa-check"></i><b>6.2</b> Generating random data</a></li>
+<li class="chapter" data-level="6.3" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#sampling-data-and-sampling-variability"><i class="fa fa-check"></i><b>6.3</b> Sampling data and sampling variability</a></li>
+<li class="chapter" data-level="6.4" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#sampling-distributions-and-sampling-experiments"><i class="fa fa-check"></i><b>6.4</b> Sampling distributions and sampling experiments</a></li>
+<li class="chapter" data-level="6.5" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#the-normal-distribution-and-confidence-intervals-with-known-standard-errors"><i class="fa fa-check"></i><b>6.5</b> The normal distribution and confidence intervals with known standard errors</a></li>
+<li class="chapter" data-level="6.6" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#asymptotic-confidence-intervals-for-means-and-proportions-using-r"><i class="fa fa-check"></i><b>6.6</b> Asymptotic confidence intervals for means and proportions using R</a></li>
+<li class="chapter" data-level="6.7" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#a-brief-intro-to-resampling-and-bootstraping"><i class="fa fa-check"></i><b>6.7</b> A brief intro to resampling and bootstraping</a></li>
+<li class="chapter" data-level="6.8" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#what-about-comparisons-sampling-distribution-for-the-difference-of-two-means"><i class="fa fa-check"></i><b>6.8</b> What about comparisons? Sampling distribution for the difference of two means</a></li>
+<li class="chapter" data-level="6.9" data-path="foundations-of-statistical-inference-confidence-intervals-week-5.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-5.html#comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye"><i class="fa fa-check"></i><b>6.9</b> Comparing means visually by using error bars representing confidence intervals: inference by eye</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between a categorical and a quantitative variable (Week 6)</a><ul>
+<li class="chapter" data-level="7.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#the-logic-of-hypothesis-testing"><i class="fa fa-check"></i><b>7.1</b> The logic of hypothesis testing</a></li>
+<li class="chapter" data-level="7.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#comparing-means-across-two-groups-the-t-test"><i class="fa fa-check"></i><b>7.2</b> Comparing means across two groups (the t test)</a></li>
+<li class="chapter" data-level="7.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>7.3</b> Comparing means across several groups (ANOVA)</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>7.3.1</b> The problem with multiple comparisons</a></li>
+<li class="chapter" data-level="7.3.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#visual-exploration-of-differences-in-the-distributions-across-the-groups"><i class="fa fa-check"></i><b>7.3.2</b> Visual exploration of differences in the distributions across the groups</a></li>
+<li class="chapter" data-level="7.3.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#anova"><i class="fa fa-check"></i><b>7.3.3</b> ANOVA</a></li>
+<li class="chapter" data-level="7.3.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>7.3.4</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
+<li class="chapter" data-level="7.3.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>7.3.5</b> Checking normality and dealing with problems</a></li>
+<li class="chapter" data-level="7.3.6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#robust-anova"><i class="fa fa-check"></i><b>7.3.6</b> Robust ANOVA</a></li>
+<li class="chapter" data-level="7.3.7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>7.3.7</b> Post Hoc Comparisons</a></li>
+<li class="chapter" data-level="7.3.8" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable-week-6.html#effect-size-for-anova"><i class="fa fa-check"></i><b>7.3.8</b> Effect size for ANOVA</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html"><i class="fa fa-check"></i><b>8</b> Studying relationships between two factors (Week 7)</a><ul>
+<li class="chapter" data-level="8.1" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#producing-cross-tabulations"><i class="fa fa-check"></i><b>8.1</b> Producing cross tabulations</a></li>
+<li class="chapter" data-level="8.2" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#expected-frequencies-and-chi-square"><i class="fa fa-check"></i><b>8.2</b> Expected frequencies and Chi-Square</a></li>
+<li class="chapter" data-level="8.3" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#residuals"><i class="fa fa-check"></i><b>8.3</b> Residuals</a></li>
+<li class="chapter" data-level="8.4" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#gamma"><i class="fa fa-check"></i><b>8.4</b> Gamma</a></li>
+<li class="chapter" data-level="8.5" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#odds-and-odd-ratios"><i class="fa fa-check"></i><b>8.5</b> Odds and odd ratios</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html"><i class="fa fa-check"></i><b>9</b> An introduction to regression (Week 8)</a><ul>
+<li class="chapter" data-level="9.1" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#introduction-3"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#motivating-regression"><i class="fa fa-check"></i><b>9.2</b> Motivating regression</a></li>
+<li class="chapter" data-level="9.3" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>9.3</b> Fitting a simple regression model</a></li>
+<li class="chapter" data-level="9.4" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#residuals-revisited-r-squared"><i class="fa fa-check"></i><b>9.4</b> Residuals revisited: R squared</a></li>
+<li class="chapter" data-level="9.5" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#inference-with-regression"><i class="fa fa-check"></i><b>9.5</b> Inference with regression</a></li>
+<li class="chapter" data-level="9.6" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-regression-with-categorical-predictors"><i class="fa fa-check"></i><b>9.6</b> Fitting regression with categorical predictors</a></li>
+<li class="chapter" data-level="9.7" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#motivating-multiple-regression"><i class="fa fa-check"></i><b>9.7</b> Motivating multiple regression</a></li>
+<li class="chapter" data-level="9.8" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-and-interpreting-a-multiple-regression-model"><i class="fa fa-check"></i><b>9.8</b> Fitting and interpreting a multiple regression model</a></li>
+<li class="chapter" data-level="9.9" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#presenting-your-regression-results."><i class="fa fa-check"></i><b>9.9</b> Presenting your regression results.</a></li>
+<li class="chapter" data-level="9.10" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#rescaling-input-variables-to-assist-interpretation"><i class="fa fa-check"></i><b>9.10</b> Rescaling input variables to assist interpretation</a></li>
+<li class="chapter" data-level="9.11" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>9.11</b> Testing conditional hypothesis: interactions</a></li>
+<li class="chapter" data-level="9.12" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>9.12</b> Model building and variable selection</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html"><i class="fa fa-check"></i><b>10</b> Logistic regression (Week 9)</a><ul>
+<li class="chapter" data-level="10.1" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#introduction-4"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#fitting-logistic-regression"><i class="fa fa-check"></i><b>10.2</b> Fitting logistic regression</a></li>
+<li class="chapter" data-level="10.3" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-i-deviance-and-pseudo-r-squared"><i class="fa fa-check"></i><b>10.3</b> Assessing model fit I: deviance and pseudo r squared</a></li>
+<li class="chapter" data-level="10.4" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-ii-confusion-matrix-and-roc-curves"><i class="fa fa-check"></i><b>10.4</b> Assessing model fit II: confusion matrix and ROC curves</a></li>
+<li class="chapter" data-level="10.5" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#interactions"><i class="fa fa-check"></i><b>10.5</b> Interactions</a></li>
+<li class="chapter" data-level="10.6" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#further-resources-2"><i class="fa fa-check"></i><b>10.6</b> Further resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelling Criminological Data LAWS20452</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Modelling Criminological Data LAWS20452</h1>
+<p class="author"><em>Juanjo Medina and Reka Solymosi</em></p>
+<p class="date"><em>2019-01-24</em></p>
+</div>
+<div id="preface" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Preface</h1>
+<p>This is the main text you will be using during the labs for the module <em>Modelling Criminological Data</em>. Every week you will have to use these materials during the lab sessions. The idea is that you read this book and try to run the code we provide in your own machine. Along the way you will see you have to complete a series of exercises to check that you are correctly understanding the materials that we introduce. We hope you find these materials useful. They are a work in process, so please if you have any suggestions please don’t hesitate to get in touch via <a href="mailto:juanjo.medina@manchester.ac.uk">juanjo.medina@manchester.ac.uk</a>.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="a-first-lesson-about-r-week-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["book.pdf", "book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

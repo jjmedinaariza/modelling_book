@@ -25,7 +25,7 @@
 <meta name="author" content="Juanjo Medina and Reka Solymosi">
 
 
-<meta name="date" content="2019-01-24">
+<meta name="date" content="2019-01-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -343,9 +343,8 @@ Arrests<span class="op">$</span>colour &lt;-<span class="st"> </span><span class
 fitl_1_s &lt;-<span class="st"> </span><span class="kw">standardize</span>(fitl_<span class="dv">1</span>)
 <span class="kw">display</span>(fitl_1_s)</code></pre></div>
 <p>We can also use <strong>forest plots</strong> in much the same way than we did for linear regression. One way of doing this is using the <code>sjp.glm()</code> function of the <code>sjPlot</code> package. Notice that by default the odd ratios are sorted from higher to lower in this display (and also that in this html file the text in the plot is not fully displayed, I’m still trying to fix that, but if you run this and zoom in you will see it better).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sjPlot)</code></pre></div>
-<pre><code>## Install package &quot;strengejacke&quot; from GitHub (`devtools::install_github(&quot;strengejacke/strengejacke&quot;)`) to load all sj-packages at once!</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_model</span>(fitl_<span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sjPlot)
+<span class="kw">plot_model</span>(fitl_<span class="dv">1</span>)</code></pre></div>
 <p><img src="09-logistic_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Equally, we can produce effect plots using the <code>effects</code> package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(effects)

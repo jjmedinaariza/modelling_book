@@ -226,13 +226,6 @@ We can also use **forest plots** in much the same way than we did for linear reg
 
 ```r
 library(sjPlot)
-```
-
-```
-## Install package "strengejacke" from GitHub (`devtools::install_github("strengejacke/strengejacke")`) to load all sj-packages at once!
-```
-
-```r
 plot_model(fitl_1)
 ```
 

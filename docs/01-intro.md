@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 #A first lesson about R (Week 1)
 
 ##Install R & RStudio

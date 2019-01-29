@@ -267,7 +267,7 @@ library(arm)
 ```
 
 ```
-## Working directory is /Users/reka/Desktop/modelling_book
+## Working directory is C:/Users/Juanjo Medina/Dropbox/1_Teaching/1 Manchester courses/20452 Modelling Criminological Data/modelling_book
 ```
 
 ```r
@@ -605,10 +605,7 @@ library(sjPlot)
 ```
 
 ```
-## Warning in checkMatrixPackageVersion(): Package version inconsistency detected.
-## TMB was built with Matrix version 1.2.15
-## Current Matrix version is 1.2.14
-## Please re-install 'TMB' from source using install.packages('TMB', type = 'source') or ask CRAN for a binary version of 'TMB' matching CRAN's 'Matrix' package
+## #refugeeswelcome
 ```
 
 Let's try with a more complex example:
@@ -1001,7 +998,7 @@ library(arm)
 ```
 
 ```
-## Working directory is /Users/reka/Desktop/modelling_book
+## Working directory is C:/Users/Juanjo Medina/Dropbox/1_Teaching/1 Manchester courses/20452 Modelling Criminological Data/modelling_book
 ```
 
 ```r

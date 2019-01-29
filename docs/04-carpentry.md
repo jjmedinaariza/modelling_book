@@ -494,10 +494,6 @@ library(labelled)
 ```
 
 ```
-## Warning: package 'labelled' was built under R version 3.5.2
-```
-
-```
 ## 
 ## LABELLED 2.0.0: BREAKING CHANGE
 ## 

@@ -94,7 +94,7 @@ ggplot(BCS0708, aes(x = tcviolent, colour = sex)) + #you will need to load the d
 ## Warning: Removed 3242 rows containing non-finite values (stat_density).
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-2-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
 The plotted density provide a visual tool for assessing the unimodality and the symmetry of the distribution. Later we will discuss a more elaborate graphical tool for assessing the normal condition (e.g., the normal probability plot). 
 
@@ -194,7 +194,7 @@ ggplot(BCS0708, aes(ethgrp2, tcviolent, fill=ethgrp2)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_boxplot).
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-5-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 What you see here is that the boxplot also displays the values of fear for the few individuals in the dataset for which we don't know the ethnicity ("NA" in the X axis). In many occasions this is not what you want. At least you are trying to understand your missing data problem (an advanced topic which we don't cover this semester), you only want a plot that uses information for the individuals with  valid information (that is the ones for which we have data on fear and ethnicity). If you have quite a few NA cases and they seem systematically different from the other groups, you may have some reasons to be concerned.
 
@@ -209,7 +209,7 @@ ggplot(na.omit(BCS0708[,c("ethgrp2", "tcviolent")]), aes(x=reorder (ethgrp2, tcv
   guides(fill=FALSE)
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-6-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 You can see here slightly different distributions of fear for the ethnic groups. Notice for example how 75% of the Asian group has scores on fear of crime that are higher than those of 50% of individuals in the White group.  Let's look at the statistics:
 
@@ -268,7 +268,7 @@ library(gplots)
 plotmeans(tcviolent ~ ethgrp2, data = BCS0708) #if you rather use the normal approximation you could use an additional argument: use.t=FALSE
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-8-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 When you only have two groups you can use these graphs (error bars displaying confidence intervals) in a way equivalent to the way that you use a t test, but when you have multiple groups you need to think about the problem of multiple comparisons.
 
@@ -350,7 +350,7 @@ As Andy Field and his colleagues (2012) suggest the more important of these plot
 plot(fitted(aov(tcviolent ~ ethgrp2, data=BCS0708)), resid(aov(tcviolent ~ ethgrp2, data=BCS0708)), xlab = "Fitted values", ylab = "Residuals", main = "Residuals vs Fitted")     # plot a diagnostic check for heteroscedasticity in the residuals from the response Y to a factor or numeric A
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-12-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 This plot can be used to further explore homogeneity of variances. It is a plot of residuals versus fitted values (we will return to this later on this semester, for now just focus on interpretation as detailed below). We already know the Levene Test is significant and that the variances cannot be assumed to be the same in the population. In this sort of situations you expect plots such as this in which the vertical lines do not have the same length (longer collection of points suggests more variance and shorter collection of points less variance). We should be particularly concern with any systematic patterning (that is some sort of funnelling visual effect suggesting a systematic shortening or expanding of the lines as we move right to left in the X axis).
 
@@ -383,7 +383,7 @@ ggplot(na.omit(BCS0708[,c("ethgrp2", "tcviolent")]), aes(x = tcviolent, fill = e
   geom_density(alpha = .3)
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-14-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 We can also use a [**normal probability plot**](http://en.wikipedia.org/wiki/Normal_probability_plot) of the residuals. If we had use `plot(fearmodel.1)`, the second of the four printed plots would be the normal Q-Q plot. Alternatively we can specifically ask for it:
 
@@ -393,7 +393,7 @@ qqnorm(resid(aov(tcviolent ~ ethgrp2, data=BCS0708)), main="Normal Q-Q Plot")
 qqline(resid(aov(tcviolent ~ ethgrp2, data=BCS0708)), col = 2)
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-15-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 ```r
 # normal scores check for skewness, kurtosis and outliers in in the residuals 
@@ -424,7 +424,7 @@ The `qqPlot` function of the `car` package assists the interpretation by drawing
 qqPlot(fearmodel.1)
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-16-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 ```
 ## [1] 1761 4769
@@ -448,7 +448,7 @@ ggplot(BCS0708, aes(x = tcviolent)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_density).
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-17-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 We can see that the distribution is multimodal and that the tail to the right is longer than the tail to the left, there is a positive skew. We can also see that the values range from negative to positive values. Many of the transformations we use do not work well when we have negative values or zeros. So one way to allow them to work is to add a constant large enough to avoid zeros. I will add three to the variable:
 
@@ -469,7 +469,7 @@ ggplot(BCS0708, aes(x = ptcviolent)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_density).
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-19-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 Let's see what happens when we apply a logarithmic transformation (often used with skewed data):
 
@@ -483,7 +483,7 @@ ggplot(BCS0708, aes(x = log10(ptcviolent))) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_density).
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-20-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 Oops... We squashed the right tail a bit too much and stretched it in the left hand side. We'll have to try another transformation. 
 
@@ -496,7 +496,7 @@ How do you select the right power transformation? Again, trial and error. The `s
 symbox(BCS0708$ptcviolent, data=BCS0708)
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-21-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 We can see that the most symmetrical of all is the 0.5 transformation. Let's create and plot a variable using this power transformation:
 
@@ -511,7 +511,7 @@ ggplot(BCS0708, aes(x = bctcviolent)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_density).
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-22-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 The new variable to the left hand side has squashed the right tail. It is a bit more symmetrical. We can see this in a normal probability plot:
 
@@ -520,7 +520,7 @@ The new variable to the left hand side has squashed the right tail. It is a bit 
 qqPlot(BCS0708$bctcviolent)
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-23-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 ```
 ## [1] 4388 4701
@@ -530,7 +530,7 @@ qqPlot(BCS0708$bctcviolent)
 qqPlot(BCS0708$tcviolent)
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-23-2.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-23-2.png" width="672" />
 
 ```
 ## [1] 1761 4769
@@ -696,7 +696,7 @@ library(lessR)
 ANOVA(tcviolent ~ ethgrp2, data = BCS0708, brief=TRUE) #The brief argument set to TRUE excludes pairwise comparisons and extra text from being printed.
 ```
 
-![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-29-1.pdf)<!-- --> 
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-29-1.png" width="672" />
 
 ```
 ##   BACKGROUND

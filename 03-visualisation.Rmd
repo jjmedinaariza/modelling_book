@@ -1,6 +1,3 @@
-```{r, echo=FALSE}
-Sys.setlocale('LC_ALL','C')
-```
 #Data visualisation with R (Week 3)
 
 ##Introduction

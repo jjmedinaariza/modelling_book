@@ -236,7 +236,7 @@ library(sjPlot)
 plot_model(fitl_1)
 ```
 
-![](09-logistic_files/figure-latex/unnamed-chunk-11-1.pdf)<!-- --> 
+<img src="09-logistic_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 Equally, we can produce effect plots using the `effects` package:
 
@@ -246,7 +246,7 @@ library(effects)
 plot(allEffects(fitl_1), ask=FALSE)
 ```
 
-![](09-logistic_files/figure-latex/unnamed-chunk-12-1.pdf)<!-- --> 
+<img src="09-logistic_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 Effect plots in this context are particularly helpful because they summarise the results using probabilities, which is what you see plotted in the y axis.
 
@@ -257,7 +257,7 @@ We don't have to print them all. When we are primarily concerned with one of the
 plot(effect("colour", fitl_1), multiline = FALSE, ylab = "Probability(harsher)")
 ```
 
-![](09-logistic_files/figure-latex/unnamed-chunk-13-1.pdf)<!-- --> 
+<img src="09-logistic_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 We can use the `predict()` function to generate the predicted probability that the arrestess will be released given what we know about their inputs in the model, given values of the predictors. By default R will compute the probabilities for the dataset we fitted the model to. Here we have printed only the first ten probabilities, but the way we use the `predict()` function here will generate a predicted probability for each case in the dataset.
 
@@ -582,7 +582,7 @@ Once we have the object with the information, we can plot the ROC curve.
 plot(rocCURVE, legacy.axes = TRUE) #By default the x-axis goes backwards, we can use the specified option legacy.axes=TRUE, to get 1-spec on the x axis moving from 0 to 1.
 ```
 
-![](09-logistic_files/figure-latex/unnamed-chunk-25-1.pdf)<!-- --> 
+<img src="09-logistic_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 We can see the trajectory of the curve is at first steep, suggesting that sensitivity increases at a greater pace than the decrease in specificity. However we then reach a point at which specificity decreases at a greater rate than the sensitivity increases. If you want to select a cut off that gives you the optimal cut off point you can use the `coords()` function of the pROC package. You can pass arguments to this function so that it returns the best sum of sensitivity and speficitity.
 
@@ -652,7 +652,7 @@ What we see here is that the two interactions included are significant. To assis
 plot(effect("colour:year", fitl_2))
 ```
 
-![](09-logistic_files/figure-latex/unnamed-chunk-28-1.pdf)<!-- --> 
+<img src="09-logistic_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 First we see that up to 2000, there is strong evidence for differential treatment of blacks and whites. However, we also see evidence to support Police claims of effect of training to reduce racial effects.
 
@@ -661,7 +661,7 @@ First we see that up to 2000, there is strong evidence for differential treatmen
 plot(effect("colour:age", fitl_2))
 ```
 
-![](09-logistic_files/figure-latex/unnamed-chunk-29-1.pdf)<!-- --> 
+<img src="09-logistic_files/figure-html/unnamed-chunk-29-1.png" width="672" />
 
 On the other hand, we see a significant interaction between race and age. Young blacks are treated more harshly than young whites. But older blacks treated less harshly than older whites.
 

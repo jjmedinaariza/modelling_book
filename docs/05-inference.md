@@ -917,6 +917,11 @@ ggplot(BCS0708, aes(x = sex, y = tcviolent)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_summary).
 ```
 
+```
+## Warning: Computation failed in `stat_summary()`:
+## Hmisc package required for this function
+```
+
 <img src="05-inference_files/figure-html/unnamed-chunk-43-1.png" width="672" />
 
 ```r
@@ -927,6 +932,9 @@ ggplot(BCS0708, aes(x = sex, y = tcviolent)) +
 
 ```
 ## Warning: Removed 3242 rows containing non-finite values (stat_summary).
+
+## Warning: Computation failed in `stat_summary()`:
+## Hmisc package required for this function
 ```
 
 <img src="05-inference_files/figure-html/unnamed-chunk-43-2.png" width="672" />
@@ -940,6 +948,11 @@ ggplot(BCS0708, aes(x = sex, y = tcviolent)) +
 ```
 ## Warning: Removed 3242 rows containing non-finite values (stat_summary).
 
+## Warning: Computation failed in `stat_summary()`:
+## Hmisc package required for this function
+```
+
+```
 ## Warning: Removed 3242 rows containing non-finite values (stat_summary).
 ```
 
@@ -960,43 +973,39 @@ print(si1, locale = FALSE)
 ```
 
 ```
-## R version 3.5.2 (2018-12-20)
-## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 17134)
+## R version 3.5.1 (2018-07-02)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS  10.14.2
 ## 
 ## Matrix products: default
+## BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] psych_1.8.10      binom_1.1-1       mosaic_1.4.0     
-##  [4] Matrix_1.2-15     mosaicData_0.17.0 ggformula_0.9.0  
-##  [7] ggstance_0.3.1    lattice_0.20-38   dplyr_0.7.8      
+##  [1] psych_1.8.10      binom_1.1-1       mosaic_1.5.0     
+##  [4] Matrix_1.2-14     mosaicData_0.17.0 ggformula_0.9.1  
+##  [7] ggstance_0.3.1    lattice_0.20-35   dplyr_0.7.8      
 ## [10] plyr_1.8.4        ggplot2_3.1.0    
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] ggrepel_0.8.0       Rcpp_1.0.0          tidyr_0.8.2        
-##  [4] assertthat_0.2.0    digest_0.6.18       R6_2.3.0           
-##  [7] backports_1.1.3     acepack_1.4.1       evaluate_0.12      
-## [10] pillar_1.3.1        rlang_0.3.0.1       lazyeval_0.2.1     
-## [13] data.table_1.11.8   rstudioapi_0.8      rpart_4.1-13       
-## [16] checkmate_1.8.5     rmarkdown_1.11      labeling_0.3       
-## [19] splines_3.5.2       stringr_1.3.1       foreign_0.8-71     
-## [22] htmlwidgets_1.3     munsell_0.5.0       broom_0.5.1        
-## [25] compiler_3.5.2      xfun_0.4            pkgconfig_2.0.2    
-## [28] base64enc_0.1-3     mnormt_1.5-5        htmltools_0.3.6    
-## [31] nnet_7.3-12         tidyselect_0.2.5    tibble_1.4.2       
-## [34] gridExtra_2.3       htmlTable_1.13.1    mosaicCore_0.6.0   
-## [37] bookdown_0.9        Hmisc_4.1-1         crayon_1.3.4       
-## [40] withr_2.1.2         MASS_7.3-51.1       grid_3.5.2         
-## [43] nlme_3.1-137        gtable_0.2.0        magrittr_1.5       
-## [46] scales_1.0.0        stringi_1.2.4       bindrcpp_0.2.2     
-## [49] latticeExtra_0.6-28 ggdendro_0.1-20     generics_0.0.2     
-## [52] Formula_1.2-3       RColorBrewer_1.1-2  tools_3.5.2        
-## [55] glue_1.3.0          purrr_0.2.5         parallel_3.5.2     
-## [58] survival_2.43-3     yaml_2.2.0          colorspace_1.3-2   
-## [61] cluster_2.0.7-1     knitr_1.21          bindr_0.1.1
+##  [1] tidyselect_0.2.5 xfun_0.4         purrr_0.2.5      splines_3.5.1   
+##  [5] colorspace_1.3-2 htmltools_0.3.6  yaml_2.2.0       rlang_0.3.0.1   
+##  [9] pillar_1.3.0     later_0.7.5      foreign_0.8-70   glue_1.3.0      
+## [13] withr_2.1.2      bindrcpp_0.2.2   bindr_0.1.1      mosaicCore_0.6.0
+## [17] stringr_1.3.1    munsell_0.5.0    gtable_0.2.0     htmlwidgets_1.3 
+## [21] evaluate_0.12    labeling_0.3     knitr_1.20       httpuv_1.4.5    
+## [25] crosstalk_1.0.0  parallel_3.5.1   broom_0.5.0      Rcpp_1.0.0      
+## [29] readr_1.2.1      xtable_1.8-3     promises_1.0.1   scales_1.0.0    
+## [33] backports_1.1.2  leaflet_2.0.2    mime_0.6         gridExtra_2.3   
+## [37] mnormt_1.5-5     hms_0.4.2        digest_0.6.18    stringi_1.2.4   
+## [41] bookdown_0.7     ggrepel_0.8.0    shiny_1.2.0      grid_3.5.1      
+## [45] rprojroot_1.3-2  tools_3.5.1      magrittr_1.5     lazyeval_0.2.1  
+## [49] tibble_1.4.2     ggdendro_0.1-20  crayon_1.3.4     tidyr_0.8.2     
+## [53] pkgconfig_2.0.2  MASS_7.3-50      assertthat_0.2.0 rmarkdown_1.10  
+## [57] R6_2.3.0         nlme_3.1-137     compiler_3.5.1
 ```
 
 [^1]: Although we would like to think of our samples as random, it is in fact very difficult to generate random numbers in a computer. Most of the time someone is telling you they are using random numbers they are most likely using pseudo-random numbers. If this is the kind of thing that get's you excited you may want to read the [wiki entry](http://en.wikipedia.org/wiki/Random_number_generation#.22True.22_random_numbers_vs._pseudo-random_numbers). If you want to know how R generates these numbers you should ask for the help pages for the Random.Seed function.

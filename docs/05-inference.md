@@ -62,7 +62,7 @@ library(ggplot2)
 qplot(skewed)
 ```
 
-<img src="05-inference_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+![](05-inference_files/figure-latex/unnamed-chunk-4-1.pdf)<!-- --> 
 
 We are going to pretend this variable measures numbers of crime perpetrated by an individual in the previous year. Let's see how many offenders we have in this fake population.
 
@@ -138,7 +138,7 @@ ggplot(fake_population, aes(x = IQ, colour = offender)) +
              linetype = "dashed", size = 1)
 ```
 
-<img src="05-inference_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+![](05-inference_files/figure-latex/unnamed-chunk-8-1.pdf)<!-- --> 
 
 So, now we have our fake population data. In this case, because we generated the data ourselves, we know what the population data looks like and we know what the summary statistics for the various attributes (IQ, crime) of the population are. But in real life we don't normally have access to full population data. It is not practical or economic. It is for this reason we rely on samples.
 
@@ -237,7 +237,7 @@ ggplot(samp_IQ, aes(x = with)) +
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="05-inference_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+![](05-inference_files/figure-latex/unnamed-chunk-12-1.pdf)<!-- --> 
 
 Your exact results may differ from those shown here, but you can surely see the point. We have a problem with using sample means as a guess for population means. Your guesses will vary. How much of a problem is this? [This excellent piece and demonstration](http://www.nytimes.com/2014/05/02/upshot/how-not-to-be-misled-by-the-jobs-report.html?_r=0) by New York Times reporters illustrate the problem well. We are going to learn that something called the central limit theorem is of great assistance here.
 
@@ -281,7 +281,7 @@ qplot(sampd_IQ_10$with, xlab = "Distribution of means from samples of size 10")
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="05-inference_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+![](05-inference_files/figure-latex/unnamed-chunk-14-1.pdf)<!-- --> 
 
 Amazing, isn't it? When you take many random samples from a normally distributed variables; compute the means for each of these samples; and plot the means of each of these samples, you end up with something that is also normally distributed. *The sampling distribution of the means of normally distributed variables in the population is normally distributed*. I want you to think for a few seconds as to what this means and then keep reading.
 
@@ -306,7 +306,7 @@ ggplot() +
   xlab("Distribution of mean value of IQ")
 ```
 
-<img src="05-inference_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+![](05-inference_files/figure-latex/unnamed-chunk-15-1.pdf)<!-- --> 
 
 Pay attention to the aesthetics here. Because essentially we are looking at three different datasets they are located not in the general ggplot() statement but specified within each of the geoms we are plotting. 
 
@@ -377,7 +377,7 @@ ggplot() +
   scale_fill_discrete(limits = c("1000", "100", "30")) #This will ensure the order of the items in the legend is correct
 ```
 
-<img src="05-inference_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+![](05-inference_files/figure-latex/unnamed-chunk-19-1.pdf)<!-- --> 
 
 ```r
 favstats(~result, data = sampd_CR_30)
@@ -525,7 +525,259 @@ ggplot(ci_IQ, aes(x = id, y = meanofIQ, ymin = LowerLimit, ymax = UpperLimit, gr
   coord_flip() 
 ```
 
-<img src="05-inference_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <ce>
+```
+
+```
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted for <bc>
+```
+
+```
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x,
+## x$y, : conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted
+## for <ce>
+```
+
+```
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x,
+## x$y, : conversion failure on 'Covers μ?' in 'mbcsToSbcs': dot substituted
+## for <bc>
+```
+
+![](05-inference_files/figure-latex/unnamed-chunk-24-1.pdf)<!-- --> 
 
 As you can see most of the confidence intervals cover the population mean, but some times this does not happen. If you know the population mean, then you can see whether that happens or not. But in real life we run samples because we don't know the population parameters. So, unfortunately, when you do a sample you can never be sure whether your estimated confidence interval is one of the red or the green ones.  The truth is we will never know whether our confidence interval captures the population parameter or not, *we can only say that under certain assumptions if we had repeated the procedure many times it will include it 95% of the time*. This is one of the reasons why in statistics when making inferences we cannot provide definitive answers[^2]. 
 
@@ -814,7 +1066,7 @@ resampling_IQ_30_3 <- do(1000) * mean(resample(sample_3))
 ## Warning: Ignoring unknown aesthetics: position
 ```
 
-<img src="05-inference_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+![](05-inference_files/figure-latex/unnamed-chunk-39-1.pdf)<!-- --> 
 
 
 ##What about comparisons? Sampling distribution for the difference of two means
@@ -861,7 +1113,7 @@ ggplot(BCS0708, aes(x = sex, y = tcviolent)) +
   geom_boxplot()
 ```
 
-<img src="05-inference_files/figure-html/unnamed-chunk-41-1.png" width="672" />
+![](05-inference_files/figure-latex/unnamed-chunk-41-1.pdf)<!-- --> 
 
 The mean value of fear of violent crime is -0.27 for the males and 0.33 for the females. There is a difference in the mean value of fear of crime of -0.6. Comparing the distributions in the boxplot seems to suggest that the distribution of scores on fear of violent crime tend to be higher than for the males. The question is: would we observe similar differences if we were looking at population data (rather than sample data)? The answer to the previous questions, as you can imagine by now, is that here we also have the problem of sampling variability. If we were to take a different sample from the same population (1) we would obtain a slightly different mean score of fear for the men; (2) a slightly different mean score of fear for the women; and (3) correspondingly a slightly different difference between those two quantities. So rather than a difference of -0.6 points we may find a slightly different one. 
 
@@ -917,7 +1169,20 @@ ggplot(BCS0708, aes(x = sex, y = tcviolent)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_summary).
 ```
 
+<<<<<<< Updated upstream
 <img src="05-inference_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+=======
+<<<<<<< HEAD
+<img src="05-inference_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+=======
+```
+## Warning: Computation failed in `stat_summary()`:
+## Hmisc package required for this function
+```
+
+![](05-inference_files/figure-latex/unnamed-chunk-43-1.pdf)<!-- --> 
+>>>>>>> trying again after UTF8 drama
+>>>>>>> Stashed changes
 
 ```r
 #So if you prefer the bootstrapped confidence interval rather than assuming normality, you could use:
@@ -929,7 +1194,7 @@ ggplot(BCS0708, aes(x = sex, y = tcviolent)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_summary).
 ```
 
-<img src="05-inference_files/figure-html/unnamed-chunk-43-2.png" width="672" />
+![](05-inference_files/figure-latex/unnamed-chunk-43-2.pdf)<!-- --> 
 
 ```r
 ggplot(BCS0708, aes(x = sex, y = tcviolent)) +
@@ -943,7 +1208,7 @@ ggplot(BCS0708, aes(x = sex, y = tcviolent)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_summary).
 ```
 
-<img src="05-inference_files/figure-html/unnamed-chunk-43-3.png" width="672" />
+![](05-inference_files/figure-latex/unnamed-chunk-43-3.pdf)<!-- --> 
 
 The point in the error bar represents the mean value for fear of crime for each of the groups and the error bars represent the upper and lower bound for the confidence interval for the mean fear of crime score for each of those two groups. Notice how *the confidence intervals do not overlap*. These confidence intervals provide a range of plausible values for the population parameters, the mean score of fear for males and females in the population. The fact that the CI do not overlap is another way of showing that there may be a difference in the population parameters for these two groups. Lack of any overlap is strong suggestion of a significant difference in the population.
 

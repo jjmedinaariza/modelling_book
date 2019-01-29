@@ -769,31 +769,49 @@ Skim summary statistics
  n variables: 12    
 
 Variable type: character
-
- variable    missing    complete    n     min    max    empty    n_unique 
-----------  ---------  ----------  ----  -----  -----  -------  ----------
-  state         0          51       51     4     20       0         51    
+\begin{tabular}{l|l|l|l|l|l|l|l}
+\hline
+variable & missing & complete & n & min & max & empty & n\_unique\\
+\hline
+state & 0 & 51 & 51 & 4 & 20 & 0 & 51\\
+\hline
+\end{tabular}
 
 Variable type: integer
-
-     variable        missing    complete    n       mean        sd        p0       p25      p50      p75     p100  
-------------------  ---------  ----------  ----  ----------  ---------  -------  -------  -------  -------  -------
- median_house_inc       0          51       51    55223.61    9208.48    35521    48657    54916    60719    76165 
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l}
+\hline
+variable & missing & complete & n & mean & sd & p0 & p25 & p50 & p75 & p100\\
+\hline
+median\_house\_inc & 0 & 51 & 51 & 55223.61 & 9208.48 & 35521 & 48657 & 54916 & 60719 & 76165\\
+\hline
+\end{tabular}
 
 Variable type: numeric
-
-          variable              missing    complete    n     mean      sd       p0       p25      p50      p75     p100  
------------------------------  ---------  ----------  ----  -------  -------  -------  -------  -------  -------  -------
- avg_hatecrimes_per_100k_fbi       1          50       51    2.37     1.71     0.27     1.29     1.99     3.18     10.95 
-         gini_index                0          51       51    0.45     0.021    0.42     0.44     0.45     0.47     0.53  
-  hate_crimes_per_100k_splc        4          47       51     0.3     0.25     0.067    0.14     0.23     0.36     1.52  
-      share_non_citizen            3          48       51    0.055    0.031    0.01     0.03     0.045    0.08     0.13  
-       share_non_white             0          51       51    0.32     0.16     0.06      0.2     0.28     0.42     0.81  
-        share_pop_hs               0          51       51    0.87     0.034     0.8     0.84     0.87      0.9     0.92  
-       share_pop_metro             0          51       51    0.75     0.18     0.31     0.63     0.79      0.9       1   
-      share_unemp_seas             0          51       51    0.05     0.011    0.028    0.042    0.051    0.058    0.073 
-      share_vote_trump             0          51       51    0.49     0.12     0.04     0.41     0.49     0.57      0.7  
-     share_white_poverty           0          51       51    0.092    0.025    0.04     0.075    0.09      0.1     0.17  
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l}
+\hline
+variable & missing & complete & n & mean & sd & p0 & p25 & p50 & p75 & p100\\
+\hline
+avg\_hatecrimes\_per\_100k\_fbi & 1 & 50 & 51 & 2.37 & 1.71 & 0.27 & 1.29 & 1.99 & 3.18 & 10.95\\
+\hline
+gini\_index & 0 & 51 & 51 & 0.45 & 0.021 & 0.42 & 0.44 & 0.45 & 0.47 & 0.53\\
+\hline
+hate\_crimes\_per\_100k\_splc & 4 & 47 & 51 & 0.3 & 0.25 & 0.067 & 0.14 & 0.23 & 0.36 & 1.52\\
+\hline
+share\_non\_citizen & 3 & 48 & 51 & 0.055 & 0.031 & 0.01 & 0.03 & 0.045 & 0.08 & 0.13\\
+\hline
+share\_non\_white & 0 & 51 & 51 & 0.32 & 0.16 & 0.06 & 0.2 & 0.28 & 0.42 & 0.81\\
+\hline
+share\_pop\_hs & 0 & 51 & 51 & 0.87 & 0.034 & 0.8 & 0.84 & 0.87 & 0.9 & 0.92\\
+\hline
+share\_pop\_metro & 0 & 51 & 51 & 0.75 & 0.18 & 0.31 & 0.63 & 0.79 & 0.9 & 1\\
+\hline
+share\_unemp\_seas & 0 & 51 & 51 & 0.05 & 0.011 & 0.028 & 0.042 & 0.051 & 0.058 & 0.073\\
+\hline
+share\_vote\_trump & 0 & 51 & 51 & 0.49 & 0.12 & 0.04 & 0.41 & 0.49 & 0.57 & 0.7\\
+\hline
+share\_white\_poverty & 0 & 51 & 51 & 0.092 & 0.025 & 0.04 & 0.075 & 0.09 & 0.1 & 0.17\\
+\hline
+\end{tabular}
 
 Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 we covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don't know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes [here](https://rawgit.com/maczokni/MSCD/master/Lesson_3.html#visualising-the-differences-between-groups).
 
@@ -821,7 +839,7 @@ ggplot(hate_crimes, aes(x=share_vote_trump, y=avg_hatecrimes_per_100k_fbi)) +
 ## Warning: Removed 1 rows containing missing values (geom_point).
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+![](01-intro_files/figure-latex/unnamed-chunk-34-1.pdf)<!-- --> 
 
 What do you think this graphic is telling you? 
 

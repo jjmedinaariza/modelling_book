@@ -30,7 +30,7 @@ qplot(x = tcviolent, data = BCS0708)
 ## Warning: Removed 3242 rows containing non-finite values (stat_bin).
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-2-1.pdf)<!-- --> 
 
 ```r
 qplot(x = tcarea, data = BCS0708)
@@ -44,7 +44,7 @@ qplot(x = tcarea, data = BCS0708)
 ## Warning: Removed 677 rows containing non-finite values (stat_bin).
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-2-2.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-2-2.pdf)<!-- --> 
 
 We can see both are skewed. Let's look at the scatterplot:
 
@@ -58,7 +58,7 @@ ggplot(BCS0708, aes(x = tcarea, y = tcviolent)) +
 ## Warning: Removed 3664 rows containing missing values (geom_point).
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-3-1.pdf)<!-- --> 
 
 What do you think when looking at this scatterplot? Is there a relationship between perceptions of disorder and fear of violent crime? Does it look as if individuals that have a high score on the X axis (perceptions of disorder) also have a high score on the Y axis (fear of violent crime)? It may be a bit hard to see but I would think there is certainly a trend. 
 
@@ -79,7 +79,7 @@ ggplot(BCS0708, aes(x = tcviolent)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_density).
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-4-1.pdf)<!-- --> 
 
 
 ```r
@@ -121,7 +121,7 @@ geom_line(data=BCS0708, aes(x = round(tcarea/0.12)*0.12, y = tcviolent),
 ## Warning: Removed 3664 rows containing missing values (geom_point).
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-6-1.pdf)<!-- --> 
 
 Linear regression tackles this problem using a slightly different approach. Rather than focusing on the conditional mean (smoothed or not), it draws a straight line that tries to capture the trend in the data. If we focus in the region of the scatterplot that are less sparse we see that this is an upward trend, suggesting that as the perceptions of antisocial behaviour increase so do the expressed fear of violent crime. 
 
@@ -142,7 +142,7 @@ ggplot(data = BCS0708, aes(x = tcarea, y = tcviolent)) +
 ## Warning: Removed 3664 rows containing missing values (geom_point).
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-7-1.pdf)<!-- --> 
 
 What that line is doing is giving you guesses (predictions) for the values of fear of violent crime based in the information that we have about the perceptions of antisocial behaviour. It gives you one possible guess for the value of fear for every possible value of perceptions of antisocial behaviour and links them all together in a straight line. 
 
@@ -163,7 +163,7 @@ The linear model then is a model that takes the form of the equation of a straig
 ## Warning: Removed 3664 rows containing missing values (geom_point).
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-8-1.pdf)<!-- --> 
 
 As De Veaux et al (2012: 179) highlight: "like all models of the real world, the line will be wrong, wrong in the sense that it can't match reality exactly. But it can help us understand how the variables are associated". A map is never a perfect representation of the world, the same happens with statistical models. Yet, as with maps, models can be helpful.
 
@@ -442,7 +442,7 @@ ggplot(data=BCS0708, aes(x=sex, y=tcviolent)) +
 ## Warning: Removed 3242 rows containing missing values (geom_point).
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-18-1.pdf)<!-- --> 
 
 Let's have a look at the results:
 
@@ -612,7 +612,7 @@ fit_4 <- lm(tcviolent ~ tcarea + sex + age + bcsvictim + rural2 + work +educat3,
 plot_model(fit_4)
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-25-1.pdf)<!-- --> 
 
 <!-- Be advised to use these plots judiciously. There may be other sort of plots that may be [more appropriate](http://www.carlislerainey.com/2012/07/06/why-i-dont-like-coefficient-plots/) for what you want to communicate to your audience than the coefficient plot.-->
 
@@ -623,7 +623,7 @@ You can further customise this:
 plot_model(fit_4, title="Fear of violent crime")
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-26-1.pdf)<!-- --> 
 
 What you see plotted here is the point estimates (the circles), the confidence intervals around those estimates (the longer the line the less precise the estimate), and the colours represent whether the effect is negative (red) or positive (blue).
 
@@ -932,7 +932,7 @@ library(effects)
 plot(allEffects(fit_3), ask=FALSE)
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-30-1.pdf)<!-- --> 
 
 Notice that the line has a confidence interval drawn around it (to reflect the likely impact of sampling variation) and that the predicted means for males and females (when controlling for `tcarea`) also have a confidence interval.
 
@@ -1077,7 +1077,7 @@ In this case the test for the interaction effect is non-significant, which sugge
 plot(allEffects(fit_5), ask=FALSE)
 ```
 
-<img src="08-regression_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+![](08-regression_files/figure-latex/unnamed-chunk-34-1.pdf)<!-- --> 
 
 Notice that essentially what we are doing is running two regression lines and testing whether the slope is different for the two groups. The intercept is different, we know that females are more fearful, but what we are testing here is whether the level of fear goes up in a steeper fashion (and in the same direction) for one or the other group as the perceptions of antisocial behaviour go up. We see that's not the case here. The estimated lines are almost parallel.
 

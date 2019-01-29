@@ -56,14 +56,14 @@ You should now have a new object in your global environment. Check the dimension
 
 ## Getting a sense for your data
 
-![](imgs/firstlookatdata.jpg)<!-- -->
+![](imgs/firstlookatdata.jpg)<!-- --> 
 
 What is the first thing you need to ask yourself when you look at a dataset? Data are often too big to look at the whole thing. It is almost always impossible to eyeball the entire dataset and see what you have in terms of interesting patterns or potential problems. It is often a case of information overload and we want to be able to extract what is relevant and important about it. But where do you start?  [Here](http://rex-analytics.com/data-analysis-questions-to-ask-the-first-time/) you can find a brief but very useful overview put together by Steph de Silva. Read it before we carry on.
 
 As Mara Averick (somebody you want to follow in twitter at @dataanndme if you want to be in top of R related resources) suggests this also makes for good relationship advice!
 
 
-![](imgs/relationships.png)<!-- -->
+![](imgs/relationships.png)<!-- --> 
 
 Here we are going to introduce a few functions that will help you to start making sense for what you have just downloaded. Summarising the data is the first step in any analysis and it is also used for finding out potential problems with the data. Regarding the latter you want to look out for: missing values; values outside the expected range (e.g., someone aged 200 years); values that seem to be in the wrong units; mislabelled variables; or variables that seem to be the wrong class (e.g., a quantitative variable encoded as a factor). Lets start by the basic things you always look first in a datasets. 
 
@@ -572,7 +572,7 @@ ggplot(banbox, aes(y = daystoresponse, x = black_f)) +
   geom_boxplot() 
 ```
 
-<img src="02-causality_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+![](02-causality_files/figure-latex/unnamed-chunk-29-1.pdf)<!-- --> 
 
 Watch [this video](https://www.khanacademy.org/math/probability/data-distributions-a1/box--whisker-plots-a1/v/reading-box-and-whisker-plots) and see if you can interpret the results portrayed here. What do you think?
 

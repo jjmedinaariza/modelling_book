@@ -838,3 +838,8 @@ Keep in mind though that you should not then panic if you open your next R Studi
 What is more. I would suggest you go to the Tools drop down menu, select Global Options, and make sure you select "Never" where it says "Save workspace". Then click "Apply". This way you will never be asked to save what is in your global environment when you terminate a session.
 
 ![](imgs/neversave.PNG) 
+
+##Lab homework activities for Week 1
+
+Use the various functions we have introduced this week (skim, summary) to obtain summary statistics for all the variables in the *police_local* data frame that is available in the *fivethirtyeight* package. You will need to get the answers handy when you confront the test questions available in Blackboard.
+

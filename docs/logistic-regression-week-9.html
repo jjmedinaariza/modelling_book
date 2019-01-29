@@ -121,6 +121,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#dataframes"><i class="fa fa-check"></i><b>1.13</b> Dataframes</a></li>
 <li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#exploring-data"><i class="fa fa-check"></i><b>1.14</b> Exploring data</a></li>
 <li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.15</b> Quitting RStudio</a></li>
+<li class="chapter" data-level="1.16" data-path="a-first-lesson-about-r-week-1.html"><a href="a-first-lesson-about-r-week-1.html#lab-homework-activities-for-week-1"><i class="fa fa-check"></i><b>1.16</b> Lab homework activities for Week 1</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html"><i class="fa fa-check"></i><b>2</b> Causality in randomised experiments (Week 2)</a><ul>
 <li class="chapter" data-level="2.1" data-path="causality-in-randomised-experiments-week-2.html"><a href="causality-in-randomised-experiments-week-2.html#causality-in-social-sciences"><i class="fa fa-check"></i><b>2.1</b> Causality in social sciences</a></li>
@@ -344,7 +345,7 @@ fitl_1_s &lt;-<span class="st"> </span><span class="kw">standardize</span>(fitl_
 <span class="kw">display</span>(fitl_1_s)</code></pre></div>
 <p>We can also use <strong>forest plots</strong> in much the same way than we did for linear regression. One way of doing this is using the <code>sjp.glm()</code> function of the <code>sjPlot</code> package. Notice that by default the odd ratios are sorted from higher to lower in this display (and also that in this html file the text in the plot is not fully displayed, I’m still trying to fix that, but if you run this and zoom in you will see it better).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sjPlot)</code></pre></div>
-<pre><code>## #refugeeswelcome</code></pre>
+<pre><code>## Learn more about sjPlot with &#39;browseVignettes(&quot;sjPlot&quot;)&#39;.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_model</span>(fitl_<span class="dv">1</span>)</code></pre></div>
 <p><img src="09-logistic_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Equally, we can produce effect plots using the <code>effects</code> package:</p>

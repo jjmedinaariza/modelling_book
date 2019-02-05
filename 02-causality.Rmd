@@ -57,11 +57,11 @@ You should now have a new object in your global environment. Check the dimension
 
 ### First steps
 
+What is the first thing you need to ask yourself when you look at a dataset? Data are often too big to look at the whole thing. It is almost always impossible to eyeball the entire dataset and see what you have in terms of interesting patterns or potential problems. It is often a case of information overload and we want to be able to extract what is relevant and important about it. But where do you start?  [Here](http://rex-analytics.com/data-analysis-questions-to-ask-the-first-time/) you can find a brief but very useful overview put together by Steph de Silva. Read it before we carry on.
+
 ```{r, echo=FALSE, fig.margin=TRUE}
 knitr::include_graphics('imgs/firstlookatdata.jpg', dpi = NA)
 ```
-
-What is the first thing you need to ask yourself when you look at a dataset? Data are often too big to look at the whole thing. It is almost always impossible to eyeball the entire dataset and see what you have in terms of interesting patterns or potential problems. It is often a case of information overload and we want to be able to extract what is relevant and important about it. But where do you start?  [Here](http://rex-analytics.com/data-analysis-questions-to-ask-the-first-time/) you can find a brief but very useful overview put together by Steph de Silva. Read it before we carry on.
 
 As Mara Averick (somebody you want to follow in twitter at @dataanndme if you want to be in top of R related resources) suggests this also makes for good relationship advice!
 
@@ -403,8 +403,10 @@ Watch [this video](https://www.khanacademy.org/math/probability/data-distributio
 **Homework 2:** 
 
 *For this course unit you need to write a coursework assignment in which you will use data from a social survey to explore relationships between various variables. Specifically, you will be allowed to use. So you will need to pick one of them and then select a topic (of those listed below) to explore with each of these surveys:*
+
 *- The 2014 wave of the European Social Survey, which you can access [here](http://www.europeansocialsurvey.org/data/download.html?r=5) and explore [here](http://nesstar.ess.nsd.uib.no/webview/). From this dataset you will be able to explore the following topic: "Perception of an association between crime and immigration*
-*- The 2013-2014 Crime Survey for England and Wales (the Teaching Dataset version) which you can access [here](https://discover.ukdataservice.ac.uk/catalogue/?sn=7911&type=Data%20catalogue) or explore [here](http://nesstar.ukdataservice.ac.uk/webview/). From this dataset you will need to focus on one of two topics "violent victimisation", "perceptions of antisocial behaviour", or "confidende in the police".*
+
+*- The 2013-2014 Crime Survey for England and Wales (the Teaching Dataset version) which you can access [here](https://discover.ukdataservice.ac.uk/catalogue/?sn=7911&type=Data%20catalogue) or explore [here](http://nesstar.ukdataservice.ac.uk/webview/). From this dataset you will need to focus on one of the following topics "violent victimisation", "worry about being raped", or "confidence in the police".*
 
 **As part of this week homework you need to let us know which survey and which topic you want to focus on for your coursework assignment**. 
 

@@ -424,7 +424,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>## [1] 5</code></pre>
 <p>When writing expressions in R is very important you understand that <strong>R is case sensitive</strong>. This could drive you nuts if you are not careful. More often than not if you write an expression asking R to do something and R returns an error message, chances are that you have used lower case when upper case was needed (or vice-versa). So always check for the right spelling. For example, see what happens if I use a capital ‘X’:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X</code></pre></div>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;X&#39; not found</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): objeto &#39;X&#39; no encontrado</code></pre>
 <p>You will get the following message: <code>&quot;Error in eval(expr, envir, enclos): object 'X' not found&quot;</code>. R is telling us that <code>X</code> does not exist. There isn’t an object <code>X</code> (upper case), but there is an object <code>x</code> (lower case). Error messages in R are pretty good at telling you exactly what went wrong.</p>
 <p>Remember computers are very literal. They are like dogs. You can tell a dog “sit” and if it has been trained it will sit. But if you tell a dog “would you be so kind as to relax a bit and lay down in the sofa?”, it won’t have a clue what you are saying and will stare at you like you have gone mad. Error messages are computers ways of telling us “I really want to help you but I don’t really understand what you mean” (never take them personal, computers don’t hate you).</p>
 <p>When you get an error message or implausible results, you want to look back at your code to figure out what is the problem. This process is called <strong>debugging</strong>. There are some proper systematic ways to write code that facilitate debugging, but we won’t get into that here. R is very good with automatic error handling at the levels we’ll be using it at. Very often the solution will simply involve correcting the spelling.</p>
@@ -510,7 +510,7 @@ the_smiths_f <span class="co">#auto-print factor</span></code></pre></div>
 <p>It is also important to remember that R will always treat numbers as numbers. This sounds straightforward, but actually it is important to note. We can name our variables almost anything. EXCEPT they cannot be numbers. Numbers are <strong>protected</strong> by R. 1 will always mean 1.</p>
 <p>If you want, give it a try. Try to create a variable called 12 and assign it the value “twelve”. As we did last week, we can assign something a meaning by using the “&lt;-” characters.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">12</span> &lt;-<span class="st"> &quot;twelve&quot;</span></code></pre></div>
-<pre><code>## Error in 12 &lt;- &quot;twelve&quot;: invalid (do_set) left-hand side to assignment</code></pre>
+<pre><code>## Error in 12 &lt;- &quot;twelve&quot;: lado izquierdo de la asignación inválida (do_set)</code></pre>
 <p>You get an error!</p>
 </div>
 <div id="dataframes" class="section level2">

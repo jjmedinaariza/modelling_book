@@ -3,7 +3,7 @@ output:
   pdf_document: default
   html_document: default
 ---
-#A first lesson about R (Week 1)
+#A first lesson about R
 
 ##Install R & RStudio
 

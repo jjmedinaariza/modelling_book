@@ -1,4 +1,4 @@
-#Data visualisation with R (Week 3)
+#Data visualisation with R
 
 ##Introduction
 
@@ -80,7 +80,7 @@ ggplot(data = fbo, aes(x = Club.Supported, y=Banning.Orders)) +          #data
 
 The first line above begins a plot by calling the `ggplot()` function, and putting the data into it. You have to name your dataframe, and then, within the `aes()` command you pass the specific variables which you want to plot. In this case, we only want to see the distribution of one variable, banning orders, in the y axis and we will plot the club supported in the x axis. 
 
-The second line is where we add the geometry. This is where we tell R what we want the graph to be. Here we say we want it to be points by using geom_points. You can see a list of all possible geoms [here](http://docs.ggplot2.org/current/). 
+The second line is where we add the geometry. This is where we tell R what we want the graph to be. Here we say we want it to be points by using `geom_points`. You can see a list of all possible geoms [here](http://docs.ggplot2.org/current/). 
 
 The third line is where we can tweak the display of the graph. Here I used `theme_bw()` which is a nice clean theme. You can try with other themes. To get a list of themes you can also see the resource [here](http://docs.ggplot2.org/current/). If you want more variety you can explore the package [`ggthemes`](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/). 
 
@@ -115,7 +115,7 @@ ggplot(data = fbo, aes(x = Club.Supported, y=Banning.Orders)) +   #data
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
-You might notice here we pass an argument `stat = "identity"` to `geo_bar()` function. This is because you can have a bar graph where the height of the bar shows frequency (stat = "count"), or where the height is taken from a variable in your dataframe (stat = "identity"). Here we specified a y-value (height) as the Banning.Orders variable. 
+You might notice here we pass an argument `stat = "identity"` to `geo_bar()` function. This is because you can have a bar graph where the height of the bar shows frequency (`stat = "count"`), or where the height is taken from a variable in your dataframe (`stat = "identity"`). Here we specified a y-value (height) as the Banning.Orders variable. 
 
 So this is cool! But what if I like both?
 
@@ -131,7 +131,7 @@ theme(axis.text.x = element_text(angle = 90, hjust = 1))                        
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
-You can add other things too. For example you can add the mean number of Banning.Orders:
+You can add other things too. For example you can add the mean number of *Banning.Orders*:
 
 
 ```r
@@ -161,9 +161,9 @@ These authors tend to produce recommendations on what to use (and not use) in ce
 
 For example, most data visualisation experts agree that you should not use 3D graphics unless there is a meaning to the third dimension. So using 3D graphics just for decoration, as in [this case](https://mir-s3-cdn-cf.behance.net/project_modules/disp/2505dd10837923.56030acd2ef20.jpg) is normally frowned upon. However there are cases when including a third dimension is vital to communicating your findings. See this [example](http://www.visualisingdata.com/2015/03/when-3d-works/).
 
-Also often certain chart types are vilified. For example, the pie chart is one such example. A lot of people (including your course leader) really dislike pie charts, e.g. see [here](http://www.storytellingwithdata.com/blog/2011/07/death-to-pie-charts) or [here](http://www.businessinsider.com/pie-charts-are-the-worst-2013-6?IR=T). If you want to display proportion, research indicates that a square pie chart is more likely to be interpreted correctly by viewers see [here](https://eagereyes.org/blog/2016/a-reanalysis-of-a-study-about-square-pie-charts-from-2009).
+Also often certain chart types are vilified. For example, the [*pie chart*](https://en.wikipedia.org/wiki/Pie_chart) is one such example. A lot of people (including your course leader) really dislike pie charts, e.g. see [here](http://www.storytellingwithdata.com/blog/2011/07/death-to-pie-charts) or [here](http://www.businessinsider.com/pie-charts-are-the-worst-2013-6?IR=T). If you want to display proportion, research indicates that a square pie chart is more likely to be interpreted correctly by viewers see [here](https://eagereyes.org/blog/2016/a-reanalysis-of-a-study-about-square-pie-charts-from-2009).
 
-Also, in some cases bar plots can hide important features of your data, and might not be the most appropriate means for comparison: 
+Also, in some cases bar plots (if used to visualise quantitative variables) can hide important features of your data, and might not be the most appropriate means for comparison: 
 
 ![](imgs/barbarplots.jpg)
 
@@ -195,7 +195,7 @@ ggplot(data = fbo, aes(x = Banning.Orders)) +
 <img src="03-visualisation_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 Well you can see there's different distribution in each league. But is this easy to compare? Maybe another approach would make it easier? 
-Personally I like boxplots for showing distribution. So let's try:
+Personally I like boxplots (we will explain them in greater detail below) for showing distribution. So let's try:
 
 
 ```r
@@ -232,7 +232,7 @@ We'll now go through some examples of making graphs using `ggplot2` package stop
 
 As mentioned earlier, we will emphasise in this course the use of the `ggplot()` function. With `ggplot()` you start with a blank canvass and keep adding specific layers. The `ggplot()` function can specify the dataset and the aesthetics (the visual characteristics that represent the data). 
 
-To get the data we're going to use here, load up the package "MASS" and then call the Boston data into your environment.
+To get the data we're going to use here, load up the package `MASS` and then call the *Boston* data into your environment.
 
 
 ```r
@@ -302,7 +302,7 @@ Boston$lowval[Boston$medv > 17.02] <- "Higher value"
 
 First we tell R to create a new vector (*lowval*) in the Boston data frame. This vector will be assigned the character value "Low value" when the condition within the square brackets is met. That is, we are saying that whenever the value in *medv* is below 17.02 then the new variable *lowval* will equal "Low value". I have chosen 17.02 as this is the first quartile for *medv*. Then we tell R that when the value is greater than 17.02 we will assign those cases to a new textual category called "Higher Value".
 
-The variable we created was a character vector (as we can see if we run the class function). so we are going to transform it into a factor using the as.factor function (many functions designed to work with categorical variables expect a factor as an input, not just a character vector). If we rerun the class function we will see we changed the original variable
+The variable we created was a character vector (as we can see if we run the `class` function). so we are going to transform it into a factor using the `as.factor` function (many functions designed to work with categorical variables expect a factor as an input, not just a character vector). If we rerun the `class` function we will see we changed the original variable
 
 
 ```r
@@ -371,7 +371,7 @@ ggplot(Boston, aes(x = log10(crim + 1), fill = lowval)) +
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
-The plot now is a bit clearer. It seems pretty evident that the distribution of crime is slightly different between these two types of towns.
+The plot now is a bit clearer. It seems pretty evident that the distribution of crime is quite different between these two types of towns.
 
 ##Visualising numerical variables: Density plots
 
@@ -412,7 +412,7 @@ ggplot(Boston, aes(x = log10(crim + 1), fill = lowval)) +
 
 Did you notice the difference with the comparative histograms? By using density plots we are rescaling to ensure the same area for each of the levels in our grouping variable. This makes it easier to compare two groups that have different frequencies. The areas under the curve add up to 1 for both of the groups, whereas in the histogram the area within the bars represent the number of cases in each of the groups. If you have many more cases in one group than the other it may be difficult to make comparisons or to clearly see the distribution for the group with fewer cases. So, this is one of the reasons why you may want to use density plots.
 
-Density plots are a good choice when you want to compare up to three groups. If you have many more groups you may want to consider other alternatives. One such alternative is the ridgeline plot, also often called the Joy Division plot (since it was immortalised in the cover of one of their albums):
+Density plots are a good choice when you want to compare up to three groups. If you have many more groups you may want to consider other alternatives. One such alternative is the **ridgeline plot**, also often called the Joy Division plot (since it was immortalised in the cover of one of their albums):
 
 
 ![](imgs/joydivision.png)
@@ -425,7 +425,7 @@ library(dplyr)
 Boston <- mutate(Boston, dec_medv = ntile(medv, 10))
 ```
 
-The `mutate` function adds a new variable to our existing data frame object. We are naming this variable *dec_medv* because we are going to split *medv* into ten groups of equal size (this name is arbitrary, you may call it something else). To do this we will use the `ntile` function as an argument within mutate. We will define the new *dec_medv* variable explaining to R that this variable will be the result of passing the `ntile` function to *medv*. So that `ntile` breaks *medv* into 10 we pass this value as an argument to the function. So that the result of executing `mutate` are stored, we assign this to the Boston object.
+The `mutate` function adds a new variable to our existing data frame object. We are naming this variable *dec_medv* because we are going to split *medv* into ten groups of equal size (this name is arbitrary, you may call it something else). To do this we will use the `ntile` function as an argument within mutate. We will define the new *dec_medv* variable explaining to R that this variable will be the result of passing the `ntile` function to *medv*. So that `ntile` breaks *medv* into 10 we pass this value as an argument to the function. So that the result of executing `mutate` are stored, we assign this to the *Boston* object.
 
 Check the results:
 
@@ -499,10 +499,6 @@ ggplot(BCS0708, aes(x = ethgrp2, y = tcviolent)) +
   geom_boxplot()
 ```
 
-```
-## Warning: Removed 3242 rows containing non-finite values (stat_boxplot).
-```
-
 <img src="03-visualisation_files/figure-html/unnamed-chunk-33-1.png" width="672" />
 
 Nice. But could be nicer. To start with we could order the groups along the X axis so that the ethnic groups are positioned according to their level of worry. Secondly, we may want to exclude the information for the NA cases on ethnicity (represented by a flat line).
@@ -510,14 +506,14 @@ Nice. But could be nicer. To start with we could order the groups along the X ax
 
 ```r
 #A nicer comparative boxplot (excluding NA and reordering the X variable)
-ggplot(subset(BCS0708, !is.na(ethgrp2) & !is.na(tcviolent)), 
+ggplot(filter(BCS0708, !is.na(ethgrp2) & !is.na(tcviolent)), 
        aes(x = reorder(ethgrp2, tcviolent, FUN = median), y = tcviolent)) +
         geom_boxplot()
 ```
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-34-1.png" width="672" />
 
-The `subset` function is using a logical argument to tell R to only use the cases that do not have NA values in the two variables that we are using. The exclamation mark followed by `is.na` and then the name of a variable is R way of saying "the contrary of is NA for the specified variable". So in essence we are saying to R just look at data that is not NA in these variables. The `reorder` function on the other hand is asking R to reorder the levels in ethnicity according to the median value of worry of violent crime. Since we are using those functions *within* the `ggplot` function this subsetting and this reordering (as with `as.factor` earlier) are not introducing permanent changes in your original dataset. If you prefer to reorder according to the mean you only need to change that parameter after the `FUN` option (e.g, `FUN = mean`).
+The `filter` function from `dplyr` is using a logical argument to tell R to only use the cases that do not have NA values in the two variables that we are using. The exclamation mark followed by `is.na` and then the name of a variable is R way of saying "the contrary of is NA for the specified variable". So in essence we are saying to R just look at data that is not NA in these variables. The `reorder` function on the other hand is asking R to reorder the levels in ethnicity according to the median value of worry of violent crime. Since we are using those functions *within* the `ggplot` function this subsetting and this reordering (as with `as.factor` earlier) are not introducing permanent changes in your original dataset. If you prefer to reorder according to the mean you only need to change that parameter after the `FUN` option (e.g, `FUN = mean`).
 
 ##Exploring relationships between two quantitative variables: scatterplots
 
@@ -540,13 +536,13 @@ ggplot(Boston, aes(x = medv, y = crim)) +
 
 Each point represents a case in our dataset and the coordinates attached to it in this two dimensional plane are given by their value in the Y (crime) and X (median value of the properties) variables. 
 
-What do you look for in a scatterplot? You want to assess global and local patterns, as well as deviations. We can see clearly that at low levels of `medv` there is a higher probability in this data that the level of crime is higher. Once the median value of the property hits $30,000 the level of crime is nearly zero for all towns. So far so good, and surely predictable. The first reason why we look at scatterplots is to check our hypothesis (e.g., poorer areas, more crime).
+What do you look for in a scatterplot? You want to assess global and local patterns, as well as deviations. We can see clearly that at low levels of *medv* there is a higher probability in this data that the level of crime is higher. Once the median value of the property hits $30,000 the level of crime is nearly zero for all towns. So far so good, and surely predictable. The first reason why we look at scatterplots is to check our hypothesis (e.g., poorer areas, more crime).
 
-However, something odd seems to be going on when the median property value is around $50,000. All of the sudden the variability for crime goes up. We seem to have some of the more expensive areas also exhibiting some fairly decent level of crime. In fact, there is quite a break in the distribution. What's going on? To be honest I have no clue (although I have some hypothesis)! This is my first look at this dataset. But the pattern at the higher level of property value is indeed odd. 
+However, something odd seems to be going on when the median property value is around $50,000. All of the sudden the variability for crime goes up. We seem to have some of the more expensive areas also exhibiting some fairly decent level of crime. In fact, there is quite a break in the distribution. What's going on? To be honest I have no clue. But the pattern at the higher level of property value is indeed odd, it is just too abrupt to be natural. 
 
-This is the second reason why you want to plot your data before you do anything else. It helps you to detect apparent anomalies. I say this is an anomaly because the break in pattern is quite noticeable. It is hard to think of a natural process that would generate this sudden radical increase in crime once the median property value reaches the 50k dollars mark. If you were analysing this for real, you would want to know what's driving this pattern (e.g., find out about the original data collection, the codebook, etc.): perhaps the maximum median value was capped at 50K dollars and we are seeing this as a dramatic increase when the picture is more complex? For now we are going to let this rest.
+This is the second reason why you want to plot your data before you do anything else. It helps you to detect apparent anomalies. I say this is an anomaly because the break in pattern is quite noticeable and abrupt. It is hard to think of a natural process that would generate this sudden radical increase in crime once the median property value reaches the 50k dollars mark. If you were analysing this for real, you would want to know what's really driving this pattern (e.g., find out about the original data collection, the codebook, etc.): perhaps the maximum median value was capped at 50K dollars and we are seeing this as a dramatic increase when the picture is more complex? For now we are going to let this rest.
 
-One of the things you may notice with a scatterplot is that even with a smallish dataset such as this, with just about 500 cases, **overplotting** may be a problem. When you have many cases with similar (or even worse the same) value, it is difficult to tell them apart. Imagine there is only 1 case with a particular combination of X and Y values. What you see? A single point. Then imagine you have 500 cases with that same combination of values for X and Y. What do you see? Still a single point. There's a variety of ways of dealing with overplotting. One possibility is to add some **transparency** to the points:
+One of the things you may notice with a scatterplot is that even with a smallish dataset such as this, with just about 500 cases, **overplotting** may be a problem. When you have many cases with similar (or even worse the same) value, it is difficult to tell them apart. Imagine there is only 1 case with a particular combination of X and Y values. What you see? A single point. Then imagine you have 500 cases with that same combination of values for X and Y. What do you see? Still a single point. There's a variety of ways for dealing with overplotting. One possibility is to add some **transparency** to the points:
 
 
 ```r
@@ -564,10 +560,6 @@ ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   geom_point()
 ```
 
-```
-## Warning: Removed 3252 rows containing missing values (geom_point).
-```
-
 <img src="03-visualisation_files/figure-html/unnamed-chunk-37-1.png" width="672" />
 
 
@@ -576,26 +568,18 @@ ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   geom_point(alpha=.2)
 ```
 
-```
-## Warning: Removed 3252 rows containing missing values (geom_point).
-```
-
 <img src="03-visualisation_files/figure-html/unnamed-chunk-38-1.png" width="672" />
 
 The second plot gives us a better idea of where the observations seem to concentrate in a way that we could not see with the first.
 
 Overplotting can occur when a continuous measurement is rounded to some convenient unit. This has the effect of changing a continuous variable into a discrete ordinal variable. For example, age is measured in years and body weight is measured in pounds or kilograms. Age is a discrete variable, it only takes integer values. That's why you see the points lined up in parallel vertical lines. This also contributes to the overplotting in this case. 
 
-One way of dealing with this particular problem is by **jittering**. Jittering is the act of adding random noise to data in order to prevent overplotting in statistical graphs. In `ggplot` one way of doing this is by passing an argument to `geom_point` specifying you want to jitter the points. This will introduce some random noise so that age looks less discrete.
+One way of dealing with this particular problem is by **jittering**. Jittering is the act of adding random noise to data in order to prevent overplotting in statistical graphs. In `ggplot` one way of doing this is by passing an argument to `geom_point` specifying you want to jitter the points. This will introduce some random noise so that *age* looks less discrete.
 
 
 ```r
 ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   geom_point(alpha=.2, position="jitter") #Alternatively you could replace geom_point() with geom_jitter() in which case you don't need to specify the position
-```
-
-```
-## Warning: Removed 3252 rows containing missing values (geom_point).
 ```
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-39-1.png" width="672" />
@@ -608,10 +592,6 @@ ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   stat_bin2d()
 ```
 
-```
-## Warning: Removed 3252 rows containing non-finite values (stat_bin2d).
-```
-
 <img src="03-visualisation_files/figure-html/unnamed-chunk-40-1.png" width="672" />
 
 
@@ -620,10 +600,6 @@ ggplot(BCS0708, aes(x = age, y = tcviolent)) +
 ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   stat_bin2d(bins=50) + #by increasing the number of bins we get more granularity
   scale_fill_gradient(low = "lightblue", high = "red") #change colors
-```
-
-```
-## Warning: Removed 3252 rows containing non-finite values (stat_bin2d).
 ```
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-41-1.png" width="672" />
@@ -714,10 +690,6 @@ ggplot(BCS0708, aes(x = age, y = tcviolent, colour = bcsvictim)) +
   geom_point(alpha=.4, position="jitter")
 ```
 
-```
-## Warning: Removed 3252 rows containing missing values (geom_point).
-```
-
 <img src="03-visualisation_files/figure-html/unnamed-chunk-48-1.png" width="672" />
 
 You can possibly notice that there are more green points in the left hand side (since victimisation tend to be more common among youth). But it is hard to read the relationship with age. We could try to use facets instead using `facet_grid`?
@@ -727,10 +699,6 @@ You can possibly notice that there are more green points in the left hand side (
 ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   geom_point(alpha=.4, position="jitter") +
   facet_grid( .~ bcsvictim)
-```
-
-```
-## Warning: Removed 3252 rows containing missing values (geom_point).
 ```
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-49-1.png" width="672" />
@@ -744,14 +712,6 @@ ggplot(BCS0708, aes(x = age, y = tcviolent, colour = bcsvictim)) +
   geom_smooth(size=1.5, se=FALSE)
 ```
 
-```
-## Warning: Removed 3252 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 3252 rows containing missing values (geom_point).
-```
-
 <img src="03-visualisation_files/figure-html/unnamed-chunk-50-1.png" width="672" />
 
 What we see here is that for the most part the relationship of age and worry for violent crime looks quite flat, regardless of whether you have been a victim of crime or not. At least, for most people. However, once we get to the 60s things seem to change a bit. Those over 62 that have not been a victim of crime in the past year start to manifest a lower concern with crime as they age (in comparison with those that have been a victim of crime).
@@ -760,7 +720,7 @@ What we see here is that for the most part the relationship of age and worry for
 
 Sometimes you want to produce many scatterplots simultaneously to have a first peak at the relationship between the various variables in your data frame. The way to do this is by using a scatterplot matrix. There are some packages that are particularly good for this. One of them is `GGally`, basically an extension for `ggplot2`.
 
-Not to overcomplicate things we will only use a few variables from the `Boston` dataset:
+Not to overcomplicate things we will only use a few variables from the *Boston* dataset:
 
 
 ```r
@@ -1002,7 +962,7 @@ There are other tools sometimes used for visualising categorical data. Pie chart
 ![cute pie chart](imgs/piechart.jpg)
 
 
-What I would use instead are waffle charts. They're super easy to make with the "waffle" package but I don't think there's time for them at this point, but look into them [here](https://www.r-bloggers.com/making-waffle-charts-in-r-with-the-new-waffle-package/). 
+What I would use instead are **waffle charts**. They're super easy to make with the "waffle" package but I don't think there's time for them at this point, but look into them [here](https://www.r-bloggers.com/making-waffle-charts-in-r-with-the-new-waffle-package/). 
 
 ##Further resources
 
@@ -1030,9 +990,6 @@ Third, *blogs on data visualisation*. If you use [Feedly](https://feedly.com/ind
 Fourth, **resources for visualisations we don't have the time to cover**. R is way ahead some of the more popular data analysis programs you may be more familiar with (e.g SPSS or Excel). There's many things you can do. 
 
 For example, if you like maps, **R can also be used to produce visualisations of spatial data**. There are various resources to learn how to do this and we teach this in our *Crime Mapping* module in the third year.
-
-Also, you may be interested in producing interactive graphics in the internet. Data journalism is making big inroads into this area. You may want to have a look at the [ggvis](http://ggvis.rstudio.com/) package, produced by the R Studio team, or [rcharts](http://rcharts.io/).
-
 
 **Homework:**
 

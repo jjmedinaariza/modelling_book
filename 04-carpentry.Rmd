@@ -2,9 +2,26 @@
 
 ##Introduction
 
-There are many situation in the process of data analysis where you have to work around your data to get it in shape ready for analysis. In order to achieve your analytical goalsYou may need for example to change your existing variables or create new variables (often using information stored in existing ones). In this session, we are going to discuss and cover some of the scenarios in which this may be required and also explain how to do this. These skills will be particularly useful for getting your data ready for your coursework assignment.
+We have already introduce the typical workflow of data analysis:
 
-For this practical we will use the data from a *Eurobarometer*. Eurobarometers are opinon polls conducted regularly on behalf of the European Commission since 1973. Some of them ask the same questions over time to evaluate changes in European's views in a variety of subjects (standard Eurobarometers). Others are focused on special topics and are conducted less regularly (special Eurobarometers). They are a useful source of datasets that you could use for your undergraduate dissertation.
+![](imgs/data-science-explore.png)
+In this figure produced by Hadley Wickham you can see the first stage of data analysis involve importing your data, getting it into a [tidy format](http://vita.had.co.nz/papers/tidy-data.pdf), and then doing some transformations so that you get the data in good shape for analysis. There is a famous and possibly false statistic that says that 80% of an analyst time is often devoted to this kind of operations. Although the statistic is likely made up, the truth is that the experience of many analysist resonates with it. So, you should not underestimate data carpentry or data wrangling (as these processes are often called) as a part of your analysis.
+
+For various decades, social scientists of a quantitative persuasion worked primarily with survey data, which came in rather tidy formats, but often require some transformations. Today we are more likely to rely on "big" and other new forms of data that may require more significant processing before we da do any analysis with it. Think, for example, of data from online vendors of drugs available in the Dark Net. This kind of data opens avenues for research we could only dream of in the past as argued by [some of our colleagues](https://www.sciencedirect.com/science/article/pii/S0955395919300313?via%3Dihub). But getting this kind of data requires the development of new skills (e.g., web scrapping) and generally require more processing before they are tidy and ready for analysis.
+
+R is particularly well suited for this new world. In this module we only work with survey data, which tends to be tidier and easier to work with in an introductory module. But even when working with this kind of data you often have to think hard about required tidying and transformations before you can start your analysis. 
+
+In this module we expect you to download a survey data for analysis. These datasets are already rather tidy and have been professionally cleaned. But you may still have to select cases and variables that are appropriate for your own analaysis. Also, you likely will need to generate new variables or change existing ones for various reasons. It’s a rare data set in which every variable you need is measured directly. Examples of things you may need to do include:
+
+* Combine various variables into a new one (eg., computing a rate)
+* Reduce the number of levels in a categorical variable
+* Format the variable to assign it to a more appropriate class if this is called for (e.g., character into factor). You will need to format date variables as dates, numerical variables as numbers, etc.).
+* Recode values identifying missing cases as NA
+* Labeling all variables and categorical values so you don’t have to keep looking them up
+
+##A template for your assignment
+
+For this practical we are going to proceed as if we had an assignment similar to yours. Only that we will use different data, specifically data from a *Eurobarometer*. Eurobarometers are opinon polls conducted regularly on behalf of the European Commission since 1973. Some of them ask the same questions over time to evaluate changes in European's views in a variety of subjects (standard Eurobarometers). Others are focused on special topics and are conducted less regularly (special Eurobarometers). They are a useful source of datasets that you could use for your undergraduate dissertation.
 
 The data from these surveys is accessible through the data catalog of GESIS, a data warehouse at the *Leibniz Institute for the Social Sciences* in Germany. For downloading data from GESIS you have to register with them (following the registration link) [here](https://dbk.gesis.org/dbksearch/register.asp). Once you activate your registration you should be able to access the data at GESIS.
 

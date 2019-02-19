@@ -559,10 +559,8 @@ colMeans(is.na(df_f))
 
 The function `complete.cases` is returning what cases have missing data **in any of** the variables not in a singular one. It is not unusual for this percentage to be high. You may end up with a massive loss of cases even though the individual variables themselves do not look as bad as the end scenario.
 
-
-
-DEVELOP
-This is a problem particularly if the missing data is not missing at random. If you have people that have missing data that have very different attitudes toward violence then you have a problem. Your data won't be representative.
+**Homework 4.2:**
+*Select the key outcome variable from the data set you have selected for your final assignment. By outcome variable we mean the variable or variables that tap into the concept you will be exploring with this assignment. In the practical today that was attitudes toward sexual violence. For your assignment it will be one of the four topics you selected in previous weeks. You need to look at the dataset screen the questions that tap into this concept and select a few you may want to explore before making a final decision as to whicn you will be using for sure. Do any recoding you may need to this variable (including creating summated scales or collapsing variables if it seems appropriate) and produce descriptive and visual analysis of this variable/s.* 
 
 
 ##Further resources

@@ -1,7 +1,0 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
-
-http://milton-the-cat.rocks/home/adventr.html#contents_of_adventr

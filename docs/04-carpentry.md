@@ -211,7 +211,7 @@ df <- select(eb85_3, uniqid, starts_with("qb10"), d10, d11,
 
 Notice how the text we pass as an argument goes between double quotes.
 
-An alternative is to deselect columns by adding a minus sign in front of the column name. You can also deselect chunks of columns. Don't execute the code below, but if you wanted, for example to get rid of *uniqid* you could do the following:
+An alternative is to deselect columns by adding a minus sign in front of the column name. You can also deselect chunks of columns. **Don't execute the code below for this practical**, but if you wanted, for example to get rid of *uniqid* you could do the following:
 
 
 ```r
@@ -304,7 +304,9 @@ Pay attention to the code above. When we want to recode based in a condition we 
 
 Notice that once we do the recoding and rerun the frequency distribution you will see we achieved what we wanted. Now all those missing cases are not counted as zero.
 
-Summated scales like the one we created here are quick and not the most kosher way of combining several questions into a single measure. In research methods you probably learnt that we often work with theoretical constructs that we do not observe directly (e.g., self control, anomie, collective efficacy, etc.). We often call these **latent variables**. In order to study these constructs we create measures or scales that are based in **observed variables** (those we actually include and ask in the survey). [This](https://www.ismanet.org/doctoryourspirit/pdfs/Beck-Depression-Inventory-BDI.pdf) is a famous measure of *depression* often used in research. As you can see we have different questions (our oberved variables) that we think are related to our latent or not observed (directly) variable (*depression*). You can also see there are several items or questions all of which we researchers think are linked to depression in this scale. If you provide positive answers to many of these questions we may think that you have this unobserved thing we call *depression*. When measuring latent variables it is a good idea to have multiple items that all capture aspects of the unobserved variable we are really interested in measuring. There is a whole field of statistics that focuses in how to analise if your observed variables are good indicators of your unobserved variable (**psychometry** is how we call this field in psychology) and also that focuses on how to best combine the answers to our observed variables in a single score (**latent variable modelling**). Some of the scores in the Crime Survey for England and Wales that you may use for your essay have been created with this more advanced methods (some of the measures on confidence in the police, for example). Summated scales are not really the best way to do this. But these are more advanced topics that are covered in upper level undergraduate or postgraduate courses. So for now, we will use summated scales as a convenient if imperfect way of aggregating observed variables.
+Summated scales like the one we created here are quick and not the most kosher way of combining several questions into a single measure. In research methods you probably learnt that we often work with theoretical constructs that we do not observe directly (e.g., self control, anomie, collective efficacy, etc.). We often call these **latent variables**. In order to study these constructs we create measures or scales that are based in **observed variables** (those we actually include and ask in the survey). [This](https://www.ismanet.org/doctoryourspirit/pdfs/Beck-Depression-Inventory-BDI.pdf) is a famous measure of *depression* often used in research. As you can see we have different questions (our oberved variables) that we think are related to our latent or not observed (directly) variable (*depression*). You can also see there are several items or questions all of which we researchers think are linked to depression in this scale. If you provide positive answers to many of these questions we may think that you have this unobserved thing we call *depression*. 
+
+When measuring latent variables it is a good idea to have multiple items that all capture aspects of the unobserved variable we are really interested in measuring. There is a whole field of statistics that focuses in how to analise if your observed variables are good indicators of your unobserved variable (**psychometry** is how we call this field in psychology) and also that focuses on how to best combine the answers to our observed variables in a single score (**latent variable modelling**). Some of the scores in the Crime Survey for England and Wales that you may use for your essay have been created with this more advanced methods (some of the measures on confidence in the police, for example). Summated scales are not really the best way to do this. But these are more advanced topics that are covered in upper level undergraduate or postgraduate courses. So for now, we will use summated scales as a convenient if imperfect way of aggregating observed variables.
 
 ##Collapsing categories in character variables
 
@@ -342,7 +344,7 @@ class(df$isocntry)
 ## [1] "character"
 ```
 
-Ok, this is a categorical unordered variable, we know that. But this kind of variables could be encoded into R as either *character* vectors, *factor* variables, or as we have seen as well as *haven_labelled*. How you recode a variable is contingent in how it is encoded. Here we are going to show you how you would do the recoding with a *character* variable such as *isocntry*. We will see later examples for how to recode *factors*.
+Ok, this is a categorical unordered variable, we know that. But this kind of variables could be encoded into R as either *character* vectors, *factor* variables, or as we have seen as well as *haven_labelled*. How you recode a variable is contingent in how it is encoded. Here we are going to show you how you would do the recoding with a *character* variable such as *isocntry* into another character variable we will call *region*. We will see later examples for how to recode *factors*.
 
 We will have a variable with four new categories (Western, Southern, Eastern, and Northern) whenever the right conditions are met. See the code below:
 
@@ -428,7 +430,7 @@ Of course, we need to change the names for valid ones in our case. So adapting t
 colnames(df)[colnames(df)=="d10"] <- "gender"
 ```
 
-If you prefer the *tydiverse* dialect (that aims to save you typing among other things), then you would use the `rename` function as below:
+If you prefer the *tydiverse* dialect (that aims to save you typing among other things), then you would use the `rename` function as below (beware if you already renamed *d10* using `colnames` there will be no longer a *d10* variable and therefore R will return an error).
 
 
 ```r
@@ -1034,7 +1036,7 @@ mean(df_f$complete)
 ## [1] 0.7255734
 ```
 
-So, shocking as this may sound you only have full data in 75% of the participants. Notice how the percentage of missing cases in the variables range:
+So, shocking as this may sound you only have full data in 72% of the participants. Notice how the percentage of missing cases in the variables range:
 
 
 ```r
@@ -1049,6 +1051,50 @@ colMeans(is.na(df_f))
 ```
 
 The function `complete.cases` is returning what cases have missing data **in any of** the variables not in a singular one. It is not unusual for this percentage to be high. You may end up with a massive loss of cases even though the individual variables themselves do not look as bad as the end scenario.
+
+##Exploring dataframes visually
+
+We have covered now a number of functions you can use to explore your data, such as `skimr::skim()`, `str()`, `summary()`, `table()`, or `dplyr::glimpse()`. But sometimes is useful to get a more panoramic way. For this we can use the `visdat` package for visualising whole dataframes amd its main function `vis_dat()`.
+
+
+```r
+library(visdat)
+vis_dat(df_f)
+```
+
+<img src="04-carpentry_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+
+Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, f_gender, f_urban, and f_occup. We see that region is encoded as a `character` vector, whereas the others are `factors`. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor. 
+
+
+```r
+df_f$f_region <- as.factor(df_f$region)
+```
+
+We can also see we have age, a quantitative variable, *age*, encoded as `haven_labelled`. We could as well encoded as `numeric`.
+
+
+```r
+df_f$age <- as.numeric(df_f$age)
+```
+
+What we do with *at_sexviol* depends on how we decide to treat it. But for arguments sake let's say we are going to treat it as numerical.
+
+
+```r
+df_f$at_sexviol <- as.numeric(df_f$at_sexviol)
+```
+The othe piece of info you get with `vis_dat` is the prevalence of missing data (NA) for each variable (the dark horizontal cases represent a missing case in the variable). We can summarise missing data visually more clearly with `vis_miss`.
+
+
+```r
+vis_miss(df_f)
+```
+
+<img src="04-carpentry_files/figure-html/unnamed-chunk-55-1.png" width="672" />
+
+
+
 
 **Homework 4.2:**
 *Select the key outcome variable from the data set you have selected for your final assignment. By outcome variable we mean the variable or variables that tap into the concept you will be exploring with this assignment. In the practical today that was attitudes toward sexual violence. For your assignment it will be one of the four topics you selected in previous weeks. You need to look at the dataset screen the questions that tap into this concept and select a few you may want to explore before making a final decision as to whicn you will be using for sure. Do any recoding you may need to this variable (including creating summated scales or collapsing variables if it seems appropriate) and produce descriptive and visual analysis of this variable/s.* 

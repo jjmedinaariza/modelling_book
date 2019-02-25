@@ -32,15 +32,17 @@ De Veaux et al (2012) explain the logic of hypothesis testing as being similar t
 
 >"the null hypothesis is that the defendant is innocent... The evidence takes the form of facts that seem to contradict the presumption of innocence. For us" (researchers) "this means collecting data... The next step is to judge the evidence. Evaluating the evidence is the responsibility of the jury in a trial, but if falls on your shoulders in hypothesis testing. The jury considers the evidence in light of the presumption of innocence and judges whether the evidence against the defendant would be plausible if the defendant were in fact innocent. Like the jury, you ask, **'Could these data plausibly have happened by chance if the null hypothesis were true?'** If they are unlikely to have occurred, then the evidence raises a reasonable doubt about the null hypothesis. Ultimately, you must make a decision. The standard of beyond a reasonable doubt is wonderfully ambiguous... But when you ask the same question of your null hypothesis, you have the advantage of being able to quantify exactly how surprising the evidence would be were the null hypothesis true" (De Veaux et al. 2012: 479)
 
-So, in hypothesis testing we look at our observed sample data. In our case, we look at the difference in fear of violent crime for males and females and we ask ourselves the question: is the observed difference likely to have come from a population where the real difference is zero (as our null hypothesis specifies)? As you can see, testing against the null gives us the advantage of testing against a specific value. We can compare the value that we observe with zero, the precise value hypothesised by the null hypothesis. The downsise of it is that few things are exactly the same in nature. So to say that the level of fear of crime in men and women is probably not exactly the same (e.g., a difference of zero) is arguably not always going to give us the answer that we want.
+So, in hypothesis testing we look at our observed sample data. In our case, we look at the difference in fear of violent crime for males and females and we ask ourselves the question: is the observed difference likely to have come from a population where the real difference is zero (as our null hypothesis specifies)? As you can see, testing against the null gives us the advantage of testing against a specific value. We can compare the value that we observe with zero, the precise value hypothesised by the null hypothesis. *The downsise of it is that few things are exactly the same in nature.* So to say that the level of fear of crime in men and women is probably not exactly the same (e.g., a difference of zero) is arguably not always going to give us the answer that we want.
 
 4. **The fundamental step in hypothesis testing, therefore, is the question: are the observed data surprising, given the null hypothesis? And the key question is to determine exactly how likely the data we observed would be were the null hypothesis a true model of the world**
 
-So in essence we are after a probability, specifically a conditional probability (i.e, *the probability of our data if the null hypothesis were true*). We are trying to quantify the probability of seeing data like the one we have observed (a difference of 0.79 in our example) if we take as given that the null hypothesis is true (and the value "should be" zero). We call this probability the **p value**. You may have heard this term before. All it means, it bears repeating, is the probability of observing our data *if the null hypothesis were true*.
+So in essence we are after a probability, specifically a conditional probability (i.e, *the probability of our data if the null hypothesis were true*). We are trying to quantify the probability of seeing data like the one we have observed (a difference of 0.79 in our example) if we take as given that the null hypothesis is true (and the value "should be" zero). We call this probability the **p value**. You may have heard this term before. All it means, it bears repeating, is **the probability of observing our data if the null hypothesis were true**.
 
 >"**When the p value is high**, then we can conclude that we have not seeing anything unusual. Events that have a high probability of happening happen often. The data are thus consistent with the model from the null hypothesis, and we have no reason to reject the null hypothesis. But we realize many other similar hypotheses could also account for the data we've seen, so we haven't proven that the null hypothesis is true. The most we can say is that it doesn't appear to be false. Formally, we fail to reject the null hypothesis. That's a pretty weak conclusion, but it's all we're entitled to. **When the p value is low enough**, it says that it's very unlikely we'd observed data like these if our null hypothesis were true. We started with a model. Now the model tells us that the data are unlikely to have happened. The model and the data are at odds with each other, so we have to make a choice. Either the null hypothesis is correct and we've just seen something remarkable, or the null hypothesis is wrong..." (De Veaux et al. 2012: 480)
 
 When is a p value high and when is low? Typically, we use criteria similar to those we use when constructing confidence intervals: we would consider a p value low enough if 95% of the time the observed data was considered to be inconsistent with the model proposed by our null hypothesis. So, we look for p values that are smaller or bigger than 0.05. 
+
+SOMETHING ABOUT MORE CONSERVATIVE APPROACHES AND THE EXISTNIG DEBATE
 
 That is, we look for differences that happen less than 5% of the time before we tentatively reject the null hypothesis. However, there is nothing sacrosanct about 95% and you could have good reasons to depart from this criterion (read page 123 to 128 of Weisburd and Britt, 2010 for further details). In fact, only last year a number of researchers argued we should use a more stringent p value to address the crisis of reproducibility in science.
 
@@ -52,7 +54,7 @@ Through the semester we will cover a number of statistical tests, all with their
 
 6. **Once we've gone through all those steps comes the calculation of the test statistics and, based on the results, our decision**
 
-Different tests that we will encounter this semester have different formulas. Sometimes I will give you a basic description of what those formulas are doing, because it is good to know what is being computed for conceptual understanding. But the mechanics are handled by the computer. So all you really need to know for the purposes of passing the course is how to interpret the results of these tests. You won't need to memorise those formulas nor calculate anything yourself.
+Different tests that we will encounter this semester have different formulas. Sometimes I will give you a basic description of what those formulas are doing, because it is good to know what is being computed for conceptual understanding. But the mechanics are handled by the computer. You won't need to memorise those formulas nor calculate anything yourself.
 
 The ultimate goal of these statistical tests for hypothesis testing is to obtain a p value: the probability that the observed statistic (or a more extreme value) occurs if the null model is correct. If the p value is small enough (smaller than our alpha level: such as 0.05) then we will **"reject the null hypothesis"**. If it is not, we will **"fail to reject the null hypothesis"**. The language is important.
 
@@ -61,6 +63,8 @@ Whatever you decide, the *American Psychological Association Statistical Committ
 ##Comparing means across two groups (the t test)
 
 Let's elaborate with our example. Our research question is whether women are more afraid of crime. We are going to test a non-directional hypothesis and use an alpha level of .05. The test we use in this case is the t test, which relies in the t Student distribution introduced last week. This test makes a number of assumptions that we need to check first.
+
+INFO ABOUT THE T TEST
 
 This t test makes a number of assumptions:
 
@@ -90,10 +94,6 @@ ggplot(BCS0708, aes(x = tcviolent, colour = sex)) + #you will need to load the d
   geom_density() 
 ```
 
-```
-## Warning: Removed 3242 rows containing non-finite values (stat_density).
-```
-
 <img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
 The plotted density provide a visual tool for assessing the unimodality and the symmetry of the distribution. Later we will discuss a more elaborate graphical tool for assessing the normal condition (e.g., the normal probability plot). 
@@ -121,9 +121,13 @@ t.test(tcviolent ~ sex, data = BCS0708)
 
 If the code and the results look familiar is because we already saw them last week when producing the confidence interval for the sampling distribution of the difference of two means. Last week we focused on the 95% confidence interval, now we are going to look at the first few lines of printed output.
 
-First we see is the so-called **Welch two sample t-test**. It is a version of the t test that does not assume that the variance of your response variable is the same for your two groups. It is the default version we will always use.  You also see a value for "t" (-29.11), this is the test statistic obtained using the formula for the t test and something called df (abbreviation for degrees of freedom). Farther to the right you see a value for p, this gives the probability associated with observing the difference in our sample if the null hypothesis were true. This value is 2.2e-16. If you are not used to this notation essentially what it means is that you need to move the decimal point 16 times to the left. In other words, the p value here is very close to 0 and therefore we can reject the null hypothesis that the difference in the population is 0. The observed difference in this sample would have been rather implausible if the null hypothesis were true.  Therefore, here we would argue that our evidence suggests that we can reject the null hypothesis. We can say that there is a **statistically significant** difference between fear of violent crime for men and women in England and Wales.
+First we see is the so-called **Welch two sample t-test**. It is a version of the t test that does not assume that the variance of your response variable is the same for your two groups. It is the default version we will always use.  You also see a value for "t" (29.11), this is the test statistic obtained using the formula for the t test and something called df (abbreviation for degrees of freedom).
+
+Farther to the right you see a value for p, this gives the probability associated with observing the difference in our sample if the null hypothesis were true. This value is 2.2e-16. If you are not used to this notation essentially what it means is that you need to move the decimal point 16 times to the left. In other words, the p value here is very close to 0 and therefore we can reject the null hypothesis that the difference in the population is 0. The observed difference in this sample would have been rather implausible if the null hypothesis were true.  Therefore, here we would argue that our evidence suggests that we can reject the null hypothesis. We can say that there is a **statistically significant** difference between fear of violent crime for men and women in England and Wales.
 
 It is important you remember this: **the p value is not the probability that the null hypothesis is true**. Imagine that our p value was 0.04. As tempting as it may be to say that a p value of 0.04 means there is a 4% chance that the null hypothesis is true, that just isn't right.  The only thing that we are in a position to state is: given the null hypothesis, there is a 4% chance of observing the difference that we have actually observed (or one more unlikely).
+
+##What does a significant effect mean?
 
 Before we said that the difference between the mean score of fear of violent crime for males and females is statistically significant. It is of critical importance that you understand what this actually means. Unfortunately, in this context significance does not quite have the same meaning that we give it in normal language. 
 
@@ -166,6 +170,11 @@ This is what you would write in your "Findings" section. In your "Conclusions" y
 One important thing to remember is that when doing hypothesis testing there is always the possibility of error. Our statements are probabilistic. We could be rejecting the null hypothesis when we shouldn't (false positive or Type I error), if we are using an alpha level of .05 this may happen 5% of the time, or we may fail to reject the null hypothesis when we should (false negative or Type II error).
 
 ![Errors](http://flowingdata.com/wp-content/uploads/2014/05/Type-I-and-II-errors1-625x468.jpg)
+
+
+##Power analysis
+
+In this section we introduce the `pwr` package for power analysis.
 
 ##Comparing means across several groups (ANOVA)
 
@@ -546,41 +555,10 @@ Wilcox (2005) describes a set of procedures for conducting robust ANOVA: ways of
 
 For this we need to install the package that he has created for implementing these procedures in R. 
 
-<!--This package is not available in the standard way we have covered so far, from the CRAN repository. There are a couple of ways of installing the package as explained [here](http://dornsife.usc.edu/labs/rwilcox/software/). I used the second approach suggested by the author. After that you load in the standard way. -->
-
 
 ```r
 library(WRS2) 
 ```
-
-<!--
-The recommended reading discussed at greater length some of the various options you have with this package, as well as some background on robust statistics. One of the issues with this package is that many functions expect the data to be in different format to the one we have. In long format your data frame may look like this (fictitious data):
-
-| Cases | tcviolent  | ethnicity | 
-|-------|------------|-----------|
-| John  |  2         | A         |
-| Mary  |  1         | B         |
-| Peter |  0         | A         |
-| Mick  | 3          | B         |
-
-Each case represents a row and each column represents a variable. The `WRS` package expects the data in a grouped format, like this:
-
-| Ethnicity A | Ethnicity B | 
-|-------------|-------------|
-|  12         | 123         |
-|  1          | 3           |
-
-We can convert our data into this format using the `unstack()` function.
-
-
-```r
-#For convenien we first subset the BCS0708 data to get get only the variables of interest for the cases with valid information in these two variables and store this into a new data frame
-fear_eth <- na.omit(BCS0708[,c("ethgrp2", "tcviolent")])
-#Then we use unstack to get the data in the format expected by WRS (this will generate a list, since each column has a different length)
-fear_eth_w <- unstack(fear_eth, tcviolent ~ ethgrp2)
-```
-
--->
 
 We can now invoke the code. The following code will use ANOVA based on 5% trimmed mean with 599 bootstrap samples:
 
@@ -696,7 +674,7 @@ library(lessR)
 ANOVA(tcviolent ~ ethgrp2, data = BCS0708, brief=TRUE) #The brief argument set to TRUE excludes pairwise comparisons and extra text from being printed.
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 ```
 ##   BACKGROUND
@@ -743,9 +721,10 @@ ANOVA(tcviolent ~ ethgrp2, data = BCS0708, brief=TRUE) #The brief argument set t
 
 You will see this implementation of ANOVA apart from also printing the R Squared also gives you Omega Squared. Omega Squared is particularly helpful with smaller samples (check the Andy Field book for rules of thumb for its interpretation). You will also see with this function (although not printed here) a nicely labelled residual plot to assist interpretation of equal spread.
 
-*Homework*
-Using the banbox dataset that we have used in previous sessions run a t test to explore whether criminal records are associated to emplyment response in the subset of cases before the banbox legislation was introduced. Discuss your results.
+**6.1. Homework**
 
-Using the BCS data we used today explore the relationship between fear of violent crime (tcviolent) and the level of education of the respondent (educat3).
+*Using the banbox dataset that we have used in previous sessions run a t test to explore whether criminal records are associated to emplyment response in the subset of cases before the banbox legislation was introduced. Discuss your results.*
+
+*Using the BCS data we used today explore the relationship between fear of violent crime (tcviolent) and the level of education of the respondent (educat3).*
 
 

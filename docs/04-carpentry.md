@@ -1093,7 +1093,7 @@ vis_miss(df_f)
 
 <img src="04-carpentry_files/figure-html/unnamed-chunk-55-1.png" width="672" />
 
-
+You can find more details about how to explore missing data in the vignette of the `naniar` package [here](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 
 
 **Homework 4.2:**

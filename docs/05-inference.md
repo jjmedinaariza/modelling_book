@@ -2,7 +2,7 @@
 
 ##Introduction
 
-Up to know we have introduced a series of concepts and tools that are helpful to describe sample data. But in data analysis we often do not observe full populations. We often only have sample data. 
+Up to now we have introduced a series of concepts and tools that are helpful to describe sample data. But in data analysis we often do not observe full populations. We often only have sample data. 
 
 Think of the following two problems:
 
@@ -29,7 +29,7 @@ So to guarantee that all of us get the same randomly generated numbers, set your
 set.seed(100) 
 ```
 
-We are going to generate an object with skewed data. We often work with severely skewed data in criminology. For generating this type of data I am going to use the `rnbinom()` for something called negative binomial distributions.
+We are going to generate an object with skewed data. We often work with severely skewed data in criminology. For generating this type of data I am going to use the `rnbinom()` for something called negative binomial distributions, which is a discrete probability distribution often use as a model for counts.
 
 
 ```r
@@ -302,7 +302,7 @@ qplot(sampd_IQ_10$with, xlab = "Distribution of means from samples of size 10")
 
 <img src="05-inference_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
-Amazing too, isn't it? When you (1) take many random samples from a normally distributed variables; (2) compute the means for each of these samples; and (3) plot the means of each of these samples, you end up with something that is also normally distributed. **The sampling distribution of the means of normally distributed variables in the population is normally distributed**. I want you to think for a few seconds as to what this means and then keep reading.
+Amazing too, isn't it? When you (1) take many random samples from a normally distributed variable; (2) compute the means for each of these samples; and (3) plot the means of each of these samples, you end up with something that is also normally distributed. **The sampling distribution of the means of normally distributed variables in the population is normally distributed**. I want you to think for a few seconds as to what this means and then keep reading.
 
 Did you think about it? What this type of distribution for the sample means is telling us is that most of the samples will give us guesses that are clustered around their own mean, as long as the variable is normally distributed in the population (which is something, however, that we may not know). Most of the sample means will cluster around the value of 97.11 (in the long run), which is the population mean in this case. There will be some samples that will give us much larger and much smaller means (look at the right and left tail of the distribution), but most of the samples won't gives us such extreme values.
 
@@ -538,7 +538,7 @@ If you look inside the *ci_IQ* object using `View(ci_IQ)` you will see that ther
 
 Thus 95 intervals contain the true population mean. If you feel playful (and curious) you may want to modify the code we have use above to check how many of a 100 or of 200 samples for example would contain the true population mean. It should be roughly around 95% of them. Pretty cool, isn't it?
 
-We can also plot these confidence intervals. #First I am going to create an ID variable to identify each sample (I will need this as an input in the plot I will create). I will use the row name (that list the samples from 1 to 1 100) as my ID variable.
+We can also plot these confidence intervals. First I am going to create an ID variable to identify each sample (I will need this as an input in the plot I will create). I will use the row name (that list the samples from 1 to 1 100) as my ID variable.
 
 
 ```r
@@ -574,13 +574,14 @@ It is generally considered better practice to report your confidence intervals t
 So to reiterate:  
 
 + INCORRECT INTERPRETATION: “There is a 95% chance that the mean IQ is between 89.7 and 104.7 minutes”. This is a very common misconception! It seems very close to true, but it isn’t because the population mean value is fixed. So, it is either in the interval or not and you can't possibly know whether that is the case. This is subtle but important.
-+ What is correct? **95% of the time, when we calculate a confidence interval in this way, the true mean will be between the two values. 5% of the time, it will not.** Because the true mean (population mean) is an unknown value, we don’t know if we are in the 5% or the 95%. BUT 95% is pretty good. So we say something like “We are 95% confident that the mean IQ for all people in our fake population is between 89.7 and 104.7.” This is a common shorthand for the idea that the calculations “work” 95% of the time.
++ What is correct? **95% of the time, when we calculate a confidence interval in this way, the true mean will be between the two values. 5% of the time, it will not.** Because the true mean (population mean) is an unknown value, we don’t know if we are in the 5% or the 95%. BUT 95% is pretty good. This is the only correct interpretation of our confidence interval, so do not take it any other as valid.
++ Is is correct to say something like “We are 95% confident that the mean IQ for all people in our fake population is between 89.7 and 104.7.” This is a common shorthand for the idea that the calculations “work” 95% of the time. But beware in true even this shorthand is incorrect for it seems to imply the particular confidence interval is correct, when all we can do is statements about the procedure not about the specific boundaries of our CI (as the "I am 95% confident" statement does). 
 + Remember that we can’t have a 100% confidence interval. By definition, the population mean is not known . If we could calculate it exactly we would! But that would mean that we need a census of our population with is often not possible or feasible.
 + Finally, because if the range of values that you give me for your CI is smaller or bigger I will know that your estimate is more or less precise respectively. That is, **with the CI you are giving me a measure of your uncertainty.** The bigger the CI the more uncertain we are about the true population parameter.
 
 ##Asymptotic confidence intervals for means and proportions using R
 
-You may have spotted a big problem in what came before. How did we compute the confidence interval? We multiplied 1.96 times the standard error. Remember: the standard error is the standard deviation of the sampling distribution of the mean. And… well, at least you are willing to repeat a survey thousands of times with the same population you won’t know what the standard error is! The population mean is unknown and we want to estimate it. *But the standard error that we need for constructing our confidence interval is also unknown!* 
+You may have spotted a big problem in what came before. How did we compute the confidence interval? We multiplied 1.96 times the standard error. Remember: the standard error is the standard deviation of the sampling distribution of the mean. And… well, at least you are willing to repeat a survey thousands and thousands of times with the same population you won’t know what the standard error is! The population mean is unknown and we want to estimate it. *But the standard error that we need for constructing our confidence interval is also unknown!* 
 
 If you are working with proportions there is an obvious way to estimate the standard error only with sample data (for details see the required reading). But with means this is not possible. There is, however, a solution. You can use *the standard deviation of your sample* as an estimate for the standard error . You would also need to make some adjustments to the formula for the confidence interval (you divide the sample standard deviation by the square root of the sample mean). You don't need to worry to much about the mathematics of it. In practice we will rely on R to apply these formulas and compute the confidence intervals. 
 
@@ -749,7 +750,7 @@ resample(sample_2)
 
 You can see how some elements in this resample are repeated from the original sample. In my particular original sample I have one element with the value 113.57432. In my resample from that sample I have three with that value. In your particular sample the combinations can be slightly different.
 
-Bootstrapping involve repeating this process many times and examining the variation among the resamples to construct a confidence interval based on the resampling distribution. Bootstraping won't work well with very small samples. The sample size should be one or two dozen or larger (Kaplan, 2012). So let's move to a slightly larger sample and then we will create the resampling distribution.
+Bootstrapping involves repeating this process many times and examining the variation among the resamples to construct a confidence interval based on the resampling distribution. Bootstraping won't work well with very small samples. The sample size should be one or two dozen or larger (Kaplan, 2012). So let's move to a slightly larger sample and then we will create the resampling distribution.
 
 
 ```r
@@ -836,17 +837,6 @@ resampling_IQ_30_2 <- do(1000) * mean(resample(sample_3))
 
 ```r
 resampling_IQ_30_3 <- do(1000) * mean(resample(sample_3))
-```
-
-
-```
-## Warning: Ignoring unknown aesthetics: position
-
-## Warning: Ignoring unknown aesthetics: position
-
-## Warning: Ignoring unknown aesthetics: position
-
-## Warning: Ignoring unknown aesthetics: position
 ```
 
 <img src="05-inference_files/figure-html/unnamed-chunk-45-1.png" width="672" />

@@ -1,4 +1,4 @@
-#Studying relationships between a categorical and a quantitative variable (Week 6)
+#Studying relationships between a categorical and a quantitative variable
 
 ##The logic of hypothesis testing
 
@@ -145,7 +145,26 @@ One important thing to remember is that when doing hypothesis testing there is a
 
 ##Power analysis
 
-In this section we introduce the `pwr` package for power analysis.
+In this section we introduce the `pwr` package for power analysis. In the video lectures you had to watch as preparation for today we introduced the notion of power analysis. In order for a statistical test to be able to be effective, to be able to detect an effect, you need to have sufficient power. Power is related to the magnitude of the effect (it will be easier to detect stronger rather than weaker effects) and sample size (it will be easier to detect effects with large samples than with small samples). A problem with many scientific studies is that they are *underpowered*, the fail to reject the null hypothesis simply because they do not have sufficient power (often because the sample size is not large enough). Power analysis is generally done during the planning of an analysis so that you know what kind of sample you are going to need if you want to be able to run meaningfull hypothesis tests. That is you do your power analysis before you collect your data. 
+
+But we can also check how much power we have after the fact, just to ensure we are not failing to reject the null hypothesis as a consequence of insufficient power. For this purposes we can use the `pwr` package. For computing the power when comparing two sample means we use the `pwr.t2n.test` function. This function expects we provide the sample size of each group (if we are doing the power calculation after we have collated our data) and the effect size we may want to be able to detect. Let's see how many people we have in each of our two groups (male and females) when assessing differences in fear of violent crime.
+
+
+```{r}
+library(psych)
+describeBy(BCS0708$tcviolent, BCS0708$sex)
+```
+
+Ok, so that is 4475 and 3959. Let's say we want to detect even very small effect sizes. The functions in this package assume a default .05 level of statistical significance, although this is something we could change. So if we go with the default, we would write as follows:
+
+```{r}
+library(pwr)
+pwr.t2n.test(n1 = 4475, n2 = 3959, d= 0.2)
+```
+
+The function is telling us that we have a power of 1. The statistical power ranges from 0 to 1, and as statistical power increases, the probability of making a type II error (wrongly failing to reject the null) decreases. So with a power of 1 we are very unlikely indeed to failing to reject the null hypothesis when we should.
+
+With sample sizes this large, you are unlikely to run into problems with power. But these things do matter in particular applications. Think for example of cases when you are trying to evaluate if a particular criminal justice intervention works. If you work with small samples you may wrongly conclude that your intervention didn't make a difference (you fail to reject the null hypothesis) because you did not have sufficient statistical power. This was a common problem in older studies (see [here](https://www.sciencedirect.com/science/article/pii/0047235289900044) for a review) and it is a problem that still persist to some extent (read [this](https://www.tandfonline.com/doi/abs/10.1080/07418825.2018.1495252) more recent review).
 
 ##Comparing means across several groups (ANOVA)
 
@@ -196,7 +215,7 @@ I want you to pay attention to the column in that table that provides you with t
 
 We have now examined the means for fear of crime for the various ethnic groups and have seen how the Asian group seem to have the highest average level of fear. But we have discussed in the class that point estimates are "problematic" because they do not communicate sampling variability - for that we need confidence intervals. Last week we explained how to do confidence intervals for the mean of two groups. I am going to show you here a different way of plotting confidence intervals for means of various groups. 
 
-The simplest way to do this is with the `plotmeans` function in the `gplots` package (not to confuse with the ggplot2 package). This function uses by default the t Student distribution for computing the confidence intervals (given the small sample size of some of the groups this is appropriate here):
+The simplest way to do this is with the `plotmeans` function in the `gplots` package (not to confuse with the `ggplot2` package). This function uses by default the t Student distribution for computing the confidence intervals (given the small sample size of some of the groups this is appropriate here):
 
 ```{r, message=FALSE, warning=FALSE}
 #You will need to install this package first
@@ -445,6 +464,7 @@ ANOVA(tcviolent ~ ethgrp2, data = BCS0708, brief=TRUE) #The brief argument set t
 ```
 
 You will see this implementation of ANOVA apart from also printing the R Squared also gives you Omega Squared. Omega Squared is particularly helpful with smaller samples (check the Andy Field book for rules of thumb for its interpretation). You will also see with this function (although not printed here) a nicely labelled residual plot to assist interpretation of equal spread.
+
 
 **6.1. Homework**
 

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 6 Studying relationships between a categorical and a quantitative variable | Modelling Criminological Data LAWS20452</title>
+  <meta name="description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 6 Studying relationships between a categorical and a quantitative variable | Modelling Criminological Data LAWS20452" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Studying relationships between a categorical and a quantitative variable | Modelling Criminological Data LAWS20452" />
+  
+  <meta name="twitter:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Juanjo Medina and Reka Solymosi">
+
+
+<meta name="date" content="2019-03-03">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="foundations-of-statistical-inference-confidence-intervals.html">
+<link rel="next" href="studying-relationships-between-two-factors-week-7.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Modelling Criminological Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html"><i class="fa fa-check"></i><b>1</b> A first lesson about R</a><ul>
+<li class="chapter" data-level="1.1" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#install-r-rstudio"><i class="fa fa-check"></i><b>1.1</b> Install R &amp; RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#open-up-and-explore-rstudio"><i class="fa fa-check"></i><b>1.2</b> Open up and explore RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#customising-the-rstudio-look"><i class="fa fa-check"></i><b>1.3</b> Customising the RStudio look</a></li>
+<li class="chapter" data-level="1.4" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#getting-organised-r-projects"><i class="fa fa-check"></i><b>1.4</b> Getting organised: R Projects</a></li>
+<li class="chapter" data-level="1.5" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#talk-to-your-computer"><i class="fa fa-check"></i><b>1.5</b> Talk to your computer</a></li>
+<li class="chapter" data-level="1.6" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-packages"><i class="fa fa-check"></i><b>1.6</b> More on packages</a></li>
+<li class="chapter" data-level="1.7" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#using-objects"><i class="fa fa-check"></i><b>1.7</b> Using objects</a></li>
+<li class="chapter" data-level="1.8" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-objects"><i class="fa fa-check"></i><b>1.8</b> More on objects</a></li>
+<li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#vectors"><i class="fa fa-check"></i><b>1.9</b> Vectors</a></li>
+<li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#on-comments"><i class="fa fa-check"></i><b>1.10</b> On comments</a></li>
+<li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#factors"><i class="fa fa-check"></i><b>1.11</b> Factors</a></li>
+<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.12</b> Naming conventions for objects in R</a></li>
+<li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#dataframes"><i class="fa fa-check"></i><b>1.13</b> Dataframes</a></li>
+<li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.14</b> Exploring data</a></li>
+<li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.15</b> Quitting RStudio</a></li>
+<li class="chapter" data-level="1.16" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#lab-homework-activities-for-week-1"><i class="fa fa-check"></i><b>1.16</b> Lab homework activities for Week 1</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html"><i class="fa fa-check"></i><b>2</b> Causality in randomised experiments</a><ul>
+<li class="chapter" data-level="2.1" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#causality-in-social-sciences"><i class="fa fa-check"></i><b>2.1</b> Causality in social sciences</a></li>
+<li class="chapter" data-level="2.2" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#getting-data-thanks-to-reproducibility"><i class="fa fa-check"></i><b>2.2</b> Getting data thanks to reproducibility</a></li>
+<li class="chapter" data-level="2.3" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#getting-a-sense-for-your-data"><i class="fa fa-check"></i><b>2.3</b> Getting a sense for your data</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#first-steps"><i class="fa fa-check"></i><b>2.3.1</b> First steps</a></li>
+<li class="chapter" data-level="2.3.2" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#on-tibbles-and-labelled-vectors"><i class="fa fa-check"></i><b>2.3.2</b> On tibbles and labelled vectors</a></li>
+<li class="chapter" data-level="2.3.3" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#turning-variables-into-factors-and-changing-the-labels"><i class="fa fa-check"></i><b>2.3.3</b> Turning variables into factors and changing the labels</a></li>
+<li class="chapter" data-level="2.3.4" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#looking-for-missing-data-and-other-anomalies"><i class="fa fa-check"></i><b>2.3.4</b> Looking for missing data and other anomalies</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#data-wrangling-with-dplyr"><i class="fa fa-check"></i><b>2.4</b> Data wrangling with dplyr</a></li>
+<li class="chapter" data-level="2.5" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#using-dplyr-single-verbs"><i class="fa fa-check"></i><b>2.5</b> Using dplyr single verbs</a></li>
+<li class="chapter" data-level="2.6" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#using-dplyr-for-grouped-operations"><i class="fa fa-check"></i><b>2.6</b> Using dplyr for grouped operations</a></li>
+<li class="chapter" data-level="2.7" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#making-comparisons-with-numerical-outcomes"><i class="fa fa-check"></i><b>2.7</b> Making comparisons with numerical outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html"><i class="fa fa-check"></i><b>3</b> Data visualisation with R</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#anatomy-of-a-plot"><i class="fa fa-check"></i><b>3.2</b> Anatomy of a plot</a></li>
+<li class="chapter" data-level="3.3" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#what-graph-should-i-use"><i class="fa fa-check"></i><b>3.3</b> What graph should I use?</a></li>
+<li class="chapter" data-level="3.4" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-histograms"><i class="fa fa-check"></i><b>3.4</b> Visualising numerical variables: Histograms</a></li>
+<li class="chapter" data-level="3.5" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-density-plots"><i class="fa fa-check"></i><b>3.5</b> Visualising numerical variables: Density plots</a></li>
+<li class="chapter" data-level="3.6" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-box-plots"><i class="fa fa-check"></i><b>3.6</b> Visualising numerical variables: Box plots</a></li>
+<li class="chapter" data-level="3.7" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#exploring-relationships-between-two-quantitative-variables-scatterplots"><i class="fa fa-check"></i><b>3.7</b> Exploring relationships between two quantitative variables: scatterplots</a></li>
+<li class="chapter" data-level="3.8" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#scatterplots-conditioning-in-a-third-variable"><i class="fa fa-check"></i><b>3.8</b> Scatterplots conditioning in a third variable</a></li>
+<li class="chapter" data-level="3.9" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#scatterplot-matrix"><i class="fa fa-check"></i><b>3.9</b> Scatterplot matrix</a></li>
+<li class="chapter" data-level="3.10" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#titles-legends-and-themes-in-ggplot2"><i class="fa fa-check"></i><b>3.10</b> Titles, legends, and themes in ggplot2</a></li>
+<li class="chapter" data-level="3.11" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#plotting-categorical-data-bar-charts"><i class="fa fa-check"></i><b>3.11</b> Plotting categorical data: bar charts</a></li>
+<li class="chapter" data-level="3.12" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#further-resources"><i class="fa fa-check"></i><b>3.12</b> Further resources</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-carpentry.html"><a href="data-carpentry.html"><i class="fa fa-check"></i><b>4</b> Data Carpentry</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-carpentry.html"><a href="data-carpentry.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="data-carpentry.html"><a href="data-carpentry.html#a-template-for-your-assignment"><i class="fa fa-check"></i><b>4.2</b> A template for your assignment</a></li>
+<li class="chapter" data-level="4.3" data-path="data-carpentry.html"><a href="data-carpentry.html#thinking-about-your-data-filtering-cases"><i class="fa fa-check"></i><b>4.3</b> Thinking about your data: filtering cases</a></li>
+<li class="chapter" data-level="4.4" data-path="data-carpentry.html"><a href="data-carpentry.html#selecting-variables-using-dplyrselect"><i class="fa fa-check"></i><b>4.4</b> Selecting variables: using dplyr::select</a></li>
+<li class="chapter" data-level="4.5" data-path="data-carpentry.html"><a href="data-carpentry.html#creating-summated-scales"><i class="fa fa-check"></i><b>4.5</b> Creating summated scales</a></li>
+<li class="chapter" data-level="4.6" data-path="data-carpentry.html"><a href="data-carpentry.html#collapsing-categories-in-character-variables"><i class="fa fa-check"></i><b>4.6</b> Collapsing categories in character variables</a></li>
+<li class="chapter" data-level="4.7" data-path="data-carpentry.html"><a href="data-carpentry.html#working-with-apparently-cryptic-variable-names-and-levels"><i class="fa fa-check"></i><b>4.7</b> Working with apparently cryptic variable names and levels</a></li>
+<li class="chapter" data-level="4.8" data-path="data-carpentry.html"><a href="data-carpentry.html#recoding-factors"><i class="fa fa-check"></i><b>4.8</b> Recoding factors</a></li>
+<li class="chapter" data-level="4.9" data-path="data-carpentry.html"><a href="data-carpentry.html#understanding-missing-data"><i class="fa fa-check"></i><b>4.9</b> Understanding missing data</a></li>
+<li class="chapter" data-level="4.10" data-path="data-carpentry.html"><a href="data-carpentry.html#exploring-dataframes-visually"><i class="fa fa-check"></i><b>4.10</b> Exploring dataframes visually</a></li>
+<li class="chapter" data-level="4.11" data-path="data-carpentry.html"><a href="data-carpentry.html#further-resources-1"><i class="fa fa-check"></i><b>4.11</b> Further resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Foundations of statistical inference: confidence intervals</a><ul>
+<li class="chapter" data-level="5.1" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#generating-random-data"><i class="fa fa-check"></i><b>5.2</b> Generating random data</a></li>
+<li class="chapter" data-level="5.3" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#sampling-data-and-sampling-variability"><i class="fa fa-check"></i><b>5.3</b> Sampling data and sampling variability</a></li>
+<li class="chapter" data-level="5.4" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#sampling-distributions-and-sampling-experiments"><i class="fa fa-check"></i><b>5.4</b> Sampling distributions and sampling experiments</a></li>
+<li class="chapter" data-level="5.5" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#the-normal-distribution-and-confidence-intervals-with-known-standard-errors"><i class="fa fa-check"></i><b>5.5</b> The normal distribution and confidence intervals with known standard errors</a></li>
+<li class="chapter" data-level="5.6" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#asymptotic-confidence-intervals-for-means-and-proportions-using-r"><i class="fa fa-check"></i><b>5.6</b> Asymptotic confidence intervals for means and proportions using R</a></li>
+<li class="chapter" data-level="5.7" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#a-brief-intro-to-resampling-and-bootstraping"><i class="fa fa-check"></i><b>5.7</b> A brief intro to resampling and bootstraping</a></li>
+<li class="chapter" data-level="5.8" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#what-about-comparisons-sampling-distribution-for-the-difference-of-two-means"><i class="fa fa-check"></i><b>5.8</b> What about comparisons? Sampling distribution for the difference of two means</a></li>
+<li class="chapter" data-level="5.9" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye"><i class="fa fa-check"></i><b>5.9</b> Comparing means visually by using error bars representing confidence intervals: inference by eye</a></li>
+<li class="chapter" data-level="5.10" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#homework-5.1"><i class="fa fa-check"></i><b>5.10</b> HOMEWORK 5.1</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><i class="fa fa-check"></i><b>6</b> Studying relationships between a categorical and a quantitative variable</a><ul>
+<li class="chapter" data-level="6.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#the-logic-of-hypothesis-testing"><i class="fa fa-check"></i><b>6.1</b> The logic of hypothesis testing</a></li>
+<li class="chapter" data-level="6.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#comparing-means-across-two-groups-the-t-test"><i class="fa fa-check"></i><b>6.2</b> Comparing means across two groups (the t test)</a></li>
+<li class="chapter" data-level="6.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#what-does-a-significant-effect-mean"><i class="fa fa-check"></i><b>6.3</b> What does a significant effect mean?</a></li>
+<li class="chapter" data-level="6.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#power-analysis"><i class="fa fa-check"></i><b>6.4</b> Power analysis</a></li>
+<li class="chapter" data-level="6.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>6.5</b> Comparing means across several groups (ANOVA)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>6.5.1</b> The problem with multiple comparisons</a></li>
+<li class="chapter" data-level="6.5.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#visual-exploration-of-differences-in-the-distributions-across-the-groups"><i class="fa fa-check"></i><b>6.5.2</b> Visual exploration of differences in the distributions across the groups</a></li>
+<li class="chapter" data-level="6.5.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#anova"><i class="fa fa-check"></i><b>6.5.3</b> ANOVA</a></li>
+<li class="chapter" data-level="6.5.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.4</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
+<li class="chapter" data-level="6.5.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.5</b> Checking normality and dealing with problems</a></li>
+<li class="chapter" data-level="6.5.6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#robust-anova"><i class="fa fa-check"></i><b>6.5.6</b> Robust ANOVA</a></li>
+<li class="chapter" data-level="6.5.7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.7</b> Post Hoc Comparisons</a></li>
+<li class="chapter" data-level="6.5.8" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.8</b> Effect size for ANOVA</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between two factors (Week 7)</a><ul>
+<li class="chapter" data-level="7.1" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#producing-cross-tabulations"><i class="fa fa-check"></i><b>7.1</b> Producing cross tabulations</a></li>
+<li class="chapter" data-level="7.2" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#expected-frequencies-and-chi-square"><i class="fa fa-check"></i><b>7.2</b> Expected frequencies and Chi-Square</a></li>
+<li class="chapter" data-level="7.3" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#residuals"><i class="fa fa-check"></i><b>7.3</b> Residuals</a></li>
+<li class="chapter" data-level="7.4" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#gamma"><i class="fa fa-check"></i><b>7.4</b> Gamma</a></li>
+<li class="chapter" data-level="7.5" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#odds-and-odd-ratios"><i class="fa fa-check"></i><b>7.5</b> Odds and odd ratios</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html"><i class="fa fa-check"></i><b>8</b> An introduction to regression (Week 8)</a><ul>
+<li class="chapter" data-level="8.1" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#introduction-3"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#motivating-regression"><i class="fa fa-check"></i><b>8.2</b> Motivating regression</a></li>
+<li class="chapter" data-level="8.3" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>8.3</b> Fitting a simple regression model</a></li>
+<li class="chapter" data-level="8.4" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#residuals-revisited-r-squared"><i class="fa fa-check"></i><b>8.4</b> Residuals revisited: R squared</a></li>
+<li class="chapter" data-level="8.5" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#inference-with-regression"><i class="fa fa-check"></i><b>8.5</b> Inference with regression</a></li>
+<li class="chapter" data-level="8.6" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-regression-with-categorical-predictors"><i class="fa fa-check"></i><b>8.6</b> Fitting regression with categorical predictors</a></li>
+<li class="chapter" data-level="8.7" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#motivating-multiple-regression"><i class="fa fa-check"></i><b>8.7</b> Motivating multiple regression</a></li>
+<li class="chapter" data-level="8.8" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-and-interpreting-a-multiple-regression-model"><i class="fa fa-check"></i><b>8.8</b> Fitting and interpreting a multiple regression model</a></li>
+<li class="chapter" data-level="8.9" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#presenting-your-regression-results."><i class="fa fa-check"></i><b>8.9</b> Presenting your regression results.</a></li>
+<li class="chapter" data-level="8.10" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#rescaling-input-variables-to-assist-interpretation"><i class="fa fa-check"></i><b>8.10</b> Rescaling input variables to assist interpretation</a></li>
+<li class="chapter" data-level="8.11" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>8.11</b> Testing conditional hypothesis: interactions</a></li>
+<li class="chapter" data-level="8.12" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>8.12</b> Model building and variable selection</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html"><i class="fa fa-check"></i><b>9</b> Logistic regression (Week 9)</a><ul>
+<li class="chapter" data-level="9.1" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#introduction-4"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#fitting-logistic-regression"><i class="fa fa-check"></i><b>9.2</b> Fitting logistic regression</a></li>
+<li class="chapter" data-level="9.3" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-i-deviance-and-pseudo-r-squared"><i class="fa fa-check"></i><b>9.3</b> Assessing model fit I: deviance and pseudo r squared</a></li>
+<li class="chapter" data-level="9.4" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-ii-confusion-matrix-and-roc-curves"><i class="fa fa-check"></i><b>9.4</b> Assessing model fit II: confusion matrix and ROC curves</a></li>
+<li class="chapter" data-level="9.5" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#interactions"><i class="fa fa-check"></i><b>9.5</b> Interactions</a></li>
+<li class="chapter" data-level="9.6" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#further-resources-2"><i class="fa fa-check"></i><b>9.6</b> Further resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="wrapping-up.html"><a href="wrapping-up.html"><i class="fa fa-check"></i><b>10</b> Wrapping up</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelling Criminological Data LAWS20452</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="studying-relationships-between-a-categorical-and-a-quantitative-variable" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Studying relationships between a categorical and a quantitative variable</h1>
+<div id="the-logic-of-hypothesis-testing" class="section level2">
+<h2><span class="header-section-number">6.1</span> The logic of hypothesis testing</h2>
+<p>In the last unit we learned how to think about and build confidence intervals. We explained how we could use confidence intervals to deal with uncertainty when estimating population parameters. Confidence intervals as we will see are very commonly used in statistics. The other key inferential tool in data analysis is the hypothesis test. Today we will focus on this second tool.</p>
+<p>Last week we saw how we could use confidence intervals as well to form a view about whether there are differences across groups in the population. And we also saw how we could do “inference by eye” by virtue of visually comparing the confidence interval for the estimated mean value of fear for men and the estimated mean value of fear for women. Now we are going to use a different approach to make inferences about the existence of these differences in the population: hypothesis testing.</p>
+<p>Wikipedia defines a statistical hypothesis test as “a method of making decisions using data from a scientific study”. The logic of hypothesis testing is based in the work of a number of pioneers in the field of statistics, the British Ronald Fisher and Egon Pearson and the Polish Jerzy Neyman . This work is so important that <a href="http://simplystatistics.org/2012/03/07/r-a-fisher-is-the-most-influential-scientist-ever/">some people argue</a> that Sir Ronald Fisher is one of the most influential academics in the history of science; not a small feat!</p>
+<p>Hypothesis testing, or null hypothesis testing (NHST) as it is often referred to, proceeds in a number of steps.</p>
+<ol style="list-style-type: decimal">
+<li><strong>We always start with a research question</strong></li>
+</ol>
+<p>Our research questions in criminology can vary: Are ethnic minorities more likely to be stopped and searched? Does punishing offenders reduces crime? Is crime going down? Is self-control associated with offending? Here we are asking are women more afraid of violent crime than men?</p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>To answer a research question we have to formulate at least one and sometimes several research hypotheses related to it</strong></li>
+</ol>
+<p>A research hypothesis is simply a proposed answer to our research question that we can test by carrying out some research. Research hypothesis can be directional and non-directional:</p>
+<blockquote>
+<p>“When the research hypothesis does not indicate a specific type of outcome, stating only that there is a relationship or a difference, we say that it is a <strong>nondirectional hypothesis</strong>. However, in those cases where a researcher has a very clear idea of what to expect -based on prior research evidence and/or theory -the research hypothesis may be more precise. In this case, the researcher may specify the nature of the relationship that is expected. Such a research hypothesis is called a <strong>directional hypothesis</strong>. When a directional hypothesis is used, the researcher states at the outset that he or she is interested in a specific type of outcome -for example, that one group has more arrests than another. Suppose we are interested in comparing the arrest records of drug involved offenders with those of offenders who do not use drugs. Our research hypothesis might be simply that the arrest records of drug involved offenders and offenders who do not use drugs are different (a nondirectional hypothesis). But based on prior knowledge of criminal behaviour among drug-involved offenders, we might want to state a directional hypothesis -that drug-involved offenders have more serious arrest records than do non-drug involved offenders. One problem with choosing the latter option is that if we state our research hypothesis as a directional hypothesis, we are stating that we are not interested in outcomes that fall in the opposite direction. In criminal justice research, we can often be surprised by what we learn in a study. Accordingly, researchers generally are cautious in defining a directional research hypothesis” (Weisburd and Britt, 2010: 120)</p>
+</blockquote>
+<p>In our example, the research hypothesis will be nondirectional and simply state that there are differences in the fear of violent crime among men and women.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>The following step is to formulate what is called a null hypothesis</strong></li>
+</ol>
+<p>In frequentist statistical inference we test hypothesis not in reference to the research hypothesis but in reference to the <strong>null hypothesis</strong>. The null hypothesis gains its name from the fact that it usually states that there is no relationship or no difference. “We make decisions about hypothesis in relation to the null hypothesis rather than the research hypothesis. This is because the null hypothesis states that the parameter in which we are interested is a particular value” (Weisburd and Britt. 2010: 122).</p>
+<p>In the example that we are using the null hypothesis would be that there is no difference in mean level of fear for males and females. This is the same than saying that the difference on fear for these two groups is zero. So, using the null hypothesis gives us a specific value. Typically this value is zero, whereas the research hypothesis would be consistent with any of many values other than zero. We will see in a second why working with a precise value such as zero is helpful.</p>
+<p>De Veaux et al (2012) explain the logic of hypothesis testing as being similar to the logic of jury trials. In jury trials within the Common Law tradition somebody is innocent until proven guilty:</p>
+<blockquote>
+<p>“the null hypothesis is that the defendant is innocent… The evidence takes the form of facts that seem to contradict the presumption of innocence. For us” (researchers) “this means collecting data… The next step is to judge the evidence. Evaluating the evidence is the responsibility of the jury in a trial, but if falls on your shoulders in hypothesis testing. The jury considers the evidence in light of the presumption of innocence and judges whether the evidence against the defendant would be plausible if the defendant were in fact innocent. Like the jury, you ask, <strong>‘Could these data plausibly have happened by chance if the null hypothesis were true?’</strong> If they are unlikely to have occurred, then the evidence raises a reasonable doubt about the null hypothesis. Ultimately, you must make a decision. The standard of beyond a reasonable doubt is wonderfully ambiguous… But when you ask the same question of your null hypothesis, you have the advantage of being able to quantify exactly how surprising the evidence would be were the null hypothesis true” (De Veaux et al. 2012: 479)</p>
+</blockquote>
+<p>So, in hypothesis testing we look at our observed sample data. In our case, we look at the difference in fear of violent crime for males and females and we ask ourselves the question: is the observed difference likely to have come from a population where the real difference is zero (as our null hypothesis specifies)? As you can see, testing against the null gives us the advantage of testing against a specific value. We can compare the value that we observe with zero, the precise value hypothesised by the null hypothesis. <em>The downsise of it is that few things are exactly the same in nature.</em> So to say that the level of fear of crime in men and women is probably not exactly the same (e.g., a difference of zero) is arguably not always going to give us the answer that we want.</p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>The fundamental step in hypothesis testing, therefore, is the question: are the observed data surprising, given the null hypothesis? And the key question is to determine exactly how likely the data we observed would be were the null hypothesis a true model of the world</strong></li>
+</ol>
+<p>So in essence we are after a probability, specifically a conditional probability (i.e, <em>the probability of our data if the null hypothesis were true</em>). We are trying to quantify the probability of seeing data like the one we have observed (a difference of 0.79 in our example) if we take as given that the null hypothesis is true (and the value “should be” zero). We call this probability the <strong>p value</strong>. You may have heard this term before. All it means, it bears repeating, is <strong>the probability of observing our data if the null hypothesis were true</strong>.</p>
+<blockquote>
+<p>“<strong>When the p value is high</strong>, then we can conclude that we have not seeing anything unusual. Events that have a high probability of happening happen often. The data are thus consistent with the model from the null hypothesis, and we have no reason to reject the null hypothesis. But we realize many other similar hypotheses could also account for the data we’ve seen, so we haven’t proven that the null hypothesis is true. The most we can say is that it doesn’t appear to be false. Formally, we fail to reject the null hypothesis. That’s a pretty weak conclusion, but it’s all we’re entitled to. <strong>When the p value is low enough</strong>, it says that it’s very unlikely we’d observed data like these if our null hypothesis were true. We started with a model. Now the model tells us that the data are unlikely to have happened. The model and the data are at odds with each other, so we have to make a choice. Either the null hypothesis is correct and we’ve just seen something remarkable, or the null hypothesis is wrong…” (De Veaux et al. 2012: 480)</p>
+</blockquote>
+<p>When is a p value high and when is low? Typically, we use criteria similar to those we use when constructing confidence intervals: we would consider a p value low enough if 95% of the time the observed data was considered to be inconsistent with the model proposed by our null hypothesis. So, we look for p values that are smaller or bigger than 0.05.</p>
+<p>SOMETHING ABOUT MORE CONSERVATIVE APPROACHES AND THE EXISTNIG DEBATE</p>
+<p>That is, we look for differences that happen less than 5% of the time before we tentatively reject the null hypothesis. However, there is nothing sacrosanct about 95% and you could have good reasons to depart from this criterion (read page 123 to 128 of Weisburd and Britt, 2010 for further details). In fact, only last year a number of researchers argued we should use a more stringent p value to address the crisis of reproducibility in science.</p>
+<p>You will see that statistics books refer to the threshold we use to define a p value as high or low as our <strong>level of statistical significance</strong> (also often referred to as the <strong>alpha level</strong>). In our example here (and all the others we will use this semester) we will use an alpha level of 0.05. That is we will reject the null hypothesis <em>only if our p level is below that threshold</em>.</p>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>After defining our research and null hypothesis and having taken a decision of how low our p value ought to be in order to reject the null hypothesis, we need to specify a model for testing this null hypothesis. All models make assumptions, so an important part of specifying a model is stating your assumptions and checking that they are not being violated. </strong></li>
+</ol>
+<p>Through the semester we will cover a number of statistical tests, all with their own assumptions. These tests are appropriate in different circumstances (defined by their assumptions). Basically what we will be doing in the remaining thematic units this semester is to explain what those circumstances are for each test so that you can choose the right one on each occasion. We will see later the assumptions made by the sort of hypothesis tests you use to compare means across groups.</p>
+<ol start="6" style="list-style-type: decimal">
+<li><strong>Once we’ve gone through all those steps comes the calculation of the test statistics and, based on the results, our decision</strong></li>
+</ol>
+<p>Different tests that we will encounter this semester have different formulas. Sometimes I will give you a basic description of what those formulas are doing, because it is good to know what is being computed for conceptual understanding. But the mechanics are handled by the computer. You won’t need to memorise those formulas nor calculate anything yourself.</p>
+<p>The ultimate goal of these statistical tests for hypothesis testing is to obtain a p value: the probability that the observed statistic (or a more extreme value) occurs if the null model is correct. If the p value is small enough (smaller than our alpha level: such as 0.05) then we will <strong>“reject the null hypothesis”</strong>. If it is not, we will <strong>“fail to reject the null hypothesis”</strong>. The language is important.</p>
+<p>Whatever you decide, the <em>American Psychological Association Statistical Committee</em> recommends that it is always a good idea to report the p value as an indication of the strength of the evidence. That is, not only report the finding to be significant or not, also report your actual p value.</p>
+</div>
+<div id="comparing-means-across-two-groups-the-t-test" class="section level2">
+<h2><span class="header-section-number">6.2</span> Comparing means across two groups (the t test)</h2>
+<p>Let’s elaborate with our example. Our research question is whether women are more afraid of crime. We are going to test a non-directional hypothesis and use an alpha level of .05. The test we use in this case is the t test, which relies in the t Student distribution introduced last week. This test makes a number of assumptions that we need to check first.</p>
+<p>INFO ABOUT THE T TEST</p>
+<p>This t test makes a number of assumptions:</p>
+<ol style="list-style-type: decimal">
+<li><p><em>We are comparing means or proportions</em> (that is our original variable is either a quantitative variable OR we have a binary variable with a large sample) across two groups. We are indeed doing so.</p></li>
+<li><p>Population distribution: <em>normal distribution is assumed in both populations</em> (but this assumption can be relaxed if both samples are large). We will check this shortly. Because the tests make assumptions about the shape of the distribution we say that the t test is a <strong>parametric test</strong>. Tests that do not make this sort of assumptions are called non-parametric.</p></li>
+<li><p>Independence assumptions: To use the method <em>the two groups must be independent of each other</em>.This assumption would be violated if, for example, one group would consist of husbands and the other group their wives. The values for couples might be related. But this is not the case with the BCS data. Similarly if we compare an individual before and after a treatment, his/her observations would be related. For these situations we would need a different test (the dependent t test, which we won’t cover).</p></li>
+<li><p>Sampling method: the data were obtained through <em>independent random sampling</em>. The BCS uses a complex survey design which would require the use of special procedures for hypothesis testing. However, those special procedures are well beyond the scope of this course and would typically be covered in more advanced courses. Therefore, for convenience we will proceed as if this assumption is met.</p></li>
+</ol>
+<p>You may also want to check for outliers by plotting the data, for in some cases this may distort your results, particularly with smaller samples. So we are ok with 1 and 2, and are going to proceed as if 4 is met. What about normality? With large samples you can relax this assumption. However, you may want to also check if your sample data are normally distributed.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##R in Windows have some problems with https addresses, that&#39;s why we need to do this first:
+urlfile&lt;-<span class="st">&#39;https://raw.githubusercontent.com/jjmedinaariza/LAWS70821/master/BCS0708.csv&#39;</span>
+<span class="co">#We create a data frame object reading the data from the remote .csv file</span>
+BCS0708&lt;-<span class="kw">read.csv</span>(<span class="kw">url</span>(urlfile))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2,<span class="dt">quietly=</span><span class="ot">TRUE</span>, <span class="dt">warn.conflicts=</span><span class="ot">FALSE</span>)
+<span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> tcviolent, <span class="dt">colour =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="co">#you will need to load the data as explained in week 1</span>
+<span class="st">  </span><span class="kw">geom_density</span>() </code></pre></div>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The plotted density provide a visual tool for assessing the unimodality and the symmetry of the distribution. Later we will discuss a more elaborate graphical tool for assessing the normal condition (e.g., the normal probability plot).</p>
+<p>For now let’s assume this is good enough. Then we would be ready to compute the t test.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(tcviolent <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> BCS0708)</code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  tcviolent by sex
+## t = 29.114, df = 8398.3, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.5614656 0.6425300
+## sample estimates:
+## mean in group female   mean in group male 
+##            0.3281656           -0.2738322</code></pre>
+<p>If the code and the results look familiar is because we already saw them last week when producing the confidence interval for the sampling distribution of the difference of two means. Last week we focused on the 95% confidence interval, now we are going to look at the first few lines of printed output.</p>
+<p>First we see is the so-called <strong>Welch two sample t-test</strong>. It is a version of the t test that does not assume that the variance of your response variable is the same for your two groups. It is the default version we will always use. You also see a value for “t” (29.11), this is the test statistic obtained using the formula for the t test and something called df (abbreviation for degrees of freedom).</p>
+<p>Farther to the right you see a value for p, this gives the probability associated with observing the difference in our sample if the null hypothesis were true. This value is 2.2e-16. If you are not used to this notation essentially what it means is that you need to move the decimal point 16 times to the left. In other words, the p value here is very close to 0 and therefore we can reject the null hypothesis that the difference in the population is 0. The observed difference in this sample would have been rather implausible if the null hypothesis were true. Therefore, here we would argue that our evidence suggests that we can reject the null hypothesis. We can say that there is a <strong>statistically significant</strong> difference between fear of violent crime for men and women in England and Wales.</p>
+<p>It is important you remember this: <strong>the p value is not the probability that the null hypothesis is true</strong>. Imagine that our p value was 0.04. As tempting as it may be to say that a p value of 0.04 means there is a 4% chance that the null hypothesis is true, that just isn’t right. The only thing that we are in a position to state is: given the null hypothesis, there is a 4% chance of observing the difference that we have actually observed (or one more unlikely).</p>
+</div>
+<div id="what-does-a-significant-effect-mean" class="section level2">
+<h2><span class="header-section-number">6.3</span> What does a significant effect mean?</h2>
+<p>Before we said that the difference between the mean score of fear of violent crime for males and females is statistically significant. It is of critical importance that you understand what this actually means. Unfortunately, in this context significance does not quite have the same meaning that we give it in normal language.</p>
+<p>When in normal language we say that something is significant we mean to say that it is important. When in statistics we say that something is statistically significant <em>we don’t mean to say that it is important</em>. All it means is that, if we trust our data and methods, we are in a position to reject the null hypothesis with the threshold (alpha level) that we specified (0.05) a priori. It is something much more specific as you can see. Basically all we are saying is that we are willing to reject the null hypothesis that there is whatsoever no difference (or relationship) in the population.</p>
+<p>However, rejecting the null hypothesis is, very often, not terribly “important” in a practical or theoretical sense. Think about our example. All we can say as a result of our t test here is that in the population on average the difference between fear of violent crime for males and females is likely to be different from zero. That’s all! The null hypothesis, in this sense, is almost invariably known to be untrue even before you do your study! Is that significant in the normal sense (i.e., important)? Is a difference of -0.6 in these scores important? The fact this variable uses an artificial metric makes it even more difficult to evaluate.</p>
+<p>To make statistical significance even more “insignificant” in a practical sense, if you work with large samples almost everything will be statistically significant. It is easier to achieve statistically significant results if your sample size is large enough. Some statisticians therefore are very dismissive of p values as not very informative. They argue that p values may simply be a measure of sample size.</p>
+<p>Precisely for these reasons, it is always important to combine the use of p values with some discussion of the <strong>effect size</strong>. That is, you not only want to discuss the probability of a difference in the population but want to say something about the magnitude of the observed difference.</p>
+<p>In the example we are examining the effect size is the observed difference of -0.6. Is this large or small? Interpreting this in raw format, in the original scale, requires some subjective judgement. And I mean subjective in a positive way, it means you have to think about it. Unfortunately, the original scale here uses an artificial metric that is difficult to evaluate on its own.</p>
+<p>We can always look at <strong>standardised measure of the effect size</strong>. You will find a number of standardised measures of effect size. They aim to give you a sense of how large these differences are by using a standardised metric. We are just going to use one of them, Cohen’s d, for this scenario. We can obtain this measure with the <code>cohen.d()</code> function from the <code>effsize</code> package, which you will have to install.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(effsize, <span class="dt">quietly=</span><span class="ot">TRUE</span>, <span class="dt">warn.conflicts=</span><span class="ot">FALSE</span>)
+<span class="kw">cohen.d</span>(BCS0708<span class="op">$</span>tcviolent <span class="op">~</span><span class="st"> </span>BCS0708<span class="op">$</span>sex)</code></pre></div>
+<pre><code>## 
+## Cohen&#39;s d
+## 
+## d estimate: 0.6281126 (medium)
+## 95 percent confidence interval:
+##     lower     upper 
+## 0.5843047 0.6719205</code></pre>
+<p>The output suggest that the Cohen’s d estimate is a medium effect size. Cohen proposed a set of rules of thumb to interpret the d statistic: an effect size (in absolute value) of 0.2 to 0.3 might be a “small” effect, around 0.5 a “medium” effect and 0.8 to infinity, a “large” effect. However, keep in mind these rules are not absolute. In some fields of research and in relation to some problems the rules of thumb may be slightly different. You need, in professional practice, to be alert to those nuances by being familiar to the rules that other researchers use in your particular area of work.</p>
+<p>How do we write our results up? We could say the following (and in case you are wondering, we covered last week how to obtain the standard errors using the psych package):</p>
+<blockquote>
+<p>“On average, males have a lower score of fear of violent crime (M=-.27, SE=.01) than the female group (M=.33, SE=.02). Using an alpha level of 0.05, this difference was significant (t=-29.11, p=.000) and represented a medium-sized effect (Cohen’s d=-0.63).”</p>
+</blockquote>
+<p>This is what you would write in your “Findings” section. In your “Conclusions” you would need to discuss what the theoretical or practical implications of this finding are; connecting it to existing theoretical debates. If your test had been insignificant (a p value greater than 0.05) then you would have to say so: “the difference was insignificant, thus, we failed to reject the null hypothesis”.</p>
+<p>One important thing to remember is that when doing hypothesis testing there is always the possibility of error. Our statements are probabilistic. We could be rejecting the null hypothesis when we shouldn’t (false positive or Type I error), if we are using an alpha level of .05 this may happen 5% of the time, or we may fail to reject the null hypothesis when we should (false negative or Type II error).</p>
+<div class="figure">
+<img src="http://flowingdata.com/wp-content/uploads/2014/05/Type-I-and-II-errors1-625x468.jpg" alt="Errors" />
+<p class="caption">Errors</p>
+</div>
+</div>
+<div id="power-analysis" class="section level2">
+<h2><span class="header-section-number">6.4</span> Power analysis</h2>
+<p>In this section we introduce the <code>pwr</code> package for power analysis. In the video lectures you had to watch as preparation for today we introduced the notion of power analysis. In order for a statistical test to be able to be effective, to be able to detect an effect, you need to have sufficient power. Power is related to the magnitude of the effect (it will be easier to detect stronger rather than weaker effects) and sample size (it will be easier to detect effects with large samples than with small samples). A problem with many scientific studies is that they are <em>underpowered</em>, the fail to reject the null hypothesis simply because they do not have sufficient power (often because the sample size is not large enough). Power analysis is generally done during the planning of an analysis so that you know what kind of sample you are going to need if you want to be able to run meaningfull hypothesis tests. That is you do your power analysis before you collect your data.</p>
+<p>But we can also check how much power we have after the fact, just to ensure we are not failing to reject the null hypothesis as a consequence of insufficient power. For this purposes we can use the <code>pwr</code> package. For computing the power when comparing two sample means we use the <code>pwr.t2n.test</code> function. This function expects we provide the sample size of each group (if we are doing the power calculation after we have collated our data) and the effect size we may want to be able to detect. Let’s see how many people we have in each of our two groups (male and females) when assessing differences in fear of violent crime.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(psych)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;psych&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:effsize&#39;:
+## 
+##     cohen.d</code></pre>
+<pre><code>## The following objects are masked from &#39;package:ggplot2&#39;:
+## 
+##     %+%, alpha</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">describeBy</span>(BCS0708<span class="op">$</span>tcviolent, BCS0708<span class="op">$</span>sex)</code></pre></div>
+<pre><code>## 
+##  Descriptive statistics by group 
+## group: female
+##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02
+##      se
+## X1 0.02
+## -------------------------------------------------------- 
+## group: male
+##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91
+##      se
+## X1 0.01</code></pre>
+<p>Ok, so that is 4475 and 3959. Let’s say we want to detect even very small effect sizes. The functions in this package assume a default .05 level of statistical significance, although this is something we could change. So if we go with the default, we would write as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(pwr)
+<span class="kw">pwr.t2n.test</span>(<span class="dt">n1 =</span> <span class="dv">4475</span>, <span class="dt">n2 =</span> <span class="dv">3959</span>, <span class="dt">d=</span> <span class="fl">0.2</span>)</code></pre></div>
+<pre><code>## 
+##      t test power calculation 
+## 
+##              n1 = 4475
+##              n2 = 3959
+##               d = 0.2
+##       sig.level = 0.05
+##           power = 1
+##     alternative = two.sided</code></pre>
+<p>The function is telling us that we have a power of 1. The statistical power ranges from 0 to 1, and as statistical power increases, the probability of making a type II error (wrongly failing to reject the null) decreases. So with a power of 1 we are very unlikely indeed to failing to reject the null hypothesis when we should.</p>
+<p>With sample sizes this large, you are unlikely to run into problems with power. But these things do matter in particular applications. Think for example of cases when you are trying to evaluate if a particular criminal justice intervention works. If you work with small samples you may wrongly conclude that your intervention didn’t make a difference (you fail to reject the null hypothesis) because you did not have sufficient statistical power. This was a common problem in older studies (see <a href="https://www.sciencedirect.com/science/article/pii/0047235289900044">here</a> for a review) and it is a problem that still persist to some extent (read <a href="https://www.tandfonline.com/doi/abs/10.1080/07418825.2018.1495252">this</a> more recent review).</p>
+</div>
+<div id="comparing-means-across-several-groups-anova" class="section level2">
+<h2><span class="header-section-number">6.5</span> Comparing means across several groups (ANOVA)</h2>
+<div id="the-problem-with-multiple-comparisons" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> The problem with multiple comparisons</h3>
+<p>We have used the t test to assess differences in a metric variable across two groups defined by a categorical variable. As we have explained during the class, if you are interested in comparing across more than two groups then you cannot run multiple t tests. Why? Because we would run into the problem of <a href="http://en.wikipedia.org/wiki/Multiple_comparisons_problem"><strong>multiple comparisons</strong></a> illustrated below:</p>
+<div class="figure">
+<img src="http://imgs.xkcd.com/comics/significant.png" alt="xkcd" />
+<p class="caption">xkcd</p>
+</div>
+<p>By running multiple comparisons you increase the change that you find significant differences by random chance alone. Imagine you throw a six face dice with numbers from 1 to 6. What is the probability of getting a 1? Right, 1/6. Now. Imagine that we throw the dice 6 times. What is the probability of getting a 1 at least once. Well, it would be the probability of getting a one each of the times multiplied by the number of times.</p>
+<p>You can think of a statistical test as equivalent to this. The more times you run the test the higher the probability that something will come out significant. As the number of comparisons (tests) increase, the chances that this will happen increase. So, instead of running multiple t tests, we will run a single ANOVA test that allow us to explore whether there are significant differences across the groups being compared.</p>
+</div>
+<div id="visual-exploration-of-differences-in-the-distributions-across-the-groups" class="section level3">
+<h3><span class="header-section-number">6.5.2</span> Visual exploration of differences in the distributions across the groups</h3>
+<p>We will look at the distribution of scores of fear of violent crime (<code>tcviolent</code>) vary across the ethnic groups indexed by the variable <code>ethgrp2</code>. Let’ visualise these differences:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(ethgrp2, tcviolent, <span class="dt">fill=</span>ethgrp2)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.size=</span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="ot">FALSE</span>) </code></pre></div>
+<pre><code>## Warning: Removed 3242 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>What you see here is that the boxplot also displays the values of fear for the few individuals in the dataset for which we don’t know the ethnicity (“NA” in the X axis). In many occasions this is not what you want. At least you are trying to understand your missing data problem (an advanced topic which we don’t cover this semester), you only want a plot that uses information for the individuals with valid information (that is the ones for which we have data on fear and ethnicity). If you have quite a few NA cases and they seem systematically different from the other groups, you may have some reasons to be concerned.</p>
+<p>You can use the following code to modify the display (and also to ensure the boxes are ordered around the x axis not by alphabetical order but by order of the level of fear). The <code>na.omit()</code> function ask R to omit from the data all cases with missing information on the specified columns. The <code>reorder()</code> function ensure that the x axis is ordered according to the level of fear.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">na.omit</span>(BCS0708[,<span class="kw">c</span>(<span class="st">&quot;ethgrp2&quot;</span>, <span class="st">&quot;tcviolent&quot;</span>)]), <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span> (ethgrp2, tcviolent), <span class="dt">y=</span>tcviolent, <span class="dt">fill=</span>ethgrp2)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span><span class="st"> </span><span class="co">#We are flipping the coordinates to avoid the overprinting of the factor levels</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>You can see here slightly different distributions of fear for the ethnic groups. Notice for example how 75% of the Asian group has scores on fear of crime that are higher than those of 50% of individuals in the White group. Let’s look at the statistics:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(psych)
+<span class="kw">describeBy</span>(BCS0708<span class="op">$</span>tcviolent, BCS0708<span class="op">$</span>ethgrp2)</code></pre></div>
+<pre><code>## 
+##  Descriptive statistics by group 
+## group: asian or asian british
+##    vars   n mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 283 0.88 1.17   0.68    0.86 1.32 -2.07 3.32  5.39 0.19    -0.89
+##      se
+## X1 0.07
+## -------------------------------------------------------- 
+## group: black or black british
+##    vars   n mean   sd median trimmed mad   min  max range skew kurtosis
+## X1    1 120  0.5 1.14    0.3    0.48 1.2 -1.85 2.59  4.44 0.17    -0.92
+##     se
+## X1 0.1
+## -------------------------------------------------------- 
+## group: chinese or other
+##    vars  n mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 93 0.34 1.14   0.23     0.3 1.33 -1.64 2.81  4.45 0.31    -0.88
+##      se
+## X1 0.12
+## -------------------------------------------------------- 
+## group: mixed
+##    vars  n mean  sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 35 0.52 1.3   0.39     0.5 1.16 -2.34 2.97   5.3 0.22    -0.68
+##      se
+## X1 0.22
+## -------------------------------------------------------- 
+## group: white
+##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 7902    0 0.98  -0.15   -0.09 0.88 -2.35 3.81  6.16 0.85     0.72
+##      se
+## X1 0.01</code></pre>
+<p>Looking at the results we can clearly see that there seem to be some differences in the means across groups. The White group has the lowest mean (.00) and the Asian group has the highest mean (.88), this is consistent with the other location measures displayed in the boxplot (quartiles and the median). But how precise are these point estimates for the means as measures of the population parameters? How much trust can we place in them as indicative of the true level of fear of crime in the various ethnic groups in the population?</p>
+<p>I want you to pay attention to the column in that table that provides you with the sample size for each of the ethnic groups. Notice anything worth thinking about here? Do you think that the estimates of fear of crime for each of these ethnic groups will be equally precise? Remember the lecture on sampling variability, sampling distributions, and confidence intervals, do you think that (given the different size of the samples for the various ethnic groups) the confidence interval will be equally wide for each of them? Why? Why not?</p>
+<p>We have now examined the means for fear of crime for the various ethnic groups and have seen how the Asian group seem to have the highest average level of fear. But we have discussed in the class that point estimates are “problematic” because they do not communicate sampling variability - for that we need confidence intervals. Last week we explained how to do confidence intervals for the mean of two groups. I am going to show you here a different way of plotting confidence intervals for means of various groups.</p>
+<p>The simplest way to do this is with the <code>plotmeans</code> function in the <code>gplots</code> package (not to confuse with the <code>ggplot2</code> package). This function uses by default the t Student distribution for computing the confidence intervals (given the small sample size of some of the groups this is appropriate here):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#You will need to install this package first</span>
+<span class="kw">library</span>(gplots)
+<span class="kw">plotmeans</span>(tcviolent <span class="op">~</span><span class="st"> </span>ethgrp2, <span class="dt">data =</span> BCS0708) <span class="co">#if you rather use the normal approximation you could use an additional argument: use.t=FALSE</span></code></pre></div>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>When you only have two groups you can use these graphs (error bars displaying confidence intervals) in a way equivalent to the way that you use a t test, but when you have multiple groups you need to think about the problem of multiple comparisons.</p>
+</div>
+<div id="anova" class="section level3">
+<h3><span class="header-section-number">6.5.3</span> ANOVA</h3>
+<p>So, again, we see some differences in means. Are these differences statistically significant? In other words, can we infer that they exist in the population from which the sample was drawn? For this we can run ANOVA and an F test.</p>
+<p>How does this test work? We run ANOVA because we want to decide if the sample means are different enough for us to be able to reject the null hypothesis that they are different in the population. Clearly, if they are very different between themselves in the sample we will be in a stronger position to do this. That should be clear: if you want to talk abut differences in the population observing big differences across the means in the sample gets you closer to that.</p>
+<p>What ANOVA does is to contrast the variability between the groups with the variability within the groups to produce a ratio: (Variability between the groups)/(Variability within the groups). If there is more variability between the groups than within the groups the more confidence we can have in a conclusion that the population means are not equal. Likewise, if there is more variation within the groups than between the groups, we will be in weaker ground to conclude that the population means are different. This <a href="https://www.youtube.com/watch?v=ITf4vHhyGpc">short video</a> explains it with an example.</p>
+<p>So that’s how ANOVA gets the name, it is a ratio of variability, to be more precise a ratio of variances. The observed value is then compared to a probability distribution we haven’t covered yet: the <a href="http://en.wikipedia.org/wiki/F-distribution">F distribution</a>. We have talked about the normal and the t distribution, the F distribution is just another family of probability distributions. But the idea remains the same earlier in relation to the t test. If you obtain large absolute values for F, you will be more confident that the observed differences are inconsistent with the null hypothesis. These values will have a low probability of being observed if the null hypothesis is true (if all the population means are equal) and therefore we will be able to reject this null hypothesis.</p>
+<p>To run the ANOVA test we use the <code>aov()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fearmodel.<span class="dv">1</span>&lt;-<span class="st"> </span><span class="kw">aov</span>(tcviolent <span class="op">~</span><span class="st"> </span>ethgrp2, <span class="dt">data=</span>BCS0708)
+<span class="kw">summary</span>(fearmodel.<span class="dv">1</span>)</code></pre></div>
+<pre><code>##               Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## ethgrp2        4    253   63.21   64.54 &lt;2e-16 ***
+## Residuals   8428   8254    0.98                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 3243 observations deleted due to missingness</code></pre>
+<p>The result is significant suggesting that there are some significant differences across the ethnic groups in fear of violent crime. The probability of observing this data, with the noted differences in means, if the null hypothesis were true is also very low (&lt;2e-16).</p>
+<p>Done, right? Well, not quite. Remember the steps in a hypothesis test. Before running the test we need to think and check the assumptions of the test, that should precede running the test. The ANOVA F test makes the following assumptions: + <strong>Independence assumption</strong>: the groups must be be independent of each other (this assumption would be violated if for example we compare a subjects performance before some treatment, again during the treatment, and then after the treatment: for this you would need something called <em>repeated measures ANOVA</em> which we don’t have the time to cover). + <strong>Randomisation condition</strong>: were the groups created through randomisation or in case of surveys are the data from each group a representative sample of that group? As with the t test, we are assuming simple random selection, which is not the case when the survey uses a complex survey design (but as we said then we will ignore this for convenience). + <strong>Equal variance assumption</strong> (also called the lovely names of homogeneity of variance or homoskedasticity): to check this assumption you need to check that the groups have similar variances (we’ll discuss this in greater length next). But it is important you know statisticians have discussed the degree to which this assumption matters, or in other words to what degree ANOVA is <em>robust</em> to violations of this assumptions. Is ANOVA robust (will give us results we can trust) when this assumption is violated? Andy Field and his co-authors (2012) discuss this at length in page 413. His view is that “when sample sizes are unequal, ANOVA is not robust to violations of homogeneity of variance” and we should proceed accordingly. + <strong>Normal population assumption</strong>: like the t test, we need to assume that the normal model is reasonable for the populations underlying each of the treatment groups.</p>
+</div>
+<div id="checking-homogeneity-of-variance-and-dealing-with-unequal-spread" class="section level3">
+<h3><span class="header-section-number">6.5.4</span> Checking homogeneity of variance and dealing with unequal spread</h3>
+<p>Let’s start by discussing why we care about the spread of the groups. Remember that ANOVA contrasts variability between the groups with variability within each group. If the variability within the groups varies, we are making this pooled variance larger, reducing the F statistic, and making it less likely that we can reject the null hypothesis. So when you have this problem, the ANOVA test will usually be a conservative test that will reject your null hypothesis less often than it should.</p>
+<p>Look at the boxplots we produced. Does it look as if the spreads change systematically with the centres? Do the boxes with the bigger centres also have the wider spread? This sort of systematic trend may be more concerning than random differences in spread across the groups.</p>
+<p>We can also run a test that will check the homogeneity of variance. This is the <a href="http://en.wikipedia.org/wiki/Levene&#39;s_test">Levene Test</a>. We can run this test with the <code>leveneTest()</code> function of the <code>car</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(car)
+<span class="kw">leveneTest</span>(BCS0708<span class="op">$</span>tcviolent, BCS0708<span class="op">$</span>ethgrp2, <span class="dt">center =</span> median)</code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##         Df F value    Pr(&gt;F)    
+## group    4  13.433 6.476e-11 ***
+##       8428                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>In this case, the test is significant suggesting that the variances are different in the population. However, you need to keep in mind that with the large samples of some of the groups this result is unsurprising.</p>
+<p>We can further explore this assumption plotting the results from the ANOVA model we already run. Plotting the results of this ANOVA model allows us to inspect some plots that are useful for diagnosing problems.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(fearmodel.<span class="dv">1</span>) <span class="co">#Running this would result in four consecutive plots.</span>
+<span class="co">#Alternatively if you don&#39;t want to run ANOVA first and store the results in an object</span>
+<span class="kw">plot</span>(<span class="kw">aov</span>(tcviolent <span class="op">~</span><span class="st"> </span>ethgrp2, <span class="dt">data=</span>BCS0708))</code></pre></div>
+<p>As Andy Field and his colleagues (2012) suggest the more important of these plots are the first two (to assess equal spread and normality). If you don’t want to print the four diagnostic plots you need to use more specific instructions so that R know which one you want. Let’s just get the plot we need for assessing equal spread:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">fitted</span>(<span class="kw">aov</span>(tcviolent <span class="op">~</span><span class="st"> </span>ethgrp2, <span class="dt">data=</span>BCS0708)), <span class="kw">resid</span>(<span class="kw">aov</span>(tcviolent <span class="op">~</span><span class="st"> </span>ethgrp2, <span class="dt">data=</span>BCS0708)), <span class="dt">xlab =</span> <span class="st">&quot;Fitted values&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Residuals vs Fitted&quot;</span>)     <span class="co"># plot a diagnostic check for heteroscedasticity in the residuals from the response Y to a factor or numeric A</span></code></pre></div>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>This plot can be used to further explore homogeneity of variances. It is a plot of residuals versus fitted values (we will return to this later on this semester, for now just focus on interpretation as detailed below). We already know the Levene Test is significant and that the variances cannot be assumed to be the same in the population. In this sort of situations you expect plots such as this in which the vertical lines do not have the same length (longer collection of points suggests more variance and shorter collection of points less variance). We should be particularly concern with any systematic patterning (that is some sort of funnelling visual effect suggesting a systematic shortening or expanding of the lines as we move right to left in the X axis).</p>
+<p>It looks as if the larger group (Whites) is the one with more variance. Again, in this sort of scenarios the ANOVA F Test will be more conservative (it may lead you to reject the null hypothesis in more occasions than it is warranted). Despite this we found a significant effect, so in practical terms it does not look as if the homogeneity of variance was such a big deal (it made our test more conservative right, but we still manage to reject the null hypothesis).</p>
+<p>In those situations when you are concerned about the violation of this assumption because you have samples for some of the groups, we could run instead of ANOVA the Welch’s F test for equality of means:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">oneway.test</span>(tcviolent <span class="op">~</span><span class="st"> </span>ethgrp2, <span class="dt">data=</span>BCS0708)</code></pre></div>
+<pre><code>## 
+##  One-way analysis of means (not assuming equal variances)
+## 
+## data:  tcviolent and ethgrp2
+## F = 46.663, num df = 4.00, denom df = 155.14, p-value &lt; 2.2e-16</code></pre>
+<p>In this case, the substantive conclusion is unsurprisingly the same. You reject the null hypothesis given the low p value associated with the observed F value.</p>
+</div>
+<div id="checking-normality-and-dealing-with-problems" class="section level3">
+<h3><span class="header-section-number">6.5.5</span> Checking normality and dealing with problems</h3>
+<p>The F tests require the underlying errors to follow a Normal model. Stricto sensu, we need to check the Normal model is reasonable for the population underlying each group. We should start by looking at the side-by-side boxplots for indications of skewness. If they are all or most skewed in the same direction, the normal condition will fail. We also need to look at outliers within each group (particularly with smaller samples). You may also find it useful to compare the density estimates.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">na.omit</span>(BCS0708[,<span class="kw">c</span>(<span class="st">&quot;ethgrp2&quot;</span>, <span class="st">&quot;tcviolent&quot;</span>)]), <span class="kw">aes</span>(<span class="dt">x =</span> tcviolent, <span class="dt">fill =</span> ethgrp2)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> .<span class="dv">3</span>)</code></pre></div>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>We can also use a <a href="http://en.wikipedia.org/wiki/Normal_probability_plot"><strong>normal probability plot</strong></a> of the residuals. If we had use <code>plot(fearmodel.1)</code>, the second of the four printed plots would be the normal Q-Q plot. Alternatively we can specifically ask for it:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(<span class="kw">resid</span>(<span class="kw">aov</span>(tcviolent <span class="op">~</span><span class="st"> </span>ethgrp2, <span class="dt">data=</span>BCS0708)), <span class="dt">main=</span><span class="st">&quot;Normal Q-Q Plot&quot;</span>)
+<span class="kw">qqline</span>(<span class="kw">resid</span>(<span class="kw">aov</span>(tcviolent <span class="op">~</span><span class="st"> </span>ethgrp2, <span class="dt">data=</span>BCS0708)), <span class="dt">col =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># normal scores check for skewness, kurtosis and outliers in in the residuals </span></code></pre></div>
+<p>As before, we are concerned here with clear departures from the red line. How do you interpret a QQ plot? It takes practice and some subjective judgement, it’s kind of an art. These are common patterns and possible interpretations:</p>
+<ul>
+<li><p>all but a few points fall on a line: <em>outliers in the data</em></p></li>
+<li><p>left end of pattern is below the line and right end of pattern is above the line:<em>long tails at both ends of the data distribution</em></p></li>
+<li><p>left end of pattern is above the line and right end of pattern is below the line: <em>short tails at both ends of the data distribution</em></p></li>
+<li><p>curved pattern with slope increasing from left to right: data distribution is <em>skewed to the right</em></p></li>
+<li><p>curved pattern with slope decreasing from left to right data distribution is <em>skewed to the left</em></p></li>
+<li><p>staircase pattern (plateaus and gaps): data have been rounded or are discrete</p></li>
+</ul>
+<p>You may find <a href="http://emp.byui.edu/BrownD/Stats-intro/dscrptv/graphs/qq-plot_egs.htm">these examples</a> of interpretation useful. We can see there are some at both ends.</p>
+<p>Also this <a href="https://xiongge.shinyapps.io/QQplots/">shiny app</a> is an interactive way to get your head around interpreting Normal QQ plots.</p>
+<p>The <code>qqPlot</code> function of the <code>car</code> package assists the interpretation by drawing a confidence interval around the expected values:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqPlot</span>(fearmodel.<span class="dv">1</span>)</code></pre></div>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<pre><code>## [1] 1761 4769</code></pre>
+<p>We can see that there is some departure from normality.</p>
+<p>Sometimes when non-normality is an issue <strong>transforming</strong> your variable may be a way of solving the problem. You create a new transformed variable based on the original one that will now meet the normality requirement. This is something that can also sort issues with extreme observations (outliers). The idea behind transformations is that “you do something to every score to correct for distributional problems, outliers or unequal variances” (Field et al. 2012). There’s nothing dodgy about it. It’s not like we are cheating, because the same transformation will be applied to all scores. But it changes the units of measurement, which can make interpretation a bit more obscure.</p>
+<p>There are many different potential transformations: log transformations, square root transformations, reciprocal transformations, reverse score transformations, etc. How do you choose? Trial and error. That is, you got to work and work until you find one that solves your problem. And sometimes none of the transformations give you an ideal solution.</p>
+<p>We will illustrate the process of trial and error for normalising <code>tcviolent</code> (as much as we can). Let’s look again at the distribution of the variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> tcviolent)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>()</code></pre></div>
+<pre><code>## Warning: Removed 3242 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>We can see that the distribution is multimodal and that the tail to the right is longer than the tail to the left, there is a positive skew. We can also see that the values range from negative to positive values. Many of the transformations we use do not work well when we have negative values or zeros. So one way to allow them to work is to add a constant large enough to avoid zeros. I will add three to the variable:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">BCS0708<span class="op">$</span>ptcviolent &lt;-<span class="st"> </span>BCS0708<span class="op">$</span>tcviolent<span class="op">+</span><span class="dv">3</span></code></pre></div>
+<p>This code creates a new variable <code>ptcviolent</code> in the BCS0708 dataframe that is the result of adding 3 to the original variable tcviolent. This ensures that all the values are positive. You will see all we have done is to shift the entire distribution to the positive side of the scale:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> ptcviolent)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>()</code></pre></div>
+<pre><code>## Warning: Removed 3242 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>Let’s see what happens when we apply a logarithmic transformation (often used with skewed data):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">log10</span>(ptcviolent))) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>()</code></pre></div>
+<pre><code>## Warning: Removed 3242 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>Oops… We squashed the right tail a bit too much and stretched it in the left hand side. We’ll have to try another transformation.</p>
+<p>Here I will discuss power transformations. We define a simple power transformation as the replacement of a variable X by X<sup>??</sup>. Often powers in the range from -2 to 3 are useful. The power -1 is in fact the reciprocal or inverse transformation. This family of transformations was first used by a seminal paper by Box and Cox in 1964, which is why you will find the literature refers to them as the Box-Cox (BC) transformations in their honour.</p>
+<p>How do you select the right power transformation? Again, trial and error. The <code>symbox()</code> function in the <code>car</code> package is useful for finding a transformation to approximate symmetry by trial and error. The following code will produce a series of boxplots comparing the distribution of our variable (<code>ptcviolent</code>) for various power transformations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">symbox</span>(BCS0708<span class="op">$</span>ptcviolent, <span class="dt">data=</span>BCS0708)</code></pre></div>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>We can see that the most symmetrical of all is the 0.5 transformation. Let’s create and plot a variable using this power transformation:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">BCS0708<span class="op">$</span>bctcviolent &lt;-<span class="st"> </span><span class="kw">bcPower</span>(BCS0708<span class="op">$</span>ptcviolent, <span class="fl">0.5</span>)
+<span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> bctcviolent)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>()</code></pre></div>
+<pre><code>## Warning: Removed 3242 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>The new variable to the left hand side has squashed the right tail. It is a bit more symmetrical. We can see this in a normal probability plot:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqPlot</span>(BCS0708<span class="op">$</span>bctcviolent)</code></pre></div>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<pre><code>## [1] 4388 4701</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqPlot</span>(BCS0708<span class="op">$</span>tcviolent)</code></pre></div>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-25-2.png" width="672" /></p>
+<pre><code>## [1] 1761 4769</code></pre>
+<p>As we said the normal probability plots using this function display a (red) straight line (which is how a normally distributed probability should look like in these plots) and then the dots (on black here) showing the actual distribution of data. You can see that the variable in which we took the 0.5 power of fear of crime (the first plotted) is a bit closer to the straight red line, but still showing some departure from normality.</p>
+<p>If we were happy with our transformations we could then run ANOVA as if the data was normal, only instead of comparing means on fear of violence we would be comparing means on whatever transformation we have made, scores of fear of crime raised to the 0.5 power (which to many mortals may sound rather obscure).</p>
+</div>
+<div id="robust-anova" class="section level3">
+<h3><span class="header-section-number">6.5.6</span> Robust ANOVA</h3>
+<p>Wilcox (2005) describes a set of procedures for conducting robust ANOVA: ways of doing ANOVA when there are problems with its assumptions. When everything goes completely wrong with the assumptions, you may want to look at these options.</p>
+<p>For this we need to install the package that he has created for implementing these procedures in R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(WRS2) </code></pre></div>
+<p>We can now invoke the code. The following code will use ANOVA based on 5% trimmed mean with 599 bootstrap samples:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(WRS2)
+<span class="kw">t1waybt</span>(tcviolent <span class="op">~</span><span class="st"> </span>ethgrp2, <span class="dt">data =</span> BCS0708, <span class="dt">tr =</span> .<span class="dv">05</span>, <span class="dt">nboot =</span> <span class="dv">599</span>)</code></pre></div>
+<pre><code>## Call:
+## t1waybt(formula = tcviolent ~ ethgrp2, data = BCS0708, tr = 0.05, 
+##     nboot = 599)
+## 
+## Effective number of bootstrap samples was 599.
+## 
+## Test statistic: 45.3591 
+## p-value: 0 
+## Variance explained 0.088 
+## Effect size 0.296</code></pre>
+<p>As with the standard ANOVA and the Welch version, we still get a significant result.</p>
+</div>
+<div id="post-hoc-comparisons" class="section level3">
+<h3><span class="header-section-number">6.5.7</span> Post Hoc Comparisons</h3>
+<p>So we are fairly certain there’s bound to be differences in the level of fear of crime across ethnic groups that may be reflective of those we see in our sample. In our sample (see below) the mean value of fear of violent crime across groups is different. The White group (.00) has the lowest level of fear and the Asian group the highest (.88). With the other groups with levels of fear of crime in between these two extremes: Chinese or Other (.34), Black (.50) and Mixed (.52).</p>
+<p>However, all the ANOVA test (and the Welch’s F test and the robust ANOVA) does is to tell you that there are significant differences across these categories. What it does not do is to tell you which of those differences are significant. In other words, we don’t know if, for example, the apparent difference between fear of crime for the White and the Chinese group is significant or not. We know that some of these differences are significant but we don’t know which ones. We can however run post hoc (after the fact) comparisons that would give us answers to these -although this would only make sense if the ANOVA (or equivalent) test has already detected some differences.</p>
+<p>There are different methods that have been proposed for doing post hoc multiple comparisons (see Field et al 2012 discussion in page 428-432). All of these methods try to take into account the problem of multiple comparisons and the way they modify the probability of finding a significant result, but they do it in a different way. Field et al. (2012) also explain how to compute a few different ones in pp. 447-451. I’m just going to illustrate one of these methods (Bonferroni adjustment) and you can learn about the others from Field et al. (2012).</p>
+<p>The <code>pairwise.t.test()</code> function asks for multiple t tests adjusting for the fact you are indeed running multiple comparisons. The first variable identifies your metric variable, then you identify the categorical predictor, and then you select the particular multiple comparison adjustment you are choosing. Check Field et al. (2012) for what some of the options are.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairwise.t.test</span>(BCS0708<span class="op">$</span>tcviolent, BCS0708<span class="op">$</span>ethgrp2, <span class="dt">p.adjust.method=</span><span class="st">&quot;bonferroni&quot;</span>) </code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  BCS0708$tcviolent and BCS0708$ethgrp2 
+## 
+##                        asian or asian british black or black british
+## black or black british 0.0041                 -                     
+## chinese or other       4.7e-05                1.0000                
+## mixed                  0.4025                 1.0000                
+## white                  &lt; 2e-16                4.7e-07               
+##                        chinese or other mixed 
+## black or black british -                -     
+## chinese or other       -                -     
+## mixed                  1.0000           -     
+## white                  0.0111           0.0214
+## 
+## P value adjustment method: bonferroni</code></pre>
+<p>What you see printed in this matrix are the p. values for each of the comparisons. Whenever that value is below the alpha level you have set out, say our conventional .05, then you can conclude that this particular comparison/difference is significant. So here we can say that:</p>
+<ul>
+<li><p>The White group has significantly lower level of fear of crime than the Mixed group (p. value is .02), than the Asian group (p value is below 2.e-16), than the Black group (p value is 4.7e-07), and that the Chinese or Other group (p value is 0.01).</p></li>
+<li><p>The Mixed group is only significantly different from the White group (the p value is higher than .05 for the other comparisons).</p></li>
+<li><p>The Black group is significantly higher than the White and significantly higher than the Asian but no different from the mixed group or the Chinese/Other.</p></li>
+<li><p>And we can say that the Chinese/Other has more fear than the White group and less than the Asian but does not seem different from the mixed group or the Black.</p></li>
+</ul>
+</div>
+<div id="effect-size-for-anova" class="section level3">
+<h3><span class="header-section-number">6.5.8</span> Effect size for ANOVA</h3>
+<p>You can use the following programming code to get what is called as eta squared:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary.lm</span>(fearmodel.<span class="dv">1</span>) </code></pre></div>
+<pre><code>## 
+## Call:
+## aov(formula = tcviolent ~ ethgrp2, data = BCS0708)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.9520 -0.7243 -0.1517  0.4958  3.8024 
+## 
+## Coefficients:
+##                               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                    0.88176    0.05883  14.989  &lt; 2e-16 ***
+## ethgrp2black or black british -0.38112    0.10780  -3.535 0.000409 ***
+## ethgrp2chinese or other       -0.54197    0.11828  -4.582 4.67e-06 ***
+## ethgrp2mixed                  -0.36376    0.17732  -2.051 0.040251 *  
+## ethgrp2white                  -0.87864    0.05987 -14.676  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9896 on 8428 degrees of freedom
+##   (3243 observations deleted due to missingness)
+## Multiple R-squared:  0.02972,    Adjusted R-squared:  0.02926 
+## F-statistic: 64.54 on 4 and 8428 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>The summary function is simply invoking the results we obtained earlier when we run ANOVA and created the ‘fearmodel.1’ object. You get loads of numbers there. But the only part you are interested is what the output labels as ‘R-Squared’ (0.02972). In the context of ANOVA this is usually called <strong>eta squared</strong>. This value is also referred to as the <em>percent of variance explained</em>. This is simply the proportion of the total sum of squares that is accounted by the between sum of squares. The larger the proportion of total variance that is accounted for by the between sum of squares, the stronger the relationship between the metric and the categorical variable. When the means of the groups defined by your categorical variable are the same, eta squared will be 0. That would mean no relationship exist between your metric and your categorical variable. The largest value eta squared can take is 1, meaning that all the variability in your metric variable can be explained by your categorical variable.</p>
+<p>Taking the square root of eta squared gives you the correlation between the metric and the categorical variable. Eta or the correlation is a measure of effect size; that is of the substantive impact of your categorical variable. In this case that value (square root of 0.02972) is around .17. That suggests that ethnicity has a small effect on fear of crime in this study (see page 58 of Field et al. 2012 for rules of thumb to interpret eta or r).</p>
+<p>You can also use the <code>ANOVA</code> function from the <code>lessR</code> package, which is a package designed to facilitate the learning of R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lessR)
+<span class="kw">ANOVA</span>(tcviolent <span class="op">~</span><span class="st"> </span>ethgrp2, <span class="dt">data =</span> BCS0708, <span class="dt">brief=</span><span class="ot">TRUE</span>) <span class="co">#The brief argument set to TRUE excludes pairwise comparisons and extra text from being printed.</span></code></pre></div>
+<p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<pre><code>##   BACKGROUND
+## 
+## Response Variable: tcviolent 
+##  
+## Factor Variable: ethgrp2 
+##   Levels: asian or asian british black or black british chinese or other mixed white 
+##  
+## Number of cases (rows) of data:  11676 
+## Number of cases retained for analysis:  8433 
+## 
+## 
+##   DESCRIPTIVE STATISTICS 
+## 
+##                            n            mean              sd              min             max 
+## asian or asian british   283   0.88175663803   1.16668811073   -2.07022309303   3.31529736519 
+## black or black british   120   0.50063411160   1.13798384912   -1.85322141647   2.59109425545 
+## chinese or other          93   0.33978925640   1.13861126145   -1.64311027527   2.80809569359 
+## mixed                     35   0.51799569013   1.29961704407   -2.33650994301   2.96658897400 
+## white                   7902   0.00311507460   0.97682414921   -2.35029053688   3.80547618866 
+##  
+## Grand Mean: 0.045530510071 
+## 
+## 
+##   BASIC ANALYSIS
+## 
+##                      df            Sum Sq         Mean Sq         F-value   p-value 
+## ethgrp2               4   252.83066055375  63.20766513844 64.54270257531    0.0000 
+## Residuals          8428  8253.67052402441   0.97931543949 
+## 
+## 
+## R Squared: 0.03 
+## R Sq Adjusted: 0.03 
+## Omega Squared: 0.03 
+##  
+## Cohen&#39;s f: 0.17 
+## 
+## 
+##   TUKEY MULTIPLE COMPARISONS OF MEANS
+## 
+##   RESIDUALS</code></pre>
+<p>You will see this implementation of ANOVA apart from also printing the R Squared also gives you Omega Squared. Omega Squared is particularly helpful with smaller samples (check the Andy Field book for rules of thumb for its interpretation). You will also see with this function (although not printed here) a nicely labelled residual plot to assist interpretation of equal spread.</p>
+<p><strong>6.1. Homework</strong></p>
+<p><em>Using the banbox dataset that we have used in previous sessions run a t test to explore whether criminal records are associated to emplyment response in the subset of cases before the banbox legislation was introduced. Discuss your results.</em></p>
+<p><em>Using the BCS data we used today explore the relationship between fear of violent crime (tcviolent) and the level of education of the respondent (educat3).</em></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="foundations-of-statistical-inference-confidence-intervals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="studying-relationships-between-two-factors-week-7.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["book.pdf", "book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

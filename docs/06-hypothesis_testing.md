@@ -1,4 +1,4 @@
-#Studying relationships between a categorical and a quantitative variable (Week 6)
+#Studying relationships between a categorical and a quantitative variable
 
 ##The logic of hypothesis testing
 
@@ -174,7 +174,76 @@ One important thing to remember is that when doing hypothesis testing there is a
 
 ##Power analysis
 
-In this section we introduce the `pwr` package for power analysis.
+In this section we introduce the `pwr` package for power analysis. In the video lectures you had to watch as preparation for today we introduced the notion of power analysis. In order for a statistical test to be able to be effective, to be able to detect an effect, you need to have sufficient power. Power is related to the magnitude of the effect (it will be easier to detect stronger rather than weaker effects) and sample size (it will be easier to detect effects with large samples than with small samples). A problem with many scientific studies is that they are *underpowered*, the fail to reject the null hypothesis simply because they do not have sufficient power (often because the sample size is not large enough). Power analysis is generally done during the planning of an analysis so that you know what kind of sample you are going to need if you want to be able to run meaningfull hypothesis tests. That is you do your power analysis before you collect your data. 
+
+But we can also check how much power we have after the fact, just to ensure we are not failing to reject the null hypothesis as a consequence of insufficient power. For this purposes we can use the `pwr` package. For computing the power when comparing two sample means we use the `pwr.t2n.test` function. This function expects we provide the sample size of each group (if we are doing the power calculation after we have collated our data) and the effect size we may want to be able to detect. Let's see how many people we have in each of our two groups (male and females) when assessing differences in fear of violent crime.
+
+
+
+```r
+library(psych)
+```
+
+```
+## 
+## Attaching package: 'psych'
+```
+
+```
+## The following object is masked from 'package:effsize':
+## 
+##     cohen.d
+```
+
+```
+## The following objects are masked from 'package:ggplot2':
+## 
+##     %+%, alpha
+```
+
+```r
+describeBy(BCS0708$tcviolent, BCS0708$sex)
+```
+
+```
+## 
+##  Descriptive statistics by group 
+## group: female
+##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02
+##      se
+## X1 0.02
+## -------------------------------------------------------- 
+## group: male
+##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91
+##      se
+## X1 0.01
+```
+
+Ok, so that is 4475 and 3959. Let's say we want to detect even very small effect sizes. The functions in this package assume a default .05 level of statistical significance, although this is something we could change. So if we go with the default, we would write as follows:
+
+
+```r
+library(pwr)
+pwr.t2n.test(n1 = 4475, n2 = 3959, d= 0.2)
+```
+
+```
+## 
+##      t test power calculation 
+## 
+##              n1 = 4475
+##              n2 = 3959
+##               d = 0.2
+##       sig.level = 0.05
+##           power = 1
+##     alternative = two.sided
+```
+
+The function is telling us that we have a power of 1. The statistical power ranges from 0 to 1, and as statistical power increases, the probability of making a type II error (wrongly failing to reject the null) decreases. So with a power of 1 we are very unlikely indeed to failing to reject the null hypothesis when we should.
+
+With sample sizes this large, you are unlikely to run into problems with power. But these things do matter in particular applications. Think for example of cases when you are trying to evaluate if a particular criminal justice intervention works. If you work with small samples you may wrongly conclude that your intervention didn't make a difference (you fail to reject the null hypothesis) because you did not have sufficient statistical power. This was a common problem in older studies (see [here](https://www.sciencedirect.com/science/article/pii/0047235289900044) for a review) and it is a problem that still persist to some extent (read [this](https://www.tandfonline.com/doi/abs/10.1080/07418825.2018.1495252) more recent review).
 
 ##Comparing means across several groups (ANOVA)
 
@@ -203,7 +272,7 @@ ggplot(BCS0708, aes(ethgrp2, tcviolent, fill=ethgrp2)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_boxplot).
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 What you see here is that the boxplot also displays the values of fear for the few individuals in the dataset for which we don't know the ethnicity ("NA" in the X axis). In many occasions this is not what you want. At least you are trying to understand your missing data problem (an advanced topic which we don't cover this semester), you only want a plot that uses information for the individuals with  valid information (that is the ones for which we have data on fear and ethnicity). If you have quite a few NA cases and they seem systematically different from the other groups, you may have some reasons to be concerned.
 
@@ -218,7 +287,7 @@ ggplot(na.omit(BCS0708[,c("ethgrp2", "tcviolent")]), aes(x=reorder (ethgrp2, tcv
   guides(fill=FALSE)
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 You can see here slightly different distributions of fear for the ethnic groups. Notice for example how 75% of the Asian group has scores on fear of crime that are higher than those of 50% of individuals in the White group.  Let's look at the statistics:
 
@@ -268,7 +337,7 @@ I want you to pay attention to the column in that table that provides you with t
 
 We have now examined the means for fear of crime for the various ethnic groups and have seen how the Asian group seem to have the highest average level of fear. But we have discussed in the class that point estimates are "problematic" because they do not communicate sampling variability - for that we need confidence intervals. Last week we explained how to do confidence intervals for the mean of two groups. I am going to show you here a different way of plotting confidence intervals for means of various groups. 
 
-The simplest way to do this is with the `plotmeans` function in the `gplots` package (not to confuse with the ggplot2 package). This function uses by default the t Student distribution for computing the confidence intervals (given the small sample size of some of the groups this is appropriate here):
+The simplest way to do this is with the `plotmeans` function in the `gplots` package (not to confuse with the `ggplot2` package). This function uses by default the t Student distribution for computing the confidence intervals (given the small sample size of some of the groups this is appropriate here):
 
 
 ```r
@@ -277,7 +346,7 @@ library(gplots)
 plotmeans(tcviolent ~ ethgrp2, data = BCS0708) #if you rather use the normal approximation you could use an additional argument: use.t=FALSE
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 When you only have two groups you can use these graphs (error bars displaying confidence intervals) in a way equivalent to the way that you use a t test, but when you have multiple groups you need to think about the problem of multiple comparisons.
 
@@ -359,7 +428,7 @@ As Andy Field and his colleagues (2012) suggest the more important of these plot
 plot(fitted(aov(tcviolent ~ ethgrp2, data=BCS0708)), resid(aov(tcviolent ~ ethgrp2, data=BCS0708)), xlab = "Fitted values", ylab = "Residuals", main = "Residuals vs Fitted")     # plot a diagnostic check for heteroscedasticity in the residuals from the response Y to a factor or numeric A
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 This plot can be used to further explore homogeneity of variances. It is a plot of residuals versus fitted values (we will return to this later on this semester, for now just focus on interpretation as detailed below). We already know the Levene Test is significant and that the variances cannot be assumed to be the same in the population. In this sort of situations you expect plots such as this in which the vertical lines do not have the same length (longer collection of points suggests more variance and shorter collection of points less variance). We should be particularly concern with any systematic patterning (that is some sort of funnelling visual effect suggesting a systematic shortening or expanding of the lines as we move right to left in the X axis).
 
@@ -392,7 +461,7 @@ ggplot(na.omit(BCS0708[,c("ethgrp2", "tcviolent")]), aes(x = tcviolent, fill = e
   geom_density(alpha = .3)
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 We can also use a [**normal probability plot**](http://en.wikipedia.org/wiki/Normal_probability_plot) of the residuals. If we had use `plot(fearmodel.1)`, the second of the four printed plots would be the normal Q-Q plot. Alternatively we can specifically ask for it:
 
@@ -402,7 +471,7 @@ qqnorm(resid(aov(tcviolent ~ ethgrp2, data=BCS0708)), main="Normal Q-Q Plot")
 qqline(resid(aov(tcviolent ~ ethgrp2, data=BCS0708)), col = 2)
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 ```r
 # normal scores check for skewness, kurtosis and outliers in in the residuals 
@@ -433,7 +502,7 @@ The `qqPlot` function of the `car` package assists the interpretation by drawing
 qqPlot(fearmodel.1)
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 ```
 ## [1] 1761 4769
@@ -457,7 +526,7 @@ ggplot(BCS0708, aes(x = tcviolent)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_density).
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 We can see that the distribution is multimodal and that the tail to the right is longer than the tail to the left, there is a positive skew. We can also see that the values range from negative to positive values. Many of the transformations we use do not work well when we have negative values or zeros. So one way to allow them to work is to add a constant large enough to avoid zeros. I will add three to the variable:
 
@@ -478,7 +547,7 @@ ggplot(BCS0708, aes(x = ptcviolent)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_density).
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 Let's see what happens when we apply a logarithmic transformation (often used with skewed data):
 
@@ -492,7 +561,7 @@ ggplot(BCS0708, aes(x = log10(ptcviolent))) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_density).
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 Oops... We squashed the right tail a bit too much and stretched it in the left hand side. We'll have to try another transformation. 
 
@@ -505,7 +574,7 @@ How do you select the right power transformation? Again, trial and error. The `s
 symbox(BCS0708$ptcviolent, data=BCS0708)
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 We can see that the most symmetrical of all is the 0.5 transformation. Let's create and plot a variable using this power transformation:
 
@@ -520,7 +589,7 @@ ggplot(BCS0708, aes(x = bctcviolent)) +
 ## Warning: Removed 3242 rows containing non-finite values (stat_density).
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
 The new variable to the left hand side has squashed the right tail. It is a bit more symmetrical. We can see this in a normal probability plot:
 
@@ -529,7 +598,7 @@ The new variable to the left hand side has squashed the right tail. It is a bit 
 qqPlot(BCS0708$bctcviolent)
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 ```
 ## [1] 4388 4701
@@ -539,7 +608,7 @@ qqPlot(BCS0708$bctcviolent)
 qqPlot(BCS0708$tcviolent)
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-23-2.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-25-2.png" width="672" />
 
 ```
 ## [1] 1761 4769
@@ -674,7 +743,7 @@ library(lessR)
 ANOVA(tcviolent ~ ethgrp2, data = BCS0708, brief=TRUE) #The brief argument set to TRUE excludes pairwise comparisons and extra text from being printed.
 ```
 
-<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-30-1.png" width="672" />
 
 ```
 ##   BACKGROUND
@@ -720,6 +789,7 @@ ANOVA(tcviolent ~ ethgrp2, data = BCS0708, brief=TRUE) #The brief argument set t
 ```
 
 You will see this implementation of ANOVA apart from also printing the R Squared also gives you Omega Squared. Omega Squared is particularly helpful with smaller samples (check the Andy Field book for rules of thumb for its interpretation). You will also see with this function (although not printed here) a nicely labelled residual plot to assist interpretation of equal spread.
+
 
 **6.1. Homework**
 

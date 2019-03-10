@@ -1,8 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 #A first lesson about R
 
 ##Install R & RStudio
@@ -11,8 +6,12 @@ We recommend that you use your own laptops for this course. This way you get use
 
 You *don't need to install the software in the computers available in the clusters*, because it is already there. Beware though, the installation may vary a bit across different computer clusters in the University. This, on itself, is another good reason to use your own laptops -for it will provide you with a more stable environment. If you have not already, then please download and install R and R Studio onto your laptops. Otherwise use the cluster machines.
 
+If you are using a Mac it would be convenient that you use the most up to date version of OS or, at least one compatible with the most recent version of R. Read [this]() if you want to check how to do that...
+
 - click [here](https://www.youtube.com/watch?v=eD07NznguA4) for instructions using Windows or
 - [here](https://www.youtube.com/watch?v=cX532N_XLIs&list=PLqzoL9-eJTNDw71zWePXyHx3_cm_fMP8S) for instructions using a Mac. 
+
+If you are a Linux user please let us know.
 
 ##Open up and explore RStudio
 

@@ -3,6 +3,7 @@
 ##Introduction
 
 https://www.visionlearning.com/en/library/Process-of-Science/49/Modeling-in-Scientific-Research/153
+https://interactions.jacob-long.com/index.html
 
 
 In this session we are going to cover regression analysis or, rather, we are beginning to talk about regression modelling. This form of analysis has been one the main technique of data analysis in the social sciences for many years and it belongs to a family of techniques called generalised linear models. Regression is a flexible model that allows you to "explain" or "predict" a given outcome (Y), variously called your outcome, response or dependent variable, as a function of a number of what is variously called inputs, features or independent, explanatory, or predictive variables (X1, X2, X3, etc.). Following Gelman and Hill (2007), I will try to stick for the most part to the terms outputs and inputs.
@@ -605,6 +606,10 @@ We are going to use instead the `plot_model()` function of the `sjPlot` package,
 
 ```r
 library(sjPlot)
+```
+
+```
+## Install package "strengejacke" from GitHub (`devtools::install_github("strengejacke/strengejacke")`) to load all sj-packages at once!
 ```
 
 Let's try with a more complex example:

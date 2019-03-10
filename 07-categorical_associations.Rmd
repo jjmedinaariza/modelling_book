@@ -1,8 +1,8 @@
-#Studying relationships between two factors (Week 7)
+#Studying relationships between two factors
 
 ##Producing cross tabulations
 
-In earliest sessions we have covered how to run frequency distributions using the table() function. Cross tabulations, also called contingency tables, are essentially crossed frequency distributions, where you plot the frequency distributions of more than one variable simultaneously. This semester we are only going to explore two-way cross tabulations, that is contingency tables where we plot the frequency distribution of two variables at the same time. Frequency distributions are a useful way of exploring categorical variables that do not have too many categories. By extension, cross tabulations are a useful way of exploring relationships between two categorical variables that do not have too many levels or categories.
+In earlier sessions we have covered how to run frequency distributions using the `table()` function. Cross tabulations, also called **contingency tables**, are essentially crossed frequency distributions, where you plot the frequency distributions of more than one variable simultaneously. This semester we are only going to explore **two-way cross tabulations**, that is contingency tables where we plot the frequency distribution of two variables at the same time. Frequency distributions are a useful way of exploring categorical variables that do not have too many categories. By extension, cross tabulations are a useful way of exploring relationships between two categorical variables that do not have too many levels or categories.
 
 As we learned during the first week we can get results from R in a variety of ways. You can produce basic tables with some of the core functions in R. However, in order to produce the sort of cross-tabs  we will use, I suggest you install and load the package `gmodels`. This package allows you to produce cross tabulations in a format similar to the one used by commercial statistical packages SPSS and SAS. Since some of you may have some previous experience with SPSS we will use the SPSS format. Cross-tabs with this package are more useful for our purposes than the default you may get with the core R `table()` function.
 
@@ -31,9 +31,9 @@ with(BCS0708, CrossTable(rubbcomm, bcsvictim, prop.chisq = FALSE, format = c("SP
 
 ```
 
-The cells for the central two columns represent the total number of cases in each category, the row percentages, the column percentages, and the total percentages. So you have, for example, 63 people in the category "rubbish is very common" that were victims of a crime, this represents 30.88% of all the people in the "rubbish is very common" category (your row percent), 2.79% of all the people in the "victim of a crime" category (your column percent), and 0.57% of all the people in the sample.
+The cells for the central two columns represent the total number of cases in each category, the **row percentages**, the **column percentages**, and the **total percentages**. So you have, for example, 63 people in the category "rubbish is very common" that were victims of a crime, this represents 30.88% of all the people in the "rubbish is very common" category (your row percent), 2.79% of all the people in the "victim of a crime" category (your column percent), and 0.57% of all the people in the sample.
 
-Notice that although "rubbcomm" is an ordinal variable, the order in which it gets printed does not make logical sense. We can check the order of the encoding using the levels() function.
+Notice that although "rubbcomm" is an ordinal variable, the order in which it gets printed does not make logical sense. We can check the order of the encoding using the `levels()` function.
 
 ```{r}
 levels(BCS0708$rubbcomm)
@@ -51,13 +51,13 @@ If you have a dependent variable, you need to request only the percentages that 
 
 To reiterate then, there are two rules to producing and reading cross tabs the right way. The first rule for reading cross tabulations is that **if your dependent variable is defining the rows then you ask for the column percentages. If, on the other hand, you decided that you preferred to have your dependent variable defining the columns (as seen here), then, you would need to ask for the row percentages**. Make sure you remember this.
 
-To avoid confusion when looking at the table, you could as well modify the code to only ask for the relevant percentages. In this case we will ask for the row percentages. We can control what gets printed in the main console using the different options of the CrossTable() function. By default this function prints all the percentages, but most of them are not terribly useful for our purposes here. So, we are going to modify the default options by asking R not to print the column nor the total percentages. 
+To avoid confusion when looking at the table, you could as well modify the code to only ask for the relevant percentages. In this case we will ask for the row percentages. We can control what gets printed in the main console using the different options of the `CrossTable()` function. By default this function prints all the percentages, but most of them are not terribly useful for our purposes here. So, we are going to modify the default options by asking R not to print the column nor the total percentages. 
 
 ```{r}
 with(BCS0708, CrossTable(rubbcomm, bcsvictim, prop.chisq=FALSE, prop.c=FALSE, prop.t=FALSE, format=c("SPSS")))
 ```
 
-Much less cluttered. Now we only see in the counts and the row percentages. Marginal frequencies appear along the right and the bottom. Row marginals show the total number of cases in each row: 204 people perceive rubbish as very common in the area they're living in areas where , 1244 perceive rubbish is fairly common in their area, etc. Column marginals indicate the total number of cases in each column: 9318 non-victims and 2358 victims.
+Much less cluttered. Now we only see in the counts and the row percentages. **Marginal frequencies** appear along the right and the bottom. *Row marginals* show the total number of cases in each row: 204 people perceive rubbish as very common in the area they're living in areas where , 1244 perceive rubbish is fairly common in their area, etc. *Column marginals* indicate the total number of cases in each column: 9318 non-victims and 2358 victims.
 
 In the central cells we see the total number for each combination of categories and now only the row percentage. So the total in each of those cells is expressed as the percentage of cases in that row. So, for example, 63 people who perceive rubbish as very common in their area who are a victim of a crime represent 30.88%% of all people in that row (n=204). If we had asked for the column percentages the 63 people who live in areas where rubbish is very common and are victims would be divided by the 2261 victim people in the study. *Changing the denominator when computing the percentage changes the meaning of the percentage*.
 
@@ -71,7 +71,7 @@ If this is confusing you may enjoy this [online tutorial](http://sonet.nottingha
 
 So far we are only describing our sample. Can we infer that these differences that we observe in this sample can be generalised to the population from which this sample was drawn? Every time you draw a sample from the same population the results will be slightly different, we will have a different combination of people in these cells. 
 
-In order to assess that possibility we carry out a test of statistical significance. This test allow us to examine the null hypothesis. So our hypothesis is that there is a relatioship between the two variables, while our null hypothesis is that there is not a relationship. In this case, the null hypothesis states that in the population from which this sample was drawn victimisation and how common rubbish is in your area are independent events, that is, they are not related to each other. The materials you read as preparation explained the test that is appropriate for this case, the chi square test. You should know what this test does is to contrast the squared average difference between the observed frequencies and the expected frequencies (divided by the expected frequencies). We can see the expected frequencies for each cell modifying the options of the CrossTable function in the following manner:
+In order to assess that possibility we carry out a test of statistical significance. This test allow us to examine the null hypothesis. So our hypothesis is that there is a relationship between the two variables, while our null hypothesis is that there is not a relationship. In this case, the null hypothesis states that in the population from which this sample was drawn victimisation and how common rubbish is in your area are independent events, that is, they are not related to each other. The materials you read as preparation explained the test that is appropriate for this case, the chi square test. You should know what this test does is to contrast the squared average difference between the observed frequencies and the expected frequencies (divided by the expected frequencies). We can see the expected frequencies for each cell modifying the options of the `CrossTable` function in the following manner:
 
 ```{r}
 with(BCS0708, CrossTable(rubbcomm, bcsvictim, expected = TRUE, prop.c = FALSE, prop.t = FALSE, format = c("SPSS")))
@@ -104,7 +104,7 @@ fisher.test(BCS0708$rubbcomm, BCS0708$bcsvictim, workspace = 2e+07, hybrid = TRU
 
 The p value is still considerably lower than our alpha level of .05. So, we can still reach the conclusion that the relationship we observe can be generalised to the population. 
 
-Another less extreme solution is to use a p value using Monte Carlo simulation. This is a way of proceeding that is similar in philosophy to the resampling techniques we covered in week 3. To obtain such a Chi Square test you could use the chisq.test() function passing an argument requiring that the p value is obtained via resampling simulation:
+Another less extreme solution is to use a p value using Monte Carlo simulation. This is a way of proceeding that is similar in philosophy to the resampling techniques we covered in week 3. To obtain such a Chi Square test you could use the `chisq.test()` function passing an argument requiring that the p value is obtained via resampling simulation:
 
 ```{r}
 mytable.1 <- table(BCS0708$rubbcomm, BCS0708$bcsvictim)
@@ -129,7 +129,7 @@ You can see here, looking at the column identifying the outcome of interest (vic
 
 Is this relationship strong? The residuals seem to be suggesting it is not trivial indeed. Apart from looking at the residuals, one of the tests discussed in the required reading as a test for the strength of a relationship is gamma. Gamma is a measure of association that allow us to make a judgement about the strength of this relationship and that we can use with ordinal measures (or as in this case when one variable is ordinal and the other is nominal dichotomous). Gamma is appropriate for testing the relationship between two categorical ordered variables (ordinal-level variables) or between a categorical ordered variable and a categorical unordered variables with only two levels (a dichotomous variable, such as "victimisation": that only has two levels, you have or you haven't experienced a victimisation). How can you obtain gamma with R?
 
-We will use the package vcdExtra for it (which you may need to install and load) to compute gamma. We use the following code:
+We will use the package `vcdExtra` for it (which you may need to install and load) to compute gamma. We use the following code:
 
 ```{r}
 mytable.2<-table(BCS0708$bcsvictim, BCS0708$rubbcomm) ##We first create a new object in tabular form because the function we use to compute Goodman and Kruskal's Gamma needs an object of that nature.
@@ -192,7 +192,7 @@ The **odds** on the other hand contrast the number of individuals with the outco
 
 The **odds ratio** is the ratio of these two odds. So the odds ratio of victimisation for urban dwellers to rural residents is the odds of victimisation for urban dwellers (.2878) divided by the odds of victimisation for rural residents (.1612). This yields 1.78. This means that the odds of victimisation are almost 1.78 times higher for urban dwellers than for residents in rural areas. 
 
-You can use R to obtain the odd ratios directly. We can use the vcd package we mentioned earlier. As before we first create an object with the table and then ask for the ordinary odds ratio using the following code:
+You can use R to obtain the odd ratios directly. We can use the `vcd` package we mentioned earlier. As before we first create an object with the table and then ask for the ordinary odds ratio using the following code:
 
 ```{r}
 library(vcd)
@@ -200,7 +200,7 @@ mytable.3<-table(BCS0708$rural2, BCS0708$bcsvictimR)
 oddsratio(mytable.3, stratum = NULL, log = FALSE) ##This function asks for the oddsratio for the table data in the object called mytable.3. The log=FALSE requests an ordinary odds ratio and the stratum option clarifies your data are not stratified.
 ```
 
-What would happen if rather than using the recoded variable (bcsvictimR) we use the original one?
+What would happen if rather than using the recoded variable ("bcsvictimR") we use the original one?
 
 ```{r}
 mytable.4<-table(BCS0708$rural2, BCS0708$bcsvictim)
@@ -223,7 +223,7 @@ It is also very important that you interpret these quantities carefully. You wil
 
 ![increased risk](https://www.explainxkcd.com/wiki/images/1/11/increased_risk.png)
 
-**HOMEWORK**
+##HOMEWORK 7.1
 
-Select two pairs of categorical variables from the dataset you are using for your coursework assignment. These could be variables you have selected for your coursework assignment if you wish. Then run one crosstabulation for each of these two pairs. Report appropriate statistics and interpret your results for these two crosstabulations.
+*Select two pairs of categorical variables from the dataset you are using for your coursework assignment. These could be variables you have selected for your coursework assignment if you wish. Then run one crosstabulation for each of these two pairs. Report appropriate statistics and interpret your results for these two crosstabulations.*
 

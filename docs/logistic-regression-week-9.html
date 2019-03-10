@@ -25,7 +25,7 @@
 <meta name="author" content="Juanjo Medina and Reka Solymosi">
 
 
-<meta name="date" content="2019-03-03">
+<meta name="date" content="2019-03-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -192,12 +192,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.5.8" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.8</b> Effect size for ANOVA</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between two factors (Week 7)</a><ul>
-<li class="chapter" data-level="7.1" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#producing-cross-tabulations"><i class="fa fa-check"></i><b>7.1</b> Producing cross tabulations</a></li>
-<li class="chapter" data-level="7.2" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#expected-frequencies-and-chi-square"><i class="fa fa-check"></i><b>7.2</b> Expected frequencies and Chi-Square</a></li>
-<li class="chapter" data-level="7.3" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#residuals"><i class="fa fa-check"></i><b>7.3</b> Residuals</a></li>
-<li class="chapter" data-level="7.4" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#gamma"><i class="fa fa-check"></i><b>7.4</b> Gamma</a></li>
-<li class="chapter" data-level="7.5" data-path="studying-relationships-between-two-factors-week-7.html"><a href="studying-relationships-between-two-factors-week-7.html#odds-and-odd-ratios"><i class="fa fa-check"></i><b>7.5</b> Odds and odd ratios</a></li>
+<li class="chapter" data-level="7" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between two factors</a><ul>
+<li class="chapter" data-level="7.1" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#producing-cross-tabulations"><i class="fa fa-check"></i><b>7.1</b> Producing cross tabulations</a></li>
+<li class="chapter" data-level="7.2" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#expected-frequencies-and-chi-square"><i class="fa fa-check"></i><b>7.2</b> Expected frequencies and Chi-Square</a></li>
+<li class="chapter" data-level="7.3" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#residuals"><i class="fa fa-check"></i><b>7.3</b> Residuals</a></li>
+<li class="chapter" data-level="7.4" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#gamma"><i class="fa fa-check"></i><b>7.4</b> Gamma</a></li>
+<li class="chapter" data-level="7.5" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#odds-and-odd-ratios"><i class="fa fa-check"></i><b>7.5</b> Odds and odd ratios</a></li>
+<li class="chapter" data-level="7.6" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#homework-7.1"><i class="fa fa-check"></i><b>7.6</b> HOMEWORK 7.1</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html"><i class="fa fa-check"></i><b>8</b> An introduction to regression (Week 8)</a><ul>
 <li class="chapter" data-level="8.1" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#introduction-3"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
@@ -356,9 +357,8 @@ Arrests<span class="op">$</span>colour &lt;-<span class="st"> </span><span class
 fitl_1_s &lt;-<span class="st"> </span><span class="kw">standardize</span>(fitl_<span class="dv">1</span>)
 <span class="kw">display</span>(fitl_1_s)</code></pre></div>
 <p>We can also use <strong>forest plots</strong> in much the same way than we did for linear regression. One way of doing this is using the <code>sjp.glm()</code> function of the <code>sjPlot</code> package. Notice that by default the odd ratios are sorted from higher to lower in this display (and also that in this html file the text in the plot is not fully displayed, I’m still trying to fix that, but if you run this and zoom in you will see it better).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sjPlot)</code></pre></div>
-<pre><code>## Learn more about sjPlot with &#39;browseVignettes(&quot;sjPlot&quot;)&#39;.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_model</span>(fitl_<span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sjPlot)
+<span class="kw">plot_model</span>(fitl_<span class="dv">1</span>)</code></pre></div>
 <p><img src="09-logistic_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Equally, we can produce effect plots using the <code>effects</code> package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(effects)

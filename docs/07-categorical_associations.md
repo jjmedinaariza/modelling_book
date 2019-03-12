@@ -358,21 +358,6 @@ print(mytable.2) ##You can print the content of this object and you will see tha
 
 ```r
 library(vcdExtra) ##This will load the vcdExtra package (assuming it is already installed)
-```
-
-```
-## Loading required package: vcd
-```
-
-```
-## Loading required package: grid
-```
-
-```
-## Loading required package: gnm
-```
-
-```r
 GKgamma(mytable.2) ##This function from the vcdExtra package will compute the Gamma measure of association, between parenthesis you need to identify the object that contains your data.
 ```
 
@@ -465,7 +450,15 @@ print(levels(BCS0708$bcsvictim))
 ## [1] "not a victim of crime" "victim of crime"
 ```
 
-We want to reverse this. So that "victim of crime" becomes the first level (appears first in the print out). There are various ways of doing that with add-on packages, this is an easy way using base R:
+```r
+print(levels(BCS0708$rural2))
+```
+
+```
+## [1] "rural" "urban"
+```
+
+We want to reverse this. So that "victim of crime" becomes the first level (appears first in the print out) and "urban" becomes the first level as well. There are various ways of doing that with add-on packages, this is an easy way using base R:
 
 
 ```r
@@ -477,11 +470,20 @@ print(levels(BCS0708$bcsvictimR))
 ## [1] "victim of crime"       "not a victim of crime"
 ```
 
-We can now rerun the previous cross tabulation (with the newly created reordered factor) and the table will look as below:
+```r
+BCS0708$urban <- factor(BCS0708$rural2, levels = c('urban','rural'))
+print(levels(BCS0708$urban))
+```
+
+```
+## [1] "urban" "rural"
+```
+
+We can now rerun the previous cross tabulation (with the newly created reordered factors) and the table will look as below:
 
 
 ```r
-with(BCS0708, CrossTable(rural2, bcsvictimR, prop.c = FALSE, prop.t = FALSE, expected = TRUE, format = c("SPSS")))
+with(BCS0708, CrossTable(urban, bcsvictimR, prop.c = FALSE, prop.t = FALSE, expected = TRUE, format = c("SPSS")))
 ```
 
 ```
@@ -497,17 +499,17 @@ with(BCS0708, CrossTable(rural2, bcsvictimR, prop.c = FALSE, prop.t = FALSE, exp
 ## Total Observations in Table:  11676 
 ## 
 ##              | bcsvictimR 
-##       rural2 |       victim of crime  | not a victim of crime  |             Row Total | 
-## -------------|-----------------------|-----------------------|-----------------------|
-##        rural |                  413  |                 2561  |                 2974  | 
-##              |              600.607  |             2373.393  |                       | 
-##              |               58.602  |               14.830  |                       | 
-##              |               13.887% |               86.113% |               25.471% | 
+##        urban |       victim of crime  | not a victim of crime  |             Row Total | 
 ## -------------|-----------------------|-----------------------|-----------------------|
 ##        urban |                 1945  |                 6757  |                 8702  | 
 ##              |             1757.393  |             6944.607  |                       | 
 ##              |               20.028  |                5.068  |                       | 
 ##              |               22.351% |               77.649% |               74.529% | 
+## -------------|-----------------------|-----------------------|-----------------------|
+##        rural |                  413  |                 2561  |                 2974  | 
+##              |              600.607  |             2373.393  |                       | 
+##              |               58.602  |               14.830  |                       | 
+##              |               13.887% |               86.113% |               25.471% | 
 ## -------------|-----------------------|-----------------------|-----------------------|
 ## Column Total |                 2358  |                 9318  |                11676  | 
 ## -------------|-----------------------|-----------------------|-----------------------|
@@ -539,29 +541,31 @@ You can use R to obtain the odd ratios directly. We can use the `vcd` package we
 
 ```r
 library(vcd)
-mytable.3<-table(BCS0708$rural2, BCS0708$bcsvictimR)
-oddsratio(mytable.3, stratum = NULL, log = FALSE) ##This function asks for the oddsratio for the table data in the object called mytable.3. The log=FALSE requests an ordinary odds ratio and the stratum option clarifies your data are not stratified.
+mytable.3<-table(BCS0708$urban, BCS0708$bcsvictimR)
+oddsratio(mytable.3, stratum = NULL, log = FALSE) 
 ```
 
 ```
 ##  odds ratios for  and  
 ## 
-## [1] 0.5602409
+## [1] 1.784947
 ```
+
+The  `oddsratio` function here is asking for the oddsratio for the table data in the object called *mytable.3*. The `log=FALSE` requests an ordinary odds ratio and the `stratum` option clarifies your data are not stratified.
 
 What would happen if rather than using the recoded variable ("bcsvictimR") we use the original one?
 
 
 ```r
-mytable.4<-table(BCS0708$rural2, BCS0708$bcsvictim)
+mytable.4<-table(BCS0708$urban, BCS0708$bcsvictim)
 print(mytable.4)
 ```
 
 ```
 ##        
 ##         not a victim of crime victim of crime
-##   rural                  2561             413
 ##   urban                  6757            1945
+##   rural                  2561             413
 ```
 
 ```r
@@ -571,7 +575,7 @@ oddsratio(mytable.4, stratum = NULL, log = FALSE)
 ```
 ##  odds ratios for  and  
 ## 
-## [1] 1.784947
+## [1] 0.5602409
 ```
 
 What's going on? Why do we have a different value here? If you look at the cross tab you should be able to understand. R is now computing the odd ratio for "not being a victim of a crime" (since this is what defines the first column). When an odds ratio is below 1 is indicating that the odds in the first row ("urban") are lower than in the second row ("rural"). Living in urban areas (as contrasted with living in rural areas) reduces the likelihood of non-victimisation. 
@@ -583,6 +587,7 @@ Whenever the odd ratio is between 0 and 1 that means that the odds of whatever i
 You may be confused by now. Have a look at [this video](https://www.youtube.com/watch?v=nFHL54yOniI), it may help to see an oral presentation of these ideas with a different example.  Repeated practice will make it easier to understand. The fact that the interpretation of these quantities is contingent in the way we have laid out our table makes it particularly advisable to hand calculate them as explained above in relation to the outcome you are interested until you are comfortable with them. This may help you to see more clearly what you are getting and how to interpret it. When looking at the R results for odd ratios just always keep in mind that you are aware of what are the reference categories (what defines the first column and the first row) when reading and interpreting odd ratios. The R function we introduced will always give you the odds ratio for the event defined in the first column and will contrast the odds for the group defined by the first row with the odds defined by the second row. If the odds ratio is between 0 and 1 that would mean the odds are lower for the first row, if the odds is greater than 1 that would mean the odds are higher for the second row.
 
 It is also very important you do not confuse the relative risk (a ratio of probabilities) with the odds ratio (a ratio of odds). Be very careful with the language you use when interpreting these quantities.
+
 Odd ratios are ratios of odds, not probability ratios. You cannot say that urban dwellers are 1.78 more likely to be victimised. All you can say with an odd ratio is that the odds of being victimised are 1.78 times higher for urban dwellers than for residents in rural areas. Odds and probabilities are different things.
 
 It is also very important that you interpret these quantities carefully. You will often see media reports announcing things such as that chocolate consumption will double your risk of some terrible disease. What that means is that the percentage of cases of individuals that take chocolate and present the condition is twice as large as those that do not take chocolate and present the condition. But you also need to know what those percentages are to put it in the right context. If those probabilities are very low to start with, well, does it really matter?

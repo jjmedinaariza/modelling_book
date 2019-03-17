@@ -1,7 +1,7 @@
 --- 
 title: "Modelling Criminological Data LAWS20452"
 author: "Juanjo Medina and Reka Solymosi"
-date: "2019-03-12"
+date: "2019-03-17"
 site: bookdown::bookdown_site
 documentclass: book
 biblio-style: apalike

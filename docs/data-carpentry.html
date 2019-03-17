@@ -25,7 +25,7 @@
 <meta name="author" content="Juanjo Medina and Reka Solymosi">
 
 
-<meta name="date" content="2019-03-12">
+<meta name="date" content="2019-03-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -201,7 +201,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.6" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#homework-7.1"><i class="fa fa-check"></i><b>7.6</b> HOMEWORK 7.1</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html"><i class="fa fa-check"></i><b>8</b> An introduction to regression (Week 8)</a><ul>
-<li class="chapter" data-level="8.1" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#introduction-3"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.1" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#introduction-models-in-scientific-research"><i class="fa fa-check"></i><b>8.1</b> Introduction: models in scientific research</a></li>
 <li class="chapter" data-level="8.2" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#motivating-regression"><i class="fa fa-check"></i><b>8.2</b> Motivating regression</a></li>
 <li class="chapter" data-level="8.3" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>8.3</b> Fitting a simple regression model</a></li>
 <li class="chapter" data-level="8.4" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#residuals-revisited-r-squared"><i class="fa fa-check"></i><b>8.4</b> Residuals revisited: R squared</a></li>
@@ -213,9 +213,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.10" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#rescaling-input-variables-to-assist-interpretation"><i class="fa fa-check"></i><b>8.10</b> Rescaling input variables to assist interpretation</a></li>
 <li class="chapter" data-level="8.11" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>8.11</b> Testing conditional hypothesis: interactions</a></li>
 <li class="chapter" data-level="8.12" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>8.12</b> Model building and variable selection</a></li>
+<li class="chapter" data-level="8.13" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#homework"><i class="fa fa-check"></i><b>8.13</b> HOMEWORK</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html"><i class="fa fa-check"></i><b>9</b> Logistic regression (Week 9)</a><ul>
-<li class="chapter" data-level="9.1" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#introduction-4"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.1" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#introduction-3"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#fitting-logistic-regression"><i class="fa fa-check"></i><b>9.2</b> Fitting logistic regression</a></li>
 <li class="chapter" data-level="9.3" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-i-deviance-and-pseudo-r-squared"><i class="fa fa-check"></i><b>9.3</b> Assessing model fit I: deviance and pseudo r squared</a></li>
 <li class="chapter" data-level="9.4" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-ii-confusion-matrix-and-roc-curves"><i class="fa fa-check"></i><b>9.4</b> Assessing model fit II: confusion matrix and ROC curves</a></li>
@@ -709,14 +710,19 @@ df<span class="op">$</span>f_occup &lt;-<span class="st"> </span><span class="kw
 ##   1.000   4.000   5.000   5.196   7.000  10.000    6935</code></pre>
 <p>Now you see you have 6935 cases with missing data. As always it is good to check the original variable. We had 2766 and 4169 between refusals and “don’t know” respondents. These add up to 6935.</p>
 <p>Let’s check something else:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(skimr)
-<span class="kw">skim</span>(df<span class="op">$</span>politics)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(skimr)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;skimr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">skim</span>(df<span class="op">$</span>politics)</code></pre></div>
 <pre><code>## Warning: No summary functions for vectors of class: haven_labelled.
 ## Coercing to character</code></pre>
 <pre><code>## 
 ## Skim summary statistics
 ## 
-## -- Variable type:character --------------------------------------
+## -- Variable type:character -----------------------------------
 ##     variable missing complete     n min max empty n_unique
 ##  df$politics    6935    20883 27818   1   2     0       10</code></pre>
 <p>Mmmmm. The <code>summary</code> function worked, but other functions do not know to treat the values in the <code>haven_labelled</code> vector as a numeric. So, to avoid problems we may want to define as such (if we truly believe this is a quantitative rather than a categorical variable or at the very least are willing to treat it as quantitative).</p>
@@ -861,8 +867,9 @@ df<span class="op">$</span>f_urban &lt;-<span class="st"> </span><span class="kw
 <div id="exploring-dataframes-visually" class="section level2">
 <h2><span class="header-section-number">4.10</span> Exploring dataframes visually</h2>
 <p>We have covered now a number of functions you can use to explore your data, such as <code>skimr::skim()</code>, <code>str()</code>, <code>summary()</code>, <code>table()</code>, or <code>dplyr::glimpse()</code>. But sometimes is useful to get a more panoramic way. For this we can use the <code>visdat</code> package for visualising whole dataframes amd its main function <code>vis_dat()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(visdat)
-<span class="kw">vis_dat</span>(df_f)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(visdat)</code></pre></div>
+<pre><code>## Warning: package &#39;visdat&#39; was built under R version 3.5.3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vis_dat</span>(df_f)</code></pre></div>
 <p><img src="04-carpentry_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, f_gender, f_urban, and f_occup. We see that region is encoded as a <code>character</code> vector, whereas the others are <code>factors</code>. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_f<span class="op">$</span>f_region &lt;-<span class="st"> </span><span class="kw">as.factor</span>(df_f<span class="op">$</span>region)</code></pre></div>

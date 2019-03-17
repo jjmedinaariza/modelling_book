@@ -226,6 +226,13 @@ We can also use **forest plots** in much the same way than we did for linear reg
 
 ```r
 library(sjPlot)
+```
+
+```
+## #refugeeswelcome
+```
+
+```r
 plot_model(fitl_1)
 ```
 

@@ -25,7 +25,7 @@
 <meta name="author" content="Juanjo Medina and Reka Solymosi">
 
 
-<meta name="date" content="2019-03-12">
+<meta name="date" content="2019-03-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -201,7 +201,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.6" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#homework-7.1"><i class="fa fa-check"></i><b>7.6</b> HOMEWORK 7.1</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html"><i class="fa fa-check"></i><b>8</b> An introduction to regression (Week 8)</a><ul>
-<li class="chapter" data-level="8.1" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#introduction-3"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.1" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#introduction-models-in-scientific-research"><i class="fa fa-check"></i><b>8.1</b> Introduction: models in scientific research</a></li>
 <li class="chapter" data-level="8.2" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#motivating-regression"><i class="fa fa-check"></i><b>8.2</b> Motivating regression</a></li>
 <li class="chapter" data-level="8.3" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>8.3</b> Fitting a simple regression model</a></li>
 <li class="chapter" data-level="8.4" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#residuals-revisited-r-squared"><i class="fa fa-check"></i><b>8.4</b> Residuals revisited: R squared</a></li>
@@ -213,9 +213,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.10" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#rescaling-input-variables-to-assist-interpretation"><i class="fa fa-check"></i><b>8.10</b> Rescaling input variables to assist interpretation</a></li>
 <li class="chapter" data-level="8.11" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>8.11</b> Testing conditional hypothesis: interactions</a></li>
 <li class="chapter" data-level="8.12" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>8.12</b> Model building and variable selection</a></li>
+<li class="chapter" data-level="8.13" data-path="an-introduction-to-regression-week-8.html"><a href="an-introduction-to-regression-week-8.html#homework"><i class="fa fa-check"></i><b>8.13</b> HOMEWORK</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html"><i class="fa fa-check"></i><b>9</b> Logistic regression (Week 9)</a><ul>
-<li class="chapter" data-level="9.1" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#introduction-4"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.1" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#introduction-3"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#fitting-logistic-regression"><i class="fa fa-check"></i><b>9.2</b> Fitting logistic regression</a></li>
 <li class="chapter" data-level="9.3" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-i-deviance-and-pseudo-r-squared"><i class="fa fa-check"></i><b>9.3</b> Assessing model fit I: deviance and pseudo r squared</a></li>
 <li class="chapter" data-level="9.4" data-path="logistic-regression-week-9.html"><a href="logistic-regression-week-9.html#assessing-model-fit-ii-confusion-matrix-and-roc-curves"><i class="fa fa-check"></i><b>9.4</b> Assessing model fit II: confusion matrix and ROC curves</a></li>
@@ -245,7 +246,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="logistic-regression-week-9" class="section level1">
 <h1><span class="header-section-number">Chapter 9</span> Logistic regression (Week 9)</h1>
-<div id="introduction-4" class="section level2">
+<div id="introduction-3" class="section level2">
 <h2><span class="header-section-number">9.1</span> Introduction</h2>
 <p>In previous sessions we covered the linear regression model, that you can use when you are modeling variation in a numerical response variable. In this session we are going to introduce logistic regression, which is a technique you may use when your response variable is categorical and has two possible levels.</p>
 <p>In criminology, very often you will be interested in binary outcomes (e.g., victim/no victim, arrested/not arrested, etc.) and want to use a number of predictor variables to study these outcomes. It is then, helpful, to understand how to use these models. Logistic regression is part of a broader family of models called <strong>generalised linear models</strong> -because they can all be expressed with the mathematical equation we used for a line.</p>
@@ -357,8 +358,9 @@ Arrests<span class="op">$</span>colour &lt;-<span class="st"> </span><span class
 fitl_1_s &lt;-<span class="st"> </span><span class="kw">standardize</span>(fitl_<span class="dv">1</span>)
 <span class="kw">display</span>(fitl_1_s)</code></pre></div>
 <p>We can also use <strong>forest plots</strong> in much the same way than we did for linear regression. One way of doing this is using the <code>sjp.glm()</code> function of the <code>sjPlot</code> package. Notice that by default the odd ratios are sorted from higher to lower in this display (and also that in this html file the text in the plot is not fully displayed, I’m still trying to fix that, but if you run this and zoom in you will see it better).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sjPlot)
-<span class="kw">plot_model</span>(fitl_<span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sjPlot)</code></pre></div>
+<pre><code>## #refugeeswelcome</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_model</span>(fitl_<span class="dv">1</span>)</code></pre></div>
 <p><img src="09-logistic_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Equally, we can produce effect plots using the <code>effects</code> package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(effects)
@@ -379,7 +381,7 @@ fitl_1_prob[<span class="dv">1</span><span class="op">:</span><span class="dv">1
 </div>
 <div id="assessing-model-fit-i-deviance-and-pseudo-r-squared" class="section level2">
 <h2><span class="header-section-number">9.3</span> Assessing model fit I: deviance and pseudo r squared</h2>
-<p>As you may remember when looking at linear models we could use an F test to check the overall fit of the model and we could evaluate R squared. When running logistic regression we cannot obtain the R squared (although there is a collection of pseudo-R^2 measures that have been produced)<a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a>. In linear regression things are a bit simpler. As Menard (2010: 43) explains:</p>
+<p>As you may remember when looking at linear models we could use an F test to check the overall fit of the model and we could evaluate R squared. When running logistic regression we cannot obtain the R squared (although there is a collection of pseudo-R^2 measures that have been produced)<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a>. In linear regression things are a bit simpler. As Menard (2010: 43) explains:</p>
 <blockquote>
 <p>“there is only one reasonable residual variation criterion for quantitative variables in OLS, the familiar error sum of squares… but there are several possible residual variation criteria (entropy, squared error, qualitative difference) for binary variables. Another hindrance is the existence of numerous mathematical equivalents to R^2 in OLS, which are not necessarily mathematically (same formula) or conceptually (same meaning in the context of the model) equivalent to R^2 in logistic regression… Moreover, in logistic regression, we must choose whether we are more interested in qualitative prediction (whether predicitons are correct or incorrect), quantitative prediction (how close predictions are to being correct), or both, because different measures of explained variation are appropriate for these two different types of prediction”</p>
 </blockquote>
@@ -539,7 +541,7 @@ out &lt;-<span class="st"> </span><span class="kw">diag</span>(tab1)<span class=
 <p>Potential trade offs here may be appropriate when there are different penalties or costs associated with each type of error. For example, if you are trying to predict a homicide as part of an intervention or prevention program you may give more importance to not making a false negative error. That is you want to identify as many potential homicide victims as possible, even if that means that you will identify as victims individuals that in the end won’t be (false positives). On the other hand, if you have limited resources to attend all the cases that you will predict as positives you also need to factor this into the equation. You don’t want to use a cut off point that will lead you to identify more cases as potential homicide victims that you can possibly work with.</p>
 <p>Similarly, if you think about the criminal justice system, it is essentially built around the idea of avoiding false positives - that is convicting people who are innocent. You will have heard many phrases like “innovent until proven guilty” or “It is far better that 10 guilty men go free than one innocent man is wrongfully convicted”. This approach would incline us to err on the side of false negatives, and avoid false positives (higher sensitivity, lower specificity).</p>
 <p>We may want to see what happens to sensitivity and specificity for different cut off points. For this we can look at <strong>receiver operating characteristics</strong> or simply <a href="http://en.wikipedia.org/wiki/Receiver_operating_characteristic">ROC curves</a>. This is essentially a tool for evaluating the sensitivity/specificity trade off. The ROC curve can be used for investigating alternate cut offs for class probabilities.</p>
-<p>We can use the <code>pROC</code> package for this<a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a>. We start by creating an object that contains the relevant information with the <code>roc()</code> function form t the <code>pROC</code> package.</p>
+<p>We can use the <code>pROC</code> package for this<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a>. We start by creating an object that contains the relevant information with the <code>roc()</code> function form t the <code>pROC</code> package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(pROC)</code></pre></div>
 <pre><code>## Type &#39;citation(&quot;pROC&quot;)&#39; for a citation.</code></pre>
 <pre><code>## 
@@ -619,9 +621,9 @@ alt_cutoff1</code></pre></div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="15">
-<li id="fn15"><p>Various of these can be obtained invoking the <code>pR2()</code> function from the <code>pscl</code> package.<a href="logistic-regression-week-9.html#fnref15">↩</a></p></li>
-<li id="fn16"><p>Alternatively one could use the <code>ROCR</code> package. For details, see <a href="http://rocr.bioinf.mpi-sb.mpg.de/">here</a>.<a href="logistic-regression-week-9.html#fnref16">↩</a></p></li>
+<ol start="11">
+<li id="fn11"><p>Various of these can be obtained invoking the <code>pR2()</code> function from the <code>pscl</code> package.<a href="logistic-regression-week-9.html#fnref11">↩</a></p></li>
+<li id="fn12"><p>Alternatively one could use the <code>ROCR</code> package. For details, see <a href="http://rocr.bioinf.mpi-sb.mpg.de/">here</a>.<a href="logistic-regression-week-9.html#fnref12">↩</a></p></li>
 </ol>
 </div>
             </section>

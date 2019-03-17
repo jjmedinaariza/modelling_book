@@ -800,6 +800,20 @@ Let's check something else:
 
 ```r
 library(skimr)
+```
+
+```
+## 
+## Attaching package: 'skimr'
+```
+
+```
+## The following object is masked from 'package:stats':
+## 
+##     filter
+```
+
+```r
 skim(df$politics)
 ```
 
@@ -812,7 +826,7 @@ skim(df$politics)
 ## 
 ## Skim summary statistics
 ## 
-## -- Variable type:character --------------------------------------
+## -- Variable type:character -----------------------------------
 ##     variable missing complete     n min max empty n_unique
 ##  df$politics    6935    20883 27818   1   2     0       10
 ```
@@ -1059,6 +1073,13 @@ We have covered now a number of functions you can use to explore your data, such
 
 ```r
 library(visdat)
+```
+
+```
+## Warning: package 'visdat' was built under R version 3.5.3
+```
+
+```r
 vis_dat(df_f)
 ```
 

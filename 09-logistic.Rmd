@@ -1,4 +1,4 @@
-#Logistic regression (Week 9)
+#Logistic regression
 
 ##Introduction
 

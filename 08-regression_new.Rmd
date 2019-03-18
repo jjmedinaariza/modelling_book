@@ -1,4 +1,4 @@
-#An introduction to regression (Week 8)
+#An introduction to regression
 
 ##Introduction: models in scientific research
 

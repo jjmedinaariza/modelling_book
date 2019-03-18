@@ -284,7 +284,7 @@ df$largest50 <- as.factor(df$largest50)
 class(df$largest50)
 ```
 
-Let's rename the levels:
+Let's rename the levels. In previous sessions we have illustrated how to do that with base R functions. Here we introduce a new package `forcats` that is worth considering when doing any work with factor variables. You can read more about it [here](https://forcats.tidyverse.org).
 
 ```{r}
 library(forcats)
@@ -310,7 +310,7 @@ ggplot(data=df, aes(x=largest50, y=log_viol_r)) +
   theme_bw()
 ```
 
-Although in the plot we still see a line, what we are really estimating here is the average of *log_viol_r* for each of the two categories. Notice that we have used `position=jitter` to better see the points in the graph. Without that argument all the points would be sitting in two straight vertical lines coming up from "No" and "Yes" in the X axis.
+Although in the plot we still see a line, what we are really estimating here is the average of *log_viol_r* for each of the two categories. 
 
 Let's have a look at the results:
 
@@ -383,7 +383,7 @@ We see that the coefficients for the predictors change very little, it goes down
 
 Other interpretations are also possible and are more generalizable. Gelman and Hill (2007: p. 34) emphasise what they call the *predictive interpretation* that considers how "the outcome variable differs, on average, when comparing two groups of units that differ by 1 in the relevant predictor while being identical in all the other predictors". So [if you're regressing y on u and v, the coefficient of u is the average difference in y per difference in u, comparing pairs of items that differ in u but are identical in v](http://andrewgelman.com/2013/01/05/understanding-regression-models-and-regression-coefficients/).
 
-So, for example, in this case we could say that comparing respondents who have the same level of unemployment but who differed in whether they are one of the largest cities or not, the model predicts a expected difference of .53 in their violent crime measure. And that respondents with the same gender, but that differ by one percent point in unemployment, we would expect to see a difference of 0.23 in their violent crime measure. So we are interpreting the regression slopes **as comparisons of individuals that differ in one predictor while being at the same levels of the other predictors**.
+So, for example, in this case we could say that comparing respondents who have the same level of unemployment but who differed in whether they are one of the largest cities or not, the model predicts a expected difference of .53 in their violent crime measure. And that cities with the same size category, but that differ by one percent point in unemployment, we would expect to see a difference of 0.23 in their violent crime measure. So we are interpreting the regression slopes **as comparisons of observation that differ in one predictor while being at the same levels of the other predictors**.
 
 As you can see, interpreting regression coefficients can be kind of tricky. The relationship between the response y and any one explanatory variable can change greatly depending on what other explanatory variables are present in the model. 
 
@@ -419,7 +419,7 @@ You can further customise this:
 plot_model(fit_4, title="Violence across cities")
 ```
 
-What you see plotted here is the point estimates (the circles), the confidence intervals around those estimates (the longer the line the less precise the estimate), and the colours represent whether the effect is negative (red) or positive (blue).
+What you see plotted here is the point estimates (the circles), the confidence intervals around those estimates (the longer the line the less precise the estimate), and the colours represent whether the effect is negative (red) or positive (blue). There are other packages that also provide similar functionality, like the `dotwhisker` package that you may want to explore, see more details [here](https://cran.r-project.org/web/packages/dotwhisker/vignettes/dotwhisker-vignette.html).
 
 The `sjPlot` package also allows you to produce html tables for more professional presentation of your regression tables. For this we use the `tab_model()` function. This kind of tabulation may be particularly helpful for your final assignment.
 

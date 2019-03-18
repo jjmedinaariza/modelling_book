@@ -3,7 +3,7 @@
 ##Introduction: models in scientific research
 
 
-In science one of our main concerns is to develop models of the world, models that help us to understand the world a bit better or to predict how things will develop better. You can read more about modeling in scientfic research [here](https://www.visionlearning.com/en/library/Process-of-Science/49/Modeling-in-Scientific-Research/153). Statistics provides a set of tools that help researchers build and test scientific models.
+In science one of our main concerns is to develop models of the world, models that help us to understand the world a bit better or to predict how things will develop better. You can read more about modelling in scientific research [here](https://www.visionlearning.com/en/library/Process-of-Science/49/Modeling-in-Scientific-Research/153). Statistics provides a set of tools that help researchers build and test scientific models.
 
 Our models can be simple. We can think that unemployment is a factor that may help us to understand why cities differ in their level of violent crime. We could express such a model like this:
 
@@ -25,7 +25,7 @@ data_url <- "https://dataverse.harvard.edu/api/access/datafile/:persistentId?per
 sharkey <- read.table(url(data_url), sep = '\t',header = T)
 ```
 
-As before we create an object with the permanent `url` address and then we use a function to read the data into R. The data that can be saved using an `api` is in tab separated format. For this then we use the `read.table` function from base R. We pass two arguments to the function `sep= '\t'` is telling R this file is tab separated. The `header = T` function is telling R that is TRUE (T) that this file has a first rwo that acts as a header (this row has the name of the variables).
+As before we create an object with the permanent `url` address and then we use a function to read the data into R. The data that can be saved using an `api` is in tab separated format. For this then we use the `read.table` function from base R. We pass two arguments to the function `sep= '\t'` is telling R this file is tab separated. The `header = T` function is telling R that is TRUE (T) that this file has a first row that acts as a header (this row has the name of the variables).
 
 There are many more variables here that we are going to need, so let's do some filtering and selection. Let's just focus on a single year, 2012, the most recent in the dataset and just a few select variables.
 
@@ -36,7 +36,7 @@ df <- filter(sharkey, year == "2012")
 df <- select(df, place_name, state_name, viol_r, black, lesshs, unemployed, fborn, incarceration, log_incarceraton, swornftime_r, log_viol_r, largest50)
 ```
 
-So now we have a more maneagable data set that we can use for this session. The file includes a sample of 264 US cities (see *place_name*) across 44 of states:
+So now we have a more manageable data set that we can use for this session. The file includes a sample of 264 US cities (see *place_name*) across 44 of states:
 
 
 ```r
@@ -79,7 +79,7 @@ table(df$state_name)
 
 The variables we have extracted contain information on the demographic composition of those cities (percent black population, percent without high school degree, percent unemployed, percent foreign born), some criminal justice ones (incarceration rate and the rate of sworn full time police officers). We also have measures of the violence rate and a binary indicator that tell us if the city is one of the 50 largest in the country.
 
-We are going to look at the relationship between violent crime with a variable measuring unemployement (*unemployed*). Let's look at the violence rate:
+We are going to look at the relationship between violent crime with a variable measuring unemployment (*unemployed*). Let's look at the violence rate:
 
 
 ```r
@@ -141,7 +141,7 @@ If I only had one shot, I would go for the mean or the median (given the skew). 
 
 Imagine, however, that now when I take the name of the city from the hat, you are also told how much unemployment there is in that city - so the value of the *unemployed* variable for the city that has been selected (for example 9). Imagine as well that you have the scatterplot that we produced earlier in front of you. Would you still go for the value of "six" (the mean) as your best guess for the value of the selected city? 
 
-I certainly would not go with the overall mean or median as my prediction anymore. If somebody said to me, the value *unemployed* for the selected respondent is 9, I would be more inclined to guess the mean value for the cities *with that level of unemployment* (the conditional mean), rather than the overall mean across all the cities. Wouldn't you? 
+I certainly would not go with the overall mean or median as my prediction any more. If somebody said to me, the value *unemployed* for the selected respondent is 9, I would be more inclined to guess the mean value for the cities *with that level of unemployment* (the conditional mean), rather than the overall mean across all the cities. Wouldn't you? 
 
 If we plot the conditional means we can see that the mean *log_viol_r* for cities that report an unemployment of 9 is around 6.5. So you may be better off guessing that.
 
@@ -160,7 +160,7 @@ ggplot(data = df, aes(x = unemployed, y = log_viol_r)) +
 
 <img src="08-regression_new_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
-The `geom_smooth` function asks for a geom with the regression line, `method=lm` asks for the linear regression line, `se=FALSE` asks for just the line to be printed, the other arguments specify the color and thickness of the line.
+The `geom_smooth` function asks for a geom with the regression line, `method=lm` asks for the linear regression line, `se=FALSE` asks for just the line to be printed, the other arguments specify the colour and thickness of the line.
 
 What that line is doing is giving you guesses (predictions) for the values of violent crime based in the information that we have about the level of unemployment. It gives you one possible guess for the value of violence for every possible value of unemployment and links them all together in a straight line. 
 
@@ -423,7 +423,7 @@ class(df$largest50)
 ## [1] "factor"
 ```
 
-Let's rename the levels:
+Let's rename the levels. In previous sessions we have illustrated how to do that with base R functions. Here we introduce a new package `forcats` that is worth considering when doing any work with factor variables. You can read more about it [here](https://forcats.tidyverse.org).
 
 
 ```r
@@ -449,7 +449,7 @@ Notice that there is nothing different in how we ask for the model. And see belo
 
 <img src="08-regression_new_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
-Although in the plot we still see a line, what we are really estimating here is the average of *log_viol_r* for each of the two categories. Notice that we have used `position=jitter` to better see the points in the graph. Without that argument all the points would be sitting in two straight vertical lines coming up from "No" and "Yes" in the X axis.
+Although in the plot we still see a line, what we are really estimating here is the average of *log_viol_r* for each of the two categories. 
 
 Let's have a look at the results:
 
@@ -584,11 +584,11 @@ We see that the coefficients for the predictors change very little, it goes down
 
 Other interpretations are also possible and are more generalizable. Gelman and Hill (2007: p. 34) emphasise what they call the *predictive interpretation* that considers how "the outcome variable differs, on average, when comparing two groups of units that differ by 1 in the relevant predictor while being identical in all the other predictors". So [if you're regressing y on u and v, the coefficient of u is the average difference in y per difference in u, comparing pairs of items that differ in u but are identical in v](http://andrewgelman.com/2013/01/05/understanding-regression-models-and-regression-coefficients/).
 
-So, for example, in this case we could say that comparing respondents who have the same level of unemployment but who differed in whether they are one of the largest cities or not, the model predicts a expected difference of .53 in their violent crime measure. And that respondents with the same gender, but that differ by one percent point in unemployment, we would expect to see a difference of 0.23 in their violent crime measure. So we are interpreting the regression slopes **as comparisons of individuals that differ in one predictor while being at the same levels of the other predictors**.
+So, for example, in this case we could say that comparing respondents who have the same level of unemployment but who differed in whether they are one of the largest cities or not, the model predicts a expected difference of .53 in their violent crime measure. And that cities with the same size category, but that differ by one percent point in unemployment, we would expect to see a difference of 0.23 in their violent crime measure. So we are interpreting the regression slopes **as comparisons of observation that differ in one predictor while being at the same levels of the other predictors**.
 
 As you can see, interpreting regression coefficients can be kind of tricky. The relationship between the response y and any one explanatory variable can change greatly depending on what other explanatory variables are present in the model. 
 
-For example, if you contrast this model with the one we run with only *largest50* as a predictor you will notice the intercept has changed. You cannot longer read the intercept as the mean value ofviolence for smaller cities. *Adding predictors to the model changes their meaning*. Now the intercept index the value of violence for smaller cities *that, in addition, score 0 in unemployed*. In this case you don't have cases that meet this condition (equal zero in all your predictors). More often than not, then, there is not much value in bothering to interpret the intercept because if does not represent a real observation in your sample.
+For example, if you contrast this model with the one we run with only *largest50* as a predictor you will notice the intercept has changed. You cannot longer read the intercept as the mean value of violence for smaller cities. *Adding predictors to the model changes their meaning*. Now the intercept index the value of violence for smaller cities *that, in addition, score 0 in unemployed*. In this case you don't have cases that meet this condition (equal zero in all your predictors). More often than not, then, there is not much value in bothering to interpret the intercept because if does not represent a real observation in your sample.
 
 Something you need to be particularly careful about is to interpret the coefficients in a causal manner.  At least your data come from an experiment this is unlikely to be helpful. With observational data regression coefficients should not be read as indexing causal relations. This sort of textbook warning is, however, often neglectfully ignored by professional researchers. Often authors carefully draw sharp distinctions between causal and correlational claims when discussing their data analysis, but then interpret the correlational patterns in a totally causal way in their conclusion section. This is what is called the [causation](http://junkcharts.typepad.com/numbersruleyourworld/2012/07/the-causation-creep.html) or [causal](http://www.carlislerainey.com/2012/12/05/another-example-of-causal-creep/) creep. Beware. Don't do this tempting as it may be.
 
@@ -626,7 +626,7 @@ plot_model(fit_4, title="Violence across cities")
 
 <img src="08-regression_new_files/figure-html/unnamed-chunk-31-1.png" width="672" />
 
-What you see plotted here is the point estimates (the circles), the confidence intervals around those estimates (the longer the line the less precise the estimate), and the colours represent whether the effect is negative (red) or positive (blue).
+What you see plotted here is the point estimates (the circles), the confidence intervals around those estimates (the longer the line the less precise the estimate), and the colours represent whether the effect is negative (red) or positive (blue). There are other packages that also provide similar functionality, like the `dotwhisker` package that you may want to explore, see more details [here](https://cran.r-project.org/web/packages/dotwhisker/vignettes/dotwhisker-vignette.html).
 
 The `sjPlot` package also allows you to produce html tables for more professional presentation of your regression tables. For this we use the `tab_model()` function. This kind of tabulation may be particularly helpful for your final assignment.
 

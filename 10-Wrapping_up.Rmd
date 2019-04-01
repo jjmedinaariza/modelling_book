@@ -9,13 +9,13 @@ And with that, let's move to this final session. We are not going to cover new t
 ##Tips for the assignment
 
 
-You should all now be familiar with the assignment you have to do. In the Blackboard page for this course unit you can obtain the essay question and additional guidance we have prepared. That guidance aims to answer most of the questions about what you need to do and how. It is very detailed and it has been built with the feedback from the many students that have taken this module before. That guidance aims to provide you a helping hand during the process. It also includes a file in how to think about the writing of your essay -see [here]().
+You should all now be familiar with the assignment you have to do. In the Blackboard page for this course unit you can obtain the essay question and additional guidance we have prepared. You can see as well [here](https://github.com/jjmedinaariza/modelling_book/blob/master/files_docs/STEPS%20IN%20THE%20ANALYSIS%20REQUIRED%20FOR%20THE%20ESSAY.pdf). This guidance aims to answer most of the questions about what you need to do and how. It is very detailed and it has been built with the feedback from the many students that have taken this module before. That guidance aims to provide you a helping hand during the process. It also includes a file in how to think about the writing of your essay -see [here](https://github.com/jjmedinaariza/modelling_book/blob/master/files_docs/WRITING%20THE%20ESSAY.pdf).
 
 Critically you have never written anything like this before so it is normal to have questions. It may help you to read any article in any of the top journals in our field such as [Criminology](https://onlinelibrary.wiley.com/journal/17459125), the [Journal of Research in Crime and Delinquency](https://journals.sagepub.com/home/jrc), or if you like "hard drugs" the [Journal of Quantitative Criminology](https://link.springer.com/journal/10940) to get an idea of the templates that criminologists follow when writing a research report. **Looking at good templates** such as the ones you will encounter in those journals will give you good ideas about how to tell your story.
 
 For any additional questions you can follow the sequential 5 "Bs" approach designed to enhance autonomy that primary schools follow these days: brain, book, board, buddy, boss. Start with the first and move to the next one if you get stuck.
 
-![](imgs/fiveb.PNG) 
+![](imgs/fiveb.jpg) 
 
 + Brain: "Do you already know the answer or is this something you can decide for yourself?"
 + Book: "Can I look back through my learning materials and find the answer there?"

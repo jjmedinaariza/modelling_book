@@ -41,14 +41,19 @@ This is a very succint way of describing the distribution of your variables when
 
 Notice that this table has minimum amount of ink and only lines separating cells when absolutely necessary. If you are uncertain how to modify the default tables your word editor uses, [this file](https://github.com/jjmedinaariza/modelling_book/blob/master/files_docs/wordtables.pdf) gives you some tips in how to do with with MS Word. It will be fairly similar with other apps.
 
-```{r}
-read.csv()
-```
+As we have said we want you to look at whether your variables are associated before you run your multiple regression model. We do this so that we can evaluate if you have learnt how to choose the right tests and measures of effect size. 
 
+![](imgs/tableexample.png) 
+
+Above I am reproducing an example of how you could do this. The example assumes you have a categorical dependent variable with four different categories (non-gang, gang only at T1, etc.). You can see how in this table the categories define the column (there is also one for the total sample, if you have something like this you are essentially providing also the summary descriptives for the whole). You can see that the rows define the levels for two categorical variables (gender and race/ethnicity) and two quantitative variables (age and a score for crime). For the categorical variables we have the appropriate percentages (as discussed in week 7) and for the quantitative variables we have the means and standard deviations. Remember how you set this table may differ depending the nature of your variables, but hopefully you get the idea. You can find a way to summarise the information. You could add a column to a table like this with the p values for your statistical tests (somehow indicating what that test was: chi square, F, etc.). Then you could discuss the more relevant of this in the narrative discussing your table.
 
 
 ##Some final words
 
+```{r}
+library(devtools)
+install_github("profandyfield/adventr")
+```
 
 
 [here](http://milton-the-cat.rocks/home/adventr.html#contents_of_adventr)

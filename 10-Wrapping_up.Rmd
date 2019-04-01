@@ -50,10 +50,9 @@ Above I am reproducing an example of how you could do this. The example assumes 
 
 ##Some final words
 
-```{r}
-library(devtools)
-install_github("profandyfield/adventr")
-```
+So, this is the end. At least for now. What we have done this semester is an introduction to the field of data analysis. But there is so much more to it. If you are planning a scientific career or want to work as an analyst in the private or public sector, the journey is just beginning. You could take some choices in the final year to continue this journey. There are some options within our degree (like Crime Mapping or the Quantitative Seconday Analysis Short Dissertation pathway, one of the possible modalities as the Short Dissertation). You could also take options in other degrees within the School of Social Science, our new home, that also have a focus on quant analysis (we can advise on these). After that you may want to think about our MRes in Criminology (Social Statistics), which focuses on quant analysis as part of the criminology track. You can see details [here](https://www.manchester.ac.uk/study/masters/courses/list/10377/mres-criminology-social-statistics/).
 
+But there are many free courses offered as massive online open courses that you could take to consolidate or further expand what you have learnt this semester. Check out [Coursera](https://www.coursera.org/browse/data-science) or [edX](https://www.edx.org/course/subject/data-science) platforms for these. Many of those courses make you pay for a certificate (and if you want to get feedback), but you can watch the videos and use the materials for free in almost all of them. You may also want to have a look at [datacamp](https://www.datacamp.com). Most of their courses require a paid subscription, but there are many courses for free (particularly those created by the community).
 
-[here](http://milton-the-cat.rocks/home/adventr.html#contents_of_adventr)
+Good luck with the essays!!! And do not hesitate to get in touch if you have any queries.
+

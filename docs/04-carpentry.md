@@ -561,6 +561,13 @@ Having to look at this every time is not very convenient. You may prefer to simp
 
 ```r
 library(labelled)
+```
+
+```
+## Warning: package 'labelled' was built under R version 3.5.3
+```
+
+```r
 df$f_occup <- to_factor(df$occupation)
 class(df$f_occup)
 ```
@@ -800,20 +807,6 @@ Let's check something else:
 
 ```r
 library(skimr)
-```
-
-```
-## 
-## Attaching package: 'skimr'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     filter
-```
-
-```r
 skim(df$politics)
 ```
 
@@ -1066,6 +1059,17 @@ colMeans(is.na(df_f))
 
 The function `complete.cases` is returning what cases have missing data **in any of** the variables not in a singular one. It is not unusual for this percentage to be high. You may end up with a massive loss of cases even though the individual variables themselves do not look as bad as the end scenario.
 
+Later this term we will cover forms of analysis (e.g., multiple regression) in which you have to work with multiple variables at the same time. This form of analysis require you to have information for all the cases and all the variables. Every case for which there is not information in one of the variables in your analysis is automatically excluded from such analysis. So the actual sample size you use when using these techniques is the sample size for which you have full information. In our example your sample size (when you do multiple regression analysis or any multivariate analysis) will be 20184 rather than 27818.
+
+This being the case it makes sense to exclude from your data all cases that have some missing information in the variables you will be using in your analisis. For this you can use the `na.omit` function. We create a new object (I name it "full_df", you can call it whatever) and put inside it the outcome of running `na.omit` in our original sample ("df_f").
+
+
+```r
+full_df <- na.omit(df_f)
+```
+
+Now we have a dataset ready for starting our analysis. This is the point, when you are doing your assignment, that you can start running frequency distributions that you will report, and all kinds of statistical tests that we cover in the weeks to come.
+
 ##Exploring dataframes visually
 
 We have covered now a number of functions you can use to explore your data, such as `skimr::skim()`, `str()`, `summary()`, `table()`, or `dplyr::glimpse()`. But sometimes is useful to get a more panoramic way. For this we can use the `visdat` package for visualising whole dataframes amd its main function `vis_dat()`.
@@ -1083,7 +1087,7 @@ library(visdat)
 vis_dat(df_f)
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+<img src="04-carpentry_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 
 Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, f_gender, f_urban, and f_occup. We see that region is encoded as a `character` vector, whereas the others are `factors`. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor. 
 
@@ -1112,7 +1116,7 @@ The othe piece of info you get with `vis_dat` is the prevalence of missing data 
 vis_miss(df_f)
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-55-1.png" width="672" />
+<img src="04-carpentry_files/figure-html/unnamed-chunk-56-1.png" width="672" />
 
 You can find more details about how to explore missing data in the vignette of the `naniar` package [here](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 

@@ -1,8 +1,8 @@
-#Logistic regression (Week 9)
+#Logistic regression
 
 ##Introduction
 
-In previous sessions we covered the linear regression model, that you can use when you are modeling variation in a numerical response variable. In this session we are going to introduce logistic regression, which is a technique you may use when your response variable is categorical and has two possible levels.
+In previous sessions we covered the linear regression model, that you can use when you are modeling variation in a numerical response variable. In this session we are going to introduce logistic regression, which is a technique you may use when your outcome or response (or dependent) variable is categorical and has two possible levels.
 
 In criminology, very often you will be interested in binary outcomes (e.g., victim/no victim, arrested/not arrested, etc.) and want to use a number of predictor variables to study these outcomes. It is then, helpful, to understand how to use these models. Logistic regression is part of a broader family of models called **generalised linear models** -because they can all be expressed with the mathematical equation we used for a line.
 
@@ -142,7 +142,7 @@ At the very bottom, below the table of coefficients, are fit indices (including 
 
 The part in the middle of the output shows the coefficients, their standard errors, the statistic, and the associated p-values. The z statistic (sometimes called a Wald z-statistic) does a job similar to the t test in the linear regression model. It is a test of statistical significance assessing whether each input in the model is associated with the dependent variable.
 
-If we focus in the table of coefficients, we can see that all the inputs but `sex` were significant in the model. The estimates that get printed when you run logistic regression give you the change in the log odds of the outcome for a one unit increase in the predictor. Here we see that for every one unit increase in the number of previous police contacts (`checks`), the **log odds** of receiving harsher treatment (versus being released) increases by 0.36 adjusting for the other variables in the model. The reminder variables are categorical predictors with two levels. So what we see is the coefficient for the dummy variables indicating the contrast with their respective baseline or reference category. So, for example, being Black increases the log odds of receiving harsher treatment by 0.49, whereas being employed decreases the log odds of being released by 0.77. As mentioned above, the coefficient for gender was not significant.
+If we focus in the table of coefficients, we can see that all the inputs but *sex* were significant in the model. The estimates that get printed when you run logistic regression give you the change in the log odds of the outcome for a one unit increase in the predictor. Here we see that for every one unit increase in the number of previous police contacts (*checks*), the **log odds** of receiving harsher treatment (versus being released) increases by 0.36 adjusting for the other variables in the model. The reminder variables are categorical predictors with two levels. So what we see is the coefficient for the dummy variables indicating the contrast with their respective baseline or reference category. So, for example, being Black increases the log odds of receiving harsher treatment by 0.49, whereas being employed decreases the log odds of being released by 0.77. As mentioned above, the coefficient for gender was not significant. What are log odds? We will discuss this in a bit.
 
 We can also use the `confint()` function to obtain confidence intervals for the estimated coefficients.
 
@@ -226,13 +226,6 @@ We can also use **forest plots** in much the same way than we did for linear reg
 
 ```r
 library(sjPlot)
-```
-
-```
-## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
-```
-
-```r
 plot_model(fitl_1)
 ```
 
@@ -471,6 +464,10 @@ library(caret)
 ```
 
 ```
+## Warning: package 'caret' was built under R version 3.5.3
+```
+
+```
 ## Loading required package: lattice
 ```
 
@@ -496,6 +493,7 @@ confusionMatrix(data=harsher_pred, reference=Arrests$harsher, positive="Yes") #T
 ##     P-Value [Acc > NIR] : 0.4943         
 ##                                          
 ##                   Kappa : 0.078          
+##                                          
 ##  Mcnemar's Test P-Value : <2e-16         
 ##                                          
 ##             Sensitivity : 0.06390        
@@ -553,6 +551,10 @@ We can use the `pROC` package for this[^2]. We start by creating an object that 
 
 ```r
 library(pROC)
+```
+
+```
+## Warning: package 'pROC' was built under R version 3.5.3
 ```
 
 ```

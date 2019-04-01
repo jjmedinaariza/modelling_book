@@ -1,4 +1,4 @@
-#An introduction to regression (Week 8)
+#An introduction to regression
 
 ##Introduction: models in scientific research
 
@@ -892,6 +892,13 @@ The way we would obtain these rescaled inputs uses the `standardize()` function 
 
 ```r
 library(arm)
+```
+
+```
+## Warning: package 'lme4' was built under R version 3.5.3
+```
+
+```r
 standardize(fit_4)
 ```
 

@@ -41,6 +41,8 @@ This is a very succint way of describing the distribution of your variables when
 
 Notice that this table has minimum amount of ink and only lines separating cells when absolutely necessary. If you are uncertain how to modify the default tables your word editor uses, [this file](https://github.com/jjmedinaariza/modelling_book/blob/master/files_docs/wordtables.pdf) gives you some tips in how to do with with MS Word. It will be fairly similar with other apps.
 
+Notice as well that information about the total sample size is provided. Remember what we cover in the end of section 4.9!
+
 As we have said we want you to look at whether your variables are associated before you run your multiple regression model. We do this so that we can evaluate if you have learnt how to choose the right tests and measures of effect size. 
 
 ![](imgs/tableexample.png) 

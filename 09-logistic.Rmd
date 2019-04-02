@@ -140,7 +140,7 @@ It is important to understand that with this type of models we usually generate 
 
 ##Assessing model fit I: deviance and pseudo r squared
 
-As you may remember when looking at linear models we could use an F test to check the overall fit of the model and we could evaluate R squared. When running logistic regression we cannot obtain the R squared (although there is a collection of pseudo-R^2 measures that have been produced)[^1]. In linear regression things are a bit simpler. As Menard (2010: 43) explains:
+As you may remember when looking at linear models we could use an F test to check the overall fit of the model and we could evaluate R squared. When running logistic regression we cannot obtain the R squared (although there is a collection of pseudo-R^2 measures that have been produced). In linear regression things are a bit simpler. As Menard (2010: 43) explains:
 
 > "there is only one reasonable residual variation criterion for quantitative variables in OLS, the familiar error sum of squares... but there are several possible residual variation criteria (entropy, squared error, qualitative difference) for binary variables. Another hindrance is the existence of numerous mathematical equivalents to R^2 in OLS, which are not necessarily mathematically (same formula) or conceptually (same meaning in the context of the model) equivalent to R^2 in logistic regression... Moreover, in logistic regression, we must choose whether we are more interested in qualitative prediction (whether predicitons are correct or incorrect), quantitative prediction (how close predictions are to being correct), or both, because different measures of explained variation are appropriate for these two different types of prediction"
 
@@ -272,7 +272,7 @@ Similarly, if you think about the criminal justice system, it is essentially bui
 
 We may want to see what happens to sensitivity and specificity for different cut off points.  For this we can look at **receiver operating characteristics** or simply [ROC curves](http://en.wikipedia.org/wiki/Receiver_operating_characteristic). This is essentially a tool for evaluating the sensitivity/specificity trade off. The ROC curve can be used for investigating alternate cut offs for class probabilities.
 
-We can use the `pROC` package for this[^2]. We start by creating an object that contains the relevant information with the `roc()` function form t the `pROC` package.
+We can use the `pROC` package for this. We start by creating an object that contains the relevant information with the `roc()` function form t the `pROC` package.
 
 ```{r}
 library(pROC)
@@ -325,7 +325,9 @@ On the other hand, we see a significant interaction between race and age. Young 
 
 We already discussed in a previous session the difficulties of interpreting regression coefficients in models with interactions. Centering and standardising in the way discussed earlier can actually be of help or this purpose.
 
-**HOMEWORK: Run a logistic regression model using the BCS0708 data from last week and develop a model that aims to predict victimisation with at least 5 explanatory variables. Interpret your results**
+##HOMEWORK: 
+
+*Run a logistic regression model using the BCS0708 data from previous weeks and develop a model that aims to predict victimisation with at least 5 explanatory variables. Interpret your results*
 
 ##Further resources
 
@@ -337,6 +339,3 @@ These are a set of useful external resources that may aid your comprehesion (and
 
 + A [helpful list of resources](http://www.r-bloggers.com/some-r-resources-for-glms/) for general linear models with R.
 
-
-[^1]: Various of these can be obtained invoking the `pR2()` function from the `pscl` package.
-[^2]: Alternatively one could use the `ROCR` package. For details, see [here](http://rocr.bioinf.mpi-sb.mpg.de/).

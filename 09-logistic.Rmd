@@ -4,7 +4,7 @@
 
 In previous sessions we covered the linear regression model, that you can use when you are modeling variation in a numerical response variable. In this session we are going to introduce logistic regression, which is a technique you may use when your outcome or response (or dependent) variable is categorical and has two possible levels.
 
-In criminology, very often you will be interested in binary outcomes (e.g., victim/no victim, arrested/not arrested, etc.) and want to use a number of predictor variables to study these outcomes. It is then, helpful, to understand how to use these models. Logistic regression is part of a broader family of models called **generalised linear models** -because they can all be expressed with the mathematical equation we used for a line.
+In criminology, very often you will be interested in binary outcomes (e.g., victim/no victim, arrested/not arrested, etc.) and want to use a number of predictor variables to study these outcomes. It is then, helpful, to understand how to use these models. Logistic regression is part of a broader family of models called **generalised linear models**. You should read the Wikepedia entry for this concept [here](https://en.wikipedia.org/wiki/Generalized_linear_model).
 
 With logistic regression we are modelling the probability of belonging to one of the levels in the binary outcome. For any combination of values for our predictor variables the model will estimate a probability of presenting the outcome of interest. To fit this model we use maximum likelihood. This handout does not focuses in explaining the mathematics behind the method. Those are important but in this introductory module we only provide an introduction to the technique.
 
@@ -17,9 +17,9 @@ data(Arrests, package="effects")
 
 This data includes information on police treatment of individuals arrested in Toronto for possession of marihuana. We are going to model variation on `released`, a factor with two levels indicating whether the arrestee was released with a summons.  In this case the police could:
 
-+ Release the arrestee with a summons— like a parking ticket 
++ Release the arrestee with a summons - like a parking ticket 
 
-+ Bring to police station, hold for bail, etc.— harsher treatment 
++ Bring to police station, hold for bail, etc. - harsher treatment 
 
 ```{r}
 table(Arrests$released)
@@ -49,7 +49,7 @@ table(Arrests$harsher)
 Arrests$colour <- relevel(Arrests$colour, "White")
 ```
 
-We use the `glm()` function for fitting the model, specifying as an argument that we will be using a logit model (`family="binomial"`). As stated, we are going to run a model oriented primarily to assess to what degree race/ethnicity seems to matter even when we adjust for other factors (e.g., sex, employment, and previous police contacts (checks: number of police data records of previous arrests, previous convictions, parole status, etc. – 6 in all) on which the arrestee's name appeared; a numeric vector)).
+We use the `glm()` function for fitting the model, specifying as an argument that we will be using a logit model (`family="binomial"`). As stated, we are going to run a model oriented primarily to assess to what degree race/ethnicity seems to matter even when we adjust for other factors (e.g., sex, employment, and previous police contacts (checks: number of police data records of previous arrests, previous convictions, parole status, etc. - 6 in all) on which the arrestee's name appeared; a numeric vector)).
 
 ```{r}
 fitl_1 <- glm(harsher ~ checks + colour + sex + employed, data=Arrests, family = "binomial")
@@ -92,7 +92,7 @@ Employment has an odd ratio of 0.45. When the odd ratio is between 0 and 1 is in
 
 Another way of getting the results with less typing is to use the `Logit()` function in the `lessR` package (you will need to install it if you do not have it).
 
-```{r, eval = FALSE}
+```{r}
 library(lessR, quietly= TRUE)
 Logit(harsher ~ checks + colour + sex + employed, data=Arrests, brief=TRUE)
 ```
@@ -101,13 +101,13 @@ As with linear regression, the interpretation of regression coefficients is sens
 
 Finally, you could, in the same way than we did in a previous session, use the `standardize()` function from the `arm` package.
 
-```{r, eval=FALSE}
+```{r}
 library(arm)
 fitl_1_s <- standardize(fitl_1)
 display(fitl_1_s)
 ```
 
-We can also use **forest plots** in much the same way than we did for linear regression. One way of doing this is using the `sjp.glm()` function of the `sjPlot` package. Notice that by default the odd ratios are sorted from higher to lower in this display (and also that in this html file the text in the plot is not fully displayed, I'm still trying to fix that, but if you run this and zoom in you will see it better).
+We can also use **forest plots** in much the same way than we did for linear regression. One way of doing this is using the `plot.model()` function of the `sjPlot` package. Notice that by default the odd ratios are sorted from higher to lower in this display (and also that in this html file the text in the plot is not fully displayed, I'm still trying to fix that, but if you run this and zoom in you will see it better).
 
 ```{r}
 library(sjPlot)

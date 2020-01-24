@@ -8,7 +8,7 @@ Good graphics not only help researchers to make their data easier to understand 
 
 Recent research has revealed that papers which have good graphics are perceived as overall more clear and more interesting, and their authors perceived as smarter (see [this presentation](https://vimeo.com/181771433))
 
-The preparation for this session includes many great resources on visualising quantitative information, and if you have not had time to go through them, I recommend that you take some time to do so. 
+The preparation for this session includes many great resources on visualising quantitative information, and if you have not had time to go through them, we recommend that you take some time to do so. 
 
 As with other aspects of R, there are a number of core functions that can be used to produced graphics. However these offer limited possibilities for building graphs. 
 
@@ -78,9 +78,9 @@ ggplot(data = fbo, aes(x = Club.Supported, y=Banning.Orders)) +          #data
 
 ```
 
-The first line above begins a plot by calling the `ggplot()` function, and putting the data into it. You have to name your dataframe, and then, within the `aes()` command you pass the specific variables which you want to plot. In this case, we only want to see the distribution of one variable, banning orders, in the y axis and we will plot the club supported in the x axis. 
+The first line above begins a plot by calling the `ggplot()` function, and putting the data into it. You have to name your dataframe witg the `data` argument, and then, within the `aes()` command you pass the specific variables which you want to plot. In this case, we only want to see the distribution of one variable, banning orders, in the y axis and we will plot the club supported in the x axis. 
 
-The second line is where we add the geometry. This is where we tell R what we want the graph to be. Here we say we want it to be points by using `geom_points`. You can see a list of all possible geoms [here](http://docs.ggplot2.org/current/). 
+The second line is where we add the *geometry*. This is where we tell R what we want the graph to be. Here we say we want it to be points by using `geom_points`. You can see a list of all possible geoms [here](http://docs.ggplot2.org/current/). 
 
 The third line is where we can tweak the display of the graph. Here I used `theme_bw()` which is a nice clean theme. You can try with other themes. To get a list of themes you can also see the resource [here](http://docs.ggplot2.org/current/). If you want more variety you can explore the package [`ggthemes`](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/). 
 
@@ -92,7 +92,7 @@ ggplot(data = fbo, aes(x = Club.Supported, y=Banning.Orders)) +     #data
 
 ```
 
-Changing the theme is not all you can do with the third element. For example here you can't really read the axis labels, because they're all overlapping. One solution would be to rotate your axis labels 90 degrees, with the following code: `axis.text.x = element_text(angle = 90, hjust = 1)`. You pass this code to the theme argument. 
+Changing the theme is not all you can do with the third element. For example here you can't really read the axis labels, because they're all overlapping. One solution would be to rotate your axis labels 90 degrees, with the following code: `axis.text.x = element_text(angle = 90, hjust = 1)`. You pass this code to the `theme` argument. 
 
 ```{r}
 
@@ -594,7 +594,7 @@ Not to overcomplicate things we will only use a few variables from the *Boston* 
 
 ```{r}
 #I create a new data frame that only contains 4 variables included in the Boston dataset and I am calling this new data frame object Boston_spm
-Boston_spm <- select(Boston, crim, medv, lstat)
+Boston_spm <- dplyr::select(Boston, crim, medv, lstat)
 ```
 
 Then we load `ggpairs` and use run the scatterplot matrix using the `ggpairs` function:
@@ -623,7 +623,7 @@ spm(Boston_spm, smooth=list(col.smooth="red"), regLine=FALSE)
 And you can also condition in a third variable. For example, we could condition on whether the areas bound the Charles River (variable *chas*).
 
 ```{r}
-Boston_spm <- select(Boston, crim, medv, lstat, chas)
+Boston_spm <- dplyr::select(Boston, crim, medv, lstat, chas)
 spm(~crim+medv+lstat, data=Boston_spm, groups=Boston_spm$chas, by.groups=TRUE, smooth=FALSE, regLine=FALSE)
 ```
 

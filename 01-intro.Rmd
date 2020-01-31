@@ -507,5 +507,5 @@ What is more. I would suggest you go to the Tools drop down menu, select Global 
 
 ##Lab homework activities for Week 1
 
-Use the various functions we have introduced this week (skim, summary) to obtain summary statistics for all the variables in the *police_local* data frame that is available in the *fivethirtyeight* package. 
+Use the various functions we have introduced this week (skim, summary) to obtain summary statistics for all the variables in the *police_locals* data frame that is available in the *fivethirtyeight* package. 
 

@@ -478,16 +478,10 @@ library(skimr)
 Once you have loaded the *skimr* package you can use it. Its main function is *skim*. Like *summary* for data frames, skim presents results for all the columns and the statistics will depend on the class of the variable. However, the results are displayed and stored in a nicer way -though we won't get into the details of this right now.
 
 
-```{r, eval=FALSE}
+```{r}
 skim(hate_crimes)
 ```
 
-
-```{r, echo=FALSE, results="asis"}
-skim_with(numeric = list(hist = NULL), ts = list(line_graph = NULL))
-skim_with(integer = list(hist = NULL), ts = list(line_graph = NULL))
-skim(hate_crimes) %>% skimr::kable()
-```
 
 Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 we covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don't know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes [here](https://rawgit.com/maczokni/MSCD/master/Lesson_3.html#visualising-the-differences-between-groups).
 

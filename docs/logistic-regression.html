@@ -24,7 +24,7 @@
 <meta name="author" content="Juanjo Medina and Reka Solymosi" />
 
 
-<meta name="date" content="2020-01-31" />
+<meta name="date" content="2020-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -272,18 +272,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In criminology, very often you will be interested in binary outcomes (e.g., victim/no victim, arrested/not arrested, etc.) and want to use a number of predictor variables to study these outcomes. It is then, helpful, to understand how to use these models. Logistic regression is part of a broader family of models called <strong>generalised linear models</strong>. You should read the Wikepedia entry for this concept <a href="https://en.wikipedia.org/wiki/Generalized_linear_model">here</a>.</p>
 <p>With logistic regression we are modelling the probability of belonging to one of the levels in the binary outcome. For any combination of values for our predictor variables the model will estimate a probability of presenting the outcome of interest. To fit this model we use maximum likelihood. This handout does not focuses in explaining the mathematics behind the method. Those are important but in this introductory module we only provide an introduction to the technique.</p>
 <p>To illustrate logistic regression we are going to use the <code>Arrests</code> data from the <code>effects</code> package. You can obtain details about this dataset and the variables included by using <code>help(Arrests, package="effects")</code>. If you don’t have that package you will need to install it and load it.</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb564-1" title="1"><span class="kw">library</span>(effects)</a></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb565-1" title="1"><span class="kw">library</span>(effects)</a></code></pre></div>
 <pre><code>## Loading required package: carData</code></pre>
 <pre><code>## lattice theme set by effectsTheme()
 ## See ?effectsTheme for details.</code></pre>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb567-1" title="1"><span class="kw">data</span>(Arrests, <span class="dt">package=</span><span class="st">&quot;effects&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb568-1" title="1"><span class="kw">data</span>(Arrests, <span class="dt">package=</span><span class="st">&quot;effects&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning in data(Arrests, package = &quot;effects&quot;): data set &#39;Arrests&#39; not found</code></pre>
 <p>This data includes information on police treatment of individuals arrested in Toronto for possession of marihuana. We are going to model variation on <code>released</code>, a factor with two levels indicating whether the arrestee was released with a summons. In this case the police could:</p>
 <ul>
 <li><p>Release the arrestee with a summons - like a parking ticket</p></li>
 <li><p>Bring to police station, hold for bail, etc. - harsher treatment</p></li>
 </ul>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb569-1" title="1"><span class="kw">table</span>(Arrests<span class="op">$</span>released)</a></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb570-1" title="1"><span class="kw">table</span>(Arrests<span class="op">$</span>released)</a></code></pre></div>
 <pre><code>## 
 ##   No  Yes 
 ##  892 4334</code></pre>
@@ -292,27 +292,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fitting-logistic-regression" class="section level2">
 <h2><span class="header-section-number">9.2</span> Fitting logistic regression</h2>
 <p>It is fairly straightforward to run a logistic model. Before you fit it, though, is convenient to check what you are actually modelling. Remember that R orders the levels in a factor alphabetically (unless they have been reordered by the authors of the dataframe). What that means is that when you run logistic regression you will be predicting probabilities associated with the category with a higher alphabetical order.</p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb571-1" title="1"><span class="kw">levels</span>(Arrests<span class="op">$</span>released) <span class="co">#Prints the levels, and you can see that &quot;Yes&quot; comes after &quot;No&quot; in alphabetical order</span></a></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb572-1" title="1"><span class="kw">levels</span>(Arrests<span class="op">$</span>released) <span class="co">#Prints the levels, and you can see that &quot;Yes&quot; comes after &quot;No&quot; in alphabetical order</span></a></code></pre></div>
 <pre><code>## [1] &quot;No&quot;  &quot;Yes&quot;</code></pre>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb573-1" title="1"><span class="kw">contrasts</span>(Arrests<span class="op">$</span>released) <span class="co">#This function shows you the contrasts associated with a factor. You can see the 1 is associated with &quot;Yes&quot;. This is what our model will be predicting, the probability of a &quot;Yes&quot;.</span></a></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb574-1" title="1"><span class="kw">contrasts</span>(Arrests<span class="op">$</span>released) <span class="co">#This function shows you the contrasts associated with a factor. You can see the 1 is associated with &quot;Yes&quot;. This is what our model will be predicting, the probability of a &quot;Yes&quot;.</span></a></code></pre></div>
 <pre><code>##     Yes
 ## No    0
 ## Yes   1</code></pre>
 <p>If by any chance, the level of interest is not the one that will be selected by R, we will need to reorder the factor levels. In this particular analysis our goal is to check whether being Black predicts harsher treatment. So, let’s reorder the factor in such a way that the model is oriented towards predicting this harsher treatment. This will simply chage the sign of the coefficients and, in that way, may enhance interpretation.</p>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" title="1"><span class="co">#Reverse the order</span></a>
-<a class="sourceLine" id="cb575-2" title="2">Arrests<span class="op">$</span>harsher &lt;-<span class="st"> </span><span class="kw">relevel</span>(Arrests<span class="op">$</span>released, <span class="st">&quot;Yes&quot;</span>)</a>
-<a class="sourceLine" id="cb575-3" title="3"><span class="co">#Rename the levels so that it is clear we now mean yes to harsher treatment</span></a>
-<a class="sourceLine" id="cb575-4" title="4"><span class="kw">levels</span>(Arrests<span class="op">$</span>harsher) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;No&quot;</span>,<span class="st">&quot;Yes&quot;</span>)</a>
-<a class="sourceLine" id="cb575-5" title="5"><span class="co">#Check that it matches in reverse the original variable</span></a>
-<a class="sourceLine" id="cb575-6" title="6"><span class="kw">table</span>(Arrests<span class="op">$</span>harsher)</a></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb576-1" title="1"><span class="co">#Reverse the order</span></a>
+<a class="sourceLine" id="cb576-2" title="2">Arrests<span class="op">$</span>harsher &lt;-<span class="st"> </span><span class="kw">relevel</span>(Arrests<span class="op">$</span>released, <span class="st">&quot;Yes&quot;</span>)</a>
+<a class="sourceLine" id="cb576-3" title="3"><span class="co">#Rename the levels so that it is clear we now mean yes to harsher treatment</span></a>
+<a class="sourceLine" id="cb576-4" title="4"><span class="kw">levels</span>(Arrests<span class="op">$</span>harsher) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;No&quot;</span>,<span class="st">&quot;Yes&quot;</span>)</a>
+<a class="sourceLine" id="cb576-5" title="5"><span class="co">#Check that it matches in reverse the original variable</span></a>
+<a class="sourceLine" id="cb576-6" title="6"><span class="kw">table</span>(Arrests<span class="op">$</span>harsher)</a></code></pre></div>
 <pre><code>## 
 ##   No  Yes 
 ## 4334  892</code></pre>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb577-1" title="1"><span class="co">#We will also reverse the order of the &quot;colour&quot;&quot; variable so that the dummy uses Whites as the baseline</span></a>
-<a class="sourceLine" id="cb577-2" title="2">Arrests<span class="op">$</span>colour &lt;-<span class="st"> </span><span class="kw">relevel</span>(Arrests<span class="op">$</span>colour, <span class="st">&quot;White&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb578-1" title="1"><span class="co">#We will also reverse the order of the &quot;colour&quot;&quot; variable so that the dummy uses Whites as the baseline</span></a>
+<a class="sourceLine" id="cb578-2" title="2">Arrests<span class="op">$</span>colour &lt;-<span class="st"> </span><span class="kw">relevel</span>(Arrests<span class="op">$</span>colour, <span class="st">&quot;White&quot;</span>)</a></code></pre></div>
 <p>We use the <code>glm()</code> function for fitting the model, specifying as an argument that we will be using a logit model (<code>family="binomial"</code>). As stated, we are going to run a model oriented primarily to assess to what degree race/ethnicity seems to matter even when we adjust for other factors (e.g., sex, employment, and previous police contacts (checks: number of police data records of previous arrests, previous convictions, parole status, etc. - 6 in all) on which the arrestee’s name appeared; a numeric vector)).</p>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb578-1" title="1">fitl_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(harsher <span class="op">~</span><span class="st"> </span>checks <span class="op">+</span><span class="st"> </span>colour <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>employed, <span class="dt">data=</span>Arrests, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>)</a>
-<a class="sourceLine" id="cb578-2" title="2"><span class="kw">summary</span>(fitl_<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb579-1" title="1">fitl_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(harsher <span class="op">~</span><span class="st"> </span>checks <span class="op">+</span><span class="st"> </span>colour <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>employed, <span class="dt">data=</span>Arrests, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>)</a>
+<a class="sourceLine" id="cb579-2" title="2"><span class="kw">summary</span>(fitl_<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = harsher ~ checks + colour + sex + employed, family = &quot;binomial&quot;, 
@@ -345,7 +345,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The part in the middle of the output shows the coefficients, their standard errors, the statistic, and the associated p-values. The z statistic (sometimes called a Wald z-statistic) does a job similar to the t test in the linear regression model. It is a test of statistical significance assessing whether each input in the model is associated with the dependent variable.</p>
 <p>If we focus in the table of coefficients, we can see that all the inputs but <em>sex</em> were significant in the model. The estimates that get printed when you run logistic regression give you the change in the log odds of the outcome for a one unit increase in the predictor. Here we see that for every one unit increase in the number of previous police contacts (<em>checks</em>), the <strong>log odds</strong> of receiving harsher treatment (versus being released) increases by 0.36 adjusting for the other variables in the model. The reminder variables are categorical predictors with two levels. So what we see is the coefficient for the dummy variables indicating the contrast with their respective baseline or reference category. So, for example, being Black increases the log odds of receiving harsher treatment by 0.49, whereas being employed decreases the log odds of being released by 0.77. As mentioned above, the coefficient for gender was not significant. What are log odds? We will discuss this in a bit.</p>
 <p>We can also use the <code>confint()</code> function to obtain confidence intervals for the estimated coefficients.</p>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb580-1" title="1"><span class="kw">confint</span>(fitl_<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb581-1" title="1"><span class="kw">confint</span>(fitl_<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <pre><code>##                  2.5 %     97.5 %
 ## (Intercept) -2.2241433 -1.5962775
@@ -355,11 +355,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## employedYes -0.9436356 -0.6148518</code></pre>
 <p>So what does that actually mean?</p>
 <p>Interpreting in the log odds scale is something some people do not find very intuitive. So it is common to use <strong>odd ratios</strong> when interpreting logistic regression. We have already covered odd ratios when discussing cross tabulations. To do this, all we need to do is to exponentiate the coefficients. To get the exponentiated coefficients, you tell R that you want to exponentiate (<code>exp()</code>), that the object you want to exponentiate is called coefficients and it is part of the model you just run.</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb583-1" title="1"><span class="kw">exp</span>(<span class="kw">coef</span>(fitl_<span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb584-1" title="1"><span class="kw">exp</span>(<span class="kw">coef</span>(fitl_<span class="dv">1</span>))</a></code></pre></div>
 <pre><code>## (Intercept)      checks colourBlack     sexMale employedYes 
 ##   0.1490516   1.4304108   1.6422658   1.0430528   0.4585312</code></pre>
 <p>You can use the same logic to the confindence intervals.</p>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb585-1" title="1"><span class="kw">exp</span>(<span class="kw">cbind</span>(<span class="dt">OR =</span> <span class="kw">coef</span>(fitl_<span class="dv">1</span>), <span class="kw">confint</span>(fitl_<span class="dv">1</span>))) <span class="co">#This will print both the OR and their 95% CI.</span></a></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb586-1" title="1"><span class="kw">exp</span>(<span class="kw">cbind</span>(<span class="dt">OR =</span> <span class="kw">coef</span>(fitl_<span class="dv">1</span>), <span class="kw">confint</span>(fitl_<span class="dv">1</span>))) <span class="co">#This will print both the OR and their 95% CI.</span></a></code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <pre><code>##                    OR     2.5 %    97.5 %
 ## (Intercept) 0.1490516 0.1081600 0.2026495
@@ -371,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Employment has an odd ratio of 0.45. When the odd ratio is between 0 and 1 is indicating a negative relationship. So employment reduces the odds of harsher treatment by 1/0.46, that is by a factor of 2.18. For more details interpreting odd ratios in logistic regression you may want to read <a href="http://www.ats.ucla.edu/stat/mult_pkg/faq/general/odds_ratio.htm">this</a>. Some people do not like odd ratios. For other ways of interpreting logistic regression coefficients you may want to consult <a href="http://www.cambridge.org/gb/academic/subjects/statistics-probability/statistical-theory-and-methods/data-analysis-using-regression-and-multilevelhierarchical-models?format=PB">chapter 5 of the book</a> by Gelman and Hill (2007).</p>
 <p>You can read more about how to read odd ratios in logistic regression <a href="https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-how-do-i-interpret-odds-ratios-in-logistic-regression/">here</a>.</p>
 <p>Another way of getting the results with less typing is to use the <code>Logit()</code> function in the <code>lessR</code> package (you will need to install it if you do not have it).</p>
-<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb588-1" title="1"><span class="kw">library</span>(lessR, <span class="dt">quietly=</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb589-1" title="1"><span class="kw">library</span>(lessR, <span class="dt">quietly=</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## 
 ## lessR 3.9.0     feedback: gerbing@pdx.edu     web: lessRstats.com/new
 ## ---------------------------------------------------------------------
@@ -390,7 +390,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## lessR parameter names now use _&#39;s. Names with a period are deprecated.
 ## Ex:  bin_width  instead of  bin.width</code></pre>
-<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb590-1" title="1"><span class="kw">Logit</span>(harsher <span class="op">~</span><span class="st"> </span>checks <span class="op">+</span><span class="st"> </span>colour <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>employed, <span class="dt">data=</span>Arrests, <span class="dt">brief=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb591-1" title="1"><span class="kw">Logit</span>(harsher <span class="op">~</span><span class="st"> </span>checks <span class="op">+</span><span class="st"> </span>colour <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>employed, <span class="dt">data=</span>Arrests, <span class="dt">brief=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## 
 ## Response Variable:   harsher
 ## Predictor Variable 1:  checks
@@ -453,15 +453,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt;&gt;&gt; No collinearity analysis because not all variables are numeric.</code></pre>
 <p>As with linear regression, the interpretation of regression coefficients is sensitive to the scale of measurement of the predictors. This means one cannot compare the magnitude of the coefficients to compare the relevance of variables to predict the response variable. The same applies to the odd ratios. Tempting and common as this might be, unless the predictors use the same metric (or maybe if they are all categorical) there is little point in comparing the magnitude of the odd ratios in logistic regression. Like the unstardised logistic regression coefficients odd ratios are <strong>not</strong> a measure of effect size that allows comparisons across inputs (Menard, 2012).</p>
 <p>Finally, you could, in the same way than we did in a previous session, use the <code>standardize()</code> function from the <code>arm</code> package.</p>
-<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb592-1" title="1"><span class="kw">library</span>(arm)</a></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb593-1" title="1"><span class="kw">library</span>(arm)</a></code></pre></div>
 <pre><code>## Loading required package: MASS</code></pre>
 <pre><code>## Loading required package: Matrix</code></pre>
 <pre><code>## Loading required package: lme4</code></pre>
 <pre><code>## 
 ## arm (Version 1.10-1, built: 2018-4-12)</code></pre>
 <pre><code>## Working directory is D:/Dropbox/1_Teaching/1 Manchester courses/20452 Modelling Criminological Data/modelling_book</code></pre>
-<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb598-1" title="1">fitl_<span class="dv">1</span>_s &lt;-<span class="st"> </span><span class="kw">standardize</span>(fitl_<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb598-2" title="2"><span class="kw">display</span>(fitl_<span class="dv">1</span>_s)</a></code></pre></div>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb599-1" title="1">fitl_<span class="dv">1</span>_s &lt;-<span class="st"> </span><span class="kw">standardize</span>(fitl_<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb599-2" title="2"><span class="kw">display</span>(fitl_<span class="dv">1</span>_s)</a></code></pre></div>
 <pre><code>## glm(formula = harsher ~ z.checks + c.colour + c.sex + c.employed, 
 ##     family = &quot;binomial&quot;, data = Arrests)
 ##             coef.est coef.se
@@ -474,21 +474,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   n = 5226, k = 5
 ##   residual deviance = 4330.7, null deviance = 4776.3 (difference = 445.6)</code></pre>
 <p>We can also use <strong>forest plots</strong> in much the same way than we did for linear regression. One way of doing this is using the <code>plot.model()</code> function of the <code>sjPlot</code> package. Notice that by default the odd ratios are sorted from higher to lower in this display (and also that in this html file the text in the plot is not fully displayed, I’m still trying to fix that, but if you run this and zoom in you will see it better).</p>
-<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb600-1" title="1"><span class="kw">library</span>(sjPlot)</a></code></pre></div>
-<pre><code>## Learn more about sjPlot with &#39;browseVignettes(&quot;sjPlot&quot;)&#39;.</code></pre>
-<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb602-1" title="1"><span class="kw">plot_model</span>(fitl_<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb601-1" title="1"><span class="kw">library</span>(sjPlot)</a></code></pre></div>
+<pre><code>## #refugeeswelcome</code></pre>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb603-1" title="1"><span class="kw">plot_model</span>(fitl_<span class="dv">1</span>)</a></code></pre></div>
 <p><img src="09-logistic_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Equally, we can produce effect plots using the <code>effects</code> package:</p>
-<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb603-1" title="1"><span class="kw">library</span>(effects)</a>
-<a class="sourceLine" id="cb603-2" title="2"><span class="kw">plot</span>(<span class="kw">allEffects</span>(fitl_<span class="dv">1</span>), <span class="dt">ask=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb604-1" title="1"><span class="kw">library</span>(effects)</a>
+<a class="sourceLine" id="cb604-2" title="2"><span class="kw">plot</span>(<span class="kw">allEffects</span>(fitl_<span class="dv">1</span>), <span class="dt">ask=</span><span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="09-logistic_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Effect plots in this context are particularly helpful because they summarise the results using probabilities, which is what you see plotted in the y axis.</p>
 <p>We don’t have to print them all. When we are primarily concerned with one of them, as in this case, that’s the one we want to emphasise when presenting and discussing our results. There isn’t much point discussing the results for the variables we simply defined as control (given what our research goal was). So in this case we would ask for the plot for our input measuring race/ethnicity:</p>
-<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb604-1" title="1"><span class="kw">plot</span>(<span class="kw">effect</span>(<span class="st">&quot;colour&quot;</span>, fitl_<span class="dv">1</span>), <span class="dt">multiline =</span> <span class="ot">FALSE</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability(harsher)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb605-1" title="1"><span class="kw">plot</span>(<span class="kw">effect</span>(<span class="st">&quot;colour&quot;</span>, fitl_<span class="dv">1</span>), <span class="dt">multiline =</span> <span class="ot">FALSE</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability(harsher)&quot;</span>)</a></code></pre></div>
 <p><img src="09-logistic_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>We can use the <code>predict()</code> function to generate the predicted probability that the arrestess will be released given what we know about their inputs in the model, given values of the predictors. By default R will compute the probabilities for the dataset we fitted the model to. Here we have printed only the first ten probabilities, but the way we use the <code>predict()</code> function here will generate a predicted probability for each case in the dataset.</p>
-<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb605-1" title="1">fitl_<span class="dv">1</span>_prob &lt;-<span class="st"> </span><span class="kw">predict</span>(fitl_<span class="dv">1</span>, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>) <span class="co">#If you want to add this to your dataframe you could designate your object as Arrests$fitl_1_prob</span></a>
-<a class="sourceLine" id="cb605-2" title="2">fitl_<span class="dv">1</span>_prob[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb606-1" title="1">fitl_<span class="dv">1</span>_prob &lt;-<span class="st"> </span><span class="kw">predict</span>(fitl_<span class="dv">1</span>, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>) <span class="co">#If you want to add this to your dataframe you could designate your object as Arrests$fitl_1_prob</span></a>
+<a class="sourceLine" id="cb606-2" title="2">fitl_<span class="dv">1</span>_prob[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</a></code></pre></div>
 <pre><code>##          1          2          3          4          5          6          7 
 ## 0.17262268 0.25519856 0.17262268 0.14344103 0.13833944 0.10091376 0.13455033 
 ##          8          9         10 
@@ -531,7 +531,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <p>In our example, we saw that some measures of fit were printed below the table with the coefficients. The <strong>null deviance</strong> is the deviance of the model with no predictors and the <strong>residual deviance</strong> is simply the deviance for this model. You clearly want the residual deviance to be smaller than the null deviance. The difference between the null and the residual deviance is what we called the model chi squared. In this case this is 4776.3 minus 4330.7. We can ask R to do this for us.</p>
 <p>First, notice that the object we created has all the information we need already stored.</p>
-<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb608-1" title="1"><span class="kw">names</span>(fitl_<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb609-1" title="1"><span class="kw">names</span>(fitl_<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>##  [1] &quot;coefficients&quot;      &quot;residuals&quot;         &quot;fitted.values&quot;    
 ##  [4] &quot;effects&quot;           &quot;R&quot;                 &quot;rank&quot;             
 ##  [7] &quot;qr&quot;                &quot;family&quot;            &quot;linear.predictors&quot;
@@ -543,19 +543,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [25] &quot;data&quot;              &quot;offset&quot;            &quot;control&quot;          
 ## [28] &quot;method&quot;            &quot;contrasts&quot;         &quot;xlevels&quot;</code></pre>
 <p>So we can use this stored information in our calculations.</p>
-<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb610-1" title="1"><span class="kw">with</span>(fitl_<span class="dv">1</span>, null.deviance <span class="op">-</span><span class="st"> </span>deviance)</a></code></pre></div>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb611-1" title="1"><span class="kw">with</span>(fitl_<span class="dv">1</span>, null.deviance <span class="op">-</span><span class="st"> </span>deviance)</a></code></pre></div>
 <pre><code>## [1] 445.5594</code></pre>
 <p>Is 445.6 small? How much smaller is enough? This value has a chi square distribution and its significance can be easily computed. For this computation we need to know the degrees of freedom for the model (which equal the number of predictors in the model) and can be obtained like this:</p>
-<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb612-1" title="1"><span class="kw">with</span>(fitl_<span class="dv">1</span>, df.null <span class="op">-</span><span class="st"> </span>df.residual)</a></code></pre></div>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb613-1" title="1"><span class="kw">with</span>(fitl_<span class="dv">1</span>, df.null <span class="op">-</span><span class="st"> </span>df.residual)</a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>Finally, the p-value can be obtained using the following code to invoke the Chi Square distribution:</p>
-<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb614-1" title="1"><span class="co">#When doing it yourself, this is all you really need (we present the code in separate fashion above to that you understand better what the one here does)</span></a>
-<a class="sourceLine" id="cb614-2" title="2"><span class="kw">with</span>(fitl_<span class="dv">1</span>, <span class="kw">pchisq</span>(null.deviance <span class="op">-</span><span class="st"> </span>deviance, df.null <span class="op">-</span><span class="st"> </span>df.residual, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb615-1" title="1"><span class="co">#When doing it yourself, this is all you really need (we present the code in separate fashion above to that you understand better what the one here does)</span></a>
+<a class="sourceLine" id="cb615-2" title="2"><span class="kw">with</span>(fitl_<span class="dv">1</span>, <span class="kw">pchisq</span>(null.deviance <span class="op">-</span><span class="st"> </span>deviance, df.null <span class="op">-</span><span class="st"> </span>df.residual, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>))</a></code></pre></div>
 <pre><code>## [1] 3.961177e-95</code></pre>
 <p>We can see that the model chi square is highly significant. Our model as a whole fits significantly better than a model with no predictors.</p>
 <p>Menard (2010) recommends to also look at the likelihood ratio R^2 that can be calculated as the difference between the null deviance and the residual deviance, divided by the null deviance.</p>
-<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb616-1" title="1"><span class="co">#Likelihood ratio R2</span></a>
-<a class="sourceLine" id="cb616-2" title="2"><span class="kw">with</span>(fitl_<span class="dv">1</span>, (null.deviance <span class="op">-</span><span class="st"> </span>deviance)<span class="op">/</span>null.deviance)</a></code></pre></div>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb617-1" title="1"><span class="co">#Likelihood ratio R2</span></a>
+<a class="sourceLine" id="cb617-2" title="2"><span class="kw">with</span>(fitl_<span class="dv">1</span>, (null.deviance <span class="op">-</span><span class="st"> </span>deviance)<span class="op">/</span>null.deviance)</a></code></pre></div>
 <pre><code>## [1] 0.09328629</code></pre>
 <p>Some authors refer to this as the Hosmer/Lemeshow R^2. It indicates how much the inclusion of the independent variables in the model reduces variation, as measured by the null deviance. It varies between 0 (when our prediction is catastrophically useless) and 1 (when we predict with total accuracy). There are many other pseudo R^2 measures that have been proposed, but Menard <a href="http://www.tandfonline.com/doi/pdf/10.1080/00031305.2000.10474502">based on research</a> on the properties of various of these measures recommends the likelihood ratio R^2 because:</p>
 <ul>
@@ -576,22 +576,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>The diagonal entries correspond to observations that are classified correctly according to our model and our cut off point whereas the off-diagonal entries are misclassifications. <strong>False negatives</strong> are observations that were classified as zeros but turned out to be ones (the outcome of interest). <strong>False positives</strong> are observations that were classified as ones (the outcome of interest) but turned out to be zeros.</p>
 <p>There are various ways of producing a confusion matrix in R. The most basic one is to simply ask for the cross-tabulation of the predicted classes (determined by the cut-off criterion) versus the observed classes.</p>
-<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb618-1" title="1"><span class="co">#First we define the classes according to the cut-off</span></a>
-<a class="sourceLine" id="cb618-2" title="2">fitl_<span class="dv">1</span>_pred_class &lt;-<span class="st"> </span>fitl_<span class="dv">1</span>_prob <span class="op">&gt;</span><span class="st"> </span><span class="fl">.5</span></a>
-<a class="sourceLine" id="cb618-3" title="3"><span class="co">#This creates a logical vector that returns TRUE when the condition is met (the subject is predicted to be released) and FALSE when the condition is not met (harsher treatment was delivered)</span></a>
-<a class="sourceLine" id="cb618-4" title="4">fitl_<span class="dv">1</span>_pred_class[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb619-1" title="1"><span class="co">#First we define the classes according to the cut-off</span></a>
+<a class="sourceLine" id="cb619-2" title="2">fitl_<span class="dv">1</span>_pred_class &lt;-<span class="st"> </span>fitl_<span class="dv">1</span>_prob <span class="op">&gt;</span><span class="st"> </span><span class="fl">.5</span></a>
+<a class="sourceLine" id="cb619-3" title="3"><span class="co">#This creates a logical vector that returns TRUE when the condition is met (the subject is predicted to be released) and FALSE when the condition is not met (harsher treatment was delivered)</span></a>
+<a class="sourceLine" id="cb619-4" title="4">fitl_<span class="dv">1</span>_pred_class[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</a></code></pre></div>
 <pre><code>##     1     2     3     4     5     6     7     8     9    10 
 ## FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb620-1" title="1"><span class="co">#Let&#39;s make this into a factor with the same levels than the original variable</span></a>
-<a class="sourceLine" id="cb620-2" title="2">harsher_pred &lt;-<span class="st"> </span><span class="kw">as.factor</span>(fitl_<span class="dv">1</span>_pred_class)</a>
-<a class="sourceLine" id="cb620-3" title="3"><span class="kw">levels</span>(harsher_pred) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;No&quot;</span>,<span class="st">&quot;Yes&quot;</span>)</a>
-<a class="sourceLine" id="cb620-4" title="4"><span class="kw">table</span>(harsher_pred)</a></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb621-1" title="1"><span class="co">#Let&#39;s make this into a factor with the same levels than the original variable</span></a>
+<a class="sourceLine" id="cb621-2" title="2">harsher_pred &lt;-<span class="st"> </span><span class="kw">as.factor</span>(fitl_<span class="dv">1</span>_pred_class)</a>
+<a class="sourceLine" id="cb621-3" title="3"><span class="kw">levels</span>(harsher_pred) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;No&quot;</span>,<span class="st">&quot;Yes&quot;</span>)</a>
+<a class="sourceLine" id="cb621-4" title="4"><span class="kw">table</span>(harsher_pred)</a></code></pre></div>
 <pre><code>## harsher_pred
 ##   No  Yes 
 ## 5113  113</code></pre>
-<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb622-1" title="1"><span class="co">#Then we can produce the cross tab</span></a>
-<a class="sourceLine" id="cb622-2" title="2">tab0 &lt;-<span class="st"> </span><span class="kw">table</span>(harsher_pred, Arrests<span class="op">$</span>harsher)</a>
-<a class="sourceLine" id="cb622-3" title="3">tab0</a></code></pre></div>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb623-1" title="1"><span class="co">#Then we can produce the cross tab</span></a>
+<a class="sourceLine" id="cb623-2" title="2">tab0 &lt;-<span class="st"> </span><span class="kw">table</span>(harsher_pred, Arrests<span class="op">$</span>harsher)</a>
+<a class="sourceLine" id="cb623-3" title="3">tab0</a></code></pre></div>
 <pre><code>##             
 ## harsher_pred   No  Yes
 ##          No  4278  835
@@ -602,10 +602,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Specificity = number of cases without the events and predicted as non-events / number of cases without the event</p>
 <p>In this case this amount to 4278 divided by 4278 plus 56. The <strong>false positive rate</strong> is defined as one minus the specificity.</p>
 <p>From the table we produced we can generate these measures automatically. For this sort of things, however, I prefer to go straight to the <code>confusionMatrix()</code> function from the <code>caret</code> package since it produces a very detailed set of calibration measures that are helpful indicators of how well the model is classifying.</p>
-<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb624-1" title="1"><span class="kw">library</span>(caret)</a></code></pre></div>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb625-1" title="1"><span class="kw">library</span>(caret)</a></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
-<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb627-1" title="1"><span class="kw">confusionMatrix</span>(<span class="dt">data=</span>harsher_pred, <span class="dt">reference=</span>Arrests<span class="op">$</span>harsher, <span class="dt">positive=</span><span class="st">&quot;Yes&quot;</span>) <span class="co">#The data argument specifies the vector with the predictions and the reference argument the vector with the observed outcome or event. The positive argument identifies the level of interest in the factor.</span></a></code></pre></div>
+<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb628-1" title="1"><span class="kw">confusionMatrix</span>(<span class="dt">data=</span>harsher_pred, <span class="dt">reference=</span>Arrests<span class="op">$</span>harsher, <span class="dt">positive=</span><span class="st">&quot;Yes&quot;</span>) <span class="co">#The data argument specifies the vector with the predictions and the reference argument the vector with the observed outcome or event. The positive argument identifies the level of interest in the factor.</span></a></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -636,13 +636,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can see first the <strong>accuracy</strong>. The overall accuracy rate gives us the agreement between the observed and predicted classes. However, the overall accuracy is often not the most useful measure. <strong>Kappa</strong> is also a measure that is often used with values ranging between 0.30 to 0.50 considered to indicate reasonable agreement. But for many applications will be of interest to focus on the sensitivity and the specificity as defined above. In this case, we can see that our sensitivity, or the true positive rate, is very poor. And so it is the Kappa. Clearly the model has problems predicting harsh treatment with the select cut off.</p>
 <p>One of the problems with taking this approach is that the choice of the cut off point can be arbitrary and yet, this cut off point will impact the sensitivity and specificity of the model. There is a trade-off between sensitivity and specificity. Given a fixed accuracy, more of one will result in less of the other.</p>
 <p>So if we use a different cut off point, say .25, the classification table would look like this:</p>
-<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb629-1" title="1">precision&lt;-<span class="cf">function</span>(c) {</a>
-<a class="sourceLine" id="cb629-2" title="2">tab1 &lt;-<span class="st"> </span><span class="kw">table</span>(fitl_<span class="dv">1</span>_prob<span class="op">&gt;</span>c, Arrests<span class="op">$</span>harsher)</a>
-<a class="sourceLine" id="cb629-3" title="3">out &lt;-<span class="st"> </span><span class="kw">diag</span>(tab1)<span class="op">/</span><span class="kw">apply</span>(tab1, <span class="dv">2</span>, sum)</a>
-<a class="sourceLine" id="cb629-4" title="4"><span class="kw">names</span>(out) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;specificity&#39;</span>, <span class="st">&#39;sensitivity&#39;</span>)</a>
-<a class="sourceLine" id="cb629-5" title="5"><span class="kw">list</span>(tab1, out)</a>
-<a class="sourceLine" id="cb629-6" title="6">}</a>
-<a class="sourceLine" id="cb629-7" title="7"><span class="kw">precision</span>(.<span class="dv">25</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb630-1" title="1">precision&lt;-<span class="cf">function</span>(c) {</a>
+<a class="sourceLine" id="cb630-2" title="2">tab1 &lt;-<span class="st"> </span><span class="kw">table</span>(fitl_<span class="dv">1</span>_prob<span class="op">&gt;</span>c, Arrests<span class="op">$</span>harsher)</a>
+<a class="sourceLine" id="cb630-3" title="3">out &lt;-<span class="st"> </span><span class="kw">diag</span>(tab1)<span class="op">/</span><span class="kw">apply</span>(tab1, <span class="dv">2</span>, sum)</a>
+<a class="sourceLine" id="cb630-4" title="4"><span class="kw">names</span>(out) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;specificity&#39;</span>, <span class="st">&#39;sensitivity&#39;</span>)</a>
+<a class="sourceLine" id="cb630-5" title="5"><span class="kw">list</span>(tab1, out)</a>
+<a class="sourceLine" id="cb630-6" title="6">}</a>
+<a class="sourceLine" id="cb630-7" title="7"><span class="kw">precision</span>(.<span class="dv">25</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ##        
 ##           No  Yes
@@ -657,24 +657,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Similarly, if you think about the criminal justice system, it is essentially built around the idea of avoiding false positives - that is convicting people who are innocent. You will have heard many phrases like “innovent until proven guilty” or “It is far better that 10 guilty men go free than one innocent man is wrongfully convicted”. This approach would incline us to err on the side of false negatives, and avoid false positives (higher sensitivity, lower specificity).</p>
 <p>We may want to see what happens to sensitivity and specificity for different cut off points. For this we can look at <strong>receiver operating characteristics</strong> or simply <a href="http://en.wikipedia.org/wiki/Receiver_operating_characteristic">ROC curves</a>. This is essentially a tool for evaluating the sensitivity/specificity trade off. The ROC curve can be used for investigating alternate cut offs for class probabilities.</p>
 <p>We can use the <code>pROC</code> package for this. We start by creating an object that contains the relevant information with the <code>roc()</code> function form t the <code>pROC</code> package.</p>
-<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb631-1" title="1"><span class="kw">library</span>(pROC)</a></code></pre></div>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb632-1" title="1"><span class="kw">library</span>(pROC)</a></code></pre></div>
 <pre><code>## Type &#39;citation(&quot;pROC&quot;)&#39; for a citation.</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;pROC&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
 ## 
 ##     cov, smooth, var</code></pre>
-<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb635-1" title="1">rocCURVE &lt;-<span class="st"> </span><span class="kw">roc</span>(<span class="dt">response =</span> Arrests<span class="op">$</span>harsher, </a>
-<a class="sourceLine" id="cb635-2" title="2">                <span class="dt">predictor =</span> fitl_<span class="dv">1</span>_prob)</a></code></pre></div>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb636-1" title="1">rocCURVE &lt;-<span class="st"> </span><span class="kw">roc</span>(<span class="dt">response =</span> Arrests<span class="op">$</span>harsher, </a>
+<a class="sourceLine" id="cb636-2" title="2">                <span class="dt">predictor =</span> fitl_<span class="dv">1</span>_prob)</a></code></pre></div>
 <pre><code>## Setting levels: control = No, case = Yes</code></pre>
 <pre><code>## Setting direction: controls &lt; cases</code></pre>
 <p>Once we have the object with the information, we can plot the ROC curve.</p>
-<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb638-1" title="1"><span class="kw">plot</span>(rocCURVE, <span class="dt">legacy.axes =</span> <span class="ot">TRUE</span>) <span class="co">#By default the x-axis goes backwards, we can use the specified option legacy.axes=TRUE, to get 1-spec on the x axis moving from 0 to 1.</span></a></code></pre></div>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb639-1" title="1"><span class="kw">plot</span>(rocCURVE, <span class="dt">legacy.axes =</span> <span class="ot">TRUE</span>) <span class="co">#By default the x-axis goes backwards, we can use the specified option legacy.axes=TRUE, to get 1-spec on the x axis moving from 0 to 1.</span></a></code></pre></div>
 <p><img src="09-logistic_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p>We can see the trajectory of the curve is at first steep, suggesting that sensitivity increases at a greater pace than the decrease in specificity. However we then reach a point at which specificity decreases at a greater rate than the sensitivity increases. If you want to select a cut off that gives you the optimal cut off point you can use the <code>coords()</code> function of the pROC package. You can pass arguments to this function so that it returns the best sum of sensitivity and speficitity.</p>
-<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb639-1" title="1">alt_cutoff1 &lt;-<span class="st"> </span><span class="kw">coords</span>(rocCURVE, <span class="dt">x =</span> <span class="st">&quot;best&quot;</span>, <span class="dt">best.method =</span> <span class="st">&quot;closest.topleft&quot;</span>)</a>
-<a class="sourceLine" id="cb639-2" title="2"><span class="co">#The x argument in this case is selecting the best cut off using the &quot;closest topleft&quot; method (which identifie the point closest to the top-left part of the plot with perfect sensitivity or specificity). Another option is to use the &quot;youden&quot; method in the best.method argument.</span></a>
-<a class="sourceLine" id="cb639-3" title="3">alt_cutoff1</a></code></pre></div>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb640-1" title="1">alt_cutoff1 &lt;-<span class="st"> </span><span class="kw">coords</span>(rocCURVE, <span class="dt">x =</span> <span class="st">&quot;best&quot;</span>, <span class="dt">best.method =</span> <span class="st">&quot;closest.topleft&quot;</span>)</a>
+<a class="sourceLine" id="cb640-2" title="2"><span class="co">#The x argument in this case is selecting the best cut off using the &quot;closest topleft&quot; method (which identifie the point closest to the top-left part of the plot with perfect sensitivity or specificity). Another option is to use the &quot;youden&quot; method in the best.method argument.</span></a>
+<a class="sourceLine" id="cb640-3" title="3">alt_cutoff1</a></code></pre></div>
 <pre><code>##   threshold specificity sensitivity
 ## 1 0.1696539   0.6305953   0.7163677</code></pre>
 <p>Here we can see that with a cut off point of .16 we get a specificity of .63 and a sensitivity of .71. Notice how this is close to the base rate of harsher treatment in the sample (17% of individuals actually received harsher treatment). For a more informed discussion of cut off points and costs of errors in applied predictive problems in criminal justice, I recommend reading <a href="http://link.springer.com/book/10.1007%2F978-1-4614-3085-8">Berk (2012)</a>. Often the selection of cut off may be motivated by practical considerations (e.g., selecting individuals for treatment in a situation where resources to do so is limited).</p>
@@ -683,8 +683,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="interactions" class="section level2">
 <h2><span class="header-section-number">9.5</span> Interactions</h2>
 <p>The data we have been using were obtained by the author of the <code>effects</code> package from <a href="http://www.datavis.ca/">Michael Friendly</a>, another prominent contributor to the development of R packages. The data are related to a series of stories revelaed by the Toronto Star and further analysed by Professor Friendly as seen <a href="http://www.datavis.ca/courses/VCD/vcd4-handout-2x2.pdf">here</a>. In these further analysis Friendly proposes a slightly more complex model than then one we have specified so far. This model adds three new predictors (citizenship, age, and year in which the case was processed) and also allows for interactions between race (colour) and year, and race and age.</p>
-<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb641-1" title="1">fitl_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(harsher <span class="op">~</span><span class="st"> </span>employed <span class="op">+</span><span class="st"> </span>citizen <span class="op">+</span><span class="st"> </span>checks <span class="op">+</span><span class="st"> </span>colour <span class="op">*</span><span class="st"> </span>year <span class="op">+</span><span class="st"> </span>colour <span class="op">*</span><span class="st"> </span>age, <span class="dt">family =</span> binomial, <span class="dt">data =</span> Arrests) <span class="co">#Notice this different way of including interactions</span></a>
-<a class="sourceLine" id="cb641-2" title="2"><span class="kw">summary</span>(fitl_<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb642-1" title="1">fitl_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(harsher <span class="op">~</span><span class="st"> </span>employed <span class="op">+</span><span class="st"> </span>citizen <span class="op">+</span><span class="st"> </span>checks <span class="op">+</span><span class="st"> </span>colour <span class="op">*</span><span class="st"> </span>year <span class="op">+</span><span class="st"> </span>colour <span class="op">*</span><span class="st"> </span>age, <span class="dt">family =</span> binomial, <span class="dt">data =</span> Arrests) <span class="co">#Notice this different way of including interactions</span></a>
+<a class="sourceLine" id="cb642-2" title="2"><span class="kw">summary</span>(fitl_<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = harsher ~ employed + citizen + checks + colour * 
@@ -714,10 +714,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <p>What we see here is that the two interactions included are significant. To assist interpretation of interactions is helpful to look at effect plots.</p>
-<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb643-1" title="1"><span class="kw">plot</span>(<span class="kw">effect</span>(<span class="st">&quot;colour:year&quot;</span>, fitl_<span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb644-1" title="1"><span class="kw">plot</span>(<span class="kw">effect</span>(<span class="st">&quot;colour:year&quot;</span>, fitl_<span class="dv">2</span>))</a></code></pre></div>
 <p><img src="09-logistic_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>First we see that up to 2000, there is strong evidence for differential treatment of blacks and whites. However, we also see evidence to support Police claims of effect of training to reduce racial effects.</p>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb644-1" title="1"><span class="kw">plot</span>(<span class="kw">effect</span>(<span class="st">&quot;colour:age&quot;</span>, fitl_<span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb645-1" title="1"><span class="kw">plot</span>(<span class="kw">effect</span>(<span class="st">&quot;colour:age&quot;</span>, fitl_<span class="dv">2</span>))</a></code></pre></div>
 <p><img src="09-logistic_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>On the other hand, we see a significant interaction between race and age. Young blacks are treated more harshly than young whites. But older blacks treated less harshly than older whites.</p>
 <p>We already discussed in a previous session the difficulties of interpreting regression coefficients in models with interactions. Centering and standardising in the way discussed earlier can actually be of help or this purpose.</p>

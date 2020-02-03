@@ -24,7 +24,7 @@
 <meta name="author" content="Juanjo Medina and Reka Solymosi" />
 
 
-<meta name="date" content="2020-01-31" />
+<meta name="date" content="2020-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -604,17 +604,18 @@ If you want to change this you may need to reorder the levels. See <a href="http
 <p>Communicating your results in a clear manner is incredibly important. We have seen the tabular results produced by R. If you want to use them in a paper you may need to do some tidying up of those results. There are a number of packages (<code>textreg</code>, <code>stargazer</code>) that automatise that process. They take your <code>lm</code> objects and produce tables that you can put straight away in your reports or papers. One popular trend in presenting results is the <strong>coefficient plot</strong> as an alternative to the table of regression coefficients. There are various ways of producing coefficient plots with R for a variety of models. See <a href="http://www.carlislerainey.com/2012/06/30/coefficient-plots-in-r/">here</a> and <a href="http://www.carlislerainey.com/2012/07/03/an-improvement-to-coefficient-plots/">here</a>, for example.</p>
 <p>We are going to use instead the <code>plot_model()</code> function of the <code>sjPlot</code> package, that makes it easier to produce this sort of plots. You can find a more detailed tutorial about this function <a href="http://rpubs.com/sjPlot/sjplm">here</a>. See below for an example:</p>
 <div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb547-1" title="1"><span class="kw">library</span>(sjPlot)</a></code></pre></div>
+<pre><code>## Learn more about sjPlot with &#39;browseVignettes(&quot;sjPlot&quot;)&#39;.</code></pre>
 <p>Let’s try with a more complex example:</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb548-1" title="1">fit_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(log_viol_r <span class="op">~</span><span class="st"> </span>unemployed <span class="op">+</span><span class="st"> </span>largest50 <span class="op">+</span><span class="st"> </span>black <span class="op">+</span><span class="st"> </span>fborn <span class="op">+</span><span class="st"> </span>log_incarceraton, <span class="dt">data=</span>df)</a>
-<a class="sourceLine" id="cb548-2" title="2"><span class="kw">plot_model</span>(fit_<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb549-1" title="1">fit_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(log_viol_r <span class="op">~</span><span class="st"> </span>unemployed <span class="op">+</span><span class="st"> </span>largest50 <span class="op">+</span><span class="st"> </span>black <span class="op">+</span><span class="st"> </span>fborn <span class="op">+</span><span class="st"> </span>log_incarceraton, <span class="dt">data=</span>df)</a>
+<a class="sourceLine" id="cb549-2" title="2"><span class="kw">plot_model</span>(fit_<span class="dv">4</span>)</a></code></pre></div>
 <p><img src="08-regression_new_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <!-- Be advised to use these plots judiciously. There may be other sort of plots that may be [more appropriate](http://www.carlislerainey.com/2012/07/06/why-i-dont-like-coefficient-plots/) for what you want to communicate to your audience than the coefficient plot.-->
 <p>You can further customise this:</p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb549-1" title="1"><span class="kw">plot_model</span>(fit_<span class="dv">4</span>, <span class="dt">title=</span><span class="st">&quot;Violence across cities&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb550-1" title="1"><span class="kw">plot_model</span>(fit_<span class="dv">4</span>, <span class="dt">title=</span><span class="st">&quot;Violence across cities&quot;</span>)</a></code></pre></div>
 <p><img src="08-regression_new_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <p>What you see plotted here is the point estimates (the circles), the confidence intervals around those estimates (the longer the line the less precise the estimate), and the colours represent whether the effect is negative (red) or positive (blue). There are other packages that also provide similar functionality, like the <code>dotwhisker</code> package that you may want to explore, see more details <a href="https://cran.r-project.org/web/packages/dotwhisker/vignettes/dotwhisker-vignette.html">here</a>.</p>
 <p>The <code>sjPlot</code> package also allows you to produce html tables for more professional presentation of your regression tables. For this we use the <code>tab_model()</code> function. This kind of tabulation may be particularly helpful for your final assignment.</p>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb550-1" title="1"><span class="kw">tab_model</span>(fit_<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb551-1" title="1"><span class="kw">tab_model</span>(fit_<span class="dv">4</span>)</a></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
@@ -740,7 +741,7 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 </tr>
 </table>
 <p>As before you can further customise this table. Let’s change for example the name that is displayed for the dependent variable.</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb551-1" title="1"><span class="kw">tab_model</span>(fit_<span class="dv">4</span>, <span class="dt">dv.labels =</span> <span class="st">&quot;Violence rate (log)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb552-1" title="1"><span class="kw">tab_model</span>(fit_<span class="dv">4</span>, <span class="dt">dv.labels =</span> <span class="st">&quot;Violence rate (log)&quot;</span>)</a></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
@@ -866,7 +867,7 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 </tr>
 </table>
 <p>Or you could change the labels for the independent variables:</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb552-1" title="1"><span class="kw">tab_model</span>(fit_<span class="dv">4</span>, <span class="dt">pred.labels =</span> <span class="kw">c</span>(<span class="st">&quot;(Intercept)&quot;</span>, <span class="st">&quot;Percent unemployment&quot;</span>, <span class="st">&quot;Largest cities (Yes)&quot;</span>, <span class="st">&quot;Percent black&quot;</span>, <span class="st">&quot;Percent foreign born&quot;</span>, <span class="st">&quot;Incarceration rate (log)&quot;</span>), <span class="dt">dv.labels =</span> <span class="st">&quot;Violence rate (log)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb553-1" title="1"><span class="kw">tab_model</span>(fit_<span class="dv">4</span>, <span class="dt">pred.labels =</span> <span class="kw">c</span>(<span class="st">&quot;(Intercept)&quot;</span>, <span class="st">&quot;Percent unemployment&quot;</span>, <span class="st">&quot;Largest cities (Yes)&quot;</span>, <span class="st">&quot;Percent black&quot;</span>, <span class="st">&quot;Percent foreign born&quot;</span>, <span class="st">&quot;Incarceration rate (log)&quot;</span>), <span class="dt">dv.labels =</span> <span class="st">&quot;Violence rate (log)&quot;</span>)</a></code></pre></div>
 <table style="border-collapse:collapse; border:none;">
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
@@ -992,16 +993,16 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 </tr>
 </table>
 <p>Visual display of the effects of the variables in the model are particularly helpful. The <code>effects</code> package allows us to produce plots to visualise these relationships (when adjusting for the other variables in the model). Here’s an example going back to our model fit_3 which contained unemployment and the dummy for large cities as predictor variables:</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb553-1" title="1"><span class="kw">library</span>(effects)</a></code></pre></div>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb554-1" title="1"><span class="kw">library</span>(effects)</a></code></pre></div>
 <pre><code>## Loading required package: carData</code></pre>
 <pre><code>## lattice theme set by effectsTheme()
 ## See ?effectsTheme for details.</code></pre>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb556-1" title="1"><span class="kw">plot</span>(<span class="kw">allEffects</span>(fit_<span class="dv">3</span>), <span class="dt">ask=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb557-1" title="1"><span class="kw">plot</span>(<span class="kw">allEffects</span>(fit_<span class="dv">3</span>), <span class="dt">ask=</span><span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="08-regression_new_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <p>Notice that the line has a confidence interval drawn around it (to reflect the likely impact of sampling variation) and that the predicted means for smaller and largest cities (when controlling for unemployment) also have a confidence interval.</p>
 <p>##Rescaling input variables to assist interpretation</p>
 <p>The interpretation or regression coefficients is sensitive to the scale of measurement of the predictors. This means one cannot compare the magnitude of the coefficients to compare the relevance of variables to predict the response variable. Let’s look at the more recent model, how can we tell what predictors have a stronger effect?</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb557-1" title="1"><span class="kw">summary</span>(fit_<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb558-1" title="1"><span class="kw">summary</span>(fit_<span class="dv">4</span>)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log_viol_r ~ unemployed + largest50 + black + fborn + 
@@ -1029,8 +1030,8 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 <p>We just cannot. One way of dealing with this is by rescaling the input variables. A common method involves subtracting the mean and dividing by the standard deviation of each numerical input. The coefficients in these models is the expected difference in the response variable, comparing units that differ by one standard deviation in the predictor while adjusting for other predictors in the model.</p>
 <p>Instead, <a href="http://www.stat.columbia.edu/~gelman/research/published/standardizing7.pdf">Gelman (2008)</a> has proposed dividing each numeric variables <em>by two times its standard deviation</em>, so that the generic comparison is with inputs equal to plus/minus one standard deviation. As Gelman explains the resulting coefficients are then comparable to untransformed binary predictors. The implementation of this approach in the <code>arm</code> package subtract the mean of each binary input while it subtract the mean and divide by two standard deviations for every numeric input.</p>
 <p>The way we would obtain these rescaled inputs uses the <code>standardize()</code> function of the <code>arm</code> package, that takes as an argument the name of the stored fit model.</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb559-1" title="1"><span class="kw">library</span>(arm)</a>
-<a class="sourceLine" id="cb559-2" title="2"><span class="kw">standardize</span>(fit_<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb560-1" title="1"><span class="kw">library</span>(arm)</a>
+<a class="sourceLine" id="cb560-2" title="2"><span class="kw">standardize</span>(fit_<span class="dv">4</span>)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log_viol_r ~ z.unemployed + c.largest50 + z.black + 
@@ -1050,10 +1051,10 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 <p>One of the assumptions of the regression model is that the relationship between the response variable and your predictors is additive. That is, if you have two predictors <code>x1</code> and <code>x2</code>. Regression assumes that the effect of <code>x1</code> on <code>y</code> is the same at all levels of <code>x2</code>. If that is not the case, you are then violating one of the assumptions of regression. This is in fact one of the most important assumptions of regression, even if researchers often overlook it.</p>
 <p>One way of extending our model to accommodate for interaction effects is to add additional terms to our model, a third predictor <code>x3</code>, where <code>x3</code> is simply the product of multiplying <code>x1</code> by <code>x2</code>. Notice we keep a term for each of the <strong>main effects</strong> (the original predictors) as well as a new term for the interaction effect. “Analysts should include all constitutive terms when specifying multiplicative interaction models except in very rare circumstances” (Brambor et al., 2006: 66).</p>
 <p>How do we do this in R? One way is to use the following notation in the formula argument. Notice how we have added a third term <code>unemployed:largest50</code>, which is asking R to test the conditional hypothesis that the perceptions of antisocial behaviour may have a different impact on fear of violent crime for men and women.</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb561-1" title="1">fit_<span class="dv">5</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(log_viol_r <span class="op">~</span><span class="st"> </span>unemployed <span class="op">+</span><span class="st"> </span>largest50 <span class="op">+</span><span class="st"> </span>unemployed<span class="op">:</span>largest50 , <span class="dt">data=</span>df)</a>
-<a class="sourceLine" id="cb561-2" title="2"><span class="co"># which is equivalent to: </span></a>
-<a class="sourceLine" id="cb561-3" title="3"><span class="co"># fit_5 &lt;- lm(log_viol_r ~ unemployed * largest50, data=BCS0708)</span></a>
-<a class="sourceLine" id="cb561-4" title="4"><span class="kw">summary</span>(fit_<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb562-1" title="1">fit_<span class="dv">5</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(log_viol_r <span class="op">~</span><span class="st"> </span>unemployed <span class="op">+</span><span class="st"> </span>largest50 <span class="op">+</span><span class="st"> </span>unemployed<span class="op">:</span>largest50 , <span class="dt">data=</span>df)</a>
+<a class="sourceLine" id="cb562-2" title="2"><span class="co"># which is equivalent to: </span></a>
+<a class="sourceLine" id="cb562-3" title="3"><span class="co"># fit_5 &lt;- lm(log_viol_r ~ unemployed * largest50, data=BCS0708)</span></a>
+<a class="sourceLine" id="cb562-4" title="4"><span class="kw">summary</span>(fit_<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log_viol_r ~ unemployed + largest50 + unemployed:largest50, 
@@ -1077,7 +1078,7 @@ R<sup>2</sup> / R<sup>2</sup> adjusted
 ## F-statistic: 50.32 on 3 and 260 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>You see here that essentially you have only two inputs (perceptions of the area and sex) but several regression coefficients. Gelman and Hill (2007) suggest reserving the term input for the variables encoding the information and to use the term predictor to refer to each of the terms in the model. So here we have two inputs and four predictors (one for the constant term, one for unemployment, another for the largest 50 dummy, and a final one for the interaction effect).</p>
 <p>In this case the test for the interaction effect is non-significant, which suggests there isn’t such an interaction. The R squared barely changes. Let’s visualise the results with the <code>effects</code> package:</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb563-1" title="1"><span class="kw">plot</span>(<span class="kw">allEffects</span>(fit_<span class="dv">5</span>), <span class="dt">ask=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb564-1" title="1"><span class="kw">plot</span>(<span class="kw">allEffects</span>(fit_<span class="dv">5</span>), <span class="dt">ask=</span><span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="08-regression_new_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>Notice that essentially what we are doing is running two regression lines and testing whether the slope is different for the two groups. The intercept is different, we know that largest cities are more violent, but what we are testing here is whether violence goes up in a steeper fashion (and in the same direction) for one or the other group as unemployment goes up. We see that’s not the case here. The estimated lines are almost parallel.</p>
 <p>A word of warning, the moment you introduce an interaction effect the meaning of the coefficients for the other predictors changes (what it is often referred as to the “main effects” as opposed to the interaction effect). You cannot retain the interpretation we introduced earlier. Now, for example, the coefficient for the <em>largest50</em> variable relates the marginal effect of this variable when <em>unemployment</em> equals zero. The typical table of results helps you to understand whether the effects are significant but offers little of interest that will help you to meaningfully interpret what the effects are. For this is better you use some of the graphical displays we have covered.</p>

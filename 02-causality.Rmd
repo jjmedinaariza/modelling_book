@@ -1,4 +1,4 @@
-#Causality in randomised experiments
+# Causality in randomised experiments
 
 ## Causality in social sciences
 
@@ -128,8 +128,8 @@ attributes(banbox$crime)
 ```
 
 So this object has different compartments. The first one is called label and it provides a description of what the variable measures. This is what you saw in the RStudio data viewer earlier. The second compartment explains the original format in which it was. The third one identifies the class of the vector. Whereas the final one, *labels*, provides the labels that allows us to identify what the meaning of 0 and 1 mean in this context.
-
-###Turning variables into factors and changing the labels
+ 
+### Turning variables into factors and changing the labels
 
 Last week we said that many R functions expect factors when you have categorical data, so typically after you import data into R you may want to coerce your labelled vectors into factors. To do that you need to use the `as_factor()` function of the *haven* package. Let's see how we do that.
 
@@ -206,7 +206,7 @@ table(banbox$black_f)
 
 This gives you an idea of the kind of transformations you often want to perform to make your data more useful for your purposes. But let's keep looking at functions you can use to explore your dataset. 
 
-###Looking for missing data and other anomalies
+### Looking for missing data and other anomalies
 
 You can, for example, use the `head()` function if you just want to visualise the values for the first few cases in your dataset. The next code for example ask for the values for the first two cases. If you want a different number to be shown you just need to change the number you are passing as an argument.
 

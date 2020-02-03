@@ -1,6 +1,6 @@
-#An introduction to regression
+# An introduction to regression
 
-##Introduction: models in scientific research
+## Introduction: models in scientific research
 
 
 In science one of our main concerns is to develop models of the world, models that help us to understand the world a bit better or to predict how things will develop better. You can read more about modelling in scientific research [here](https://www.visionlearning.com/en/library/Process-of-Science/49/Modeling-in-Scientific-Research/153). Statistics provides a set of tools that help researchers build and test scientific models.
@@ -113,7 +113,7 @@ ggplot(df, aes(x = unemployed, y = log_viol_r)) +
 
 What do you think when looking at this scatterplot? Is there a relationship between violence and unemployment? Does it look as if cities that have a high score on the X axis (unemployment) also have a high score on the Y axis (violent crime)? It may be a bit hard to see but I would think there is certainly a trend. 
 
-##Motivating regression
+## Motivating regression
 
 Now, imagine that we play a game. Imagine I have all the names of the cities in a hat, and I randomly take one of names from the hat. You're sitting in the audience, and you have to guess the level of violence (*log_viol_r*) for that city. Imagine that I pay £150 to the student that gets the closest to the right value. What would you guess if you only have one guess and you knew (as we do) how the log of violent crime is distributed? 
 
@@ -172,7 +172,7 @@ The linear model then is a model that takes the form of the equation of a straig
 
 As De Veaux et al (2012: 179) highlight: "like all models of the real world, the line will be wrong, wrong in the sense that it can't match reality exactly. But it can help us understand how the variables are associated". A map is never a perfect representation of the world, the same happens with statistical models. Yet, as with maps, models can be helpful.
 
-##Fitting a simple regression model
+## Fitting a simple regression model
 
 In order to draw a regression line we need to know two things: 
 (1) We need to know where the line begins, what is the value of Y (our dependent variable) when X (our independent variable) is 0, so that we have a point from which to start drawing the line. The technical name for this point is the **intercept**.
@@ -286,7 +286,7 @@ predict(fit_1, data.frame(unemployed = c(4))) #First you name your stored model 
 
 This is the expected value of Y, log of the violence rate, when X, unemployment is 5% of the population *according to our model* (according to our simplification of the real world, our simplification of the whole cloud of points into just one straight line). Look back at the scatterplot we produced earlier with the green line. Does it look as if the green line when X is 4 corresponds to a value of Y of 5.5?
 
-##Residuals revisited: R squared
+## Residuals revisited: R squared
 
 In the output when we run the model above we saw there was something called the residuals. The residuals (in regression) are the differences between the observed values of Y for each case minus the predicted or expected value of Y, in other words the distances between each point in the dataset and the regression line (see the visual example below). 
 
@@ -342,7 +342,7 @@ Knowing how to interpret this is important. R^2 ranges from 0 to 1. The greater 
 
 Weisburd and Britt (2009: 437) suggest that in criminal justice you rarely see values for R^2 greater than .40. Thus, if your R^2 is larger than .40, you can assume you have a powerful model. When, on the other hand, R^2 is lower than .15 or .2 the model is likely to be viewed as relatively weak. Our observed r squared here is not too bad. There is considerably room for improvement if we want to develop a better model to explain violence [^2]. In any case, many people would argue that R^2 is a bit overrated. You need to be aware of what it measures and the context in which you are using it. Read [here](http://blog.minitab.com/blog/adventures-in-statistics/how-high-should-r-squared-be-in-regression-analysis) for some additional detail.
 
-##Inference with regression
+## Inference with regression
 
 In real applications, we have access to a set of observations from which we can compute the least squares line, but the population regression line is unobserved. So our regression line is one of many that could be estimated. A different sample would produce a different regression line. The same sort of ideas that we introduced when discussing the estimation of sample means or proportions also apply here. *if we estimate b0 and b1 from a particular sample, then our estimates won't be exactly equal to b0 and b1 in the population*. But if we could average the estimates obtained over a very large number of data sets, the average of these estimates would equal the coefficients of the regression line in the population.
 
@@ -386,7 +386,7 @@ confint(fit_1)
 
 [This blog post](http://www.sumsar.net/blog/2013/12/an-animation-of-the-construction-of-a-confidence-interval/) provides a nice animation of the confidence interval and hypothesis testing.
 
-##Fitting regression with categorical predictors
+## Fitting regression with categorical predictors
 
 So far we have explained regression using a numeric input. It turns out we can also use regression with categorical explanatory variables. It is quite straightforward to run it. 
 
@@ -524,7 +524,7 @@ levels(df$largest50)
 In our case you can see "No" is listed first. Keep in mind for your assignment that levels in factors are often alphabetically listed, not in a particularly meaningful or useful way.
 If you want to change this you may need to reorder the levels. See [here](https://forcats.tidyverse.org/reference/fct_relevel.html) how to do this.
 
-##Motivating multiple regression
+## Motivating multiple regression
 
 So we have seen that our models with just one predictor are not terribly powerful. Partly that's due to the fact that they are not properly specified, they do not include a solid set of good predictor variables that can help us to explain variation in our response variable. We can build better models by expanding the number of predictors (although keep in mind you should also aim to build models as parsimonious as possible).
 
@@ -540,7 +540,7 @@ But is the model right? Sampson and Raudenbush argue it is not entirely correct.
 
 Multiple regression is one way of checking the relevance of competing explanations. You could set up a model where you try to predict crime levels with an indicator of broken windows and an indicator of structural disadvantage. If after controlling for structural disadvantage you see that the regression coefficient for broken windows is still significant you may be into something, particularly if the estimated effect is still large. If, on the other hand, the t test for the regression coefficient of your broken windows variable is no longer significant, then you may be tempted to think that perhaps Sampson and Raudenbush were into something. 
 
-##Fitting and interpreting a multiple regression model
+## Fitting and interpreting a multiple regression model
 
 It could not be any easier to fit a multiple regression model. You simply modify the formula in the `lm()` function by adding terms for the additional inputs.
 
@@ -594,7 +594,7 @@ Something you need to be particularly careful about is to interpret the coeffici
 
 Comparing the simple models with this more complex model we could say that adjusting for *largest50* does not change much the impact of *unemployed* in violence and almost the same can be said about the effect of *largest50* when holding *unemployed* fixed. 
 
-##Presenting your regression results.
+## Presenting your regression results.
 
 Communicating your results in a clear manner is incredibly important. We have seen the tabular results produced by R. If you want to use them in a paper you may need to do some tidying up of those results. There are a number of packages (`textreg`, `stargazer`) that automatise that process. They take your `lm` objects and produce tables that you can put straight away in your reports or papers. One popular trend in presenting results is the **coefficient plot** as an alternative to the table of regression coefficients. There are various ways of producing coefficient plots with R for a variety of models. See [here](http://www.carlislerainey.com/2012/06/30/coefficient-plots-in-r/) and [here](http://www.carlislerainey.com/2012/07/03/an-improvement-to-coefficient-plots/), for example.
 
@@ -649,7 +649,7 @@ tab_model(fit_4)
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(Intercept)</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">5.65</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.20&nbsp;&ndash;&nbsp;7.11</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.19&nbsp;&ndash;&nbsp;7.12</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
 </tr>
 <tr>
@@ -659,9 +659,9 @@ tab_model(fit_4)
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Yes</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">largest50 [Yes]</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.46</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.29&nbsp;&ndash;&nbsp;0.62</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.29&nbsp;&ndash;&nbsp;0.63</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
 </tr>
 <tr>
@@ -677,9 +677,9 @@ tab_model(fit_4)
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.001</strong></td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">log incarceraton</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">log_incarceraton</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.13</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.36&nbsp;&ndash;&nbsp;0.09</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.36&nbsp;&ndash;&nbsp;0.10</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.251</td>
 </tr>
 <tr>
@@ -687,7 +687,7 @@ tab_model(fit_4)
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">263</td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">R<sup>2</sup> / adjusted R<sup>2</sup></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.508 / 0.499</td>
 </tr>
 
@@ -714,7 +714,7 @@ tab_model(fit_4, dv.labels = "Violence rate (log)")
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(Intercept)</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">5.65</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.20&nbsp;&ndash;&nbsp;7.11</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.19&nbsp;&ndash;&nbsp;7.12</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
 </tr>
 <tr>
@@ -724,9 +724,9 @@ tab_model(fit_4, dv.labels = "Violence rate (log)")
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Yes</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">largest50 [Yes]</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.46</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.29&nbsp;&ndash;&nbsp;0.62</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.29&nbsp;&ndash;&nbsp;0.63</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
 </tr>
 <tr>
@@ -742,9 +742,9 @@ tab_model(fit_4, dv.labels = "Violence rate (log)")
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.001</strong></td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">log incarceraton</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">log_incarceraton</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.13</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.36&nbsp;&ndash;&nbsp;0.09</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.36&nbsp;&ndash;&nbsp;0.10</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.251</td>
 </tr>
 <tr>
@@ -752,7 +752,7 @@ tab_model(fit_4, dv.labels = "Violence rate (log)")
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">263</td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">R<sup>2</sup> / adjusted R<sup>2</sup></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.508 / 0.499</td>
 </tr>
 
@@ -779,7 +779,7 @@ tab_model(fit_4, pred.labels = c("(Intercept)", "Percent unemployment", "Largest
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(Intercept)</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">5.65</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.20&nbsp;&ndash;&nbsp;7.11</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.19&nbsp;&ndash;&nbsp;7.12</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
 </tr>
 <tr>
@@ -791,7 +791,7 @@ tab_model(fit_4, pred.labels = c("(Intercept)", "Percent unemployment", "Largest
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Largest cities (Yes)</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.46</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.29&nbsp;&ndash;&nbsp;0.62</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.29&nbsp;&ndash;&nbsp;0.63</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</td>
 </tr>
 <tr>
@@ -809,7 +809,7 @@ tab_model(fit_4, pred.labels = c("(Intercept)", "Percent unemployment", "Largest
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Incarceration rate (log)</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.13</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.36&nbsp;&ndash;&nbsp;0.09</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.36&nbsp;&ndash;&nbsp;0.10</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.251</td>
 </tr>
 <tr>
@@ -817,7 +817,7 @@ tab_model(fit_4, pred.labels = c("(Intercept)", "Percent unemployment", "Largest
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">263</td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">R<sup>2</sup> / adjusted R<sup>2</sup></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.508 / 0.499</td>
 </tr>
 
@@ -892,13 +892,6 @@ The way we would obtain these rescaled inputs uses the `standardize()` function 
 
 ```r
 library(arm)
-```
-
-```
-## Warning: package 'lme4' was built under R version 3.5.3
-```
-
-```r
 standardize(fit_4)
 ```
 
@@ -909,17 +902,17 @@ standardize(fit_4)
 ##     z.fborn + z.log_incarceraton, data = df)
 ## 
 ## Coefficients:
-##        (Intercept)        z.unemployed         c.largest50  
-##            6.06080             0.56923             0.45723  
-##            z.black             z.fborn  z.log_incarceraton  
-##            0.49188            -0.24890            -0.08133
+##        (Intercept)        z.unemployed         c.largest50             z.black  
+##            6.06080             0.56923             0.45723             0.49188  
+##            z.fborn  z.log_incarceraton  
+##           -0.24890            -0.08133
 ```
 
 Notice the main change affects the numerical predictors. The unstandardised coefficients are influenced by the degree of variability in your predictors, which means that typically they will be larger for your binary inputs. With unstandardised coefficients you are comparing complete change in one variable (whether one is a large city or not) with one-unit changes in your numerical variable, which may not amount to much change. So, by putting in a comparable scale, you avoid this problem.
 
 Standardising in the way described here will help you to make fairer comparisons. This standardised coefficients are comparable in a way that the unstandardised coefficients are not. We can now see what inputs have a comparatively stronger effect. It is very important to realise, though, that one **should not** compare standardised coefficients *across different models*.
 
-##Testing conditional hypothesis: interactions
+## Testing conditional hypothesis: interactions
 
 In the social sciences there is a great interest in what are called conditional hypothesis or interactions. Many of our theories do not assume simply **additive effects** but **multiplicative effects**.For example, [Wikstrom and his colleagues (2011)](http://euc.sagepub.com/content/8/5/401.short) suggest that the threat of punishment only affects the probability of involvement on crime for those that have a propensity to offend but are largely irrelevant for people who do not have this propensity. Or you may think that a particular crime prevention programme may work in some environments but not in others. The interest in this kind of conditional hypothesis is growing.
 
@@ -990,7 +983,7 @@ Models with interaction terms are too often misinterpreted. I strongly recommend
 
 Equally, [John Fox (2003)](http://www.jstatsoft.org/v08/i15/paper) piece on the `effects` package goes to much more detail that we can here to explain the logic and some of the options that are available when producing plots to show interactions with this package. You may also want to have a look at the newer `interactions` package [here](https://interactions.jacob-long.com/index.html).
 
-##Model building and variable selection
+## Model building and variable selection
 
 How do you construct a good model? This partly depends on your goal, although there are commonalities. You do want to start with theory as a way to select your predictors and when specifying the nature of the relationship to your response variable (e.g., additive, multiplicative). Gelman and Hill (2007) provide a series of general principles. I would like to emphasise at this stage two of them:
 
@@ -1002,7 +995,7 @@ It is often the case that for any model, the response variable is only related t
 
 Ideally, we would like to perform variable selection by trying out a lot of different models, each containing a different subset of the predictors. There are various statistics that help in making comparisons across models. Unfortunately, as the number of potentially relevant predictors increases the number of potential models to compare increases exponentially. So you need methods that help you in this process. There are a number of tools that you can use for **variable selection** but this goes beyond the aims of this introduction. If you are interested you may want to read [this](http://link.springer.com/chapter/10.1007/978-1-4614-7138-7_6).
 
-##HOMEWORK
+## HOMEWORK
 *Fit a multiple regression model with at least 5 inputs to explain log_viol_r but use a different year from the dataset, say 2005. Use at least five explanatory variables.*
 
 

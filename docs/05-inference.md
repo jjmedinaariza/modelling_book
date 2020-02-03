@@ -1,6 +1,6 @@
-#Foundations of statistical inference: confidence intervals
+# Foundations of statistical inference: confidence intervals
 
-##Introduction
+## Introduction
 
 Up to now we have introduced a series of concepts and tools that are helpful to describe sample data. But in data analysis we often do not observe full populations. We often only have sample data. 
 
@@ -16,7 +16,7 @@ It is important you understand this is not the only way of doing data analysis. 
 
 Unlike in previous and future sessions, the focus today will be less applied and a bit more theoretical. However, it is important you pay attention since understanding the foundations of statistical inference is essential for a proper understanding of everything else we will discuss in this course. The code we cover *in the first few sections* this week won't be as instrumental for your assignment, so don't worry too much about fully trying to understand it. 
 
-##Generating random data
+## Generating random data
 
 For the purpose of today's session we are going to generate some fictitious data. We use real data in all other sessions but it is convenient for this session to have some randomly generated fake data (actually technically speaking pseudo-random data)[^1]. 
 
@@ -259,7 +259,7 @@ ggplot(samp_IQ, aes(x = with)) +
 
 Your exact results may differ from those shown here, but you can surely see the point. We have a problem with using sample means as a guess for population means. Your guesses will vary. How much of a problem is this? [This excellent piece and demonstration](http://www.nytimes.com/2014/05/02/upshot/how-not-to-be-misled-by-the-jobs-report.html?_r=0) by New York Times reporters illustrate the problem well. We are going to learn that something called the **central limit theorem** is of great assistance here.
 
-##Sampling distributions and sampling experiments
+## Sampling distributions and sampling experiments
 
 We are going to introduce an important new concept here: **sampling distribution**. A sampling distribution is the probability distribution of a given statistic based on a random sample. It may be considered as *the distribution of the statistic for all possible samples from the same population of a given size*. 
 
@@ -341,10 +341,8 @@ favstats(~with, data = sampd_IQ_30)
 ```
 
 ```
-##       min       Q1   median       Q3      max     mean       sd     n
-##  84.36466 95.07485 97.22715 99.35524 109.4407 97.20893 3.168994 50000
-##  missing
-##        0
+##       min       Q1   median       Q3      max     mean       sd     n missing
+##  84.36466 95.07485 97.22715 99.35524 109.4407 97.20893 3.168994 50000       0
 ```
 
 ```r
@@ -352,10 +350,8 @@ favstats(~with, data = sampd_IQ_100)
 ```
 
 ```
-##       min       Q1   median       Q3      max    mean       sd     n
-##  89.33202 96.02436 97.21006 98.38033 104.6069 97.1994 1.741871 50000
-##  missing
-##        0
+##       min       Q1   median       Q3      max    mean       sd     n missing
+##  89.33202 96.02436 97.21006 98.38033 104.6069 97.1994 1.741871 50000       0
 ```
 
 ```r
@@ -363,10 +359,8 @@ favstats(~with, data = sampd_IQ_1000)
 ```
 
 ```
-##       min       Q1   median       Q3      max     mean        sd     n
-##  94.86825 96.82042 97.18802 97.56334 99.31574 97.19098 0.5490715 50000
-##  missing
-##        0
+##       min       Q1   median       Q3      max     mean        sd     n missing
+##  94.86825 96.82042 97.18802 97.56334 99.31574 97.19098 0.5490715 50000       0
 ```
 
 
@@ -444,7 +438,7 @@ How is this helpful? Well, it tells us we need large samples if we want to use s
 
 If you want to further consolidate some of these concepts you may find [these videos](https://www.khanacademy.org/math/probability/statistics-inferential/sampling_distribution/v/central-limit-theorem) on sampling distributions from Khan Academy useful.
 
-##The normal distribution and confidence intervals with known standard errors
+## The normal distribution and confidence intervals with known standard errors
 
 While the sample mean may be the best single number to use as an estimate of the population mean, particularly with large samples, each sample mean will continue to come with some sample error (with some distance from the population mean). How can we take into account the uncertainty in estimating the population mean that derives from this fact?
 
@@ -579,7 +573,7 @@ So to reiterate:
 + Remember that we can’t have a 100% confidence interval. By definition, the population mean is not known . If we could calculate it exactly we would! But that would mean that we need a census of our population with is often not possible or feasible.
 + Finally, because if the range of values that you give me for your CI is smaller or bigger I will know that your estimate is more or less precise respectively. That is, **with the CI you are giving me a measure of your uncertainty.** The bigger the CI the more uncertain we are about the true population parameter.
 
-##Asymptotic confidence intervals for means and proportions using R
+## Asymptotic confidence intervals for means and proportions using R
 
 You may have spotted a big problem in what came before. How did we compute the confidence interval? We multiplied 1.96 times the standard error. Remember: the standard error is the standard deviation of the sampling distribution of the mean. And… well, at least you are willing to repeat a survey thousands and thousands of times with the same population you won’t know what the standard error is! The population mean is unknown and we want to estimate it. *But the standard error that we need for constructing our confidence interval is also unknown!* 
 
@@ -717,7 +711,7 @@ Here you can see 11 different confidence intervals that are computed using diffe
 
 Remember that *confidence intervals may be easy to construct (just one line of code!) but they are easy to misinterpret.* The word confidence in everyday meaning is subjective. Perhaps it would be better to have terms such as "sampling precision interval" (Kaplan, 2012), but we don't. Another common mistake when reading them is to think that you can say that "if you repeat the study and take the mean, the new result will be within the margin of error of the original study", but this is not correct mathematically (remember the plot of the confidence intervals).
 
-##A brief intro to resampling and bootstraping
+## A brief intro to resampling and bootstraping
 
 We have seen how theoretically the sampling distribution reflects variation from random samples. We also discussed how in practice we only have one sample. In the previous sections we also saw how we can some times use theoretical probability distributions (such as the normal or the t distribution) provided we are willing to make some assumptions. And we could then use these distributions to build our confidence intervals. 
 
@@ -842,7 +836,7 @@ resampling_IQ_30_3 <- do(1000) * mean(resample(sample_3))
 <img src="05-inference_files/figure-html/unnamed-chunk-45-1.png" width="672" />
 
 
-##What about comparisons? Sampling distribution for the difference of two means
+## What about comparisons? Sampling distribution for the difference of two means
 
 So far we have seen how we can use confidence intervals to quantify the unavoidable uncertainty that exists when you use sample data to make inferences about population parameters. In doing this, the focus of our discussion has been *univariate* estimation; that is, we were focusing on the logic involved in estimating single quantities (descriptive values for single variables) such as the mean or the proportion for a given variable (i.e., the proportion of households that suffer a burglary victimisation). 
 
@@ -870,16 +864,12 @@ with(BCS0708, describeBy(tcviolent, sex))
 ## 
 ##  Descriptive statistics by group 
 ## group: female
-##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis
-## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02
-##      se
-## X1 0.02
-## -------------------------------------------------------- 
+##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis   se
+## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02 0.02
+## ------------------------------------------------------------ 
 ## group: male
-##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis
-## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91
-##      se
-## X1 0.01
+##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis   se
+## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91 0.01
 ```
 
 ```r
@@ -934,7 +924,7 @@ Although our point estimate for the difference was 0.6, the confidence interval 
 
 *Notice that the confidence interval does not include the value zero*. The observed difference that we have between females and males is not consistent with a difference of zero in the population. The fact that our estimated CI for the difference of the means does not include zero invites the suggestion that the difference between males and females is different from zero in the population. If, on the other hand, you were to encounter a confidence interval for the difference of the means including the value of zero then you would be less confident that the difference in the population would not be zero. This makes sense. If zero is a very plausible value for the difference of the means in the population then we cannot on the basis of our sample data pretend otherwise.
 
-##Comparing means visually by using error bars representing confidence intervals: inference by eye
+## Comparing means visually by using error bars representing confidence intervals: inference by eye
 
 In the previous section we have discussed how you can construct *the confidence interval for the difference between two means*. Another way of looking at whether the means of two groups are different in a population is by visually comparing *the confidence interval for the means of each of the two groups*. Think for a second about the semantic difference. If you don't get it, look back at the figure we represented above.
 
@@ -969,7 +959,7 @@ The point in the error bar represents the mean value for fear of crime for each 
 
 If they were overlapping this would be indicating that some of the plausible values for the mean fear of crime score for males in the population would also be plausible values for the mean fear of crime for females in the population. In this case, when there is some overlap, it is less intuitive to interpret the confidence intervals. *You can have some overlap even if there is a real difference across the population means*. However, the greater the overlap the smaller the chance that there is a difference between the two means in the population. In particular, if the overlap is greater than about 50% for the length of the bar either side of the mean then you will be, roughly speaking, "very confident" that there is no real difference in the population. [This](http://www.apastyle.org/manual/related/cumming-and-finch.pdf) is a good guide about how to interpret error bars in this type of scenarios.
 
-##HOMEWORK 5.1
+## HOMEWORK 5.1
 
 *Use the code and ideas we have introduced in the last two sections to explore again the data from the ban the box paper we covered in previous weeks. Draw confidence intervals for the proportion of positive responses obtained by black and white employees before and after the introduction of the ban the box legislation. What inferences can you draw based in your results?*
 

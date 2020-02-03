@@ -1,6 +1,6 @@
-#Data visualisation with R
+# Data visualisation with R
 
-##Introduction
+## Introduction
 
 A picture is worth a thousand words; when presenting and interpreting data this basic idea also applies. There has been, indeed, a growing shift in data analysis toward more visual approaches to both interpretation and dissemination of numerical analysis. Part of the new data revolution consists in the mixing of ideas from visualisation of statistical analysis and visual design. Indeed data visualisation is one of the most interesting areas of development in the field.
 
@@ -8,7 +8,7 @@ Good graphics not only help researchers to make their data easier to understand 
 
 Recent research has revealed that papers which have good graphics are perceived as overall more clear and more interesting, and their authors perceived as smarter (see [this presentation](https://vimeo.com/181771433))
 
-The preparation for this session includes many great resources on visualising quantitative information, and if you have not had time to go through them, I recommend that you take some time to do so. 
+The preparation for this session includes many great resources on visualising quantitative information, and if you have not had time to go through them, we recommend that you take some time to do so. 
 
 As with other aspects of R, there are a number of core functions that can be used to produced graphics. However these offer limited possibilities for building graphs. 
 
@@ -37,7 +37,7 @@ The grammar of graphics upon which this package is based on defines various comp
 
 Let's take it one step at the time.
 
-##Anatomy of a plot
+## Anatomy of a plot
 
 Essentially the philosophy behind this is that all graphics are made up of layers. The package `ggplot2` is based on the grammar of graphics, the idea that you can build every graph from the same few components: a data set, a set of geoms—visual marks that represent data points, and a coordinate system.
 
@@ -78,9 +78,9 @@ ggplot(data = fbo, aes(x = Club.Supported, y=Banning.Orders)) +          #data
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
-The first line above begins a plot by calling the `ggplot()` function, and putting the data into it. You have to name your dataframe, and then, within the `aes()` command you pass the specific variables which you want to plot. In this case, we only want to see the distribution of one variable, banning orders, in the y axis and we will plot the club supported in the x axis. 
+The first line above begins a plot by calling the `ggplot()` function, and putting the data into it. You have to name your dataframe witg the `data` argument, and then, within the `aes()` command you pass the specific variables which you want to plot. In this case, we only want to see the distribution of one variable, banning orders, in the y axis and we will plot the club supported in the x axis. 
 
-The second line is where we add the geometry. This is where we tell R what we want the graph to be. Here we say we want it to be points by using `geom_points`. You can see a list of all possible geoms [here](http://docs.ggplot2.org/current/). 
+The second line is where we add the *geometry*. This is where we tell R what we want the graph to be. Here we say we want it to be points by using `geom_points`. You can see a list of all possible geoms [here](http://docs.ggplot2.org/current/). 
 
 The third line is where we can tweak the display of the graph. Here I used `theme_bw()` which is a nice clean theme. You can try with other themes. To get a list of themes you can also see the resource [here](http://docs.ggplot2.org/current/). If you want more variety you can explore the package [`ggthemes`](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/). 
 
@@ -93,7 +93,7 @@ ggplot(data = fbo, aes(x = Club.Supported, y=Banning.Orders)) +     #data
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
-Changing the theme is not all you can do with the third element. For example here you can't really read the axis labels, because they're all overlapping. One solution would be to rotate your axis labels 90 degrees, with the following code: `axis.text.x = element_text(angle = 90, hjust = 1)`. You pass this code to the theme argument. 
+Changing the theme is not all you can do with the third element. For example here you can't really read the axis labels, because they're all overlapping. One solution would be to rotate your axis labels 90 degrees, with the following code: `axis.text.x = element_text(angle = 90, hjust = 1)`. You pass this code to the `theme` argument. 
 
 
 ```r
@@ -146,7 +146,7 @@ theme(axis.text.x = element_text(angle = 90, hjust = 1))                        
 
 This is basically all you need to know to build a graph! So far we have introduced a lot of code some of which you may not fully understand. Don't worry too much, we just wanted to give you a quick introduction to some of the possibilities. Later in the session we will go back to some of these functions in a slower way. The take away from this section is to understand the basic elements of the grammar of graphics.
 
-##What graph should I use?
+## What graph should I use?
 
 There are a lot of points to consider when you are choosing what graph to use to visually represent your data. There are some best practice guidelines, but at the end of the day, you need to consider what is best for your data. What do you want to show? What graph will best communicate your message? Is it a comparison between groups? Is it the frequency distribution of 1 variable? 
 
@@ -226,7 +226,7 @@ Now this is great! We can see that the higher the league the more banning orders
 
 We'll now go through some examples of making graphs using `ggplot2` package stopping a bit more on each of them. 
 
-##Visualising numerical variables: Histograms
+## Visualising numerical variables: Histograms
 
 [Histograms](http://www.learner.org/courses/againstallodds/unitpages/unit03.html) are useful ways of representing quantitative variables visually. 
 
@@ -373,7 +373,7 @@ ggplot(Boston, aes(x = log10(crim + 1), fill = lowval)) +
 
 The plot now is a bit clearer. It seems pretty evident that the distribution of crime is quite different between these two types of towns.
 
-##Visualising numerical variables: Density plots
+## Visualising numerical variables: Density plots
 
 For smoother distributions, you can use density plot. You should have a healthy amount of data to use these or you could end up with a lot of unwanted noise. Let's first look at the single density plot for all cases. Notice all we are doing is invoking a different kind of geom:
 
@@ -515,7 +515,7 @@ ggplot(filter(BCS0708, !is.na(ethgrp2) & !is.na(tcviolent)),
 
 The `filter` function from `dplyr` is using a logical argument to tell R to only use the cases that do not have NA values in the two variables that we are using. The exclamation mark followed by `is.na` and then the name of a variable is R way of saying "the contrary of is NA for the specified variable". So in essence we are saying to R just look at data that is not NA in these variables. The `reorder` function on the other hand is asking R to reorder the levels in ethnicity according to the median value of worry of violent crime. Since we are using those functions *within* the `ggplot` function this subsetting and this reordering (as with `as.factor` earlier) are not introducing permanent changes in your original dataset. If you prefer to reorder according to the mean you only need to change that parameter after the `FUN` option (e.g, `FUN = mean`).
 
-##Exploring relationships between two quantitative variables: scatterplots
+## Exploring relationships between two quantitative variables: scatterplots
 
 So far we have seen how you can use histograms, density plots and boxplots to plot numerical variables and to compare groups in relation to numerical variables. Another way of saying that is that you can use comparative histograms, density plots, or boxplots to assess the relationship between a numerical variable and a categorical variable (the variable that defines the groups). How do you explore the relationship between two numerical variables?
 
@@ -630,7 +630,7 @@ ggplot(Boston, aes(x = medv, y = crim)) +
 
 As you can see here you produce a smoother line than with the conditional means. The line, as the scatterplot, seems to be suggesting an overall curvilinear relationship that almost flattens out once property values hit $20k. 
 
-##Scatterplots conditioning in a third variable
+## Scatterplots conditioning in a third variable
 
 There are various ways to plot a third variable in a scatterplot. You could go 3D and in some contexts that may be appropriate. But more often than not it is preferable to use only a two dimensional plot.
 
@@ -716,7 +716,7 @@ ggplot(BCS0708, aes(x = age, y = tcviolent, colour = bcsvictim)) +
 
 What we see here is that for the most part the relationship of age and worry for violent crime looks quite flat, regardless of whether you have been a victim of crime or not. At least, for most people. However, once we get to the 60s things seem to change a bit. Those over 62 that have not been a victim of crime in the past year start to manifest a lower concern with crime as they age (in comparison with those that have been a victim of crime).
 
-##Scatterplot matrix
+## Scatterplot matrix
 
 Sometimes you want to produce many scatterplots simultaneously to have a first peak at the relationship between the various variables in your data frame. The way to do this is by using a scatterplot matrix. There are some packages that are particularly good for this. One of them is `GGally`, basically an extension for `ggplot2`.
 
@@ -725,7 +725,7 @@ Not to overcomplicate things we will only use a few variables from the *Boston* 
 
 ```r
 #I create a new data frame that only contains 4 variables included in the Boston dataset and I am calling this new data frame object Boston_spm
-Boston_spm <- select(Boston, crim, medv, lstat)
+Boston_spm <- dplyr::select(Boston, crim, medv, lstat)
 ```
 
 Then we load `ggpairs` and use run the scatterplot matrix using the `ggpairs` function:
@@ -765,7 +765,7 @@ And you can also condition in a third variable. For example, we could condition 
 
 
 ```r
-Boston_spm <- select(Boston, crim, medv, lstat, chas)
+Boston_spm <- dplyr::select(Boston, crim, medv, lstat, chas)
 spm(~crim+medv+lstat, data=Boston_spm, groups=Boston_spm$chas, by.groups=TRUE, smooth=FALSE, regLine=FALSE)
 ```
 
@@ -773,7 +773,7 @@ spm(~crim+medv+lstat, data=Boston_spm, groups=Boston_spm$chas, by.groups=TRUE, s
 
 Getting results, once you get the knack of it, is only half of the way. The other, and more important, half is trying to make sense of the results. What are the stories this data is telling us?  R cannot do that for you. For this you need to use a better tool: **your brain** (scepticism, curiosity, creativity, a lifetime of knowledge) and what Kaiser Fung calls ["numbersense"](http://www.amazon.co.uk/Numbersense-How-Data-Your-Advantage/dp/0071799664).
 
-##Titles, legends, and themes in ggplot2
+## Titles, legends, and themes in ggplot2
 
 We have introduced a number of various graphical tools, but what if you want to customise the way the produce graphic looks like? Here I am just going to give you some code for how to modify the titles and legends you use. For adding a title for a `ggplot` graph you use `ggtitle()`.
 

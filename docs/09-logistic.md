@@ -1,10 +1,10 @@
-#Logistic regression
+# Logistic regression
 
-##Introduction
+## Introduction
 
 In previous sessions we covered the linear regression model, that you can use when you are modeling variation in a numerical response variable. In this session we are going to introduce logistic regression, which is a technique you may use when your outcome or response (or dependent) variable is categorical and has two possible levels.
 
-In criminology, very often you will be interested in binary outcomes (e.g., victim/no victim, arrested/not arrested, etc.) and want to use a number of predictor variables to study these outcomes. It is then, helpful, to understand how to use these models. Logistic regression is part of a broader family of models called **generalised linear models** -because they can all be expressed with the mathematical equation we used for a line.
+In criminology, very often you will be interested in binary outcomes (e.g., victim/no victim, arrested/not arrested, etc.) and want to use a number of predictor variables to study these outcomes. It is then, helpful, to understand how to use these models. Logistic regression is part of a broader family of models called **generalised linear models**. You should read the Wikepedia entry for this concept [here](https://en.wikipedia.org/wiki/Generalized_linear_model).
 
 With logistic regression we are modelling the probability of belonging to one of the levels in the binary outcome. For any combination of values for our predictor variables the model will estimate a probability of presenting the outcome of interest. To fit this model we use maximum likelihood. This handout does not focuses in explaining the mathematics behind the method. Those are important but in this introductory module we only provide an introduction to the technique.
 
@@ -34,9 +34,9 @@ data(Arrests, package="effects")
 
 This data includes information on police treatment of individuals arrested in Toronto for possession of marihuana. We are going to model variation on `released`, a factor with two levels indicating whether the arrestee was released with a summons.  In this case the police could:
 
-+ Release the arrestee with a summons— like a parking ticket 
++ Release the arrestee with a summons - like a parking ticket 
 
-+ Bring to police station, hold for bail, etc.— harsher treatment 
++ Bring to police station, hold for bail, etc. - harsher treatment 
 
 
 ```r
@@ -51,7 +51,7 @@ table(Arrests$released)
 
 We can see that for possession of marijuana most arrestees are released with a summons. Let's see if we can develop some understanding of the factors that affect this outcome, in particular let's assume our research goal is to investigate whether race is associated with a harsher treatment. For this we may run a logistic regression model.
 
-##Fitting logistic regression
+## Fitting logistic regression
 
 It is fairly straightforward to run a logistic model. Before you fit it, though, is convenient to check what you are actually modelling. Remember that R orders the levels in a factor alphabetically (unless they have been reordered by the authors of the dataframe). What that means is that when you run logistic regression you will be predicting probabilities associated with the category with a higher alphabetical order.
 
@@ -97,7 +97,7 @@ table(Arrests$harsher)
 Arrests$colour <- relevel(Arrests$colour, "White")
 ```
 
-We use the `glm()` function for fitting the model, specifying as an argument that we will be using a logit model (`family="binomial"`). As stated, we are going to run a model oriented primarily to assess to what degree race/ethnicity seems to matter even when we adjust for other factors (e.g., sex, employment, and previous police contacts (checks: number of police data records of previous arrests, previous convictions, parole status, etc. – 6 in all) on which the arrestee's name appeared; a numeric vector)).
+We use the `glm()` function for fitting the model, specifying as an argument that we will be using a logit model (`family="binomial"`). As stated, we are going to run a model oriented primarily to assess to what degree race/ethnicity seems to matter even when we adjust for other factors (e.g., sex, employment, and previous police contacts (checks: number of police data records of previous arrests, previous convictions, parole status, etc. - 6 in all) on which the arrestee's name appeared; a numeric vector)).
 
 
 ```r
@@ -202,12 +202,101 @@ Now we can use the interpretation of odd ratios we introduced in a previous sess
 
 Employment has an odd ratio of 0.45. When the odd ratio is between 0 and 1 is indicating a negative relationship. So employment reduces the odds of harsher treatment by 1/0.46, that is by a factor of 2.18. For more details interpreting odd ratios in logistic regression you may want to read [this](http://www.ats.ucla.edu/stat/mult_pkg/faq/general/odds_ratio.htm). Some people do not like odd ratios. For other ways of interpreting logistic regression coefficients you may want to consult [chapter 5 of the book](http://www.cambridge.org/gb/academic/subjects/statistics-probability/statistical-theory-and-methods/data-analysis-using-regression-and-multilevelhierarchical-models?format=PB) by Gelman and Hill (2007).
 
+You can read more about how to read odd ratios in logistic regression [here](https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-how-do-i-interpret-odds-ratios-in-logistic-regression/).
+
 Another way of getting the results with less typing is to use the `Logit()` function in the `lessR` package (you will need to install it if you do not have it).
 
 
 ```r
 library(lessR, quietly= TRUE)
+```
+
+```
+## 
+## lessR 3.9.0     feedback: gerbing@pdx.edu     web: lessRstats.com/new
+## ---------------------------------------------------------------------
+## 1. d <- Read("")           Read text, Excel, SPSS, SAS or R data file
+##                            d: default data frame, no need for data=
+## 2. l <- Read("", var_labels=TRUE)   Read variable labels into l,
+##                            required name for data frame of labels
+## 3. Help()                  Get help, and, e.g., Help(Read)
+## 4. hs(), bc(), or ca()     All histograms, all bar charts, or both
+## 5. Plot(X) or Plot(X,Y)    For continuous and categorical variables
+## 6. by1= , by2=             Trellis graphics, a plot for each by1, by2
+## 7. reg(Y ~ X, Rmd="eg")    Regression with full interpretative output
+## 8. style("gray")           Grayscale theme, + many others available
+##    style(show=TRUE)        all color/style options and current values
+## 9. getColors()             create many styles of color palettes
+## 
+## lessR parameter names now use _'s. Names with a period are deprecated.
+## Ex:  bin_width  instead of  bin.width
+```
+
+```r
 Logit(harsher ~ checks + colour + sex + employed, data=Arrests, brief=TRUE)
+```
+
+```
+## 
+## Response Variable:   harsher
+## Predictor Variable 1:  checks
+## Predictor Variable 2:  colour
+## Predictor Variable 3:  sex
+## Predictor Variable 4:  employed
+## 
+## Number of cases (rows) of data:  5226 
+## Number of cases retained for analysis:  5226 
+## 
+## 
+## 
+##    BASIC ANALYSIS 
+## 
+## Model Coefficients
+## 
+##              Estimate    Std Err  z-value  p-value   Lower 95%   Upper 95%
+## (Intercept)   -1.9035     0.1600  -11.898    0.000     -2.2170     -1.5899 
+##      checks    0.3580     0.0258   13.875    0.000      0.3074      0.4085 
+## colourBlack    0.4961     0.0826    6.003    0.000      0.3341      0.6580 
+##     sexMale    0.0422     0.1496    0.282    0.778     -0.2511      0.3355 
+## employedYes   -0.7797     0.0839   -9.298    0.000     -0.9441     -0.6154 
+## 
+## 
+## Odds ratios and confidence intervals
+## 
+##              Odds Ratio   Lower 95%   Upper 95%
+## (Intercept)      0.1491      0.1089      0.2039 
+##      checks      1.4304      1.3599      1.5046 
+## colourBlack      1.6423      1.3967      1.9310 
+##     sexMale      1.0431      0.7779      1.3986 
+## employedYes      0.4585      0.3890      0.5404 
+## 
+## 
+## Model Fit
+## 
+##     Null deviance: 4776.258 on 5225 degrees of freedom
+## Residual deviance: 4330.699 on 5221 degrees of freedom
+## 
+## AIC: 4340.699 
+## 
+## Number of iterations to convergence: 5 
+## 
+## 
+## 
+## 
+## >>> Note:  colour is not a numeric variable.
+## 
+## 
+## 
+## >>> Note:  sex is not a numeric variable.
+## 
+## 
+## 
+## >>> Note:  employed is not a numeric variable.
+## 
+## Collinearity
+## 
+## 
+## >>> No collinearity analysis because not all variables are numeric.
 ```
 
 As with linear regression, the interpretation of regression coefficients is sensitive to the scale of measurement of the predictors. This means one cannot compare the magnitude of the coefficients to compare the relevance of variables to predict the response variable. The same applies to the odd ratios. Tempting and common as this might be, unless the predictors use the same metric (or maybe if they are all categorical) there is little point in comparing the magnitude of the odd ratios in logistic regression. Like the unstardised logistic regression coefficients odd ratios are **not** a measure of effect size that allows comparisons across inputs (Menard, 2012). 
@@ -217,15 +306,60 @@ Finally, you could, in the same way than we did in a previous session, use the `
 
 ```r
 library(arm)
+```
+
+```
+## Loading required package: MASS
+```
+
+```
+## Loading required package: Matrix
+```
+
+```
+## Loading required package: lme4
+```
+
+```
+## 
+## arm (Version 1.10-1, built: 2018-4-12)
+```
+
+```
+## Working directory is D:/Dropbox/1_Teaching/1 Manchester courses/20452 Modelling Criminological Data/modelling_book
+```
+
+```r
 fitl_1_s <- standardize(fitl_1)
 display(fitl_1_s)
 ```
 
-We can also use **forest plots** in much the same way than we did for linear regression. One way of doing this is using the `sjp.glm()` function of the `sjPlot` package. Notice that by default the odd ratios are sorted from higher to lower in this display (and also that in this html file the text in the plot is not fully displayed, I'm still trying to fix that, but if you run this and zoom in you will see it better).
+```
+## glm(formula = harsher ~ z.checks + c.colour + c.sex + c.employed, 
+##     family = "binomial", data = Arrests)
+##             coef.est coef.se
+## (Intercept) -1.77     0.04  
+## z.checks     1.10     0.08  
+## c.colour     0.50     0.08  
+## c.sex        0.04     0.15  
+## c.employed  -0.78     0.08  
+## ---
+##   n = 5226, k = 5
+##   residual deviance = 4330.7, null deviance = 4776.3 (difference = 445.6)
+```
+
+We can also use **forest plots** in much the same way than we did for linear regression. One way of doing this is using the `plot.model()` function of the `sjPlot` package. Notice that by default the odd ratios are sorted from higher to lower in this display (and also that in this html file the text in the plot is not fully displayed, I'm still trying to fix that, but if you run this and zoom in you will see it better).
 
 
 ```r
 library(sjPlot)
+```
+
+```
+## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
+```
+
+```r
 plot_model(fitl_1)
 ```
 
@@ -261,17 +395,17 @@ fitl_1_prob[1:10]
 ```
 
 ```
-##          1          2          3          4          5          6 
-## 0.17262268 0.25519856 0.17262268 0.14344103 0.13833944 0.10091376 
-##          7          8          9         10 
-## 0.13455033 0.08905504 0.32891111 0.17262268
+##          1          2          3          4          5          6          7 
+## 0.17262268 0.25519856 0.17262268 0.14344103 0.13833944 0.10091376 0.13455033 
+##          8          9         10 
+## 0.08905504 0.32891111 0.17262268
 ```
 
 It is important to understand that with this type of models we usually generate two types of predictions. One the one hand, we are producing a continuous valued prediction in the form of a probability but we can also generate a predicted class for each case. In many applied settings, the latter will be relevant. A discrete category prediction may be required in order to make a decision. Imagine of a probation officer evaluating the future risk of a client. She/He would want to know whether the case is high risk or not.
 
-##Assessing model fit I: deviance and pseudo r squared
+## Assessing model fit I: deviance and pseudo r squared
 
-As you may remember when looking at linear models we could use an F test to check the overall fit of the model and we could evaluate R squared. When running logistic regression we cannot obtain the R squared (although there is a collection of pseudo-R^2 measures that have been produced)[^1]. In linear regression things are a bit simpler. As Menard (2010: 43) explains:
+As you may remember when looking at linear models we could use an F test to check the overall fit of the model and we could evaluate R squared. When running logistic regression we cannot obtain the R squared (although there is a collection of pseudo-R^2 measures that have been produced). In linear regression things are a bit simpler. As Menard (2010: 43) explains:
 
 > "there is only one reasonable residual variation criterion for quantitative variables in OLS, the familiar error sum of squares... but there are several possible residual variation criteria (entropy, squared error, qualitative difference) for binary variables. Another hindrance is the existence of numerous mathematical equivalents to R^2 in OLS, which are not necessarily mathematically (same formula) or conceptually (same meaning in the context of the model) equivalent to R^2 in logistic regression... Moreover, in logistic regression, we must choose whether we are more interested in qualitative prediction (whether predicitons are correct or incorrect), quantitative prediction (how close predictions are to being correct), or both, because different measures of explained variation are appropriate for these two different types of prediction"
 
@@ -295,14 +429,12 @@ The difference between the -2LL for the model with no predictors and the -2LL fo
 ## -1.5226  -0.6156  -0.4407  -0.3711   2.3449  
 ## 
 ## Coefficients:
-##             Estimate Std. Error z value Pr(>|z|)    
-## (Intercept) -1.90346    0.15999 -11.898  < 2e-16 ***
-## checks       0.35796    0.02580  13.875  < 2e-16 ***
-## colourBlack  0.49608    0.08264   6.003 1.94e-09 ***
-## sexMale      0.04215    0.14965   0.282    0.778    
-## employedYes -0.77973    0.08386  -9.298  < 2e-16 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##             Estimate Std. Error z value             Pr(>|z|)
+## (Intercept) -1.90346    0.15999 -11.898 < 0.0000000000000002
+## checks       0.35796    0.02580  13.875 < 0.0000000000000002
+## colourBlack  0.49608    0.08264   6.003        0.00000000194
+## sexMale      0.04215    0.14965   0.282                0.778
+## employedYes -0.77973    0.08386  -9.298 < 0.0000000000000002
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
@@ -393,7 +525,7 @@ Some authors refer to this as the Hosmer/Lemeshow R^2. It indicates how much the
 
 + And it can be used in other generalised linear models (models for categorical outcomes with more than two levels, which we don't cover here)
 
-##Assessing model fit II: confusion matrix and ROC curves
+## Assessing model fit II: confusion matrix and ROC curves
 
 If we are interested in "qualitative" prediction, we also need to consider other measures of fit. In many applied settings, such as in applied predictive modelling, this can be the case. Imagine you are developing a tool to be used to forecast the probability of a repeat victimisation in cases of domestic violence. This type of prediction may then be used to determine the type of police response to cases defined as high risk. Clearly, you want to make sure the classification you make is accurate as possible. For these and similar applications in which *qualitative prediction* is important, we use other type of measures.
 
@@ -464,10 +596,6 @@ library(caret)
 ```
 
 ```
-## Warning: package 'caret' was built under R version 3.5.3
-```
-
-```
 ## Loading required package: lattice
 ```
 
@@ -486,26 +614,26 @@ confusionMatrix(data=harsher_pred, reference=Arrests$harsher, positive="Yes") #T
 ## Prediction   No  Yes
 ##        No  4278  835
 ##        Yes   56   57
-##                                          
-##                Accuracy : 0.8295         
-##                  95% CI : (0.819, 0.8396)
-##     No Information Rate : 0.8293         
-##     P-Value [Acc > NIR] : 0.4943         
-##                                          
-##                   Kappa : 0.078          
-##                                          
-##  Mcnemar's Test P-Value : <2e-16         
-##                                          
-##             Sensitivity : 0.06390        
-##             Specificity : 0.98708        
-##          Pos Pred Value : 0.50442        
-##          Neg Pred Value : 0.83669        
-##              Prevalence : 0.17069        
-##          Detection Rate : 0.01091        
-##    Detection Prevalence : 0.02162        
-##       Balanced Accuracy : 0.52549        
-##                                          
-##        'Positive' Class : Yes            
+##                                              
+##                Accuracy : 0.8295             
+##                  95% CI : (0.819, 0.8396)    
+##     No Information Rate : 0.8293             
+##     P-Value [Acc > NIR] : 0.4943             
+##                                              
+##                   Kappa : 0.078              
+##                                              
+##  Mcnemar's Test P-Value : <0.0000000000000002
+##                                              
+##             Sensitivity : 0.06390            
+##             Specificity : 0.98708            
+##          Pos Pred Value : 0.50442            
+##          Neg Pred Value : 0.83669            
+##              Prevalence : 0.17069            
+##          Detection Rate : 0.01091            
+##    Detection Prevalence : 0.02162            
+##       Balanced Accuracy : 0.52549            
+##                                              
+##        'Positive' Class : Yes                
 ## 
 ```
 
@@ -546,15 +674,11 @@ Similarly, if you think about the criminal justice system, it is essentially bui
 
 We may want to see what happens to sensitivity and specificity for different cut off points.  For this we can look at **receiver operating characteristics** or simply [ROC curves](http://en.wikipedia.org/wiki/Receiver_operating_characteristic). This is essentially a tool for evaluating the sensitivity/specificity trade off. The ROC curve can be used for investigating alternate cut offs for class probabilities.
 
-We can use the `pROC` package for this[^2]. We start by creating an object that contains the relevant information with the `roc()` function form t the `pROC` package.
+We can use the `pROC` package for this. We start by creating an object that contains the relevant information with the `roc()` function form t the `pROC` package.
 
 
 ```r
 library(pROC)
-```
-
-```
-## Warning: package 'pROC' was built under R version 3.5.3
 ```
 
 ```
@@ -577,6 +701,14 @@ rocCURVE <- roc(response = Arrests$harsher,
                 predictor = fitl_1_prob)
 ```
 
+```
+## Setting levels: control = No, case = Yes
+```
+
+```
+## Setting direction: controls < cases
+```
+
 Once we have the object with the information, we can plot the ROC curve.
 
 
@@ -596,15 +728,15 @@ alt_cutoff1
 ```
 
 ```
-##   threshold specificity sensitivity 
-##   0.1696539   0.6305953   0.7163677
+##   threshold specificity sensitivity
+## 1 0.1696539   0.6305953   0.7163677
 ```
 
 Here we can see that with a cut off point of .16 we get a specificity of .63 and a sensitivity of .71. Notice how this is close to the base rate of harsher treatment in the sample (17% of individuals actually received harsher treatment). For a more informed discussion of cut off points and costs of errors in applied predictive problems in criminal justice, I recommend reading [Berk (2012)](http://link.springer.com/book/10.1007%2F978-1-4614-3085-8). Often the selection of cut off may be motivated by practical considerations (e.g., selecting individuals for treatment in a situation where resources to do so is limited).
 
 The ROC curve can also be used to develop a quantitative assessment of the model. The perfect model is one where the curve reaches the top left corner of the plot. This would imply 100% sensitivity and specificity. On the other hand, a useless model would one with a curve alongside the diagonal line splitting the plot in two, from the bottom right corner to the top right corner. You can also look at the **area under the curve** (AUC) and use it to compare models. An AUC of .5 correspond to the situation where our predictors have no predictive utility. For a fuller discussion of how to compare these curves and the AUC I recommend reading Chapter 11 of [Kuhn and Johnson (2014)](http://link.springer.com/book/10.1007/978-1-4614-6849-3).
 
-##Interactions
+## Interactions
 
 The data we have been using were obtained by the author of the `effects` package from [Michael Friendly](http://www.datavis.ca/), another prominent contributor to the development of R packages. The data are related to a series of stories revelaed by the Toronto Star and further analysed by Professor Friendly as seen [here](http://www.datavis.ca/courses/VCD/vcd4-handout-2x2.pdf). In these further analysis Friendly proposes a slightly more complex model than then one we have specified so far. This model adds three new predictors (citizenship, age, and year in which the case was processed) and also allows for interactions between race (colour) and year, and race and age.
 
@@ -625,18 +757,16 @@ summary(fitl_2)
 ## -1.7625  -0.6178  -0.4408  -0.3473   2.4496  
 ## 
 ## Coefficients:
-##                    Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)      -1.342e+02  6.929e+01  -1.937 0.052785 .  
-## employedYes      -7.475e-01  8.460e-02  -8.835  < 2e-16 ***
-## citizenYes       -6.202e-01  1.052e-01  -5.897  3.7e-09 ***
-## checks            3.647e-01  2.595e-02  14.055  < 2e-16 ***
-## colourBlack       3.617e+02  1.152e+02   3.140 0.001689 ** 
-## year              6.632e-02  3.466e-02   1.913 0.055722 .  
-## age               9.347e-03  5.495e-03   1.701 0.088979 .  
-## colourBlack:year -1.802e-01  5.760e-02  -3.129 0.001756 ** 
-## colourBlack:age  -3.813e-02  1.016e-02  -3.753 0.000175 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##                     Estimate  Std. Error z value             Pr(>|z|)
+## (Intercept)      -134.187783   69.287702  -1.937             0.052785
+## employedYes        -0.747475    0.084601  -8.835 < 0.0000000000000002
+## citizenYes         -0.620159    0.105164  -5.897         0.0000000037
+## checks              0.364718    0.025949  14.055 < 0.0000000000000002
+## colourBlack       361.668318  115.180289   3.140             0.001689
+## year                0.066318    0.034664   1.913             0.055722
+## age                 0.009347    0.005495   1.701             0.088979
+## colourBlack:year   -0.180225    0.057604  -3.129             0.001756
+## colourBlack:age    -0.038134    0.010161  -3.753             0.000175
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
@@ -669,9 +799,11 @@ On the other hand, we see a significant interaction between race and age. Young 
 
 We already discussed in a previous session the difficulties of interpreting regression coefficients in models with interactions. Centering and standardising in the way discussed earlier can actually be of help or this purpose.
 
-**HOMEWORK: Run a logistic regression model using the BCS0708 data from last week and develop a model that aims to predict victimisation with at least 5 explanatory variables. Interpret your results**
+## HOMEWORK: 
 
-##Further resources
+*Run a logistic regression model using the BCS0708 data from previous weeks and develop a model that aims to predict victimisation with at least 5 explanatory variables. Interpret your results*
+
+## Further resources
 
 These are a set of useful external resources that may aid your comprehesion (and I have partly relied upon myself, so credit to them!):
 
@@ -681,6 +813,3 @@ These are a set of useful external resources that may aid your comprehesion (and
 
 + A [helpful list of resources](http://www.r-bloggers.com/some-r-resources-for-glms/) for general linear models with R.
 
-
-[^1]: Various of these can be obtained invoking the `pR2()` function from the `pscl` package.
-[^2]: Alternatively one could use the `ROCR` package. For details, see [here](http://rocr.bioinf.mpi-sb.mpg.de/).

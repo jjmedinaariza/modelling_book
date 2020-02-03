@@ -1,6 +1,6 @@
-#Studying relationships between a categorical and a quantitative variable
+# Studying relationships between a categorical and a quantitative variable
 
-##The logic of hypothesis testing
+## The logic of hypothesis testing
 
 In the last unit we learned how to think about and build confidence intervals. We explained how we could use confidence intervals to deal with uncertainty when estimating population parameters. Confidence intervals as we will see are very commonly used in statistics. The other key inferential tool in data analysis is the hypothesis test. Today we will focus on this second tool. 
 
@@ -60,7 +60,7 @@ The ultimate goal of these statistical tests for hypothesis testing is to obtain
 
 Whatever you decide, the *American Psychological Association Statistical Committee* recommends that it is always a good idea to report the p value as an indication of the strength of the evidence. That is, not only report the finding to be significant or not, also report your actual p value.
 
-##Comparing means across two groups (the t test)
+## Comparing means across two groups (the t test)
 
 Let's elaborate with our example. Our research question is whether women are more afraid of crime. We are going to test a non-directional hypothesis and use an alpha level of .05. The test we use in this case is the t test, which relies in the t Student distribution introduced last week. This test makes a number of assumptions that we need to check first.
 
@@ -109,7 +109,7 @@ Farther to the right you see a value for p, this gives the probability associate
 
 It is important you remember this: **the p value is not the probability that the null hypothesis is true**. Imagine that our p value was 0.04. As tempting as it may be to say that a p value of 0.04 means there is a 4% chance that the null hypothesis is true, that just isn't right.  The only thing that we are in a position to state is: given the null hypothesis, there is a 4% chance of observing the difference that we have actually observed (or one more unlikely).
 
-##What does a significant effect mean?
+## What does a significant effect mean?
 
 Before we said that the difference between the mean score of fear of violent crime for males and females is statistically significant. It is of critical importance that you understand what this actually means. Unfortunately, in this context significance does not quite have the same meaning that we give it in normal language. 
 
@@ -143,7 +143,7 @@ One important thing to remember is that when doing hypothesis testing there is a
 ![Errors](http://flowingdata.com/wp-content/uploads/2014/05/Type-I-and-II-errors1-625x468.jpg)
 
 
-##Power analysis
+## Power analysis
 
 In this section we introduce the `pwr` package for power analysis. In the video lectures you had to watch as preparation for today we introduced the notion of power analysis. In order for a statistical test to be able to be effective, to be able to detect an effect, you need to have sufficient power. Power is related to the magnitude of the effect (it will be easier to detect stronger rather than weaker effects) and sample size (it will be easier to detect effects with large samples than with small samples). A problem with many scientific studies is that they are *underpowered*, the fail to reject the null hypothesis simply because they do not have sufficient power (often because the sample size is not large enough). Power analysis is generally done during the planning of an analysis so that you know what kind of sample you are going to need if you want to be able to run meaningfull hypothesis tests. That is you do your power analysis before you collect your data. 
 
@@ -166,9 +166,9 @@ The function is telling us that we have a power of 1. The statistical power rang
 
 With sample sizes this large, you are unlikely to run into problems with power. But these things do matter in particular applications. Think for example of cases when you are trying to evaluate if a particular criminal justice intervention works. If you work with small samples you may wrongly conclude that your intervention didn't make a difference (you fail to reject the null hypothesis) because you did not have sufficient statistical power. This was a common problem in older studies (see [here](https://www.sciencedirect.com/science/article/pii/0047235289900044) for a review) and it is a problem that still persist to some extent (read [this](https://www.tandfonline.com/doi/abs/10.1080/07418825.2018.1495252) more recent review).
 
-##Comparing means across several groups (ANOVA)
+## Comparing means across several groups (ANOVA)
 
-###The problem with multiple comparisons
+### The problem with multiple comparisons
 
 We have used the t test to assess differences in a metric variable across two groups defined by a categorical variable. As we have explained during the class, if you are interested in comparing across more than two groups then you cannot run multiple t tests. Why? Because we would run into the problem of [**multiple comparisons**](http://en.wikipedia.org/wiki/Multiple_comparisons_problem) illustrated below:
 
@@ -226,7 +226,7 @@ plotmeans(tcviolent ~ ethgrp2, data = BCS0708) #if you rather use the normal app
 
 When you only have two groups you can use these graphs (error bars displaying confidence intervals) in a way equivalent to the way that you use a t test, but when you have multiple groups you need to think about the problem of multiple comparisons.
 
-###ANOVA
+### ANOVA
 
 So, again, we see some differences in means. Are these differences statistically significant? In other words, can we infer that they exist in the population from which the sample was drawn? For this we can run ANOVA and an F test. 
 
@@ -252,7 +252,7 @@ Done, right? Well, not quite. Remember the steps in a hypothesis test. Before ru
 + **Equal variance assumption** (also called the lovely names of homogeneity of variance or homoskedasticity): to check this assumption you need to check that the groups have similar variances (we'll discuss this in greater length next). But it is important you know statisticians have discussed the degree to which this assumption matters, or in other words to what degree ANOVA is *robust*  to violations of this assumptions. Is ANOVA robust (will give us results we can trust) when this assumption is violated? Andy Field and his co-authors (2012) discuss this at length in page 413. His view is that "when sample sizes are unequal, ANOVA is not robust to violations of homogeneity of variance" and we should proceed accordingly. 
 + **Normal population assumption**: like the t test, we need to assume that the normal model is reasonable for the populations underlying each of the treatment groups.
 
-###Checking homogeneity of variance and dealing with unequal spread
+### Checking homogeneity of variance and dealing with unequal spread
 
 Let's start by discussing why we care about the spread of the groups. Remember that ANOVA contrasts variability between the groups with variability within each group. If the variability within the groups varies, we are making this pooled variance larger, reducing the F statistic, and making it less likely that we can reject the null hypothesis. So when you have this problem, the ANOVA test will usually be a conservative test that will reject your null hypothesis less often than it should. 
 
@@ -295,7 +295,7 @@ oneway.test(tcviolent ~ ethgrp2, data=BCS0708)
 
 In this case, the substantive conclusion is unsurprisingly the same. You reject the null hypothesis given the low p value associated with the observed F value.
 
-###Checking normality and dealing with problems
+### Checking normality and dealing with problems
 
 The F tests require the underlying errors to follow a Normal model. Stricto sensu, we need to check the Normal model is reasonable for the population underlying each group. We should start by looking at the side-by-side boxplots for indications of skewness. If they are all or most skewed in the same direction, the normal condition will fail. We also need to look at outliers within each group (particularly with smaller samples). You may also find it useful to compare the density estimates.
 
@@ -400,7 +400,7 @@ As we said the normal probability plots using this function display a (red) stra
 
 If we were happy with our transformations we could then run ANOVA as if the data was normal, only instead of comparing means on fear of violence we would be comparing means on whatever transformation we have made, scores of fear of crime raised to the 0.5 power (which to many mortals may sound rather obscure).
 
-###Robust ANOVA
+### Robust ANOVA
 
 Wilcox (2005) describes a set of procedures for conducting robust ANOVA: ways of doing ANOVA when there are problems with its assumptions. When everything goes completely wrong with the assumptions, you may want to look at these options.
 
@@ -419,7 +419,7 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
 
-###Post Hoc Comparisons
+### Post Hoc Comparisons
 
 So we are fairly certain there's bound to be differences in the level of fear of crime across ethnic groups that may be reflective of those we see in our sample. In our sample (see below) the mean value of fear of violent crime across groups is different. The White group (.00) has the lowest level of fear and the Asian group the highest (.88). With the other groups with levels of fear of crime in between these two extremes: Chinese or Other (.34), Black (.50) and Mixed (.52).
 
@@ -443,7 +443,7 @@ What you see printed in this matrix are the p. values for each of the comparison
 
 + And we can say that the Chinese/Other has more fear than the White group and less than the Asian but does not seem different from the mixed group or the Black.
 
-###Effect size for ANOVA
+### Effect size for ANOVA
 
 You can use the following programming code to get what is called as eta squared:
 

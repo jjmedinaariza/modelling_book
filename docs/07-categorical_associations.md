@@ -1,6 +1,6 @@
-#Studying relationships between two factors
+# Studying relationships between two factors
 
-##Producing cross tabulations
+## Producing cross tabulations
 
 In earlier sessions we have covered how to run frequency distributions using the `table()` function. Cross tabulations, also called **contingency tables**, are essentially crossed frequency distributions, where you plot the frequency distributions of more than one variable simultaneously. This semester we are only going to explore **two-way cross tabulations**, that is contingency tables where we plot the frequency distribution of two variables at the same time. Frequency distributions are a useful way of exploring categorical variables that do not have too many categories. By extension, cross tabulations are a useful way of exploring relationships between two categorical variables that do not have too many levels or categories.
 
@@ -149,7 +149,7 @@ The second rule for reading cross tabulations the right way is this: **you make 
 
 If this is confusing you may enjoy this [online tutorial](http://sonet.nottingham.ac.uk/rlos/ucel/cross_tab_data/main.html) on cross-tabulations looking at cause of mortality for music stars. Cross tabs are very commonly used, so it is important you understand well how they work.
 
-##Expected frequencies and Chi-Square
+## Expected frequencies and Chi-Square
 
 So far we are only describing our sample. Can we infer that these differences that we observe in this sample can be generalised to the population from which this sample was drawn? Every time you draw a sample from the same population the results will be slightly different, we will have a different combination of people in these cells. 
 
@@ -269,7 +269,7 @@ chisq.test(mytable.1, simulate.p.value = TRUE)
 
 Remember that we didn't really need the Fisher test or the simulated p values in this case. But there may be occasions when you need it as suggested above.
 
-##Residuals
+## Residuals
 
 If we look at the observed and expected frequencies in the previous cross-tabulations we will see that there are differences in pretty much all the cells. You can possibly notice as well that some differences are bigger than others. For example, earlier we saw how there are about 21 more people that live in areas where rubbish is very common and experience victimisation than expected under the null hypothesis. Clearly when you see large differences you should expect that the cell in question may be playing a particularly strong role in driving the relationship. 
 
@@ -333,7 +333,7 @@ with(BCS0708, CrossTable(rubbcomm, bcsvictim, expected = TRUE, prop.chisq = FALS
 
 You can see here, looking at the column identifying the outcome of interest (victimisation) that the adjusted standardised residual is lower than -12 for the "not at all common" category. That is the largest residual for the outcome of interest. The expected count under the null hypothesis here is much higher than the observed count. 
 
-##Gamma
+## Gamma
 
 Is this relationship strong? The residuals seem to be suggesting it is not trivial indeed. Apart from looking at the residuals, one of the tests discussed in the required reading as a test for the strength of a relationship is gamma. Gamma is a measure of association that allow us to make a judgement about the strength of this relationship and that we can use with ordinal measures (or as in this case when one variable is ordinal and the other is nominal dichotomous). Gamma is appropriate for testing the relationship between two categorical ordered variables (ordinal-level variables) or between a categorical ordered variable and a categorical unordered variables with only two levels (a dichotomous variable, such as "victimisation": that only has two levels, you have or you haven't experienced a victimisation). How can you obtain gamma with R?
 
@@ -373,7 +373,7 @@ The larger the absolute value of gamma, the stronger the association. There are 
 
 Gamma, however, assumes a "linear" relationship, more in one of the variables, more in the other (for positive relationships), less in one, more in the other (for negative relationships). Here we can see that the percentage of people that experience victimisation is almost the same for those who live in areas where rubbish is fairly common but also for those who live in areas where it is very common. That is, once we reach a certain level of rubbish the risk of victimisation does not go much higher. In situations like this gamma is likely underestimating the strength of the relationship.
 
-##Odds and odd ratios
+## Odds and odd ratios
 
 When you have two dichotomous nominal level variables, that is, two nominal level variables that can take only two possible levels, one of the more commonly used measures to indicate the strength of an association are odd ratios. Odd ratios and relative risk are very commonly used in public health and in criminological research. If you have knowledge of betting, you may already know a thing or two about odds.
 
@@ -594,7 +594,7 @@ It is also very important that you interpret these quantities carefully. You wil
 
 ![increased risk](https://www.explainxkcd.com/wiki/images/1/11/increased_risk.png)
 
-##HOMEWORK 7.1
+## HOMEWORK 7.1
 
 *Select two pairs of categorical variables from the dataset you are using for your coursework assignment. These could be variables you have selected for your coursework assignment if you wish. Then run one crosstabulation for each of these two pairs. Report appropriate statistics and interpret your results for these two crosstabulations.*
 

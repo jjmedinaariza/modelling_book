@@ -1,6 +1,6 @@
-#Logistic regression
+# Logistic regression
 
-##Introduction
+## Introduction
 
 In previous sessions we covered the linear regression model, that you can use when you are modeling variation in a numerical response variable. In this session we are going to introduce logistic regression, which is a technique you may use when your outcome or response (or dependent) variable is categorical and has two possible levels.
 
@@ -27,7 +27,7 @@ table(Arrests$released)
 
 We can see that for possession of marijuana most arrestees are released with a summons. Let's see if we can develop some understanding of the factors that affect this outcome, in particular let's assume our research goal is to investigate whether race is associated with a harsher treatment. For this we may run a logistic regression model.
 
-##Fitting logistic regression
+## Fitting logistic regression
 
 It is fairly straightforward to run a logistic model. Before you fit it, though, is convenient to check what you are actually modelling. Remember that R orders the levels in a factor alphabetically (unless they have been reordered by the authors of the dataframe). What that means is that when you run logistic regression you will be predicting probabilities associated with the category with a higher alphabetical order.
 
@@ -140,7 +140,7 @@ fitl_1_prob[1:10]
 
 It is important to understand that with this type of models we usually generate two types of predictions. One the one hand, we are producing a continuous valued prediction in the form of a probability but we can also generate a predicted class for each case. In many applied settings, the latter will be relevant. A discrete category prediction may be required in order to make a decision. Imagine of a probation officer evaluating the future risk of a client. She/He would want to know whether the case is high risk or not.
 
-##Assessing model fit I: deviance and pseudo r squared
+## Assessing model fit I: deviance and pseudo r squared
 
 As you may remember when looking at linear models we could use an F test to check the overall fit of the model and we could evaluate R squared. When running logistic regression we cannot obtain the R squared (although there is a collection of pseudo-R^2 measures that have been produced). In linear regression things are a bit simpler. As Menard (2010: 43) explains:
 
@@ -204,7 +204,7 @@ Some authors refer to this as the Hosmer/Lemeshow R^2. It indicates how much the
 
 + And it can be used in other generalised linear models (models for categorical outcomes with more than two levels, which we don't cover here)
 
-##Assessing model fit II: confusion matrix and ROC curves
+## Assessing model fit II: confusion matrix and ROC curves
 
 If we are interested in "qualitative" prediction, we also need to consider other measures of fit. In many applied settings, such as in applied predictive modelling, this can be the case. Imagine you are developing a tool to be used to forecast the probability of a repeat victimisation in cases of domestic violence. This type of prediction may then be used to determine the type of police response to cases defined as high risk. Clearly, you want to make sure the classification you make is accurate as possible. For these and similar applications in which *qualitative prediction* is important, we use other type of measures.
 
@@ -300,7 +300,7 @@ Here we can see that with a cut off point of .16 we get a specificity of .63 and
 
 The ROC curve can also be used to develop a quantitative assessment of the model. The perfect model is one where the curve reaches the top left corner of the plot. This would imply 100% sensitivity and specificity. On the other hand, a useless model would one with a curve alongside the diagonal line splitting the plot in two, from the bottom right corner to the top right corner. You can also look at the **area under the curve** (AUC) and use it to compare models. An AUC of .5 correspond to the situation where our predictors have no predictive utility. For a fuller discussion of how to compare these curves and the AUC I recommend reading Chapter 11 of [Kuhn and Johnson (2014)](http://link.springer.com/book/10.1007/978-1-4614-6849-3).
 
-##Interactions
+## Interactions
 
 The data we have been using were obtained by the author of the `effects` package from [Michael Friendly](http://www.datavis.ca/), another prominent contributor to the development of R packages. The data are related to a series of stories revelaed by the Toronto Star and further analysed by Professor Friendly as seen [here](http://www.datavis.ca/courses/VCD/vcd4-handout-2x2.pdf). In these further analysis Friendly proposes a slightly more complex model than then one we have specified so far. This model adds three new predictors (citizenship, age, and year in which the case was processed) and also allows for interactions between race (colour) and year, and race and age.
 
@@ -327,11 +327,11 @@ On the other hand, we see a significant interaction between race and age. Young 
 
 We already discussed in a previous session the difficulties of interpreting regression coefficients in models with interactions. Centering and standardising in the way discussed earlier can actually be of help or this purpose.
 
-##HOMEWORK: 
+## HOMEWORK: 
 
 *Run a logistic regression model using the BCS0708 data from previous weeks and develop a model that aims to predict victimisation with at least 5 explanatory variables. Interpret your results*
 
-##Further resources
+## Further resources
 
 These are a set of useful external resources that may aid your comprehesion (and I have partly relied upon myself, so credit to them!):
 

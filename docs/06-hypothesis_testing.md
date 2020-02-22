@@ -209,12 +209,16 @@ describeBy(BCS0708$tcviolent, BCS0708$sex)
 ## 
 ##  Descriptive statistics by group 
 ## group: female
-##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis   se
-## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02 0.02
-## ------------------------------------------------------------ 
+##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02
+##      se
+## X1 0.02
+## -------------------------------------------------------- 
 ## group: male
-##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis   se
-## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91 0.01
+##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91
+##      se
+## X1 0.01
 ```
 
 Ok, so that is 4475 and 3959. Let's say we want to detect even very small effect sizes. The functions in this package assume a default .05 level of statistical significance, although this is something we could change. So if we go with the default, we would write as follows:
@@ -297,24 +301,34 @@ describeBy(BCS0708$tcviolent, BCS0708$ethgrp2)
 ## 
 ##  Descriptive statistics by group 
 ## group: asian or asian british
-##    vars   n mean   sd median trimmed  mad   min  max range skew kurtosis   se
-## X1    1 283 0.88 1.17   0.68    0.86 1.32 -2.07 3.32  5.39 0.19    -0.89 0.07
-## ------------------------------------------------------------ 
+##    vars   n mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 283 0.88 1.17   0.68    0.86 1.32 -2.07 3.32  5.39 0.19    -0.89
+##      se
+## X1 0.07
+## -------------------------------------------------------- 
 ## group: black or black british
-##    vars   n mean   sd median trimmed mad   min  max range skew kurtosis  se
-## X1    1 120  0.5 1.14    0.3    0.48 1.2 -1.85 2.59  4.44 0.17    -0.92 0.1
-## ------------------------------------------------------------ 
+##    vars   n mean   sd median trimmed mad   min  max range skew kurtosis
+## X1    1 120  0.5 1.14    0.3    0.48 1.2 -1.85 2.59  4.44 0.17    -0.92
+##     se
+## X1 0.1
+## -------------------------------------------------------- 
 ## group: chinese or other
-##    vars  n mean   sd median trimmed  mad   min  max range skew kurtosis   se
-## X1    1 93 0.34 1.14   0.23     0.3 1.33 -1.64 2.81  4.45 0.31    -0.88 0.12
-## ------------------------------------------------------------ 
+##    vars  n mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 93 0.34 1.14   0.23     0.3 1.33 -1.64 2.81  4.45 0.31    -0.88
+##      se
+## X1 0.12
+## -------------------------------------------------------- 
 ## group: mixed
-##    vars  n mean  sd median trimmed  mad   min  max range skew kurtosis   se
-## X1    1 35 0.52 1.3   0.39     0.5 1.16 -2.34 2.97   5.3 0.22    -0.68 0.22
-## ------------------------------------------------------------ 
+##    vars  n mean  sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 35 0.52 1.3   0.39     0.5 1.16 -2.34 2.97   5.3 0.22    -0.68
+##      se
+## X1 0.22
+## -------------------------------------------------------- 
 ## group: white
-##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis   se
-## X1    1 7902    0 0.98  -0.15   -0.09 0.88 -2.35 3.81  6.16 0.85     0.72 0.01
+##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 7902    0 0.98  -0.15   -0.09 0.88 -2.35 3.81  6.16 0.85     0.72
+##      se
+## X1 0.01
 ```
 
 Looking at the results we can clearly see that there seem to be some differences in the means across groups. The White group has the lowest mean (.00) and the Asian group has the highest mean (.88), this is consistent with the other location measures displayed in the boxplot (quartiles and the median). But how precise are these point estimates for the means as measures of the population parameters? How much trust can we place in them as indicative of the true level of fear of crime in the various ethnic groups in the population? 

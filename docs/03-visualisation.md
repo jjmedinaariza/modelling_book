@@ -452,7 +452,7 @@ ggplot(Boston, aes(x = log10(crim + 1), y = as.factor(dec_medv))) + geom_density
 
 We can see that the distribution of crime is particularly different when we focus in the three deciles with the lowest level of income. For more details on this kind of plot you can read the [vignette](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html) for this package.
 
-##Visualising numerical variables: Box plots
+## Visualising numerical variables: Box plots
 
 [Box plots](http://tomhopper.me/2014/07/04/the-most-useful-data-plot-youve-never-used/) are an interesting way of presenting the 5 number summary (the minimum value, the first quartile, the median, the third quartile, and the maximum value of a set of numbers) in a visual way. [This video](http://www.learner.org/courses/againstallodds/unitpages/unit05.html) may help you to understand them better. If we want to use `ggplot` for plotting a single numerical variable we need some convoluted code, since `ggplot` assumes you want a boxplot to compare various groups. Therefore we need to set some arbitrary value for the grouping variable and we also may want to remove the x-axis tick markers and label. 
 
@@ -846,7 +846,7 @@ grid.arrange(p1, p2, p3, ncol=3) #ncol tells R we want them side by side, if you
 
 We don't have time to get into the detail of all the customisation features available for `ggplot2`. You can find some [additional solutions](https://bbc.github.io/rcookbook/) in the cookbook put together by the data journalists at the BBC or in Kieran Healy free online [book](https://socviz.co/).
 
-##Plotting categorical data: bar charts
+## Plotting categorical data: bar charts
 
 You may be wondering what about categorical data? So far we have only discussed various visualisations where at least one of your variables is quantitative. When your variable is categorical you can use bar plots (similar to histograms). We map the factor variable in the aesthetics and then use the `geom_bar()` function to ask for a bar chart.
 
@@ -964,7 +964,7 @@ There are other tools sometimes used for visualising categorical data. Pie chart
 
 What I would use instead are **waffle charts**. They're super easy to make with the "waffle" package but I don't think there's time for them at this point, but look into them [here](https://www.r-bloggers.com/making-waffle-charts-in-r-with-the-new-waffle-package/). 
 
-##Further resources
+## Further resources
 
 By now you should know the path to data analysis wisdom will take time. The good news is that we live in a time where there are multiple (very often free) resources to help you along the way. The time where this knowledge was just the preserve of a few is long distant. If you are a motivated and disciplined person there is a lot that you can do to further consolidate and expand your data visualisation skills without spending money. I already recommended you the excellent `ggplot2` online documentation. Here we just want to point you to a a few useful resources that you can pursue in the future. 
 

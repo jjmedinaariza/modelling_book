@@ -12,15 +12,15 @@ You conduct a study to evaluate the impact of a particular crime prevention prog
 
 For this and similar problems we need to apply statistical inference: a set of tools that allows us to draw inferences from sample data. In this session we will cover a set of important concepts that constitute the basis for statistical inference. In particular, we will approach this topic from the **frequentist** tradition. 
 
-It is important you understand this is not the only way of doing data analysis. There is an alternative approach, **bayesian statistics**, which is very important and increasingly popular. Unfortunately, we do not have the time this semester to also cover Bayesian statistics. Typically, you would learn about this approach in more advanced courses.
+It is important you understand this is not the only way of doing data analysis. There is an alternative approach, **bayesian statistics**, which is very important and increasingly popular. Unfortunately, we do not have the time this semester to also cover Bayesian statistics. Typically, you would learn about this approach in more advanced courses. 
 
-Unlike in previous and future sessions, the focus today will be less applied and a bit more theoretical. However, it is important you pay attention since understanding the foundations of statistical inference is essential for a proper understanding of everything else we will discuss in this course. The code we cover *in the first few sections* this week won't be as instrumental for your assignment, so don't worry too much about fully trying to understand it. 
+Unlike in previous and future sessions, the focus today will be less applied and a bit more theoretical. However, it is important you pay attention since understanding the foundations of statistical inference is essential for a proper understanding of everything else we will discuss in this course. The code we cover *in the first few sections* this week is much trickier but won't be instrumental for your assignment, so don't worry too much  if you don't fully understand it. 
 
 ## Generating random data
 
 For the purpose of today's session we are going to generate some fictitious data. We use real data in all other sessions but it is convenient for this session to have some randomly generated fake data (actually technically speaking pseudo-random data)[^1]. 
 
-So that all of us gets the same results (otherwise there would be random differences!), we need to use the `set.seed()`. Basically your numbers are pseudo random because they're calculated by a number generating algorithm, and setting the *seed* gives it a number to "grow"" these pseudo random numbers out of. If you start with the same seed, you get the same set of random numbers. 
+So that all of us gets the same results (otherwise there would be random differences!), we need to use the `set.seed()` function. Basically your numbers are pseudo random because they're calculated by a number generating algorithm, and setting the *seed* gives it a number to "grow"" these pseudo random numbers out of. If you start with the same seed, you get the same set of random numbers. 
 
 So to guarantee that all of us get the same randomly generated numbers, set your seed to 100:
 
@@ -29,7 +29,7 @@ So to guarantee that all of us get the same randomly generated numbers, set your
 set.seed(100) 
 ```
 
-We are going to generate an object with skewed data. We often work with severely skewed data in criminology. For generating this type of data I am going to use the `rnbinom()` for something called negative binomial distributions, which is a discrete probability distribution often use as a model for counts.
+We are going to generate a large object (100,000 cases) with skewed data. We often work with severely skewed data in criminology. For generating this type of data I am going to use the `rnbinom()` function for something called negative binomial distributions, which is a discrete probability distribution often use as a model for counts.
 
 
 ```r
@@ -156,9 +156,9 @@ ggplot(fake_population, aes(x = IQ, colour = offender)) +
 
 <img src="05-inference_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
-So, now we have our fake population data. In this case, because we generated the data ourselves, we know what the population data looks like and we know what the summary statistics for the various attributes (IQ, crime) of the population are. But in real life we don't normally have access to full population data. It is not practical or economic. It is for this reason we rely on samples.
+So, now we have our fake population data. In this case, because we generated the data ourselves, we know what the "population"" data looks like and we know what the summary statistics for the various attributes (IQ, crime) of the population are. But in real life we don't normally have access to full population data. It is not practical or economic. It is for this reason we rely on samples.
 
-##Sampling data and sampling variability
+## Sampling data and sampling variability
 
 It is fairly straightforward to sample data with R. The following code shows you how to obtain a random sample of size 10 from our population data above:
 
@@ -308,7 +308,7 @@ Did you think about it? What this type of distribution for the sample means is t
 
 So although every sample will give us different values to the mean, in the long run, they will tend to be similar to the mean of the population. If you were to take repeated samples from the same population more often than not, the sample mean will be closer rather than far from the population mean. When you take a sample you have no way of knowing if your sample is one of those that got close to the population mean or far from it. But it is somehow reassuring to know the procedure in the long run tends to get it right more often than not.
 
-Another way of saying this is that the means obtained from random samples behave in a predictable way. When we take just one sample and compute the mean we won't we able to tell whether the mean for that sample is close to the centre of its sampling distribution. But we will know the probability of getting an extreme value for the mean is lower than the probability of getting a value closer to the mean. That is, if we can assume that the variable in question is normally distributed in the population.
+Another way of saying this is that the means obtained from random samples behave in a predictable way. When we take just one sample and compute the mean we won't we able to tell whether the mean for that sample is close to the centre of its sampling distribution (and thus to the population mean). But we will know the probability of getting an extreme value for the mean is lower than the probability of getting a value closer to the mean. That is, if we can assume that the variable in question is normally distributed in the population.
 
 But it gets better. Let's repeat the exercise with a sample size of 30, 100 and 1000. This code will take some time to run. But compare it with how long it would take you to take 10 pieces of paper from a bag with 100000 pieces of paper 50000 times...
 
@@ -341,8 +341,10 @@ favstats(~with, data = sampd_IQ_30)
 ```
 
 ```
-##       min       Q1   median       Q3      max     mean       sd     n missing
-##  84.36466 95.07485 97.22715 99.35524 109.4407 97.20893 3.168994 50000       0
+##       min       Q1   median       Q3      max     mean       sd     n
+##  84.36466 95.07485 97.22715 99.35524 109.4407 97.20893 3.168994 50000
+##  missing
+##        0
 ```
 
 ```r
@@ -350,8 +352,10 @@ favstats(~with, data = sampd_IQ_100)
 ```
 
 ```
-##       min       Q1   median       Q3      max    mean       sd     n missing
-##  89.33202 96.02436 97.21006 98.38033 104.6069 97.1994 1.741871 50000       0
+##       min       Q1   median       Q3      max    mean       sd     n
+##  89.33202 96.02436 97.21006 98.38033 104.6069 97.1994 1.741871 50000
+##  missing
+##        0
 ```
 
 ```r
@@ -359,8 +363,10 @@ favstats(~with, data = sampd_IQ_1000)
 ```
 
 ```
-##       min       Q1   median       Q3      max     mean        sd     n missing
-##  94.86825 96.82042 97.18802 97.56334 99.31574 97.19098 0.5490715 50000       0
+##       min       Q1   median       Q3      max     mean        sd     n
+##  94.86825 96.82042 97.18802 97.56334 99.31574 97.19098 0.5490715 50000
+##  missing
+##        0
 ```
 
 
@@ -368,7 +374,7 @@ As you can see the mean of the sampling distributions is pretty much the same re
 
 This variability is also captured by the standard deviation of the sampling distributions, which is smaller the larger the sample size is. The standard deviation of a sampling distribution receives a special name you need to remember: the **standard error**. In our example, with samples of size 30 the standard error is 3.17, whereas with samples of size 1000 the standard error is 0.55. 
 
-We can see that the precision of our guess or estimate improves as we increase the sample size. So we can conclude that using the sample mean as a estimate (we call it a **point estimate** because it is a single value, a single guess) of the population mean is not a bad thing to do *if your sample size is large enough and the variable can be assumed to be normally distributed in the population.* As we have illustrated here, more often than not this guess won't be too far off in those circumstances.
+We can see that the precision of our guess or estimate (that is the sample mean we use to infer the population mean) improves as we increase the sample size. So we can conclude that using the sample mean as a estimate (we call it a **point estimate** because it is a single value, a single guess) of the population mean is not a bad thing to do *if your sample size is large enough and the variable can be assumed to be normally distributed in the population.* As we have illustrated here, more often than not this guess won't be too far off in those circumstances.
 
 But what about variables that are not normally distributed. What about *"crimecount"*? We saw this variable was quite skewed. Let's take numerous samples, compute the mean of *"crimecount"*, and plot its distribution. Let's generate the sampling distributions for sample sizes of 30, 100, and 1000 elements. This will take a minute or so depending in how good your machine is.
 
@@ -452,7 +458,7 @@ We know that the sampling distribution of the means can be assumed with large sa
 
 This is very useful because then we can use this knowledge to generate what we call the **margin of error**. The margin of error is simply *the largest likely sampling error*. In social science we typically choose likely to imply 95%. So that there is a 95% chance that the sampling error is less than the margin of error. By extension this means that there is only a 5% chance that the sampling error will be bigger: that we have been very unlucky and our sample mean falls in one of the tails of the sampling distribution. Again, this may sound a bit abstract but below it will become clearer.
 
-Looking at the standard normal distribution we know that about 95% of the cases fall within 2 standard deviations on either side of the mean. We know then that 95% of the sample means (95.46% to be more precise) will fall within two standard errors  of the expected value (e.g., the mean of the sampling distribution). So we can say that the margin of error, the largest likely estimation error, equals 2 standard errors. More accurately, the margin of error equals 1.96 standard errors (1.96 corresponds to 95% whereas the value 2 corresponds to 95.46%).
+Looking at the theoretical standard normal distribution we know that about 95% of the cases fall within 2 standard deviations on either side of the mean. We know then that 95% of the sample means (95.46% to be more precise) will fall within two standard errors  of the expected value (e.g., the mean of the sampling distribution). So we can say that the margin of error, the largest likely estimation error, equals 2 standard errors. More accurately, the margin of error equals 1.96 standard errors (1.96 corresponds to 95% whereas the value 2 corresponds to 95.46%).
 
 This may be much clearer with an example. Let’s focus in our variable “IQ”. Look at the standard error (the standard deviation of the collection of sample means) for the sampling distribution of “IQ” when we took samples of 100 cases. We produced this earlier on.  
 
@@ -569,7 +575,7 @@ So to reiterate:
 
 + INCORRECT INTERPRETATION: “There is a 95% chance that the mean IQ is between 89.7 and 104.7 minutes”. This is a very common misconception! It seems very close to true, but it isn’t because the population mean value is fixed. So, it is either in the interval or not and you can't possibly know whether that is the case. This is subtle but important.
 + What is correct? **95% of the time, when we calculate a confidence interval in this way, the true mean will be between the two values. 5% of the time, it will not.** Because the true mean (population mean) is an unknown value, we don’t know if we are in the 5% or the 95%. BUT 95% is pretty good. This is the only correct interpretation of our confidence interval, so do not take it any other as valid.
-+ Is is correct to say something like “We are 95% confident that the mean IQ for all people in our fake population is between 89.7 and 104.7.” This is a common shorthand for the idea that the calculations “work” 95% of the time. But beware in true even this shorthand is incorrect for it seems to imply the particular confidence interval is correct, when all we can do is statements about the procedure not about the specific boundaries of our CI (as the "I am 95% confident" statement does). 
++ Is is not terrible to say something like “We are 95% confident that the mean IQ for all people in our fake population is between 89.7 and 104.7.” This is a common shorthand for the idea that the calculations “work” 95% of the time. But beware in true even this shorthand is incorrect for it seems to imply the particular confidence interval is correct, when all we can do is statements about the procedure not about the specific boundaries of our CI (as the "I am 95% confident" statement does). 
 + Remember that we can’t have a 100% confidence interval. By definition, the population mean is not known . If we could calculate it exactly we would! But that would mean that we need a census of our population with is often not possible or feasible.
 + Finally, because if the range of values that you give me for your CI is smaller or bigger I will know that your estimate is more or less precise respectively. That is, **with the CI you are giving me a measure of your uncertainty.** The bigger the CI the more uncertain we are about the true population parameter.
 
@@ -864,12 +870,16 @@ with(BCS0708, describeBy(tcviolent, sex))
 ## 
 ##  Descriptive statistics by group 
 ## group: female
-##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis   se
-## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02 0.02
-## ------------------------------------------------------------ 
+##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02
+##      se
+## X1 0.02
+## -------------------------------------------------------- 
 ## group: male
-##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis   se
-## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91 0.01
+##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91
+##      se
+## X1 0.01
 ```
 
 ```r

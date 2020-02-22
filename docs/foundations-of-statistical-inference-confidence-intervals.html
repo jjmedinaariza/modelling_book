@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html >
+
 <head>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Chapter 5 Foundations of statistical inference: confidence intervals | Modelling Criminological Data LAWS20452</title>
-  <meta name="description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="Chapter 5 Foundations of statistical inference: confidence intervals | Modelling Criminological Data LAWS20452" />
   <meta property="og:type" content="book" />
@@ -21,18 +22,18 @@
   <meta name="twitter:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="Juanjo Medina and Reka Solymosi" />
+<meta name="author" content="Juanjo Medina and Reka Solymosi">
 
 
-<meta name="date" content="2020-02-03" />
+<meta name="date" content="2020-02-22">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="data-carpentry.html"/>
-<link rel="next" href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"/>
+<link rel="prev" href="data-carpentry.html">
+<link rel="next" href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,9 +41,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
 
 
 
@@ -53,66 +51,41 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -141,13 +114,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-packages"><i class="fa fa-check"></i><b>1.6</b> More on packages</a></li>
 <li class="chapter" data-level="1.7" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#using-objects"><i class="fa fa-check"></i><b>1.7</b> Using objects</a></li>
 <li class="chapter" data-level="1.8" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-objects"><i class="fa fa-check"></i><b>1.8</b> More on objects</a></li>
-<li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#on-comments"><i class="fa fa-check"></i><b>1.9</b> On comments</a></li>
-<li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#factors"><i class="fa fa-check"></i><b>1.10</b> Factors</a></li>
-<li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.11</b> Naming conventions for objects in R</a></li>
-<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#dataframes"><i class="fa fa-check"></i><b>1.12</b> Dataframes</a></li>
-<li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.13</b> Exploring data</a></li>
-<li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.14</b> Quitting RStudio</a></li>
-<li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#lab-homework-activities-for-week-1"><i class="fa fa-check"></i><b>1.15</b> Lab homework activities for Week 1</a></li>
+<li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#vectors"><i class="fa fa-check"></i><b>1.9</b> Vectors</a></li>
+<li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#on-comments"><i class="fa fa-check"></i><b>1.10</b> On comments</a></li>
+<li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#factors"><i class="fa fa-check"></i><b>1.11</b> Factors</a></li>
+<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.12</b> Naming conventions for objects in R</a></li>
+<li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#dataframes"><i class="fa fa-check"></i><b>1.13</b> Dataframes</a></li>
+<li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.14</b> Exploring data</a></li>
+<li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.15</b> Quitting RStudio</a></li>
+<li class="chapter" data-level="1.16" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#lab-homework-activities-for-week-1"><i class="fa fa-check"></i><b>1.16</b> Lab homework activities for Week 1</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html"><i class="fa fa-check"></i><b>2</b> Causality in randomised experiments</a><ul>
 <li class="chapter" data-level="2.1" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#causality-in-social-sciences"><i class="fa fa-check"></i><b>2.1</b> Causality in social sciences</a></li>
@@ -169,10 +143,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#what-graph-should-i-use"><i class="fa fa-check"></i><b>3.3</b> What graph should I use?</a></li>
 <li class="chapter" data-level="3.4" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-histograms"><i class="fa fa-check"></i><b>3.4</b> Visualising numerical variables: Histograms</a></li>
 <li class="chapter" data-level="3.5" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-density-plots"><i class="fa fa-check"></i><b>3.5</b> Visualising numerical variables: Density plots</a></li>
-<li class="chapter" data-level="3.6" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#exploring-relationships-between-two-quantitative-variables-scatterplots"><i class="fa fa-check"></i><b>3.6</b> Exploring relationships between two quantitative variables: scatterplots</a></li>
-<li class="chapter" data-level="3.7" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#scatterplots-conditioning-in-a-third-variable"><i class="fa fa-check"></i><b>3.7</b> Scatterplots conditioning in a third variable</a></li>
-<li class="chapter" data-level="3.8" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#scatterplot-matrix"><i class="fa fa-check"></i><b>3.8</b> Scatterplot matrix</a></li>
-<li class="chapter" data-level="3.9" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#titles-legends-and-themes-in-ggplot2"><i class="fa fa-check"></i><b>3.9</b> Titles, legends, and themes in ggplot2</a></li>
+<li class="chapter" data-level="3.6" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-box-plots"><i class="fa fa-check"></i><b>3.6</b> Visualising numerical variables: Box plots</a></li>
+<li class="chapter" data-level="3.7" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#exploring-relationships-between-two-quantitative-variables-scatterplots"><i class="fa fa-check"></i><b>3.7</b> Exploring relationships between two quantitative variables: scatterplots</a></li>
+<li class="chapter" data-level="3.8" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#scatterplots-conditioning-in-a-third-variable"><i class="fa fa-check"></i><b>3.8</b> Scatterplots conditioning in a third variable</a></li>
+<li class="chapter" data-level="3.9" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#scatterplot-matrix"><i class="fa fa-check"></i><b>3.9</b> Scatterplot matrix</a></li>
+<li class="chapter" data-level="3.10" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#titles-legends-and-themes-in-ggplot2"><i class="fa fa-check"></i><b>3.10</b> Titles, legends, and themes in ggplot2</a></li>
+<li class="chapter" data-level="3.11" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#plotting-categorical-data-bar-charts"><i class="fa fa-check"></i><b>3.11</b> Plotting categorical data: bar charts</a></li>
+<li class="chapter" data-level="3.12" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#further-resources"><i class="fa fa-check"></i><b>3.12</b> Further resources</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-carpentry.html"><a href="data-carpentry.html"><i class="fa fa-check"></i><b>4</b> Data Carpentry</a><ul>
 <li class="chapter" data-level="4.1" data-path="data-carpentry.html"><a href="data-carpentry.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
@@ -185,18 +162,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8" data-path="data-carpentry.html"><a href="data-carpentry.html#recoding-factors"><i class="fa fa-check"></i><b>4.8</b> Recoding factors</a></li>
 <li class="chapter" data-level="4.9" data-path="data-carpentry.html"><a href="data-carpentry.html#understanding-missing-data"><i class="fa fa-check"></i><b>4.9</b> Understanding missing data</a></li>
 <li class="chapter" data-level="4.10" data-path="data-carpentry.html"><a href="data-carpentry.html#exploring-dataframes-visually"><i class="fa fa-check"></i><b>4.10</b> Exploring dataframes visually</a></li>
-<li class="chapter" data-level="4.11" data-path="data-carpentry.html"><a href="data-carpentry.html#further-resources"><i class="fa fa-check"></i><b>4.11</b> Further resources</a></li>
+<li class="chapter" data-level="4.11" data-path="data-carpentry.html"><a href="data-carpentry.html#further-resources-1"><i class="fa fa-check"></i><b>4.11</b> Further resources</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Foundations of statistical inference: confidence intervals</a><ul>
 <li class="chapter" data-level="5.1" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#generating-random-data"><i class="fa fa-check"></i><b>5.2</b> Generating random data</a></li>
-<li class="chapter" data-level="5.3" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#sampling-distributions-and-sampling-experiments"><i class="fa fa-check"></i><b>5.3</b> Sampling distributions and sampling experiments</a></li>
-<li class="chapter" data-level="5.4" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#the-normal-distribution-and-confidence-intervals-with-known-standard-errors"><i class="fa fa-check"></i><b>5.4</b> The normal distribution and confidence intervals with known standard errors</a></li>
-<li class="chapter" data-level="5.5" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#asymptotic-confidence-intervals-for-means-and-proportions-using-r"><i class="fa fa-check"></i><b>5.5</b> Asymptotic confidence intervals for means and proportions using R</a></li>
-<li class="chapter" data-level="5.6" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#a-brief-intro-to-resampling-and-bootstraping"><i class="fa fa-check"></i><b>5.6</b> A brief intro to resampling and bootstraping</a></li>
-<li class="chapter" data-level="5.7" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#what-about-comparisons-sampling-distribution-for-the-difference-of-two-means"><i class="fa fa-check"></i><b>5.7</b> What about comparisons? Sampling distribution for the difference of two means</a></li>
-<li class="chapter" data-level="5.8" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye"><i class="fa fa-check"></i><b>5.8</b> Comparing means visually by using error bars representing confidence intervals: inference by eye</a></li>
-<li class="chapter" data-level="5.9" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#homework-5.1"><i class="fa fa-check"></i><b>5.9</b> HOMEWORK 5.1</a></li>
+<li class="chapter" data-level="5.3" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#sampling-data-and-sampling-variability"><i class="fa fa-check"></i><b>5.3</b> Sampling data and sampling variability</a></li>
+<li class="chapter" data-level="5.4" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#sampling-distributions-and-sampling-experiments"><i class="fa fa-check"></i><b>5.4</b> Sampling distributions and sampling experiments</a></li>
+<li class="chapter" data-level="5.5" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#the-normal-distribution-and-confidence-intervals-with-known-standard-errors"><i class="fa fa-check"></i><b>5.5</b> The normal distribution and confidence intervals with known standard errors</a></li>
+<li class="chapter" data-level="5.6" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#asymptotic-confidence-intervals-for-means-and-proportions-using-r"><i class="fa fa-check"></i><b>5.6</b> Asymptotic confidence intervals for means and proportions using R</a></li>
+<li class="chapter" data-level="5.7" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#a-brief-intro-to-resampling-and-bootstraping"><i class="fa fa-check"></i><b>5.7</b> A brief intro to resampling and bootstraping</a></li>
+<li class="chapter" data-level="5.8" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#what-about-comparisons-sampling-distribution-for-the-difference-of-two-means"><i class="fa fa-check"></i><b>5.8</b> What about comparisons? Sampling distribution for the difference of two means</a></li>
+<li class="chapter" data-level="5.9" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye"><i class="fa fa-check"></i><b>5.9</b> Comparing means visually by using error bars representing confidence intervals: inference by eye</a></li>
+<li class="chapter" data-level="5.10" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#homework-5.1"><i class="fa fa-check"></i><b>5.10</b> HOMEWORK 5.1</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><i class="fa fa-check"></i><b>6</b> Studying relationships between a categorical and a quantitative variable</a><ul>
 <li class="chapter" data-level="6.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#the-logic-of-hypothesis-testing"><i class="fa fa-check"></i><b>6.1</b> The logic of hypothesis testing</a></li>
@@ -205,12 +183,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#power-analysis"><i class="fa fa-check"></i><b>6.4</b> Power analysis</a></li>
 <li class="chapter" data-level="6.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>6.5</b> Comparing means across several groups (ANOVA)</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>6.5.1</b> The problem with multiple comparisons</a></li>
-<li class="chapter" data-level="6.5.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#anova"><i class="fa fa-check"></i><b>6.5.2</b> ANOVA</a></li>
-<li class="chapter" data-level="6.5.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.3</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
-<li class="chapter" data-level="6.5.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.4</b> Checking normality and dealing with problems</a></li>
-<li class="chapter" data-level="6.5.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#robust-anova"><i class="fa fa-check"></i><b>6.5.5</b> Robust ANOVA</a></li>
-<li class="chapter" data-level="6.5.6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.6</b> Post Hoc Comparisons</a></li>
-<li class="chapter" data-level="6.5.7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.7</b> Effect size for ANOVA</a></li>
+<li class="chapter" data-level="6.5.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#visual-exploration-of-differences-in-the-distributions-across-the-groups"><i class="fa fa-check"></i><b>6.5.2</b> Visual exploration of differences in the distributions across the groups</a></li>
+<li class="chapter" data-level="6.5.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#anova"><i class="fa fa-check"></i><b>6.5.3</b> ANOVA</a></li>
+<li class="chapter" data-level="6.5.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.4</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
+<li class="chapter" data-level="6.5.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.5</b> Checking normality and dealing with problems</a></li>
+<li class="chapter" data-level="6.5.6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#robust-anova"><i class="fa fa-check"></i><b>6.5.6</b> Robust ANOVA</a></li>
+<li class="chapter" data-level="6.5.7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.7</b> Post Hoc Comparisons</a></li>
+<li class="chapter" data-level="6.5.8" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.8</b> Effect size for ANOVA</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between two factors</a><ul>
@@ -231,9 +210,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.7" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#motivating-multiple-regression"><i class="fa fa-check"></i><b>8.7</b> Motivating multiple regression</a></li>
 <li class="chapter" data-level="8.8" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#fitting-and-interpreting-a-multiple-regression-model"><i class="fa fa-check"></i><b>8.8</b> Fitting and interpreting a multiple regression model</a></li>
 <li class="chapter" data-level="8.9" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#presenting-your-regression-results."><i class="fa fa-check"></i><b>8.9</b> Presenting your regression results.</a></li>
-<li class="chapter" data-level="8.10" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>8.10</b> Testing conditional hypothesis: interactions</a></li>
-<li class="chapter" data-level="8.11" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>8.11</b> Model building and variable selection</a></li>
-<li class="chapter" data-level="8.12" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#homework"><i class="fa fa-check"></i><b>8.12</b> HOMEWORK</a></li>
+<li class="chapter" data-level="8.10" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#rescaling-input-variables-to-assist-interpretation"><i class="fa fa-check"></i><b>8.10</b> Rescaling input variables to assist interpretation</a></li>
+<li class="chapter" data-level="8.11" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>8.11</b> Testing conditional hypothesis: interactions</a></li>
+<li class="chapter" data-level="8.12" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>8.12</b> Model building and variable selection</a></li>
+<li class="chapter" data-level="8.13" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#homework"><i class="fa fa-check"></i><b>8.13</b> HOMEWORK</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Logistic regression</a><ul>
 <li class="chapter" data-level="9.1" data-path="logistic-regression.html"><a href="logistic-regression.html#introduction-3"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
@@ -242,7 +222,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="logistic-regression.html"><a href="logistic-regression.html#assessing-model-fit-ii-confusion-matrix-and-roc-curves"><i class="fa fa-check"></i><b>9.4</b> Assessing model fit II: confusion matrix and ROC curves</a></li>
 <li class="chapter" data-level="9.5" data-path="logistic-regression.html"><a href="logistic-regression.html#interactions"><i class="fa fa-check"></i><b>9.5</b> Interactions</a></li>
 <li class="chapter" data-level="9.6" data-path="logistic-regression.html"><a href="logistic-regression.html#homework-1"><i class="fa fa-check"></i><b>9.6</b> HOMEWORK:</a></li>
-<li class="chapter" data-level="9.7" data-path="logistic-regression.html"><a href="logistic-regression.html#further-resources-1"><i class="fa fa-check"></i><b>9.7</b> Further resources</a></li>
+<li class="chapter" data-level="9.7" data-path="logistic-regression.html"><a href="logistic-regression.html#further-resources-2"><i class="fa fa-check"></i><b>9.7</b> Further resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="wrapping-up.html"><a href="wrapping-up.html"><i class="fa fa-check"></i><b>10</b> Wrapping up</a><ul>
+<li class="chapter" data-level="10.1" data-path="wrapping-up.html"><a href="wrapping-up.html#tips-for-the-assignment"><i class="fa fa-check"></i><b>10.1</b> Tips for the assignment</a></li>
+<li class="chapter" data-level="10.2" data-path="wrapping-up.html"><a href="wrapping-up.html#summarising-your-variables"><i class="fa fa-check"></i><b>10.2</b> Summarising your variables</a></li>
+<li class="chapter" data-level="10.3" data-path="wrapping-up.html"><a href="wrapping-up.html#some-final-words"><i class="fa fa-check"></i><b>10.3</b> Some final words</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -274,78 +259,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You conduct a study to evaluate the impact of a particular crime prevention program. You select a a number of areas as part of the study. Half of it you randomly allocate to your intervention and the other half to your control or comparison group. Imagine that you observe these areas after the intervention is implemented and you notice there is a difference. There is less crime in your intervention areas. How can you reach conclusions about the effectiveness of the intervention based on observations of differences on crime in these areas? What would have happened if your randomisation would have split your sample in different ways, would you still be able to observe an effect?</p>
 <p>For this and similar problems we need to apply statistical inference: a set of tools that allows us to draw inferences from sample data. In this session we will cover a set of important concepts that constitute the basis for statistical inference. In particular, we will approach this topic from the <strong>frequentist</strong> tradition.</p>
 <p>It is important you understand this is not the only way of doing data analysis. There is an alternative approach, <strong>bayesian statistics</strong>, which is very important and increasingly popular. Unfortunately, we do not have the time this semester to also cover Bayesian statistics. Typically, you would learn about this approach in more advanced courses.</p>
-<p>Unlike in previous and future sessions, the focus today will be less applied and a bit more theoretical. However, it is important you pay attention since understanding the foundations of statistical inference is essential for a proper understanding of everything else we will discuss in this course. The code we cover <em>in the first few sections</em> this week won’t be as instrumental for your assignment, so don’t worry too much about fully trying to understand it.</p>
+<p>Unlike in previous and future sessions, the focus today will be less applied and a bit more theoretical. However, it is important you pay attention since understanding the foundations of statistical inference is essential for a proper understanding of everything else we will discuss in this course. The code we cover <em>in the first few sections</em> this week is much trickier but won’t be instrumental for your assignment, so don’t worry too much if you don’t fully understand it.</p>
 </div>
 <div id="generating-random-data" class="section level2">
 <h2><span class="header-section-number">5.2</span> Generating random data</h2>
-<p>For the purpose of today’s session we are going to generate some fictitious data. We use real data in all other sessions but it is convenient for this session to have some randomly generated fake data (actually technically speaking pseudo-random data)<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
-<p>So that all of us gets the same results (otherwise there would be random differences!), we need to use the <code>set.seed()</code>. Basically your numbers are pseudo random because they’re calculated by a number generating algorithm, and setting the <em>seed</em> gives it a number to “grow”" these pseudo random numbers out of. If you start with the same seed, you get the same set of random numbers.</p>
+<p>For the purpose of today’s session we are going to generate some fictitious data. We use real data in all other sessions but it is convenient for this session to have some randomly generated fake data (actually technically speaking pseudo-random data)<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a>.</p>
+<p>So that all of us gets the same results (otherwise there would be random differences!), we need to use the <code>set.seed()</code> function. Basically your numbers are pseudo random because they’re calculated by a number generating algorithm, and setting the <em>seed</em> gives it a number to “grow”&quot; these pseudo random numbers out of. If you start with the same seed, you get the same set of random numbers.</p>
 <p>So to guarantee that all of us get the same randomly generated numbers, set your seed to 100:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" title="1"><span class="kw">set.seed</span>(<span class="dv">100</span>) </a></code></pre></div>
-<p>We are going to generate an object with skewed data. We often work with severely skewed data in criminology. For generating this type of data I am going to use the <code>rnbinom()</code> for something called negative binomial distributions, which is a discrete probability distribution often use as a model for counts.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" title="1">skewed &lt;-<span class="st"> </span><span class="kw">rnbinom</span>(<span class="dv">100000</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="fl">0.3</span>) </a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">100</span>) </code></pre></div>
+<p>We are going to generate a large object (100,000 cases) with skewed data. We often work with severely skewed data in criminology. For generating this type of data I am going to use the <code>rnbinom()</code> function for something called negative binomial distributions, which is a discrete probability distribution often use as a model for counts.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">skewed &lt;-<span class="st"> </span><span class="kw">rnbinom</span>(<span class="dv">100000</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="fl">0.3</span>) </code></pre></div>
 <p>The code above creates data that follow a negative binomial distribution, essentially a highly skewed distribution. Don’t worry too much about the other parameters we are using as arguments at this stage, but if curious look at <code>?rnbinom</code>.</p>
 <p>We can also get the mean and standard deviation for this object using <code>mean</code> and <code>sd</code> respectively:</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" title="1"><span class="kw">mean</span>(skewed)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(skewed)</code></pre></div>
 <pre><code>## [1] 1.00143</code></pre>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" title="1"><span class="kw">sd</span>(skewed)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(skewed)</code></pre></div>
 <pre><code>## [1] 2.083404</code></pre>
 <p>And we can also see what it looks like:</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" title="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb307-2" title="2"><span class="kw">qplot</span>(skewed)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">qplot</span>(skewed)</code></pre></div>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>We are going to pretend this variable measures numbers of crime perpetrated by an individual in the previous year. Let’s see how many offenders we have in this fake population.</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" title="1"><span class="kw">sum</span>(skewed <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(skewed <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</code></pre></div>
 <pre><code>## [1] 35623</code></pre>
 <p>We are now going to put this variable in a dataframe and we are also going to create a new categorical variable -identifying whether someone offended over the past year (e.g., anybody with a count of crime higher than 0). Let’s start by creating a new dataframe (<em>“fakepopulation”</em>) with the skewed variable we created rebaptised as <em>crimecount</em>.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" title="1">fake_population &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">crimecount =</span> skewed)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fake_population &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">crimecount =</span> skewed)</code></pre></div>
 <p>Then let’s define all values above 0 as “Yes” in a variable identifying offenders and everybody else as “No”. We use the <code>ifelse()</code> function for this.</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" title="1">fake_population<span class="op">$</span>offender &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fake_population<span class="op">$</span>crimecount <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, <span class="kw">c</span>(<span class="st">&quot;Yes&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>))</a>
-<a class="sourceLine" id="cb311-2" title="2"><span class="co">#Let&#39;s check the results</span></a>
-<a class="sourceLine" id="cb311-3" title="3"><span class="kw">table</span>(fake_population<span class="op">$</span>offender)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fake_population<span class="op">$</span>offender &lt;-<span class="st"> </span><span class="kw">ifelse</span>(fake_population<span class="op">$</span>crimecount <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, <span class="kw">c</span>(<span class="st">&quot;Yes&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;No&quot;</span>))
+<span class="co">#Let&#39;s check the results</span>
+<span class="kw">table</span>(fake_population<span class="op">$</span>offender)</code></pre></div>
 <pre><code>## 
 ##    No   Yes 
 ## 64377 35623</code></pre>
 <p>We are now going to generate a normally distributed variable (watch <a href="https://www.youtube.com/watch?v=mtH1fmUVkfE">this short video</a> if you are unclear what a normal distribution is).</p>
 <p>We are going to pretend that this variable measures IQ. We are going to assume that this variable has a mean of 100 in the non-criminal population (pretending there is such a thing) with a standard deviation of 15 and a mean of 92 with a standard deviation of 20 in the criminal population. I am pretty much making up these figures.</p>
 <p>The first expression is asking R to generate random values from a normal distribution with mean 100 and standard deviation for every of the 64394 “non-offenders” in our fake population data frame. WARNING: If you run the <code>table()</code> function and the number of non-offenders you get is different, you will need to amend the code below accordingly (this will happen if you did not use the seed or generated the original skewed variable more than once).If you get the following message it means you are using the wrong number of people in each category: <em>number of items to replace is not a multiple of replacement lengthnumber of items to replace is not a multiple of replacement length</em>.</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" title="1">fake_population<span class="op">$</span>IQ[fake_population<span class="op">$</span>offender <span class="op">==</span><span class="st"> &quot;No&quot;</span>] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">64377</span>, <span class="dt">mean =</span> <span class="dv">100</span>, <span class="dt">sd =</span> <span class="dv">15</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fake_population<span class="op">$</span>IQ[fake_population<span class="op">$</span>offender <span class="op">==</span><span class="st"> &quot;No&quot;</span>] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">64377</span>, <span class="dt">mean =</span> <span class="dv">100</span>, <span class="dt">sd =</span> <span class="dv">15</span>)</code></pre></div>
 <p>And now we are going to artificially create somehow dumber offenders.</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" title="1">fake_population<span class="op">$</span>IQ[fake_population<span class="op">$</span>offender <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">35623</span>, <span class="dt">mean =</span> <span class="dv">92</span>, <span class="dt">sd =</span> <span class="dv">20</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fake_population<span class="op">$</span>IQ[fake_population<span class="op">$</span>offender <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">35623</span>, <span class="dt">mean =</span> <span class="dv">92</span>, <span class="dt">sd =</span> <span class="dv">20</span>)</code></pre></div>
 <p>We can now have a look at the data. Let’s plot the density of IQ for each of the two groups and have a look at the summary statistics.</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" title="1"><span class="co">##This will give us the mean IQ for the whole population</span></a>
-<a class="sourceLine" id="cb315-2" title="2"><span class="kw">mean</span>(fake_population<span class="op">$</span>IQ)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##This will give us the mean IQ for the whole population
+<span class="kw">mean</span>(fake_population<span class="op">$</span>IQ)</code></pre></div>
 <pre><code>## [1] 97.19921</code></pre>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" title="1"><span class="co">#We will load the plyr package to get the means for IQ for each of the two offending groups</span></a>
-<a class="sourceLine" id="cb317-2" title="2"><span class="kw">library</span>(plyr)</a>
-<a class="sourceLine" id="cb317-3" title="3"><span class="co">#We will store this mean in a data frame (IQ_means) after getting them with the ddply function</span></a>
-<a class="sourceLine" id="cb317-4" title="4">IQ_means &lt;-<span class="st"> </span><span class="kw">ddply</span>(fake_population, <span class="st">&quot;offender&quot;</span>, summarise, <span class="dt">IQ =</span> <span class="kw">mean</span>(IQ))</a>
-<a class="sourceLine" id="cb317-5" title="5"><span class="co">#You can see the mean value of IQ for each of the two groups, unsurprisingly they are as we defined them</span></a>
-<a class="sourceLine" id="cb317-6" title="6">IQ_means</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#We will load the plyr package to get the means for IQ for each of the two offending groups</span>
+<span class="kw">library</span>(plyr)
+<span class="co">#We will store this mean in a data frame (IQ_means) after getting them with the ddply function</span>
+IQ_means &lt;-<span class="st"> </span><span class="kw">ddply</span>(fake_population, <span class="st">&quot;offender&quot;</span>, summarise, <span class="dt">IQ =</span> <span class="kw">mean</span>(IQ))
+<span class="co">#You can see the mean value of IQ for each of the two groups, unsurprisingly they are as we defined them</span>
+IQ_means</code></pre></div>
 <pre><code>##   offender       IQ
 ## 1       No 99.96347
 ## 2      Yes 92.20370</code></pre>
 <p>We are going to create a plot with the density estimation for each of the plots (first two lines of code) and then I will add a vertical line at the point of the means (that we saved) for each of the groups</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" title="1"><span class="kw">ggplot</span>(fake_population, <span class="kw">aes</span>(<span class="dt">x =</span> IQ, <span class="dt">colour =</span> offender)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb319-2" title="2"><span class="st">  </span><span class="kw">geom_density</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb319-3" title="3"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> IQ, <span class="dt">colour =</span> offender), <span class="dt">data =</span> IQ_means,</a>
-<a class="sourceLine" id="cb319-4" title="4">             <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fake_population, <span class="kw">aes</span>(<span class="dt">x =</span> IQ, <span class="dt">colour =</span> offender)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> IQ, <span class="dt">colour =</span> offender), <span class="dt">data =</span> IQ_means,
+             <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>)</code></pre></div>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<p>So, now we have our fake population data. In this case, because we generated the data ourselves, we know what the population data looks like and we know what the summary statistics for the various attributes (IQ, crime) of the population are. But in real life we don’t normally have access to full population data. It is not practical or economic. It is for this reason we rely on samples.</p>
-<p>##Sampling data and sampling variability</p>
+<p>So, now we have our fake population data. In this case, because we generated the data ourselves, we know what the “population”&quot; data looks like and we know what the summary statistics for the various attributes (IQ, crime) of the population are. But in real life we don’t normally have access to full population data. It is not practical or economic. It is for this reason we rely on samples.</p>
+</div>
+<div id="sampling-data-and-sampling-variability" class="section level2">
+<h2><span class="header-section-number">5.3</span> Sampling data and sampling variability</h2>
 <p>It is fairly straightforward to sample data with R. The following code shows you how to obtain a random sample of size 10 from our population data above:</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" title="1"><span class="co">#We will use the sample function within the mosaic package. </span></a>
-<a class="sourceLine" id="cb320-2" title="2"><span class="kw">library</span>(mosaic) </a>
-<a class="sourceLine" id="cb320-3" title="3"><span class="kw">sample</span>(fake_population<span class="op">$</span>IQ, <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#We will use the sample function within the mosaic package. </span>
+<span class="kw">library</span>(mosaic) 
+<span class="kw">sample</span>(fake_population<span class="op">$</span>IQ, <span class="dv">10</span>)</code></pre></div>
 <pre><code>##  [1] 105.33498  89.91923 110.34449  74.27133  78.27559  88.10284  51.85960
 ##  [8]  73.79595  97.45203  58.10007</code></pre>
 <p>First of all notice that <code>mosaic</code> masks quite a few functions from various packages. If you want to use them remember to use the <code>package_I_need::for_function_I_want</code> formula we covered in previous sessions.</p>
 <p>You may be getting sample elements that are different from mine, depending on the seed you used and how many times before you tried to obtain a <em>random</em> sample. You can compute the mean for a sample generated this way:</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" title="1"><span class="kw">mean</span>(<span class="kw">sample</span>(fake_population<span class="op">$</span>IQ, <span class="dv">10</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">sample</span>(fake_population<span class="op">$</span>IQ, <span class="dv">10</span>))</code></pre></div>
 <pre><code>## [1] 86.37317</code></pre>
 <p>And every time you do this, you will be getting a slightly different mean. Try to rerun the code several times. This is one of the problems with sample data. Not two samples are going to be exactly the same and as a result, every time you compute the mean you will be getting a slightly different value. Run the function three or four times and notice the different means you get as the elements that make up your sample vary.</p>
 <p>We can also use code to automatise the process. The following code will ask R to draw 15 samples of size 10 and obtain the means for each of them.</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" title="1"><span class="kw">do</span>(<span class="dv">15</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">10</span>), <span class="kw">mean</span>(IQ))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">do</span>(<span class="dv">15</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">10</span>), <span class="kw">mean</span>(IQ))</code></pre></div>
 <pre><code>##         with
 ## 1  106.22017
 ## 2  105.18270
@@ -363,99 +350,105 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 14 100.35543
 ## 15 105.00081</code></pre>
 <p>So here we have the means that we obtain from 15 different samples from this population. Notice how they vary. We can store the results from an exercise such as this as a variable and plot it:</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" title="1"><span class="co">#The following code will create a dataframe with the results</span></a>
-<a class="sourceLine" id="cb326-2" title="2">samp_IQ &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">15</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">10</span>), <span class="kw">mean</span>(IQ))</a>
-<a class="sourceLine" id="cb326-3" title="3"><span class="co">#You can see the name of the variable designating the means in the create data frame</span></a>
-<a class="sourceLine" id="cb326-4" title="4"><span class="kw">names</span>(samp_IQ)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#The following code will create a dataframe with the results</span>
+samp_IQ &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">15</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">10</span>), <span class="kw">mean</span>(IQ))
+<span class="co">#You can see the name of the variable designating the means in the create data frame</span>
+<span class="kw">names</span>(samp_IQ)</code></pre></div>
 <pre><code>## [1] &quot;with&quot;</code></pre>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" title="1"><span class="co">#We are going to create a data frame with the population mean</span></a>
-<a class="sourceLine" id="cb328-2" title="2">IQ_mean &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">mean</span>(fake_population<span class="op">$</span>IQ))</a>
-<a class="sourceLine" id="cb328-3" title="3"><span class="co">#Have a look inside the object to see what the variable containing the mean is called (and we can then use this name in our plot function)</span></a>
-<a class="sourceLine" id="cb328-4" title="4"><span class="kw">names</span>(IQ_mean)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#We are going to create a data frame with the population mean</span>
+IQ_mean &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">mean</span>(fake_population<span class="op">$</span>IQ))
+<span class="co">#Have a look inside the object to see what the variable containing the mean is called (and we can then use this name in our plot function)</span>
+<span class="kw">names</span>(IQ_mean)</code></pre></div>
 <pre><code>## [1] &quot;mean.fake_population.IQ.&quot;</code></pre>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" title="1"><span class="co">#And we can plot it then</span></a>
-<a class="sourceLine" id="cb330-2" title="2"><span class="kw">ggplot</span>(samp_IQ, <span class="kw">aes</span>(<span class="dt">x =</span> with)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb330-3" title="3"><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb330-4" title="4"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> mean.fake_population.IQ.), <span class="dt">data =</span> IQ_mean,</a>
-<a class="sourceLine" id="cb330-5" title="5">             <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#This code will add a red line with the overall mean</span></a>
-<a class="sourceLine" id="cb330-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Value of the sample means&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Number of samples&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb330-7" title="7"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">99.8</span>, <span class="dt">y =</span> <span class="dv">3</span>, <span class="dt">label =</span> <span class="st">&quot;Population mean&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#Annotate is used to insert elements in the graphic, in this case text indicating what the red line means, the x and y indicate the position where the annotation will appear in regards to the x and the y axis (this position may not be optimal depending on the means you get when you run this code)</span></a>
-<a class="sourceLine" id="cb330-8" title="8"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#And we can plot it then</span>
+<span class="kw">ggplot</span>(samp_IQ, <span class="kw">aes</span>(<span class="dt">x =</span> with)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> mean.fake_population.IQ.), <span class="dt">data =</span> IQ_mean,
+             <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#This code will add a red line with the overall mean</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Value of the sample means&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Number of samples&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="fl">99.8</span>, <span class="dt">y =</span> <span class="dv">3</span>, <span class="dt">label =</span> <span class="st">&quot;Population mean&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#Annotate is used to insert elements in the graphic, in this case text indicating what the red line means, the x and y indicate the position where the annotation will appear in regards to the x and the y axis (this position may not be optimal depending on the means you get when you run this code)</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Your exact results may differ from those shown here, but you can surely see the point. We have a problem with using sample means as a guess for population means. Your guesses will vary. How much of a problem is this? <a href="http://www.nytimes.com/2014/05/02/upshot/how-not-to-be-misled-by-the-jobs-report.html?_r=0">This excellent piece and demonstration</a> by New York Times reporters illustrate the problem well. We are going to learn that something called the <strong>central limit theorem</strong> is of great assistance here.</p>
 </div>
 <div id="sampling-distributions-and-sampling-experiments" class="section level2">
-<h2><span class="header-section-number">5.3</span> Sampling distributions and sampling experiments</h2>
+<h2><span class="header-section-number">5.4</span> Sampling distributions and sampling experiments</h2>
 <p>We are going to introduce an important new concept here: <strong>sampling distribution</strong>. A sampling distribution is the probability distribution of a given statistic based on a random sample. It may be considered as <em>the distribution of the statistic for all possible samples from the same population of a given size</em>.</p>
 <p>We can have a sense for what the sampling distribution of the means of IQ for samples of size 10 in our example by taking a large number of samples from the population. This is called a <strong>sampling experiment</strong>. Let’s do that. We will take 50000 samples (rather than 15 as before) of size 10 (that is, with ten elements each) and compute the means. This may take a bit. Wait until you see the object appear in your environment.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" title="1">sampd_IQ_<span class="dv">10</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">10</span>), <span class="kw">mean</span>(IQ))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sampd_IQ_<span class="dv">10</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">10</span>), <span class="kw">mean</span>(IQ))</code></pre></div>
 <p>So now we have 50000 sample means from samples of size 10 taken from our fake population. We are now going to take the mean of this 50000 sample means and then we are going to compare it to the population mean.</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" title="1"><span class="kw">mean</span>(sampd_IQ_<span class="dv">10</span><span class="op">$</span>with) <span class="co">#mean of the sample means</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(sampd_IQ_<span class="dv">10</span><span class="op">$</span>with) <span class="co">#mean of the sample means</span></code></pre></div>
 <pre><code>## [1] 97.18912</code></pre>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" title="1"><span class="kw">mean</span>(fake_population<span class="op">$</span>IQ) <span class="co">#mean of the population</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(fake_population<span class="op">$</span>IQ) <span class="co">#mean of the population</span></code></pre></div>
 <pre><code>## [1] 97.19921</code></pre>
 <p>Wow! They are pretty much the same. What we have observed is part of something called the <strong>central limit theorem</strong>, a concept from probability theory. One of the first things that the central limit theorem tells us is that <strong>the mean of the sampling distribution of the means (also called the expected value) should equal the mean of the population</strong>. It won’t be quite the same in this case (to all the decimals) because we only took 50000 samples, but in the very long run (if you take many more samples) they would be the same.</p>
 <p>Let’s now visually explore the distribution of the sample means.</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" title="1"><span class="co">#Now we plot the means</span></a>
-<a class="sourceLine" id="cb337-2" title="2"><span class="kw">qplot</span>(sampd_IQ_<span class="dv">10</span><span class="op">$</span>with, <span class="dt">xlab =</span> <span class="st">&quot;Distribution of means from samples of size 10&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Now we plot the means</span>
+<span class="kw">qplot</span>(sampd_IQ_<span class="dv">10</span><span class="op">$</span>with, <span class="dt">xlab =</span> <span class="st">&quot;Distribution of means from samples of size 10&quot;</span>)</code></pre></div>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>Amazing too, isn’t it? When you (1) take many random samples from a normally distributed variable; (2) compute the means for each of these samples; and (3) plot the means of each of these samples, you end up with something that is also normally distributed. <strong>The sampling distribution of the means of normally distributed variables in the population is normally distributed</strong>. I want you to think for a few seconds as to what this means and then keep reading.</p>
 <p>Did you think about it? What this type of distribution for the sample means is telling us is that most of the samples will give us guesses that are clustered around their own mean, as long as the variable is normally distributed in the population (which is something, however, that we may not know). Most of the sample means will cluster around the value of 97.11 (in the long run), which is the population mean in this case. There will be some samples that will give us much larger and much smaller means (look at the right and left tail of the distribution), but most of the samples won’t gives us such extreme values.</p>
 <p>So although every sample will give us different values to the mean, in the long run, they will tend to be similar to the mean of the population. If you were to take repeated samples from the same population more often than not, the sample mean will be closer rather than far from the population mean. When you take a sample you have no way of knowing if your sample is one of those that got close to the population mean or far from it. But it is somehow reassuring to know the procedure in the long run tends to get it right more often than not.</p>
-<p>Another way of saying this is that the means obtained from random samples behave in a predictable way. When we take just one sample and compute the mean we won’t we able to tell whether the mean for that sample is close to the centre of its sampling distribution. But we will know the probability of getting an extreme value for the mean is lower than the probability of getting a value closer to the mean. That is, if we can assume that the variable in question is normally distributed in the population.</p>
+<p>Another way of saying this is that the means obtained from random samples behave in a predictable way. When we take just one sample and compute the mean we won’t we able to tell whether the mean for that sample is close to the centre of its sampling distribution (and thus to the population mean). But we will know the probability of getting an extreme value for the mean is lower than the probability of getting a value closer to the mean. That is, if we can assume that the variable in question is normally distributed in the population.</p>
 <p>But it gets better. Let’s repeat the exercise with a sample size of 30, 100 and 1000. This code will take some time to run. But compare it with how long it would take you to take 10 pieces of paper from a bag with 100000 pieces of paper 50000 times…</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" title="1">sampd_IQ_<span class="dv">30</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">30</span>), <span class="kw">mean</span>(IQ))</a>
-<a class="sourceLine" id="cb338-2" title="2">sampd_IQ_<span class="dv">100</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">100</span>), <span class="kw">mean</span>(IQ))</a>
-<a class="sourceLine" id="cb338-3" title="3">sampd_IQ_<span class="dv">1000</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">1000</span>), <span class="kw">mean</span>(IQ))</a>
-<a class="sourceLine" id="cb338-4" title="4"><span class="co">#Plot the results, notice how we have changed the aesthetics. We are definig them within each geom because we are using different data stored in different dataframes.</span></a>
-<a class="sourceLine" id="cb338-5" title="5"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb338-6" title="6"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">data =</span> sampd_IQ_<span class="dv">1000</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;1000&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb338-7" title="7"><span class="st">   </span><span class="kw">geom_density</span>(<span class="dt">data =</span> sampd_IQ_<span class="dv">100</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;100&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb338-8" title="8"><span class="st">   </span><span class="kw">geom_density</span>(<span class="dt">data =</span> sampd_IQ_<span class="dv">30</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;30&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb338-9" title="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;Sample size&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#This will change the title of the legend</span></a>
-<a class="sourceLine" id="cb338-10" title="10"><span class="st">  </span><span class="kw">scale_fill_discrete</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="st">&quot;1000&quot;</span>, <span class="st">&quot;100&quot;</span>, <span class="st">&quot;30&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="co">#This will ensure the order of the items in the legend is correct</span></a>
-<a class="sourceLine" id="cb338-11" title="11"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Distribution of mean value of IQ&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sampd_IQ_<span class="dv">30</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">30</span>), <span class="kw">mean</span>(IQ))
+sampd_IQ_<span class="dv">100</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">100</span>), <span class="kw">mean</span>(IQ))
+sampd_IQ_<span class="dv">1000</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">1000</span>), <span class="kw">mean</span>(IQ))
+<span class="co">#Plot the results, notice how we have changed the aesthetics. We are definig them within each geom because we are using different data stored in different dataframes.</span>
+<span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">data =</span> sampd_IQ_<span class="dv">1000</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;1000&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span>
+<span class="st">   </span><span class="kw">geom_density</span>(<span class="dt">data =</span> sampd_IQ_<span class="dv">100</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;100&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span>
+<span class="st">   </span><span class="kw">geom_density</span>(<span class="dt">data =</span> sampd_IQ_<span class="dv">30</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;30&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;Sample size&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#This will change the title of the legend</span>
+<span class="st">  </span><span class="kw">scale_fill_discrete</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="st">&quot;1000&quot;</span>, <span class="st">&quot;100&quot;</span>, <span class="st">&quot;30&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="co">#This will ensure the order of the items in the legend is correct</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Distribution of mean value of IQ&quot;</span>)</code></pre></div>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Pay attention to the aesthetics here. Because essentially we are looking at three different datasets, the variables we plot are identified not in an <code>aes</code> statement within the general <code>ggplot()</code> function but rather the <code>aes</code> are included and specified within each of the geoms we are plotting.</p>
 <p>But back to the substantive point, can you notice the differences between these <strong>sampling distributions</strong>? <em>As the sample size increases, more and more of the samples tend to cluster closely around the mean of the sampling distribution</em>. In other words with larger samples the means you get will tend to differ less from the population mean than with smaller samples. You will be more unlikely to get means that are dramatically different from the population mean.</p>
 <p>Let’s look closer to the summary statistics using <code>favstats()</code> from the loaded <code>mosaic</code> package:</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" title="1"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_IQ_<span class="dv">30</span>)</a></code></pre></div>
-<pre><code>##       min       Q1   median       Q3      max     mean       sd     n missing
-##  84.36466 95.07485 97.22715 99.35524 109.4407 97.20893 3.168994 50000       0</code></pre>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" title="1"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_IQ_<span class="dv">100</span>)</a></code></pre></div>
-<pre><code>##       min       Q1   median       Q3      max    mean       sd     n missing
-##  89.33202 96.02436 97.21006 98.38033 104.6069 97.1994 1.741871 50000       0</code></pre>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" title="1"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_IQ_<span class="dv">1000</span>)</a></code></pre></div>
-<pre><code>##       min       Q1   median       Q3      max     mean        sd     n missing
-##  94.86825 96.82042 97.18802 97.56334 99.31574 97.19098 0.5490715 50000       0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_IQ_<span class="dv">30</span>)</code></pre></div>
+<pre><code>##       min       Q1   median       Q3      max     mean       sd     n
+##  84.36466 95.07485 97.22715 99.35524 109.4407 97.20893 3.168994 50000
+##  missing
+##        0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_IQ_<span class="dv">100</span>)</code></pre></div>
+<pre><code>##       min       Q1   median       Q3      max    mean       sd     n
+##  89.33202 96.02436 97.21006 98.38033 104.6069 97.1994 1.741871 50000
+##  missing
+##        0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_IQ_<span class="dv">1000</span>)</code></pre></div>
+<pre><code>##       min       Q1   median       Q3      max     mean        sd     n
+##  94.86825 96.82042 97.18802 97.56334 99.31574 97.19098 0.5490715 50000
+##  missing
+##        0</code></pre>
 <p>As you can see the mean of the sampling distributions is pretty much the same regardless of sample size, though since we only did 50000 samples there’s still some variability. But notice how the <strong>range</strong> (the difference between the smaller and larger value) is much larger when we use smaller samples. When I run this code I get one sample of size 30 with a sample mean as low as 83 and another as high as 110. But when I use a sample size of a 1000 the smallest sample mean I get is 95 and the largest sample size I get is 99. <em>When the sample size is smaller the range of possible means is wider and you are more likely to get sample means that are wide off from the expected value.</em></p>
 <p>This variability is also captured by the standard deviation of the sampling distributions, which is smaller the larger the sample size is. The standard deviation of a sampling distribution receives a special name you need to remember: the <strong>standard error</strong>. In our example, with samples of size 30 the standard error is 3.17, whereas with samples of size 1000 the standard error is 0.55.</p>
-<p>We can see that the precision of our guess or estimate improves as we increase the sample size. So we can conclude that using the sample mean as a estimate (we call it a <strong>point estimate</strong> because it is a single value, a single guess) of the population mean is not a bad thing to do <em>if your sample size is large enough and the variable can be assumed to be normally distributed in the population.</em> As we have illustrated here, more often than not this guess won’t be too far off in those circumstances.</p>
+<p>We can see that the precision of our guess or estimate (that is the sample mean we use to infer the population mean) improves as we increase the sample size. So we can conclude that using the sample mean as a estimate (we call it a <strong>point estimate</strong> because it is a single value, a single guess) of the population mean is not a bad thing to do <em>if your sample size is large enough and the variable can be assumed to be normally distributed in the population.</em> As we have illustrated here, more often than not this guess won’t be too far off in those circumstances.</p>
 <p>But what about variables that are not normally distributed. What about <em>“crimecount”</em>? We saw this variable was quite skewed. Let’s take numerous samples, compute the mean of <em>“crimecount”</em>, and plot its distribution. Let’s generate the sampling distributions for sample sizes of 30, 100, and 1000 elements. This will take a minute or so depending in how good your machine is.</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" title="1">sampd_CR_<span class="dv">30</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">30</span>), <span class="kw">mean</span>(crimecount))</a>
-<a class="sourceLine" id="cb345-2" title="2">sampd_CR_<span class="dv">100</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">100</span>), <span class="kw">mean</span>(crimecount))</a>
-<a class="sourceLine" id="cb345-3" title="3">sampd_CR_<span class="dv">1000</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">1000</span>), <span class="kw">mean</span>(crimecount))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sampd_CR_<span class="dv">30</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">30</span>), <span class="kw">mean</span>(crimecount))
+sampd_CR_<span class="dv">100</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">100</span>), <span class="kw">mean</span>(crimecount))
+sampd_CR_<span class="dv">1000</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">50000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">with</span>(<span class="kw">sample</span>(fake_population, <span class="dv">1000</span>), <span class="kw">mean</span>(crimecount))</code></pre></div>
 <p>And now let’s plot the means from these samples (the sampling distributions).</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb346-2" title="2"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">data=</span>sampd_CR_<span class="dv">1000</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;1000&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb346-3" title="3"><span class="st">   </span><span class="kw">geom_density</span>(<span class="dt">data=</span>sampd_CR_<span class="dv">100</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;100&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb346-4" title="4"><span class="st">   </span><span class="kw">geom_density</span>(<span class="dt">data=</span>sampd_CR_<span class="dv">30</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;30&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb346-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;Sample size&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#This will change the title of the legend</span></a>
-<a class="sourceLine" id="cb346-6" title="6"><span class="st">  </span><span class="kw">scale_fill_discrete</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="st">&quot;1000&quot;</span>, <span class="st">&quot;100&quot;</span>, <span class="st">&quot;30&quot;</span>)) <span class="co">#This will ensure the order of the items in the legend is correct</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">data=</span>sampd_CR_<span class="dv">1000</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;1000&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span>
+<span class="st">   </span><span class="kw">geom_density</span>(<span class="dt">data=</span>sampd_CR_<span class="dv">100</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;100&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span>
+<span class="st">   </span><span class="kw">geom_density</span>(<span class="dt">data=</span>sampd_CR_<span class="dv">30</span>, <span class="kw">aes</span>(<span class="dt">x =</span> with, <span class="dt">fill =</span> <span class="st">&quot;30&quot;</span>), <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;Sample size&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#This will change the title of the legend</span>
+<span class="st">  </span><span class="kw">scale_fill_discrete</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="st">&quot;1000&quot;</span>, <span class="st">&quot;100&quot;</span>, <span class="st">&quot;30&quot;</span>)) <span class="co">#This will ensure the order of the items in the legend is correct</span></code></pre></div>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" title="1"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_CR_<span class="dv">30</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_CR_<span class="dv">30</span>)</code></pre></div>
 <pre><code>##         min        Q1    median       Q3      max     mean        sd     n
 ##  0.06666667 0.7333333 0.9666667 1.233333 3.066667 1.001147 0.3818984 50000
 ##  missing
 ##        0</code></pre>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" title="1"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_CR_<span class="dv">100</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_CR_<span class="dv">100</span>)</code></pre></div>
 <pre><code>##   min   Q1 median   Q3  max     mean        sd     n missing
 ##  0.32 0.85   0.99 1.13 2.06 1.002126 0.2085133 50000       0</code></pre>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" title="1"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_CR_<span class="dv">1000</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data =</span> sampd_CR_<span class="dv">1000</span>)</code></pre></div>
 <pre><code>##    min    Q1 median    Q3  max     mean         sd     n missing
 ##  0.742 0.956      1 1.045 1.29 1.000996 0.06551087 50000       0</code></pre>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" title="1"><span class="kw">mean</span>(fake_population<span class="op">$</span>crimecount)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(fake_population<span class="op">$</span>crimecount)</code></pre></div>
 <pre><code>## [1] 1.00143</code></pre>
 <p>You can see something similar happens. Even though <em>“crimecount”</em> itself is not normally distributed. The sampling distribution of the means of <em>“crimecount”</em> becomes more normally distributed the larger the sample size gets. Although we are not going to repeat the exercise again, the same would happen even for the variable <em>“offender”</em>. With a binary categorical variable such as offender (remember it could take two values: yes or no) the “mean” represents the proportion with one of the outcomes. But essentially the same process applies.</p>
 <p>What we have seen in this section is an illustration of various amazing facts associated with the central limit theorem. Most sample means are close to the population mean, very few are far away from the population mean, and on average, we get the right answer (i.e., the mean of the sample means is equal to the population mean). This is why statisticians say that the sample mean is an <strong>unbiased</strong> estimate of the population mean.</p>
@@ -463,7 +456,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If you want to further consolidate some of these concepts you may find <a href="https://www.khanacademy.org/math/probability/statistics-inferential/sampling_distribution/v/central-limit-theorem">these videos</a> on sampling distributions from Khan Academy useful.</p>
 </div>
 <div id="the-normal-distribution-and-confidence-intervals-with-known-standard-errors" class="section level2">
-<h2><span class="header-section-number">5.4</span> The normal distribution and confidence intervals with known standard errors</h2>
+<h2><span class="header-section-number">5.5</span> The normal distribution and confidence intervals with known standard errors</h2>
 <p>While the sample mean may be the best single number to use as an estimate of the population mean, particularly with large samples, each sample mean will continue to come with some sample error (with some distance from the population mean). How can we take into account the uncertainty in estimating the population mean that derives from this fact?</p>
 <p>The key to solving the problem relies in the fact that the sampling distribution of the means will approach normality with large samples. <em>If we can assume that the sampling distribution of the means is normally distributed</em> then we can take advantage of the properties of the <strong>standard normal distribution</strong>.</p>
 <p>One of the peculiarities of the standard normal distribution is that we know the proportion of cases that fall within standard deviation units away from the mean. In the graphic below you can see the percentage of cases that fall within one and two standard deviations from the mean in the standard normal distribution:</p>
@@ -473,10 +466,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>We know that the sampling distribution of the means can be assumed with large samples to have a shape like this. We saw that when we run our sampling experiment. You can think of the sampling distribution of the means as the distribution of sampling error. Most sample means fall fairly close to the <em>expected value</em> (i.e., the population mean) and so have small sampling error; many fall a moderate distance away; and just a few fall in the tails of the sampling distribution, which signals large estimation errors. So although working with sample data we don’t have a precise distance of our sample mean from the population mean, we now have a model that tells us how that distance behaves (i.e., it follows a normal distribution). Let this sink in for a few seconds.</p>
 <p>This is very useful because then we can use this knowledge to generate what we call the <strong>margin of error</strong>. The margin of error is simply <em>the largest likely sampling error</em>. In social science we typically choose likely to imply 95%. So that there is a 95% chance that the sampling error is less than the margin of error. By extension this means that there is only a 5% chance that the sampling error will be bigger: that we have been very unlucky and our sample mean falls in one of the tails of the sampling distribution. Again, this may sound a bit abstract but below it will become clearer.</p>
-<p>Looking at the standard normal distribution we know that about 95% of the cases fall within 2 standard deviations on either side of the mean. We know then that 95% of the sample means (95.46% to be more precise) will fall within two standard errors of the expected value (e.g., the mean of the sampling distribution). So we can say that the margin of error, the largest likely estimation error, equals 2 standard errors. More accurately, the margin of error equals 1.96 standard errors (1.96 corresponds to 95% whereas the value 2 corresponds to 95.46%).</p>
+<p>Looking at the theoretical standard normal distribution we know that about 95% of the cases fall within 2 standard deviations on either side of the mean. We know then that 95% of the sample means (95.46% to be more precise) will fall within two standard errors of the expected value (e.g., the mean of the sampling distribution). So we can say that the margin of error, the largest likely estimation error, equals 2 standard errors. More accurately, the margin of error equals 1.96 standard errors (1.96 corresponds to 95% whereas the value 2 corresponds to 95.46%).</p>
 <p>This may be much clearer with an example. Let’s focus in our variable “IQ”. Look at the standard error (the standard deviation of the collection of sample means) for the sampling distribution of “IQ” when we took samples of 100 cases. We produced this earlier on.</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" title="1">se_sampd_IQ_<span class="dv">100</span> &lt;-<span class="st"> </span><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data=</span>sampd_IQ_<span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb355-2" title="2">se_sampd_IQ_<span class="dv">100</span><span class="op">$</span>sd</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">se_sampd_IQ_<span class="dv">100</span> &lt;-<span class="st"> </span><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data=</span>sampd_IQ_<span class="dv">100</span>)
+se_sampd_IQ_<span class="dv">100</span><span class="op">$</span>sd</code></pre></div>
 <pre><code>## [1] 1.741871</code></pre>
 <p>The standard error was 1.7418706. If we multiply 1.7418706 times 1.96 we obtain 3.4140664. This means that 95% of the cases in this sampling distribution will have an error that won’t be bigger than that. They will only at most differ from the mean of the sampling distribution by (plus and minus) 3.4140664. However, 5% of the samples will have a margin of error bigger than that (in absolute terms).</p>
 <p>The wonderful thing is that we can use the margin of error to provide information about the degree to which our sample estimate may vary from the population mean. We can use it to give a measure of the uncertainty in our estimation. How?</p>
@@ -487,42 +480,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Upper limit= sample mean + 1.96 standard error<br />
 Lower limit= sample mean - 1.96 standard error</p>
 <p>This will be clearer with a complete example. Let’s extract a sample of size 100 from the “fakepopulation” and look at the distribution of IQ:</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" title="1">sample_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">sample</span>(fake_population, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb357-2" title="2"><span class="kw">mean</span>(sample_<span class="dv">1</span><span class="op">$</span>IQ)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">sample</span>(fake_population, <span class="dv">100</span>)
+<span class="kw">mean</span>(sample_<span class="dv">1</span><span class="op">$</span>IQ)</code></pre></div>
 <pre><code>## [1] 99.6274</code></pre>
 <p>When I then take the mean of “IQ” in this sample I get the value of 99.6274001. It does not matter if you get a different value. Remember the standard error for the sampling distribution of “IQ” when we took samples of a 100 cases. It was 1.7418706. If we multiply 1.7418706 times 1.96 we obtain 3.4140664. The upper limit for the confidence interval then will be 99.6274001 (my sample mean) plus 3.4140664 (the margin of error) and the lower limit for the confidence interval will be 99.6274001 minus 3.4140664. This yields a confidence interval ranging from 96.2133337 to 103.0414665.</p>
 <p>Now, if your sample mean would have been different, your confidence interval would have also been different. If you take 10,000 sample means and compute 10,000 confidence intervals they will be different among themselves. In the long run, that is, if you take a large enough numbers of samples and then compute the confidence interval for each of the samples, <em>95% of those confidence intervals will capture the population mean and 5% will miss it</em>. Let’s explore this.</p>
 <p>We are first going to select 100 means (from the samples of size 100) out of the 50,000 samples that we created (if you don’t understand this code, have a second look at the notes from week 1)</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" title="1">samp_IQ_<span class="dv">100</span> &lt;-<span class="st"> </span>sampd_IQ_<span class="dv">100</span>[<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, ]</a>
-<a class="sourceLine" id="cb359-2" title="2">ci_IQ &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">meanofIQ =</span> samp_IQ_<span class="dv">100</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">samp_IQ_<span class="dv">100</span> &lt;-<span class="st"> </span>sampd_IQ_<span class="dv">100</span>[<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, ]
+ci_IQ &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">meanofIQ =</span> samp_IQ_<span class="dv">100</span>)</code></pre></div>
 <p>We are now going to create the lower and the upper limit for the confidence interval. First we obtain the margin of error. To do this I will compute the summary statistics for the sampling distribution and then multiply the standard error (e.g., the standard deviation of the sampling distribution) times 1.96.</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1">se_sampd_IQ_<span class="dv">100</span> &lt;-<span class="st"> </span><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data=</span>sampd_IQ_<span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb360-2" title="2">me_IQ_<span class="dv">100</span> &lt;-<span class="st"> </span>se_sampd_IQ_<span class="dv">100</span><span class="op">$</span>sd <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span> <span class="co">#sd is the name of the variable returned from favstats() that includes the information about the standard deviation of the distribution we were exploring. Notice how one of the beauties of R is that it allows you to extract content from the objects it creates so that then you use them for whatever purpose you want. Here we compute the margin of error by multiplying this times 1.96.</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">se_sampd_IQ_<span class="dv">100</span> &lt;-<span class="st"> </span><span class="kw">favstats</span>(<span class="op">~</span>with, <span class="dt">data=</span>sampd_IQ_<span class="dv">100</span>)
+me_IQ_<span class="dv">100</span> &lt;-<span class="st"> </span>se_sampd_IQ_<span class="dv">100</span><span class="op">$</span>sd <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span> <span class="co">#sd is the name of the variable returned from favstats() that includes the information about the standard deviation of the distribution we were exploring. Notice how one of the beauties of R is that it allows you to extract content from the objects it creates so that then you use them for whatever purpose you want. Here we compute the margin of error by multiplying this times 1.96.</span></code></pre></div>
 <p>Then I will create two numerical vectors with the upper and the lower limit and then add them to the data frame we created</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" title="1">ci_IQ<span class="op">$</span>LowerLimit &lt;-<span class="st"> </span>samp_IQ_<span class="dv">100</span> <span class="op">-</span><span class="st"> </span>me_IQ_<span class="dv">100</span></a>
-<a class="sourceLine" id="cb361-2" title="2">ci_IQ<span class="op">$</span>UpperLimit &lt;-<span class="st"> </span>samp_IQ_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>me_IQ_<span class="dv">100</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ci_IQ<span class="op">$</span>LowerLimit &lt;-<span class="st"> </span>samp_IQ_<span class="dv">100</span> <span class="op">-</span><span class="st"> </span>me_IQ_<span class="dv">100</span>
+ci_IQ<span class="op">$</span>UpperLimit &lt;-<span class="st"> </span>samp_IQ_<span class="dv">100</span> <span class="op">+</span><span class="st"> </span>me_IQ_<span class="dv">100</span></code></pre></div>
 <p>You may want to use the <code>View()</code> function to see inside the <code>ci_IQ</code> data frame that we have created. Every row represents a sample and for each sample we have the mean and the limits of the confidence interval. We can now query how many of these confidence intervals include the mean of the variable crime in our fake population data.</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1">ci_IQ<span class="op">$</span>indx &lt;-<span class="st"> </span>(ci_IQ<span class="op">$</span>LowerLimit <span class="op">&lt;=</span><span class="st"> </span><span class="kw">mean</span>(fake_population<span class="op">$</span>IQ)) <span class="op">&amp;</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb362-2" title="2"><span class="st">  </span>(ci_IQ<span class="op">$</span>UpperLimit <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(fake_population<span class="op">$</span>IQ))</a>
-<a class="sourceLine" id="cb362-3" title="3"><span class="kw">sum</span>(ci_IQ<span class="op">$</span>indx)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ci_IQ<span class="op">$</span>indx &lt;-<span class="st"> </span>(ci_IQ<span class="op">$</span>LowerLimit <span class="op">&lt;=</span><span class="st"> </span><span class="kw">mean</span>(fake_population<span class="op">$</span>IQ)) <span class="op">&amp;</span><span class="st"> </span>
+<span class="st">  </span>(ci_IQ<span class="op">$</span>UpperLimit <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(fake_population<span class="op">$</span>IQ))
+<span class="kw">sum</span>(ci_IQ<span class="op">$</span>indx)</code></pre></div>
 <pre><code>## [1] 95</code></pre>
 <p>If you look inside the <em>ci_IQ</em> object using <code>View(ci_IQ)</code> you will see that there is now a logical vector called <em>indx</em> telling us whether that particular sample confidence interval includes or not the population mean.</p>
 <p>Thus 95 intervals contain the true population mean. If you feel playful (and curious) you may want to modify the code we have use above to check how many of a 100 or of 200 samples for example would contain the true population mean. It should be roughly around 95% of them. Pretty cool, isn’t it?</p>
 <p>We can also plot these confidence intervals. First I am going to create an ID variable to identify each sample (I will need this as an input in the plot I will create). I will use the row name (that list the samples from 1 to 1 100) as my ID variable.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" title="1">ci_IQ<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw">rownames</span>(ci_IQ)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ci_IQ<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw">rownames</span>(ci_IQ)</code></pre></div>
 <p>We are going to use a new <code>geom</code> we have not covered so far that allows you to create lines with a point in the middle. You need to tell R where the line begins and ends, as well as where to locate the point in the middle. The point in the middle is our mean and the lines range from the lower limit and upper limit. In this sense each line represents the confidence interval. We will use the ID variable so that R plots one line for each of the samples. Finally I am asking R to use the <em>“indx”</em> variable we create so that we can distinguish clearly the confidence intervals that cover the population mean. You are not going to need this code for your homework or assignments, so do not worry if you don’t fully get it.</p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" title="1"><span class="kw">ggplot</span>(ci_IQ, <span class="kw">aes</span>(<span class="dt">x =</span> id, <span class="dt">y =</span> meanofIQ, <span class="dt">ymin =</span> LowerLimit, <span class="dt">ymax =</span> UpperLimit, <span class="dt">group=</span> indx, <span class="dt">color =</span> indx)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb365-2" title="2"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept  =</span> <span class="kw">mean</span>(fake_population<span class="op">$</span>IQ), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="co">#This will create a horizontal line representing the population mean, so that we can clearly see it</span></a>
-<a class="sourceLine" id="cb365-3" title="3"><span class="st">  </span><span class="kw">geom_pointrange</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> LowerLimit, <span class="dt">ymax =</span> UpperLimit)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb365-4" title="4"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb365-5" title="5"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Confidence intervals for the mean (100 samples of size 100)&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb365-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour=</span><span class="st">&quot;Covers μ?&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span><span class="st">&quot;Mean of IQ&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb365-7" title="7"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">breaks =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#this ensures that no tick marks and labels are used in the axis defining each sample (try to run the code witout this line to see what happens if you don&#39;t include it)</span></a>
-<a class="sourceLine" id="cb365-8" title="8"><span class="st">  </span><span class="kw">coord_flip</span>() </a></code></pre></div>
-<p><img src="05-inference_files/figure-html/unnamed-chunk-30-1.png" width="672" />
-The horizontal lines represent the confidence intervals for the mean for each of the samples. The point in the middle of those lines represent each of the sample means. The colours indicate whether the confidence intervals cross (cover) the population mean (represented by the vertical red line). You can see that 5 (this may vary slightly according to your random samples) are red, and 95 are greenish. Few of the sample means touch the red line, but most confidence intervals include it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ci_IQ, <span class="kw">aes</span>(<span class="dt">x =</span> id, <span class="dt">y =</span> meanofIQ, <span class="dt">ymin =</span> LowerLimit, <span class="dt">ymax =</span> UpperLimit, <span class="dt">group=</span> indx, <span class="dt">color =</span> indx)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept  =</span> <span class="kw">mean</span>(fake_population<span class="op">$</span>IQ), <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="co">#This will create a horizontal line representing the population mean, so that we can clearly see it</span>
+<span class="st">  </span><span class="kw">geom_pointrange</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> LowerLimit, <span class="dt">ymax =</span> UpperLimit)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Confidence intervals for the mean (100 samples of size 100)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour=</span><span class="st">&quot;Covers μ?&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span><span class="st">&quot;Mean of IQ&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">breaks =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="co">#this ensures that no tick marks and labels are used in the axis defining each sample (try to run the code witout this line to see what happens if you don&#39;t include it)</span>
+<span class="st">  </span><span class="kw">coord_flip</span>() </code></pre></div>
+<p><img src="05-inference_files/figure-html/unnamed-chunk-30-1.png" width="672" /> The horizontal lines represent the confidence intervals for the mean for each of the samples. The point in the middle of those lines represent each of the sample means. The colours indicate whether the confidence intervals cross (cover) the population mean (represented by the vertical red line). You can see that 5 (this may vary slightly according to your random samples) are red, and 95 are greenish. Few of the sample means touch the red line, but most confidence intervals include it.</p>
 <p>If we know the population mean, then we can see whether a sample confidence interval overlaps with the population mean. But in real life we run samples precisely because we don’t know the population parameters. So, unfortunately, when you do a sample you can never be sure whether your estimated confidence interval is one of the red or the green ones!!!</p>
-<p>The truth is we will never know whether our confidence interval captures the population parameter or not, <em>we can only say that under certain assumptions if we had repeated the procedure many times it will include it 95% of the time</em>. It is important not to get confused about it. We cannot never know in real life applications if our confidence interval actually covers the population mean. This is one of the reasons why in statistics when making inferences we cannot provide definitive answers<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>, there is always an element of uncertainty that is part of any scientific endeavour - and which goes along way towards explaining why we need to replicate studies, to see if theirs findings hold.</p>
+<p>The truth is we will never know whether our confidence interval captures the population parameter or not, <em>we can only say that under certain assumptions if we had repeated the procedure many times it will include it 95% of the time</em>. It is important not to get confused about it. We cannot never know in real life applications if our confidence interval actually covers the population mean. This is one of the reasons why in statistics when making inferences we cannot provide definitive answers<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a>, there is always an element of uncertainty that is part of any scientific endeavour - and which goes along way towards explaining why we need to replicate studies, to see if theirs findings hold.</p>
 <p>It is generally considered better practice to report your confidence intervals than your point estimates. Why?</p>
 <ul>
 <li>First, because you are being explicit about the fact you are just guessing. Point estimates such as the mean create a false impression of precision.<br />
@@ -533,20 +525,20 @@ The horizontal lines represent the confidence intervals for the mean for each of
 <ul>
 <li>INCORRECT INTERPRETATION: “There is a 95% chance that the mean IQ is between 89.7 and 104.7 minutes”. This is a very common misconception! It seems very close to true, but it isn’t because the population mean value is fixed. So, it is either in the interval or not and you can’t possibly know whether that is the case. This is subtle but important.</li>
 <li>What is correct? <strong>95% of the time, when we calculate a confidence interval in this way, the true mean will be between the two values. 5% of the time, it will not.</strong> Because the true mean (population mean) is an unknown value, we don’t know if we are in the 5% or the 95%. BUT 95% is pretty good. This is the only correct interpretation of our confidence interval, so do not take it any other as valid.</li>
-<li>Is is correct to say something like “We are 95% confident that the mean IQ for all people in our fake population is between 89.7 and 104.7.” This is a common shorthand for the idea that the calculations “work” 95% of the time. But beware in true even this shorthand is incorrect for it seems to imply the particular confidence interval is correct, when all we can do is statements about the procedure not about the specific boundaries of our CI (as the “I am 95% confident” statement does).</li>
+<li>Is is not terrible to say something like “We are 95% confident that the mean IQ for all people in our fake population is between 89.7 and 104.7.” This is a common shorthand for the idea that the calculations “work” 95% of the time. But beware in true even this shorthand is incorrect for it seems to imply the particular confidence interval is correct, when all we can do is statements about the procedure not about the specific boundaries of our CI (as the “I am 95% confident” statement does).</li>
 <li>Remember that we can’t have a 100% confidence interval. By definition, the population mean is not known . If we could calculate it exactly we would! But that would mean that we need a census of our population with is often not possible or feasible.</li>
 <li>Finally, because if the range of values that you give me for your CI is smaller or bigger I will know that your estimate is more or less precise respectively. That is, <strong>with the CI you are giving me a measure of your uncertainty.</strong> The bigger the CI the more uncertain we are about the true population parameter.</li>
 </ul>
 </div>
 <div id="asymptotic-confidence-intervals-for-means-and-proportions-using-r" class="section level2">
-<h2><span class="header-section-number">5.5</span> Asymptotic confidence intervals for means and proportions using R</h2>
+<h2><span class="header-section-number">5.6</span> Asymptotic confidence intervals for means and proportions using R</h2>
 <p>You may have spotted a big problem in what came before. How did we compute the confidence interval? We multiplied 1.96 times the standard error. Remember: the standard error is the standard deviation of the sampling distribution of the mean. And… well, at least you are willing to repeat a survey thousands and thousands of times with the same population you won’t know what the standard error is! The population mean is unknown and we want to estimate it. <em>But the standard error that we need for constructing our confidence interval is also unknown!</em></p>
 <p>If you are working with proportions there is an obvious way to estimate the standard error only with sample data (for details see the required reading). But with means this is not possible. There is, however, a solution. You can use <em>the standard deviation of your sample</em> as an estimate for the standard error . You would also need to make some adjustments to the formula for the confidence interval (you divide the sample standard deviation by the square root of the sample mean). You don’t need to worry to much about the mathematics of it. In practice we will rely on R to apply these formulas and compute the confidence intervals.</p>
 <p>It is important, though, that you know that this approach works reasonably well when applying the Normal probability model to large samples. But with small samples using the sample standard deviation as an estimate of the standard error (so that we can compute the confidence interval) is problematic. The sample standard deviation also varies from sample to sample and this extra variation in smaller samples will mess up the computation of the margin of errors. William Gosset’s suggested we needed to use a different probability distribution for this cases, the <em>t Student distribution</em>.</p>
 <p>You can learn more about this distribution and the work of Gosset in the suggested reading. The t Student distribution and the normal distribution are almost indistinguishable for large samples. In essence that means you will still multiply by 1.96. But with smaller sample sizes that value will be different if you use a normal distribution or a t student distribution. Refer to the recommended textbooks for further clarification.</p>
 <p>It is fairly straightforward to get the confidence intervals using R. <em>In order to use the t Student distribution we need to assume the data were randomly sampled and that the population distribution is unimodal and symmetric.</em> We know this is the case in the population and next week we will discuss how you can check this assumption when you don’t have the population data.</p>
 <p>Earlier we created a sample of 100 cases from our fake population. Let’s build the confidence intervals using the sample standard deviation as an estimate for the standard error and assuming we can use the t Student distribution:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" title="1"><span class="kw">t.test</span>(sample_<span class="dv">1</span><span class="op">$</span>IQ)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(sample_<span class="dv">1</span><span class="op">$</span>IQ)</code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -560,7 +552,7 @@ The horizontal lines represent the confidence intervals for the mean for each of
 ##   99.6274</code></pre>
 <p>Ignore for now the few first lines of this output. Just focus on the 95% interval. You will see it is not wildly different from the one we derived using the actual standard error.</p>
 <p>If you want a different confidence interval, say 99%, you can pass an additional argument to change the default in the <code>t.test()</code> function. In this case, when saying <code>.99</code> we are saying that if we were to repeat the procedure 99% of the confidence intervals would cover the population parameter.</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1"><span class="kw">t.test</span>(sample_<span class="dv">1</span><span class="op">$</span>IQ, <span class="dt">conf.level =</span> <span class="fl">.99</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(sample_<span class="dv">1</span><span class="op">$</span>IQ, <span class="dt">conf.level =</span> .<span class="dv">99</span>)</code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -573,12 +565,12 @@ The horizontal lines represent the confidence intervals for the mean for each of
 ## mean of x 
 ##   99.6274</code></pre>
 <p>What if you have a factor and want to estimate a confidence interval for a proportion. In our data we have a dichotomous variable that identifies cases as offenders.</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" title="1"><span class="kw">table</span>(sample_<span class="dv">1</span><span class="op">$</span>offender)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(sample_<span class="dv">1</span><span class="op">$</span>offender)</code></pre></div>
 <pre><code>## 
 ##  No Yes 
 ##  62  38</code></pre>
 <p>We can use the <code>prop.test()</code> function in these cases:</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" title="1"><span class="kw">prop.test</span>(sample_<span class="dv">1</span><span class="op">$</span>offender<span class="op">==</span><span class="st">&quot;Yes&quot;</span>) <span class="co">#We want to estimate the proportion of respondents who are offenders, which is why we specifically ask for those classified as &quot;Yes&quot;</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prop.test</span>(sample_<span class="dv">1</span><span class="op">$</span>offender<span class="op">==</span><span class="st">&quot;Yes&quot;</span>) <span class="co">#We want to estimate the proportion of respondents who are offenders, which is why we specifically ask for those classified as &quot;Yes&quot;</span></code></pre></div>
 <pre><code>## 
 ##  1-sample proportions test with continuity correction
 ## 
@@ -591,7 +583,7 @@ The horizontal lines represent the confidence intervals for the mean for each of
 ##    p 
 ## 0.38</code></pre>
 <p>You can also specify a different confidence level:</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" title="1"><span class="kw">prop.test</span>(sample_<span class="dv">1</span><span class="op">$</span>offender<span class="op">==</span><span class="st">&quot;Yes&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">.99</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">prop.test</span>(sample_<span class="dv">1</span><span class="op">$</span>offender<span class="op">==</span><span class="st">&quot;Yes&quot;</span>, <span class="dt">conf.level =</span> .<span class="dv">99</span>)</code></pre></div>
 <pre><code>## 
 ##  1-sample proportions test with continuity correction
 ## 
@@ -604,8 +596,8 @@ The horizontal lines represent the confidence intervals for the mean for each of
 ##    p 
 ## 0.38</code></pre>
 <p>The <code>prop.test()</code> function uses a Normal approximation to compute the confidence interval. This approximation may not work well when the outcome of interest is rare or uncommon or with small samples. A number of alternative formulas have been proposed for these cases. Check Wikipedia for “binomial proportion confidence interval”. To get R to compute these alternative ways you need to install and load the <code>binom</code> package.</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" title="1"><span class="kw">library</span>(binom)</a>
-<a class="sourceLine" id="cb376-2" title="2"><span class="kw">binom.confint</span>(<span class="dv">34</span>, <span class="dv">100</span>) <span class="co">#This function takes as the first argument the count for the outcome of interest and the sample size as the second argument</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(binom)
+<span class="kw">binom.confint</span>(<span class="dv">34</span>, <span class="dv">100</span>) <span class="co">#This function takes as the first argument the count for the outcome of interest and the sample size as the second argument</span></code></pre></div>
 <pre><code>##           method  x   n      mean     lower     upper
 ## 1  agresti-coull 34 100 0.3400000 0.2544306 0.4374073
 ## 2     asymptotic 34 100 0.3400000 0.2471548 0.4328452
@@ -622,29 +614,29 @@ The horizontal lines represent the confidence intervals for the mean for each of
 <p>Remember that <em>confidence intervals may be easy to construct (just one line of code!) but they are easy to misinterpret.</em> The word confidence in everyday meaning is subjective. Perhaps it would be better to have terms such as “sampling precision interval” (Kaplan, 2012), but we don’t. Another common mistake when reading them is to think that you can say that “if you repeat the study and take the mean, the new result will be within the margin of error of the original study”, but this is not correct mathematically (remember the plot of the confidence intervals).</p>
 </div>
 <div id="a-brief-intro-to-resampling-and-bootstraping" class="section level2">
-<h2><span class="header-section-number">5.6</span> A brief intro to resampling and bootstraping</h2>
+<h2><span class="header-section-number">5.7</span> A brief intro to resampling and bootstraping</h2>
 <p>We have seen how theoretically the sampling distribution reflects variation from random samples. We also discussed how in practice we only have one sample. In the previous sections we also saw how we can some times use theoretical probability distributions (such as the normal or the t distribution) provided we are willing to make some assumptions. And we could then use these distributions to build our confidence intervals.</p>
 <p>Another way of building confidence intervals is called <strong>bootstrapping</strong>. This comes from the phrase: “He pulled himself up by his own trousers”, which is said of someone who improves himself without help. Essentially what we are doing is estimating the properties of the sampling distribution from our single sample. How? By means of taking repeated samples (with replacement) <em>from our own sample</em>. These samples are called <strong>resamples</strong>. Essentially the sample is “used as a stand-in for the population and new samples are drawn from the sample” (Kaplan, 2012). Notice I said we use sampling <em>with</em> replacement. Every time we select a case from the sample, the case is put back so that we can select it again.</p>
 <p>First, let’s extract a sample of size 10</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" title="1">sample_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">sample</span>(fake_population<span class="op">$</span>IQ, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb378-2" title="2">sample_<span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">sample</span>(fake_population<span class="op">$</span>IQ, <span class="dv">10</span>)
+sample_<span class="dv">2</span></code></pre></div>
 <pre><code>##  [1] 132.38048 116.21393  84.27481 113.57432  87.39582  69.44512 109.20445
 ##  [8]  62.76150 101.82604 102.00167</code></pre>
 <p>We can then resample (drawing samples from the set of cases in our sample) with replacement. Notice we are not taking samples from the same population but new samples from our sample.</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" title="1"><span class="kw">resample</span>(sample_<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">resample</span>(sample_<span class="dv">2</span>)</code></pre></div>
 <pre><code>##  [1] 132.38048 113.57432 132.38048 109.20445 116.21393 113.57432  62.76150
 ##  [8]  69.44512 113.57432  62.76150</code></pre>
 <p>You can see how some elements in this resample are repeated from the original sample. In my particular original sample I have one element with the value 113.57432. In my resample from that sample I have three with that value. In your particular sample the combinations can be slightly different.</p>
 <p>Bootstrapping involves repeating this process many times and examining the variation among the resamples to construct a confidence interval based on the resampling distribution. Bootstraping won’t work well with very small samples. The sample size should be one or two dozen or larger (Kaplan, 2012). So let’s move to a slightly larger sample and then we will create the resampling distribution.</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" title="1">sample_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">sample</span>(fake_population<span class="op">$</span>IQ, <span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb382-2" title="2">resampling_IQ_<span class="dv">30</span>_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">1000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">resample</span>(sample_<span class="dv">3</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">sample</span>(fake_population<span class="op">$</span>IQ, <span class="dv">30</span>)
+resampling_IQ_30_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">1000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">resample</span>(sample_<span class="dv">3</span>))</code></pre></div>
 <p>Then we can use the Mosaic <code>qdata()</code> function to extract the 95% coverage intervals:</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb383-1" title="1"><span class="kw">qdata</span>(<span class="op">~</span>mean, <span class="dt">p =</span> <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>), resampling_IQ_<span class="dv">30</span>_<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qdata</span>(<span class="op">~</span>mean, <span class="dt">p =</span> <span class="kw">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>), resampling_IQ_30_<span class="dv">1</span>)</code></pre></div>
 <pre><code>##       quantile     p
 ## 2.5%  83.87521 0.025
 ## 97.5% 94.65529 0.975</code></pre>
 <p>How does this compare to the confidence interval using the t Student distribution?</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb385-1" title="1"><span class="kw">t.test</span>(sample_<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(sample_<span class="dv">3</span>)</code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -657,13 +649,13 @@ The horizontal lines represent the confidence intervals for the mean for each of
 ## mean of x 
 ##  89.43598</code></pre>
 <p>What if the sample size was larger?</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb387-1" title="1">sample_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">sample</span>(fake_population<span class="op">$</span>IQ, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb387-2" title="2">resampling_IQ_<span class="dv">100</span>_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">1000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">resample</span>(sample_<span class="dv">4</span>))</a>
-<a class="sourceLine" id="cb387-3" title="3"><span class="kw">qdata</span>(<span class="op">~</span>mean, <span class="dt">p =</span> <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>), resampling_IQ_<span class="dv">100</span>_<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">sample</span>(fake_population<span class="op">$</span>IQ, <span class="dv">100</span>)
+resampling_IQ_100_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">1000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">resample</span>(sample_<span class="dv">4</span>))
+<span class="kw">qdata</span>(<span class="op">~</span>mean, <span class="dt">p =</span> <span class="kw">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>), resampling_IQ_100_<span class="dv">1</span>)</code></pre></div>
 <pre><code>##       quantile     p
 ## 2.5%  93.66474 0.025
 ## 97.5% 99.87918 0.975</code></pre>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb389-1" title="1"><span class="kw">t.test</span>(sample_<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(sample_<span class="dv">4</span>)</code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -677,45 +669,52 @@ The horizontal lines represent the confidence intervals for the mean for each of
 ##  96.76765</code></pre>
 <p>As you can see as the sample size grows the differences between the bootstrap confidence interval and the one that relies on the t Student model become more similar.</p>
 <p>Before we conclude this section, it is important to remember that the <em>resampling</em> distributions won’t construct the sampling distribution. What they do is to show you how the sampling distribution may look like <em>if the population looked like your sample</em>. The centre of the resampling distribution is generally not aligned with the centre of the sampling distribution, although in practice the width of the re-sampling distribution in practice tends to match the width of the sampling distribution. The following figure shows you how three resampling distributions compare to the sampling distribution of IQ for samples of size 30.</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb391-1" title="1">resampling_IQ_<span class="dv">30</span>_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">1000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">resample</span>(sample_<span class="dv">3</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" title="1">resampling_IQ_<span class="dv">30</span>_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">1000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">resample</span>(sample_<span class="dv">3</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">resampling_IQ_30_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">1000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">resample</span>(sample_<span class="dv">3</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">resampling_IQ_30_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">do</span>(<span class="dv">1000</span>) <span class="op">*</span><span class="st"> </span><span class="kw">mean</span>(<span class="kw">resample</span>(sample_<span class="dv">3</span>))</code></pre></div>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 </div>
 <div id="what-about-comparisons-sampling-distribution-for-the-difference-of-two-means" class="section level2">
-<h2><span class="header-section-number">5.7</span> What about comparisons? Sampling distribution for the difference of two means</h2>
+<h2><span class="header-section-number">5.8</span> What about comparisons? Sampling distribution for the difference of two means</h2>
 <p>So far we have seen how we can use confidence intervals to quantify the unavoidable uncertainty that exists when you use sample data to make inferences about population parameters. In doing this, the focus of our discussion has been <em>univariate</em> estimation; that is, we were focusing on the logic involved in estimating single quantities (descriptive values for single variables) such as the mean or the proportion for a given variable (i.e., the proportion of households that suffer a burglary victimisation).</p>
 <p>But statistics is all about comparisons. And making comparisons involves working with several variables or groups at the same time. So most often we need to estimate information about various variables or groups at the same time. When making comparisons we also have to take into account sampling variability.</p>
 <p>Imagine that we want to know whether there is a difference in the level of fear experienced by males and females. Suppose we want to compare the average level of fear of violent crime across the two genders. We could use the data from the British Crime Survey we have been using so far (please load the data if you don’t have it in your global environment from previous weeks). But we also need to take into account sampling variability. The estimated mean for fear of crime for males will be subject to some sampling error. The same for females. And the same for the difference between the two means.</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb393-1" title="1"><span class="co">##R in Windows have some problems with https addresses, that&#39;s why we need to do this first:</span></a>
-<a class="sourceLine" id="cb393-2" title="2">urlfile&lt;-<span class="st">&#39;https://raw.githubusercontent.com/jjmedinaariza/LAWS70821/master/BCS0708.csv&#39;</span></a>
-<a class="sourceLine" id="cb393-3" title="3"><span class="co">#We create a data frame object reading the data from the remote .csv file</span></a>
-<a class="sourceLine" id="cb393-4" title="4">BCS0708&lt;-<span class="kw">read.csv</span>(<span class="kw">url</span>(urlfile))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##R in Windows have some problems with https addresses, that&#39;s why we need to do this first:
+urlfile&lt;-<span class="st">&#39;https://raw.githubusercontent.com/jjmedinaariza/LAWS70821/master/BCS0708.csv&#39;</span>
+<span class="co">#We create a data frame object reading the data from the remote .csv file</span>
+BCS0708&lt;-<span class="kw">read.csv</span>(<span class="kw">url</span>(urlfile))</code></pre></div>
 <p>We are going to use the <code>describeBy</code> function of the <code>psych</code> package to produce summary statistics by group.</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" title="1"><span class="kw">library</span>(psych)</a>
-<a class="sourceLine" id="cb394-2" title="2"><span class="kw">with</span>(BCS0708, <span class="kw">describeBy</span>(tcviolent, sex))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(psych)
+<span class="kw">with</span>(BCS0708, <span class="kw">describeBy</span>(tcviolent, sex))</code></pre></div>
 <pre><code>## 
 ##  Descriptive statistics by group 
 ## group: female
-##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis   se
-## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02 0.02
-## ------------------------------------------------------------ 
+##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02
+##      se
+## X1 0.02
+## -------------------------------------------------------- 
 ## group: male
-##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis   se
-## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91 0.01</code></pre>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" title="1"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> tcviolent)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb396-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis
+## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91
+##      se
+## X1 0.01</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <p>The mean value of fear of violent crime is -0.27 for the males and 0.33 for the females. There is a difference in the mean value of fear of crime of 0.6. Comparing the distributions in the boxplot seems to suggest that the distribution of scores on fear of violent crime tend to be higher than for the males.</p>
 <p>The question we need to ask ourselves is: would we observe similar differences if we were looking at population data (rather than sample data)? The answer to the previous questions, as you can imagine by now, is that here we also have the problem of sampling variability.</p>
 <p>If we were to take a different sample from the same population (1) we would obtain a slightly different mean score of fear for the men; (2) a slightly different mean score of fear for the women; and (3) correspondingly a slightly different difference between those two quantities. So rather than a difference of -0.6 points we may find a slightly different one.</p>
 <p>How do we deal with this? Again, we can make assumptions about the sampling distributions of the estimated parameters and try to quantify our uncertainty around the observed difference. Earlier we only had to worry about one parameter (the mean or the proportion in the population). We said that thanks to the central limit theorem we can assume that with large samples the sampling distribution of this single parameter follows a normal distribution. Now instead we have two different population parameters (i.e., the mean score of fear for men, µ1, and the mean age of fear for women, µ2) and their difference (µ1 – µ2) . Look at the Figure below:</p>
-<p><img src="http://simon.cs.vt.edu/SoSci/converted/T-Dist/t-distribution.gif" /></p>
+<div class="figure">
+<img src="http://simon.cs.vt.edu/SoSci/converted/T-Dist/t-distribution.gif" />
+
+</div>
 <p>Now we are trying to work out two different population parameters (the population mean of fear for males and females), which are unknown, based on our observed sample estimates. If we were to take repeated samples from the same populations these sample-based estimates of the means would vary and so would the difference between them. But we know that if we were to take large repeated samples of men the sampling distribution of the means for fear of crime in the long run would follow a normal distribution. Equally, if we were to take repeated samples of women the same would happen. However, now we are not only interested in these two quantities (the mean for each group) we are also interested in the difference between them, the difference in the mean score of fear for females and males.</p>
 <p>In essence, however, the same principles apply. If we were to plot the distribution of the difference between these two quantities, the means for the men and the women for every single sample of repeated samples, we would also have a sampling distribution: the sampling distribution of the differences of the means as shown in the figure above.</p>
 <p>Here, as earlier, we could invoke the central limit theorem that, in this case, states that with large random samples the sampling distribution of the difference of the means will be normal. We can also apply a variation of this (Gosset’s theorem) that states that with small samples of normally distributed variables we can use the t-student distribution. We could then construct a 95% confidence interval for the difference of the means that would give us the range of plausible values from the same population.</p>
 <p>Remember how we construct confidence intervals for the mean by adding the mean to the standard error of the sampling distribution of the mean. Also remember how we used the standard deviation of the sample mean as a proxy for the standard error. The computation of the confidence interval for the difference of two means works in a similar way but we need to account for the fact that now we have two different variances (i.e., in our example the variance for men and for women). Otherwise, the logic for constructing the confidence interval remains the same. For details on computation and formula see appropriate textbooks.</p>
 <p>If you want to compare two samples means you would use the following code to obtain the 95% confidence interval for the difference of the two means:</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb397-1" title="1"><span class="kw">t.test</span>(tcviolent <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> BCS0708)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(tcviolent <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> BCS0708)</code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -732,26 +731,26 @@ The horizontal lines represent the confidence intervals for the mean for each of
 <p><em>Notice that the confidence interval does not include the value zero</em>. The observed difference that we have between females and males is not consistent with a difference of zero in the population. The fact that our estimated CI for the difference of the means does not include zero invites the suggestion that the difference between males and females is different from zero in the population. If, on the other hand, you were to encounter a confidence interval for the difference of the means including the value of zero then you would be less confident that the difference in the population would not be zero. This makes sense. If zero is a very plausible value for the difference of the means in the population then we cannot on the basis of our sample data pretend otherwise.</p>
 </div>
 <div id="comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye" class="section level2">
-<h2><span class="header-section-number">5.8</span> Comparing means visually by using error bars representing confidence intervals: inference by eye</h2>
+<h2><span class="header-section-number">5.9</span> Comparing means visually by using error bars representing confidence intervals: inference by eye</h2>
 <p>In the previous section we have discussed how you can construct <em>the confidence interval for the difference between two means</em>. Another way of looking at whether the means of two groups are different in a population is by visually comparing <em>the confidence interval for the means of each of the two groups</em>. Think for a second about the semantic difference. If you don’t get it, look back at the figure we represented above.</p>
 <p>We can visualise the confidence interval for the sample mean score of fear of crime for the men and the women using <code>ggplot()</code>:</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" title="1"><span class="co">#As usual we define the aesthetics first</span></a>
-<a class="sourceLine" id="cb399-2" title="2"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> tcviolent)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb399-3" title="3"><span class="st">        </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> <span class="st">&quot;mean_cl_normal&quot;</span>, <span class="dt">geom =</span> <span class="st">&quot;pointrange&quot;</span>) <span class="co">#this function ask to display summary statistics as pointrange (the point is the mean and the lines end at the upper and lower CI limits). The &quot;mean_cl_normal&quot; uses the CI assuming normality.</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#As usual we define the aesthetics first</span>
+<span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> <span class="st">&quot;mean_cl_normal&quot;</span>, <span class="dt">geom =</span> <span class="st">&quot;pointrange&quot;</span>) <span class="co">#this function ask to display summary statistics as pointrange (the point is the mean and the lines end at the upper and lower CI limits). The &quot;mean_cl_normal&quot; uses the CI assuming normality.</span></code></pre></div>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" title="1"><span class="co">#So if you prefer the bootstrapped confidence interval rather than assuming normality, you could use:</span></a>
-<a class="sourceLine" id="cb400-2" title="2"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> tcviolent)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb400-3" title="3"><span class="st">       </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> <span class="st">&quot;mean_cl_boot&quot;</span>, <span class="dt">geom =</span> <span class="st">&quot;crossbar&quot;</span>) <span class="co">#Here we are using a different geom just to show you the range of options, but you could also have used &quot;pointrange&quot;. Or finally, you could also use &quot;errorbars&quot;</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#So if you prefer the bootstrapped confidence interval rather than assuming normality, you could use:</span>
+<span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">       </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> <span class="st">&quot;mean_cl_boot&quot;</span>, <span class="dt">geom =</span> <span class="st">&quot;crossbar&quot;</span>) <span class="co">#Here we are using a different geom just to show you the range of options, but you could also have used &quot;pointrange&quot;. Or finally, you could also use &quot;errorbars&quot;</span></code></pre></div>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-49-2.png" width="672" /></p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" title="1"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> tcviolent)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb401-2" title="2"><span class="st">       </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> <span class="st">&quot;mean_cl_boot&quot;</span>, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb401-3" title="3"><span class="st">        </span><span class="kw">stat_summary</span>(<span class="dt">fun.y =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BCS0708, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> tcviolent)) <span class="op">+</span>
+<span class="st">       </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> <span class="st">&quot;mean_cl_boot&quot;</span>, <span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>) <span class="op">+</span>
+<span class="st">        </span><span class="kw">stat_summary</span>(<span class="dt">fun.y =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>)</code></pre></div>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-49-3.png" width="672" /></p>
 <p>The point in the error bar represents the mean value for fear of crime for each of the groups and the error bars represent the upper and lower bound for the confidence interval for the mean fear of crime score for each of those two groups. Notice how <em>the confidence intervals do not overlap</em>. These confidence intervals provide a range of plausible values for the population parameters, the mean score of fear for males and females in the population. The fact that the CI do not overlap is another way of showing that there may be a difference in the population parameters for these two groups. Lack of any overlap is strong suggestion of a significant difference in the population.</p>
 <p>If they were overlapping this would be indicating that some of the plausible values for the mean fear of crime score for males in the population would also be plausible values for the mean fear of crime for females in the population. In this case, when there is some overlap, it is less intuitive to interpret the confidence intervals. <em>You can have some overlap even if there is a real difference across the population means</em>. However, the greater the overlap the smaller the chance that there is a difference between the two means in the population. In particular, if the overlap is greater than about 50% for the length of the bar either side of the mean then you will be, roughly speaking, “very confident” that there is no real difference in the population. <a href="http://www.apastyle.org/manual/related/cumming-and-finch.pdf">This</a> is a good guide about how to interpret error bars in this type of scenarios.</p>
 </div>
 <div id="homework-5.1" class="section level2">
-<h2><span class="header-section-number">5.9</span> HOMEWORK 5.1</h2>
+<h2><span class="header-section-number">5.10</span> HOMEWORK 5.1</h2>
 <p><em>Use the code and ideas we have introduced in the last two sections to explore again the data from the ban the box paper we covered in previous weeks. Draw confidence intervals for the proportion of positive responses obtained by black and white employees before and after the introduction of the ban the box legislation. What inferences can you draw based in your results?</em></p>
 
 </div>
@@ -759,8 +758,8 @@ The horizontal lines represent the confidence intervals for the mean for each of
 <div class="footnotes">
 <hr />
 <ol start="6">
-<li id="fn6"><p>Although we would like to think of our samples as random, it is in fact very difficult to generate random numbers in a computer. Most of the time someone is telling you they are using random numbers they are most likely using pseudo-random numbers. If this is the kind of thing that gets you excited you may want to read the <a href="http://en.wikipedia.org/wiki/Random_number_generation#.22True.22_random_numbers_vs._pseudo-random_numbers">wiki entry</a>. If you want to know how R generates these numbers you should ask for the help pages for the Random.Seed function.<a href="foundations-of-statistical-inference-confidence-intervals.html#fnref6" class="footnote-back">↩</a></p></li>
-<li id="fn7"><p>As an aside, you can use <a href="http://bcs.whfreeman.com/ips4e/cat_010/applets/confidenceinterval.html">this Java applet</a> to see what happens when one uses different parameters with confidence intervals. In the right hand side you will see a button that says “Sample”. Press there. This will produce a horizontal line representing the confidence interval. The left hand side end of the line represents the lower limit of the confidence interval and the right hand side end of the line represents the upper limit of the confidence interval. The red point in the middle is your sample mean, your point estimate. If you are lucky the line will be black and it will cross the green vertical line. This means that your CI covers the population mean. There will be a difference with your point estimate (i.e., your red point is unlikely to be just in top of the green vertical line). But, at least, the population parameter will be included within the range of plausible values for it that our confidence interval is estimating. If you keep pressing the “Sample” button (please do 30 or 50 times), you will see that most confidence intervals include the population parameter: most will cross the green line and will be represented by a black line. Sometimes your point estimate (the red point at the centre of the horizontal lines) will be to the right of the population mean (will be higher) or to the left (will be lower), but the confidence interval will include the population mean (and cross the green vertical line).<a href="foundations-of-statistical-inference-confidence-intervals.html#fnref7" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p>Although we would like to think of our samples as random, it is in fact very difficult to generate random numbers in a computer. Most of the time someone is telling you they are using random numbers they are most likely using pseudo-random numbers. If this is the kind of thing that gets you excited you may want to read the <a href="http://en.wikipedia.org/wiki/Random_number_generation#.22True.22_random_numbers_vs._pseudo-random_numbers">wiki entry</a>. If you want to know how R generates these numbers you should ask for the help pages for the Random.Seed function.<a href="foundations-of-statistical-inference-confidence-intervals.html#fnref6">↩</a></p></li>
+<li id="fn7"><p>As an aside, you can use <a href="http://bcs.whfreeman.com/ips4e/cat_010/applets/confidenceinterval.html">this Java applet</a> to see what happens when one uses different parameters with confidence intervals. In the right hand side you will see a button that says “Sample”. Press there. This will produce a horizontal line representing the confidence interval. The left hand side end of the line represents the lower limit of the confidence interval and the right hand side end of the line represents the upper limit of the confidence interval. The red point in the middle is your sample mean, your point estimate. If you are lucky the line will be black and it will cross the green vertical line. This means that your CI covers the population mean. There will be a difference with your point estimate (i.e., your red point is unlikely to be just in top of the green vertical line). But, at least, the population parameter will be included within the range of plausible values for it that our confidence interval is estimating. If you keep pressing the “Sample” button (please do 30 or 50 times), you will see that most confidence intervals include the population parameter: most will cross the green line and will be represented by a black line. Sometimes your point estimate (the red point at the centre of the horizontal lines) will be to the right of the population mean (will be higher) or to the left (will be lower), but the confidence interval will include the population mean (and cross the green vertical line).<a href="foundations-of-statistical-inference-confidence-intervals.html#fnref7">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -774,13 +773,11 @@ The horizontal lines represent the confidence intervals for the mean for each of
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -788,11 +785,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -804,10 +802,6 @@ gitbook.start({
 "text": null
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },

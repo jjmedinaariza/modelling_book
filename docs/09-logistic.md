@@ -212,12 +212,16 @@ library(lessR, quietly= TRUE)
 ```
 
 ```
+## Warning: package 'lessR' was built under R version 3.5.3
+```
+
+```
 ## 
-## lessR 3.9.0     feedback: gerbing@pdx.edu     web: lessRstats.com/new
+## lessR 3.8.2     feedback: gerbing@pdx.edu     web: lessRstats.com/new
 ## ---------------------------------------------------------------------
 ## 1. d <- Read("")           Read text, Excel, SPSS, SAS or R data file
 ##                            d: default data frame, no need for data=
-## 2. l <- Read("", var_labels=TRUE)   Read variable labels into l,
+## 2. l <- Read("", var.labels=TRUE)   Read variable labels into l,
 ##                            required name for data frame of labels
 ## 3. Help()                  Get help, and, e.g., Help(Read)
 ## 4. hs(), bc(), or ca()     All histograms, all bar charts, or both
@@ -227,9 +231,6 @@ library(lessR, quietly= TRUE)
 ## 8. style("gray")           Grayscale theme, + many others available
 ##    style(show=TRUE)        all color/style options and current values
 ## 9. getColors()             create many styles of color palettes
-## 
-## lessR parameter names now use _'s. Names with a period are deprecated.
-## Ex:  bin_width  instead of  bin.width
 ```
 
 ```r
@@ -321,12 +322,16 @@ library(arm)
 ```
 
 ```
+## Warning: package 'lme4' was built under R version 3.5.3
+```
+
+```
 ## 
 ## arm (Version 1.10-1, built: 2018-4-12)
 ```
 
 ```
-## Working directory is D:/Dropbox/1_Teaching/1 Manchester courses/20452 Modelling Criminological Data/modelling_book
+## Working directory is C:/Users/Juanjo Medina/Dropbox/1_Teaching/1 Manchester courses/20452 Modelling Criminological Data/modelling_book
 ```
 
 ```r
@@ -356,7 +361,7 @@ library(sjPlot)
 ```
 
 ```
-## #refugeeswelcome
+## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
 ```
 
 ```r
@@ -395,10 +400,10 @@ fitl_1_prob[1:10]
 ```
 
 ```
-##          1          2          3          4          5          6          7 
-## 0.17262268 0.25519856 0.17262268 0.14344103 0.13833944 0.10091376 0.13455033 
-##          8          9         10 
-## 0.08905504 0.32891111 0.17262268
+##          1          2          3          4          5          6 
+## 0.17262268 0.25519856 0.17262268 0.14344103 0.13833944 0.10091376 
+##          7          8          9         10 
+## 0.13455033 0.08905504 0.32891111 0.17262268
 ```
 
 It is important to understand that with this type of models we usually generate two types of predictions. One the one hand, we are producing a continuous valued prediction in the form of a probability but we can also generate a predicted class for each case. In many applied settings, the latter will be relevant. A discrete category prediction may be required in order to make a decision. Imagine of a probation officer evaluating the future risk of a client. She/He would want to know whether the case is high risk or not.
@@ -596,6 +601,10 @@ library(caret)
 ```
 
 ```
+## Warning: package 'caret' was built under R version 3.5.3
+```
+
+```
 ## Loading required package: lattice
 ```
 
@@ -682,6 +691,10 @@ library(pROC)
 ```
 
 ```
+## Warning: package 'pROC' was built under R version 3.5.3
+```
+
+```
 ## Type 'citation("pROC")' for a citation.
 ```
 
@@ -699,14 +712,6 @@ library(pROC)
 ```r
 rocCURVE <- roc(response = Arrests$harsher, 
                 predictor = fitl_1_prob)
-```
-
-```
-## Setting levels: control = No, case = Yes
-```
-
-```
-## Setting direction: controls < cases
 ```
 
 Once we have the object with the information, we can plot the ROC curve.
@@ -728,8 +733,8 @@ alt_cutoff1
 ```
 
 ```
-##   threshold specificity sensitivity
-## 1 0.1696539   0.6305953   0.7163677
+##   threshold specificity sensitivity 
+##   0.1696539   0.6305953   0.7163677
 ```
 
 Here we can see that with a cut off point of .16 we get a specificity of .63 and a sensitivity of .71. Notice how this is close to the base rate of harsher treatment in the sample (17% of individuals actually received harsher treatment). For a more informed discussion of cut off points and costs of errors in applied predictive problems in criminal justice, I recommend reading [Berk (2012)](http://link.springer.com/book/10.1007%2F978-1-4614-3085-8). Often the selection of cut off may be motivated by practical considerations (e.g., selecting individuals for treatment in a situation where resources to do so is limited).

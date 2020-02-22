@@ -580,22 +580,92 @@ attributes(hate_crimes)
 ```
 
 ```
-## $row.names
-##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
-## [26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
-## [51] 51
-## 
 ## $class
 ## [1] "tbl_df"     "tbl"        "data.frame"
 ## 
+## $row.names
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+## [24] 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46
+## [47] 47 48 49 50 51
+## 
+## $spec
+## $cols
+## $cols$state
+## list()
+## attr(,"class")
+## [1] "collector_character" "collector"          
+## 
+## $cols$median_household_income
+## list()
+## attr(,"class")
+## [1] "collector_integer" "collector"        
+## 
+## $cols$share_unemployed_seasonal
+## list()
+## attr(,"class")
+## [1] "collector_double" "collector"       
+## 
+## $cols$share_population_in_metro_areas
+## list()
+## attr(,"class")
+## [1] "collector_double" "collector"       
+## 
+## $cols$share_population_with_high_school_degree
+## list()
+## attr(,"class")
+## [1] "collector_double" "collector"       
+## 
+## $cols$share_non_citizen
+## list()
+## attr(,"class")
+## [1] "collector_double" "collector"       
+## 
+## $cols$share_white_poverty
+## list()
+## attr(,"class")
+## [1] "collector_double" "collector"       
+## 
+## $cols$gini_index
+## list()
+## attr(,"class")
+## [1] "collector_double" "collector"       
+## 
+## $cols$share_non_white
+## list()
+## attr(,"class")
+## [1] "collector_double" "collector"       
+## 
+## $cols$share_voters_voted_trump
+## list()
+## attr(,"class")
+## [1] "collector_double" "collector"       
+## 
+## $cols$hate_crimes_per_100k_splc
+## list()
+## attr(,"class")
+## [1] "collector_double" "collector"       
+## 
+## $cols$avg_hatecrimes_per_100k_fbi
+## list()
+## attr(,"class")
+## [1] "collector_double" "collector"       
+## 
+## 
+## $default
+## list()
+## attr(,"class")
+## [1] "collector_guess" "collector"      
+## 
+## attr(,"class")
+## [1] "col_spec"
+## 
 ## $names
-##  [1] "state"                       "state_abbrev"               
-##  [3] "median_house_inc"            "share_unemp_seas"           
-##  [5] "share_pop_metro"             "share_pop_hs"               
-##  [7] "share_non_citizen"           "share_white_poverty"        
-##  [9] "gini_index"                  "share_non_white"            
-## [11] "share_vote_trump"            "hate_crimes_per_100k_splc"  
-## [13] "avg_hatecrimes_per_100k_fbi"
+##  [1] "state"                       "median_house_inc"           
+##  [3] "share_unemp_seas"            "share_pop_metro"            
+##  [5] "share_pop_hs"                "share_non_citizen"          
+##  [7] "share_white_poverty"         "gini_index"                 
+##  [9] "share_non_white"             "share_vote_trump"           
+## [11] "hate_crimes_per_100k_splc"   "avg_hatecrimes_per_100k_fbi"
 ```
 
 These results printed in the may console may not make too much sense to you at this point. We will return to this next week, so do not worry. 
@@ -645,30 +715,30 @@ summary(hate_crimes)
 ```
 
 ```
-##     state           state_abbrev       median_house_inc share_unemp_seas 
-##  Length:51          Length:51          Min.   :35521    Min.   :0.02800  
-##  Class :character   Class :character   1st Qu.:48657    1st Qu.:0.04200  
-##  Mode  :character   Mode  :character   Median :54916    Median :0.05100  
-##                                        Mean   :55224    Mean   :0.04957  
-##                                        3rd Qu.:60719    3rd Qu.:0.05750  
-##                                        Max.   :76165    Max.   :0.07300  
-##                                                                          
-##  share_pop_metro   share_pop_hs    share_non_citizen share_white_poverty
-##  Min.   :0.3100   Min.   :0.7990   Min.   :0.01000   Min.   :0.04000    
-##  1st Qu.:0.6300   1st Qu.:0.8405   1st Qu.:0.03000   1st Qu.:0.07500    
-##  Median :0.7900   Median :0.8740   Median :0.04500   Median :0.09000    
-##  Mean   :0.7502   Mean   :0.8691   Mean   :0.05458   Mean   :0.09176    
-##  3rd Qu.:0.8950   3rd Qu.:0.8980   3rd Qu.:0.08000   3rd Qu.:0.10000    
-##  Max.   :1.0000   Max.   :0.9180   Max.   :0.13000   Max.   :0.17000    
-##                                    NA's   :3                            
-##    gini_index     share_non_white  share_vote_trump hate_crimes_per_100k_splc
-##  Min.   :0.4190   Min.   :0.0600   Min.   :0.040    Min.   :0.06745          
-##  1st Qu.:0.4400   1st Qu.:0.1950   1st Qu.:0.415    1st Qu.:0.14271          
-##  Median :0.4540   Median :0.2800   Median :0.490    Median :0.22620          
-##  Mean   :0.4538   Mean   :0.3157   Mean   :0.490    Mean   :0.30409          
-##  3rd Qu.:0.4665   3rd Qu.:0.4200   3rd Qu.:0.575    3rd Qu.:0.35694          
-##  Max.   :0.5320   Max.   :0.8100   Max.   :0.700    Max.   :1.52230          
-##                                                     NA's   :4                
+##     state           median_house_inc share_unemp_seas  share_pop_metro 
+##  Length:51          Min.   :35521    Min.   :0.02800   Min.   :0.3100  
+##  Class :character   1st Qu.:48657    1st Qu.:0.04200   1st Qu.:0.6300  
+##  Mode  :character   Median :54916    Median :0.05100   Median :0.7900  
+##                     Mean   :55224    Mean   :0.04957   Mean   :0.7502  
+##                     3rd Qu.:60719    3rd Qu.:0.05750   3rd Qu.:0.8950  
+##                     Max.   :76165    Max.   :0.07300   Max.   :1.0000  
+##                                                                        
+##   share_pop_hs    share_non_citizen share_white_poverty   gini_index    
+##  Min.   :0.7990   Min.   :0.01000   Min.   :0.04000     Min.   :0.4190  
+##  1st Qu.:0.8405   1st Qu.:0.03000   1st Qu.:0.07500     1st Qu.:0.4400  
+##  Median :0.8740   Median :0.04500   Median :0.09000     Median :0.4540  
+##  Mean   :0.8691   Mean   :0.05458   Mean   :0.09176     Mean   :0.4538  
+##  3rd Qu.:0.8980   3rd Qu.:0.08000   3rd Qu.:0.10000     3rd Qu.:0.4665  
+##  Max.   :0.9180   Max.   :0.13000   Max.   :0.17000     Max.   :0.5320  
+##                   NA's   :3                                             
+##  share_non_white  share_vote_trump hate_crimes_per_100k_splc
+##  Min.   :0.0600   Min.   :0.040    Min.   :0.06745          
+##  1st Qu.:0.1950   1st Qu.:0.415    1st Qu.:0.14271          
+##  Median :0.2800   Median :0.490    Median :0.22620          
+##  Mean   :0.3157   Mean   :0.490    Mean   :0.30409          
+##  3rd Qu.:0.4200   3rd Qu.:0.575    3rd Qu.:0.35694          
+##  Max.   :0.8100   Max.   :0.700    Max.   :1.52230          
+##                                    NA's   :4                
 ##  avg_hatecrimes_per_100k_fbi
 ##  Min.   : 0.2669            
 ##  1st Qu.: 1.2931            
@@ -688,6 +758,16 @@ I am only going to introduce one of them here *skimr*. It is neat and is maintai
 You will need to install it before anything else. Use the code you have learnt to do so and then load it. I won't be providing you the code for it, by now you should now how to do this.
 
 
+```
+## 
+## Attaching package: 'skimr'
+```
+
+```
+## The following object is masked from 'package:stats':
+## 
+##     filter
+```
 
 Once you have loaded the *skimr* package you can use it. Its main function is *skim*. Like *summary* for data frames, skim presents results for all the columns and the statistics will depend on the class of the variable. However, the results are displayed and stored in a nicer way -though we won't get into the details of this right now.
 
@@ -697,46 +777,45 @@ Once you have loaded the *skimr* package you can use it. Its main function is *s
 skim(hate_crimes)
 ```
 
-
-Table: (\#tab:unnamed-chunk-31)Data summary
-
-                                       
--------------------------  ------------
-Name                       hate_crimes 
-Number of rows             51          
-Number of columns          13          
-_______________________                
-Column type frequency:                 
-character                  2           
-numeric                    11          
-________________________               
-Group variables            None        
--------------------------  ------------
-
-
-**Variable type: character**
-
-skim_variable    n_missing   complete_rate   min   max   empty   n_unique   whitespace
---------------  ----------  --------------  ----  ----  ------  ---------  -----------
-state                    0               1     4    20       0         51            0
-state_abbrev             0               1     2     2       0         51            0
-
-
-**Variable type: numeric**
-
-skim_variable                  n_missing   complete_rate       mean        sd         p0        p25        p50        p75       p100  hist  
-----------------------------  ----------  --------------  ---------  --------  ---------  ---------  ---------  ---------  ---------  ------
-median_house_inc                       0            1.00   55223.61   9208.48   35521.00   48657.00   54916.00   60719.00   76165.00  ▂▆▇▅▂ 
-share_unemp_seas                       0            1.00       0.05      0.01       0.03       0.04       0.05       0.06       0.07  ▅▇▇▇▂ 
-share_pop_metro                        0            1.00       0.75      0.18       0.31       0.63       0.79       0.90       1.00  ▁▂▅▆▇ 
-share_pop_hs                           0            1.00       0.87      0.03       0.80       0.84       0.87       0.90       0.92  ▃▅▃▆▇ 
-share_non_citizen                      3            0.94       0.05      0.03       0.01       0.03       0.04       0.08       0.13  ▇▆▆▂▂ 
-share_white_poverty                    0            1.00       0.09      0.02       0.04       0.08       0.09       0.10       0.17  ▂▇▃▂▁ 
-gini_index                             0            1.00       0.45      0.02       0.42       0.44       0.45       0.47       0.53  ▆▇▅▁▁ 
-share_non_white                        0            1.00       0.32      0.16       0.06       0.20       0.28       0.42       0.81  ▇▇▆▂▁ 
-share_vote_trump                       0            1.00       0.49      0.12       0.04       0.42       0.49       0.57       0.70  ▁▁▆▇▇ 
-hate_crimes_per_100k_splc              4            0.92       0.30      0.25       0.07       0.14       0.23       0.36       1.52  ▇▂▁▁▁ 
-avg_hatecrimes_per_100k_fbi            1            0.98       2.37      1.71       0.27       1.29       1.99       3.18      10.95  ▇▅▁▁▁ 
+```
+## Skim summary statistics
+##  n obs: 51 
+##  n variables: 12 
+## 
+## -- Variable type:character -------------------------------------------------
+##  variable missing complete  n min max empty n_unique
+##     state       0       51 51   4  20     0       51
+## 
+## -- Variable type:integer ---------------------------------------------------
+##          variable missing complete  n     mean      sd    p0   p25   p50
+##  median_house_inc       0       51 51 55223.61 9208.48 35521 48657 54916
+##    p75  p100     hist
+##  60719 76165 <U+2582><U+2585><U+2586><U+2587><U+2587><U+2583><U+2583><U+2582>
+## 
+## -- Variable type:numeric ---------------------------------------------------
+##                     variable missing complete  n  mean    sd    p0   p25
+##  avg_hatecrimes_per_100k_fbi       1       50 51 2.37  1.71  0.27  1.29 
+##                   gini_index       0       51 51 0.45  0.021 0.42  0.44 
+##    hate_crimes_per_100k_splc       4       47 51 0.3   0.25  0.067 0.14 
+##            share_non_citizen       3       48 51 0.055 0.031 0.01  0.03 
+##              share_non_white       0       51 51 0.32  0.16  0.06  0.2  
+##                 share_pop_hs       0       51 51 0.87  0.034 0.8   0.84 
+##              share_pop_metro       0       51 51 0.75  0.18  0.31  0.63 
+##             share_unemp_seas       0       51 51 0.05  0.011 0.028 0.042
+##             share_vote_trump       0       51 51 0.49  0.12  0.04  0.41 
+##          share_white_poverty       0       51 51 0.092 0.025 0.04  0.075
+##    p50   p75   p100     hist
+##  1.99  3.18  10.95  <U+2587><U+2587><U+2585><U+2581><U+2581><U+2581><U+2581><U+2581>
+##  0.45  0.47   0.53  <U+2585><U+2585><U+2587><U+2587><U+2581><U+2581><U+2581><U+2581>
+##  0.23  0.36   1.52  <U+2587><U+2583><U+2581><U+2581><U+2581><U+2581><U+2581><U+2581>
+##  0.045 0.08   0.13  <U+2583><U+2587><U+2582><U+2583><U+2582><U+2582><U+2582><U+2581>
+##  0.28  0.42   0.81  <U+2586><U+2587><U+2586><U+2587><U+2585><U+2582><U+2581><U+2581>
+##  0.87  0.9    0.92  <U+2582><U+2585><U+2585><U+2583><U+2583><U+2585><U+2587><U+2586>
+##  0.79  0.9    1     <U+2582><U+2581><U+2583><U+2585><U+2582><U+2587><U+2586><U+2587>
+##  0.051 0.058  0.073 <U+2582><U+2585><U+2587><U+2583><U+2587><U+2586><U+2583><U+2582>
+##  0.49  0.57   0.7   <U+2581><U+2581><U+2581><U+2583><U+2587><U+2587><U+2586><U+2583>
+##  0.09  0.1    0.17  <U+2581><U+2585><U+2583><U+2587><U+2583><U+2581><U+2581><U+2581>
+```
 
 
 Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 we covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don't know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes [here](https://rawgit.com/maczokni/MSCD/master/Lesson_3.html#visualising-the-differences-between-groups).

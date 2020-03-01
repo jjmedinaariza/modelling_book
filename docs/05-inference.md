@@ -341,10 +341,8 @@ favstats(~with, data = sampd_IQ_30)
 ```
 
 ```
-##       min       Q1   median       Q3      max     mean       sd     n
-##  84.36466 95.07485 97.22715 99.35524 109.4407 97.20893 3.168994 50000
-##  missing
-##        0
+##       min       Q1   median       Q3      max     mean       sd     n missing
+##  84.36466 95.07485 97.22715 99.35524 109.4407 97.20893 3.168994 50000       0
 ```
 
 ```r
@@ -352,10 +350,8 @@ favstats(~with, data = sampd_IQ_100)
 ```
 
 ```
-##       min       Q1   median       Q3      max    mean       sd     n
-##  89.33202 96.02436 97.21006 98.38033 104.6069 97.1994 1.741871 50000
-##  missing
-##        0
+##       min       Q1   median       Q3      max    mean       sd     n missing
+##  89.33202 96.02436 97.21006 98.38033 104.6069 97.1994 1.741871 50000       0
 ```
 
 ```r
@@ -363,10 +359,8 @@ favstats(~with, data = sampd_IQ_1000)
 ```
 
 ```
-##       min       Q1   median       Q3      max     mean        sd     n
-##  94.86825 96.82042 97.18802 97.56334 99.31574 97.19098 0.5490715 50000
-##  missing
-##        0
+##       min       Q1   median       Q3      max     mean        sd     n missing
+##  94.86825 96.82042 97.18802 97.56334 99.31574 97.19098 0.5490715 50000       0
 ```
 
 
@@ -870,16 +864,12 @@ with(BCS0708, describeBy(tcviolent, sex))
 ## 
 ##  Descriptive statistics by group 
 ## group: female
-##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis
-## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02
-##      se
-## X1 0.02
-## -------------------------------------------------------- 
+##    vars    n mean   sd median trimmed  mad   min  max range skew kurtosis   se
+## X1    1 4475 0.33 1.04   0.23    0.25 0.96 -2.35 3.56  5.91 0.61     0.02 0.02
+## ------------------------------------------------------------ 
 ## group: male
-##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis
-## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91
-##      se
-## X1 0.01
+##    vars    n  mean   sd median trimmed  mad   min  max range skew kurtosis   se
+## X1    1 3959 -0.27 0.86  -0.44   -0.36 0.69 -2.35 3.81  6.16  1.1     1.91 0.01
 ```
 
 ```r

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Causality in randomised experiments | Modelling Criminological Data LAWS20452</title>
-  <meta name="description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Causality in randomised experiments | Modelling Criminological Data LAWS20452" />
   <meta property="og:type" content="book" />
@@ -22,18 +21,18 @@
   <meta name="twitter:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="Juanjo Medina and Reka Solymosi">
+<meta name="author" content="Juanjo Medina and Reka Solymosi" />
 
 
-<meta name="date" content="2020-02-22">
+<meta name="date" content="2020-03-01" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="a-first-lesson-about-r.html">
-<link rel="next" href="data-visualisation-with-r.html">
+<link rel="prev" href="a-first-lesson-about-r.html"/>
+<link rel="next" href="data-visualisation-with-r.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -41,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -51,41 +53,66 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -114,14 +141,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.6" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-packages"><i class="fa fa-check"></i><b>1.6</b> More on packages</a></li>
 <li class="chapter" data-level="1.7" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#using-objects"><i class="fa fa-check"></i><b>1.7</b> Using objects</a></li>
 <li class="chapter" data-level="1.8" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-objects"><i class="fa fa-check"></i><b>1.8</b> More on objects</a></li>
-<li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#vectors"><i class="fa fa-check"></i><b>1.9</b> Vectors</a></li>
-<li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#on-comments"><i class="fa fa-check"></i><b>1.10</b> On comments</a></li>
-<li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#factors"><i class="fa fa-check"></i><b>1.11</b> Factors</a></li>
-<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.12</b> Naming conventions for objects in R</a></li>
-<li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#dataframes"><i class="fa fa-check"></i><b>1.13</b> Dataframes</a></li>
-<li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.14</b> Exploring data</a></li>
-<li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.15</b> Quitting RStudio</a></li>
-<li class="chapter" data-level="1.16" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#lab-homework-activities-for-week-1"><i class="fa fa-check"></i><b>1.16</b> Lab homework activities for Week 1</a></li>
+<li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#on-comments"><i class="fa fa-check"></i><b>1.9</b> On comments</a></li>
+<li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#factors"><i class="fa fa-check"></i><b>1.10</b> Factors</a></li>
+<li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.11</b> Naming conventions for objects in R</a></li>
+<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#dataframes"><i class="fa fa-check"></i><b>1.12</b> Dataframes</a></li>
+<li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.13</b> Exploring data</a></li>
+<li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.14</b> Quitting RStudio</a></li>
+<li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#lab-homework-activities-for-week-1"><i class="fa fa-check"></i><b>1.15</b> Lab homework activities for Week 1</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html"><i class="fa fa-check"></i><b>2</b> Causality in randomised experiments</a><ul>
 <li class="chapter" data-level="2.1" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#causality-in-social-sciences"><i class="fa fa-check"></i><b>2.1</b> Causality in social sciences</a></li>
@@ -183,13 +209,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#power-analysis"><i class="fa fa-check"></i><b>6.4</b> Power analysis</a></li>
 <li class="chapter" data-level="6.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>6.5</b> Comparing means across several groups (ANOVA)</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>6.5.1</b> The problem with multiple comparisons</a></li>
-<li class="chapter" data-level="6.5.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#visual-exploration-of-differences-in-the-distributions-across-the-groups"><i class="fa fa-check"></i><b>6.5.2</b> Visual exploration of differences in the distributions across the groups</a></li>
-<li class="chapter" data-level="6.5.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#anova"><i class="fa fa-check"></i><b>6.5.3</b> ANOVA</a></li>
-<li class="chapter" data-level="6.5.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.4</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
-<li class="chapter" data-level="6.5.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.5</b> Checking normality and dealing with problems</a></li>
-<li class="chapter" data-level="6.5.6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#robust-anova"><i class="fa fa-check"></i><b>6.5.6</b> Robust ANOVA</a></li>
-<li class="chapter" data-level="6.5.7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.7</b> Post Hoc Comparisons</a></li>
-<li class="chapter" data-level="6.5.8" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.8</b> Effect size for ANOVA</a></li>
+<li class="chapter" data-level="6.5.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#anova"><i class="fa fa-check"></i><b>6.5.2</b> ANOVA</a></li>
+<li class="chapter" data-level="6.5.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.3</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
+<li class="chapter" data-level="6.5.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.4</b> Checking normality and dealing with problems</a></li>
+<li class="chapter" data-level="6.5.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#robust-anova"><i class="fa fa-check"></i><b>6.5.5</b> Robust ANOVA</a></li>
+<li class="chapter" data-level="6.5.6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.6</b> Post Hoc Comparisons</a></li>
+<li class="chapter" data-level="6.5.7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.7</b> Effect size for ANOVA</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between two factors</a><ul>
@@ -210,10 +235,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.7" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#motivating-multiple-regression"><i class="fa fa-check"></i><b>8.7</b> Motivating multiple regression</a></li>
 <li class="chapter" data-level="8.8" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#fitting-and-interpreting-a-multiple-regression-model"><i class="fa fa-check"></i><b>8.8</b> Fitting and interpreting a multiple regression model</a></li>
 <li class="chapter" data-level="8.9" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#presenting-your-regression-results."><i class="fa fa-check"></i><b>8.9</b> Presenting your regression results.</a></li>
-<li class="chapter" data-level="8.10" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#rescaling-input-variables-to-assist-interpretation"><i class="fa fa-check"></i><b>8.10</b> Rescaling input variables to assist interpretation</a></li>
-<li class="chapter" data-level="8.11" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>8.11</b> Testing conditional hypothesis: interactions</a></li>
-<li class="chapter" data-level="8.12" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>8.12</b> Model building and variable selection</a></li>
-<li class="chapter" data-level="8.13" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#homework"><i class="fa fa-check"></i><b>8.13</b> HOMEWORK</a></li>
+<li class="chapter" data-level="8.10" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>8.10</b> Testing conditional hypothesis: interactions</a></li>
+<li class="chapter" data-level="8.11" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>8.11</b> Model building and variable selection</a></li>
+<li class="chapter" data-level="8.12" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#homework"><i class="fa fa-check"></i><b>8.12</b> HOMEWORK</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Logistic regression</a><ul>
 <li class="chapter" data-level="9.1" data-path="logistic-regression.html"><a href="logistic-regression.html#introduction-3"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
@@ -223,11 +247,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.5" data-path="logistic-regression.html"><a href="logistic-regression.html#interactions"><i class="fa fa-check"></i><b>9.5</b> Interactions</a></li>
 <li class="chapter" data-level="9.6" data-path="logistic-regression.html"><a href="logistic-regression.html#homework-1"><i class="fa fa-check"></i><b>9.6</b> HOMEWORK:</a></li>
 <li class="chapter" data-level="9.7" data-path="logistic-regression.html"><a href="logistic-regression.html#further-resources-2"><i class="fa fa-check"></i><b>9.7</b> Further resources</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="wrapping-up.html"><a href="wrapping-up.html"><i class="fa fa-check"></i><b>10</b> Wrapping up</a><ul>
-<li class="chapter" data-level="10.1" data-path="wrapping-up.html"><a href="wrapping-up.html#tips-for-the-assignment"><i class="fa fa-check"></i><b>10.1</b> Tips for the assignment</a></li>
-<li class="chapter" data-level="10.2" data-path="wrapping-up.html"><a href="wrapping-up.html#summarising-your-variables"><i class="fa fa-check"></i><b>10.2</b> Summarising your variables</a></li>
-<li class="chapter" data-level="10.3" data-path="wrapping-up.html"><a href="wrapping-up.html#some-final-words"><i class="fa fa-check"></i><b>10.3</b> Some final words</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -268,21 +287,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Last week we introduced the notion of reproducible research and said that using and publishing code (particularly if using open source tools like R) is the way that <a href="https://osf.io/?gclid=EAIaIQobChMIq-jM6MuY2QIV7Z3tCh04vAycEAAYASAAEgLptPD_BwE">many researchers</a> around the world think that science ought to be done. This way of operating makes research more open, more credible, and more legitimate. It also means that we can more easily access the data used in published research. For this session we are going to use the data from <a href="https://academic.oup.com/qje/article/133/1/191/4060073">this</a> and <a href="https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.p20171003">this paper</a> study. In this research project, the authors tried to answer the question of whether criminal antecedents and other personal characteristics have an impact on access to employment. You can find more details about this work in <a href="https://www.probablecausation.com/podcasts/episode-8-amanda-agan">episode 8</a> of <em>Probable Causation</em>, the criminology podcast.</p>
 <p><a href="http://economics.rutgers.edu/people/626-amanda-agan">Amanda Agan</a> and <a href="https://www.law.umich.edu/FacultyBio/Pages/FacultyBio.aspx?FacID=sbstarr">Sonja Starr</a> developed a randomised experiment in which they created 15,220 fake resumes randomly generating these critical characteristics (such as having a criminal record) and used these resumes to send online job applications to low-skill, entry level job openings in New Jersey and New York City. All the fictitious applicants were male and about 21 to 22 years old. These kind of experiments are very common among researchers that want to explore through these “audits” whether some personal characteristics are discriminated against in the labor market.</p>
 <p>Because Amanda Agan and Sonja Starr conformed to reproducible standards when doing their research we can access this data from the <em>Harvard Dataverse</em> (a repository for open research data). Click <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VPHMNT">here</a> to locate the data.</p>
-<div class="figure">
-<img src="imgs/harvarddataverse.PNG" />
-
-</div>
+<p><img src="imgs/harvarddataverse.PNG" /></p>
 <p>In this page you can see a download section and some files that can be accessed. One of them contains analytic code pertaining to the study and the other contains the data. You also see a link called <strong>metadata</strong>. Metadata is data about data, it simply provides you with some information about the data. If you clink in metadata you will see at the bottom a reference to the software the authors used (STATA). So we know these files are in <a href="https://www.stata.com/">STATA</a> proprietary format. Let’s download the data file and then read the data into R.</p>
 <p>You could just click “download” and then place the file in your project directory. Alternatively, and preferably, you may want to use code to make your whole work more reproducible. Think of it this way, every time you click or use drop down menus you are doing things that others cannot reproduce because there won’t be a written record of your steps. You will need though to do some clicking for finding out the required url you will use for writing your code. The file we want is the <code>AganStarrQJEData.dta</code>. Click in the name of this file. You will be taken to another webpage. On it you will see the download url. Copy and paste this url in your code below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#First, let&#39;s create an object with the link, paste the copied address here:</span>
-data_url &lt;-<span class="st"> &quot;https://dataverse.harvard.edu/api/access/datafile/3036350&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="co">#First, let&#39;s create an object with the link, paste the copied address here:</span></a>
+<a class="sourceLine" id="cb61-2" title="2">data_url &lt;-<span class="st"> &quot;https://dataverse.harvard.edu/api/access/datafile/3036350&quot;</span></a></code></pre></div>
 <p>This data file is a STATA .dta file in our working directory. To read STATA files we will need the <em>haven</em> package. This is a package developed for importing different kind of data files into R. If you don’t have it you will need to install it. And then load it.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(haven)
-<span class="co">#Now we can use the read_dta function, within this function we will</span>
-<span class="co">#pass an argument, url, specifying to the read_dta function the need to</span>
-<span class="co">#make a url connection. The url function takes as an argument the url</span>
-<span class="co">#we are using and that we encoded in the data_url object in our case.</span>
-banbox &lt;-<span class="st"> </span><span class="kw">read_dta</span>(<span class="kw">url</span>(data_url))</code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="kw">library</span>(haven)</a>
+<a class="sourceLine" id="cb62-2" title="2"><span class="co">#Now we can use the read_dta function, within this function we will</span></a>
+<a class="sourceLine" id="cb62-3" title="3"><span class="co">#pass an argument, url, specifying to the read_dta function the need to</span></a>
+<a class="sourceLine" id="cb62-4" title="4"><span class="co">#make a url connection. The url function takes as an argument the url</span></a>
+<a class="sourceLine" id="cb62-5" title="5"><span class="co">#we are using and that we encoded in the data_url object in our case.</span></a>
+<a class="sourceLine" id="cb62-6" title="6">banbox &lt;-<span class="st"> </span><span class="kw">read_dta</span>(<span class="kw">url</span>(data_url))</a></code></pre></div>
 </div>
 <div id="getting-a-sense-for-your-data" class="section level2">
 <h2><span class="header-section-number">2.3</span> Getting a sense for your data</h2>
@@ -294,10 +310,10 @@ banbox &lt;-<span class="st"> </span><span class="kw">read_dta</span>(<span clas
 <p><img src="imgs/relationships.png" /><!-- --></p>
 <p>Here we are going to introduce a few functions that will help you to start making sense for what you have just downloaded. Summarising the data is the first step in any analysis and it is also used for finding out potential problems with the data. Regarding the latter you want to look out for: missing values; values outside the expected range (e.g., someone aged 200 years); values that seem to be in the wrong units; mislabeled variables; or variables that seem to be the wrong class (e.g., a quantitative variable encoded as a factor).</p>
 <p>Lets start by the basic things you always look first in a datasets. You can see in the Environment window that banbox has 14813 observations (rows) of 62 variables (columns). You can also obtain this information using code. Here you want the <strong>DIM</strong>ensions of the dataframe (the number of rows and columns) so you use the <code>dim()</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(banbox)</code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="kw">dim</span>(banbox)</a></code></pre></div>
 <pre><code>## [1] 14813    62</code></pre>
 <p>Looking at this information will help you to diagnose whether there was any trouble getting your data into R (e.g., imagine you know there should be more cases or more variables). You may also want to have a look at the names of the columns using the <code>names()</code> function. We will see the names of the variables.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(banbox)</code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">names</span>(banbox)</a></code></pre></div>
 <pre><code>##  [1] &quot;nj&quot;                   &quot;nyc&quot;                  &quot;app_date_d&quot;          
 ##  [4] &quot;pre&quot;                  &quot;post&quot;                 &quot;storeid&quot;             
 ##  [7] &quot;chain_id&quot;             &quot;center&quot;               &quot;crimbox&quot;             
@@ -320,33 +336,30 @@ banbox &lt;-<span class="st"> </span><span class="kw">read_dta</span>(<span clas
 ## [58] &quot;response_black&quot;       &quot;response_ged&quot;         &quot;response_hsd&quot;        
 ## [61] &quot;response_empgap&quot;      &quot;response_noempgap&quot;</code></pre>
 <p>As you may notice, these names may be hard to interpret. If you open the dataset in the data viewer of RStudio (using <code>View</code>) you will see that each column has a variable name and underneath a longer and more meaningful <strong>variable label</strong> that tells you what each variable means.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">View</span>(banbox)</code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">View</span>(banbox)</a></code></pre></div>
 </div>
 <div id="on-tibbles-and-labelled-vectors" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> On tibbles and labelled vectors</h3>
 <p>You also want to understand what the banbox object actually is. You can do that using the <code>class()</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(banbox)</code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">class</span>(banbox)</a></code></pre></div>
 <pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
 <p>What does <code>tbl</code> stands for? It refers to <strong>tibbles</strong>. This is essentially a new type of data structure introduced into R. Tibbles <em>are</em> data frames, but a particular type. Not all data frames we encounter in R are tibbles.</p>
 <p>The R language has been around for a while and sometimes things that made sense a couple of decades ago, make less sense now. A number of programmers are trying to create code that is more modern and more useful today. They are doing this by introducing a set of packages that speak to each other in order to modernise R without breaking existing code. You can think of it as an easier and more efficient modern dialect of R. This set of packages is called the <strong>tidyverse</strong>. Tibbles are dataframes that have been optimised to be used with this new set of packages. You can read a bit more about tibbles <a href="http://r4ds.had.co.nz/tibbles.html">here</a>.</p>
 <p>You can also look at the class of each individual column. As discussed, class of the variable lets us know, for example, if its an integer (number), character, or factor.</p>
 <p>To get the class of one variable, you pass it to the <code>class()</code> function. For example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(banbox<span class="op">$</span>crime)</code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">class</span>(banbox<span class="op">$</span>crime)</a></code></pre></div>
 <pre><code>## [1] &quot;haven_labelled&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(banbox<span class="op">$</span>num_stores)</code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">class</span>(banbox<span class="op">$</span>num_stores)</a></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>We talked about numeric vectors in week one. It is simply a collection of numbers. But what is a labelled vector? This is a new type of vector introduced by the <em>haven</em> package. <strong>Labelled vectors</strong> are categorical variables that have labels. Go to the <em>Environment</em> panel and left click in the banbox object. This should open the data browser in the top left quadrant of RStudio.</p>
-<div class="figure">
-<img src="imgs/dataview_causality.png" />
-
-</div>
+<p><img src="imgs/dataview_causality.png" /></p>
 <p>If you look carefully you will see that the various columns that include categorical variables only contain numbers. In many statistical environments, such as STATA or SPSS, this is a common standard. The variables have a numeric value for each observation and then each of these numeric values is associated with a label. This kind of made sense when computer memory was an issue - for this was an efficient way of saving resources. It also made manual data input quicker. These days it makes perhaps less sense. But labelled vectors give you a chance to reproduce data from other statistical environments without losing any fidelity in the import process. See what happens if we try to summarise this labelled vector. We will use the <code>table()</code> to provide a count of observations on the various valid values of the <em>crime</em> variable. It is a function to obtain your frequency distribution.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(banbox<span class="op">$</span>crime)</code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">table</span>(banbox<span class="op">$</span>crime)</a></code></pre></div>
 <pre><code>## 
 ##    0    1 
 ## 7323 7490</code></pre>
-<p>So, we see that we have 7490 observations classed as 1 and 7323 classed as 2. If only we knew what those numbers represent! Well, we actually do. We will use the <code>attributes()</code> function to see the different “compartments”&quot; within your “box”, your object.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(banbox<span class="op">$</span>crime)</code></pre></div>
+<p>So, we see that we have 7490 observations classed as 1 and 7323 classed as 2. If only we knew what those numbers represent! Well, we actually do. We will use the <code>attributes()</code> function to see the different “compartments”" within your “box”, your object.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">attributes</span>(banbox<span class="op">$</span>crime)</a></code></pre></div>
 <pre><code>## $label
 ## [1] &quot;Applicant has Criminal Record&quot;
 ## 
@@ -364,23 +377,23 @@ banbox &lt;-<span class="st"> </span><span class="kw">read_dta</span>(<span clas
 <div id="turning-variables-into-factors-and-changing-the-labels" class="section level3">
 <h3><span class="header-section-number">2.3.3</span> Turning variables into factors and changing the labels</h3>
 <p>Last week we said that many R functions expect factors when you have categorical data, so typically after you import data into R you may want to coerce your labelled vectors into factors. To do that you need to use the <code>as_factor()</code> function of the <em>haven</em> package. Let’s see how we do that.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#This code asks R to create a new column in your banbox tibble</span>
-<span class="co">#that is going to be called crime_f. Typically, when you alter</span>
-<span class="co">#variables you can to create a new one so that the original gets</span>
-<span class="co">#preserved in case you do something wrong. Then we use the</span>
-<span class="co">#as_factor() function to explain to R that what we want to do</span>
-<span class="co">#is to get the original crime variable and mutate it into </span>
-<span class="co">#a factor, this resulting factor is what will be stored in</span>
-<span class="co">#the new column.</span>
-banbox<span class="op">$</span>crime_f &lt;-<span class="st"> </span><span class="kw">as_factor</span>(banbox<span class="op">$</span>crime)</code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="co">#This code asks R to create a new column in your banbox tibble</span></a>
+<a class="sourceLine" id="cb78-2" title="2"><span class="co">#that is going to be called crime_f. Typically, when you alter</span></a>
+<a class="sourceLine" id="cb78-3" title="3"><span class="co">#variables you can to create a new one so that the original gets</span></a>
+<a class="sourceLine" id="cb78-4" title="4"><span class="co">#preserved in case you do something wrong. Then we use the</span></a>
+<a class="sourceLine" id="cb78-5" title="5"><span class="co">#as_factor() function to explain to R that what we want to do</span></a>
+<a class="sourceLine" id="cb78-6" title="6"><span class="co">#is to get the original crime variable and mutate it into </span></a>
+<a class="sourceLine" id="cb78-7" title="7"><span class="co">#a factor, this resulting factor is what will be stored in</span></a>
+<a class="sourceLine" id="cb78-8" title="8"><span class="co">#the new column.</span></a>
+<a class="sourceLine" id="cb78-9" title="9">banbox<span class="op">$</span>crime_f &lt;-<span class="st"> </span><span class="kw">as_factor</span>(banbox<span class="op">$</span>crime)</a></code></pre></div>
 <p>You will see now that you have 63 variables in your dataset, look at the environment to check. Let’s explore the new variable we have created (you can also look for the new variable in the data browser and see how it looks different to the original crime variable):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(banbox<span class="op">$</span>crime_f)</code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="kw">class</span>(banbox<span class="op">$</span>crime_f)</a></code></pre></div>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(banbox<span class="op">$</span>crime_f)</code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">table</span>(banbox<span class="op">$</span>crime_f)</a></code></pre></div>
 <pre><code>## 
 ## No Crime    Crime 
 ##     7323     7490</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(banbox<span class="op">$</span>crime_f)</code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">attributes</span>(banbox<span class="op">$</span>crime_f)</a></code></pre></div>
 <pre><code>## $levels
 ## [1] &quot;No Crime&quot; &quot;Crime&quot;   
 ## 
@@ -393,41 +406,41 @@ banbox<span class="op">$</span>crime_f &lt;-<span class="st"> </span><span class
 <p>For example, we can use the <code>lapply()</code> function to look at each column and get its class. To do so, we have to pass two arguments to the <code>lapply()</code> function, the first is the name of the dataframe, to tell it what to look through, and the second is the function we want it to apply to every column of that function.</p>
 <p>So we want to type “lapply(” + “name of dataframe” + “,” + “name of function” + “)”</p>
 <p>Which is:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(banbox, class)</code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="kw">lapply</span>(banbox, class)</a></code></pre></div>
 <p>As you can see many variables are classed as labelled. This is common with survey data. Many of the questions in social surveys measure the answers as categorical variables (e.g., these are nominal or ordinal level measures). In fact, with this dataset there are many variables that are encoded as numeric that really aren’t. Welcome to real world data, where things can be a bit messy and need tidying!</p>
 <p>See for example the variable black:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(banbox<span class="op">$</span>black)</code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="kw">class</span>(banbox<span class="op">$</span>black)</a></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(banbox<span class="op">$</span>black)</code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">table</span>(banbox<span class="op">$</span>black)</a></code></pre></div>
 <pre><code>## 
 ##    0    1 
 ## 7406 7407</code></pre>
 <p>We know that this variable measures whether someone is black or not. When people use 0 and 1 to code binary responses, typically they use a 1 to denote a positive response, a yes. So, I think it is fair to assume that a 1 here means the respondent is black. Because this variable is of class numeric we cannot simply use as_factor to assign the pre-existing labels and create a new factor. In this case we don’t have preexisting labels, since this is not a labelled vector. So what can we do to tidy this variable? We’ll we need to do some further work.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#We will use a slightly different function as.factor()</span>
-banbox<span class="op">$</span>black_f &lt;-<span class="st"> </span><span class="kw">as.factor</span>(banbox<span class="op">$</span>black)
-<span class="co">#You can check that the resulting column is a factor</span>
-<span class="kw">class</span>(banbox<span class="op">$</span>black_f)</code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="co">#We will use a slightly different function as.factor()</span></a>
+<a class="sourceLine" id="cb90-2" title="2">banbox<span class="op">$</span>black_f &lt;-<span class="st"> </span><span class="kw">as.factor</span>(banbox<span class="op">$</span>black)</a>
+<a class="sourceLine" id="cb90-3" title="3"><span class="co">#You can check that the resulting column is a factor</span></a>
+<a class="sourceLine" id="cb90-4" title="4"><span class="kw">class</span>(banbox<span class="op">$</span>black_f)</a></code></pre></div>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#But if you print the frequency distribution you will see the</span>
-<span class="co">#data are still presented in relation to 0 and 1</span>
-<span class="kw">table</span>(banbox<span class="op">$</span>black_f)</code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="co">#But if you print the frequency distribution you will see the</span></a>
+<a class="sourceLine" id="cb92-2" title="2"><span class="co">#data are still presented in relation to 0 and 1</span></a>
+<a class="sourceLine" id="cb92-3" title="3"><span class="kw">table</span>(banbox<span class="op">$</span>black_f)</a></code></pre></div>
 <pre><code>## 
 ##    0    1 
 ## 7406 7407</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#You can use the levels function to see the levels, the </span>
-<span class="co">#categories, in your factor</span>
-<span class="kw">levels</span>(banbox<span class="op">$</span>black_f)</code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="co">#You can use the levels function to see the levels, the </span></a>
+<a class="sourceLine" id="cb94-2" title="2"><span class="co">#categories, in your factor</span></a>
+<a class="sourceLine" id="cb94-3" title="3"><span class="kw">levels</span>(banbox<span class="op">$</span>black_f)</a></code></pre></div>
 <pre><code>## [1] &quot;0&quot; &quot;1&quot;</code></pre>
 <p>So, all we have done is create a new column that is a factor but still refers to 0 and 1. If we assume (rightly) that 1 mean black we have 7407 black applicants. Of course, it makes sense we only get 0 and 1 here. What else could R do? This is not a labelled vector, so there is no way for R to know that 0 and 1 mean anything other than 0 and 1, which is why those are the levels is using. But now that we have the factor we can rename those levels. We can use the following code to do just that:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#We are using the levels function to access them and change</span>
-<span class="co">#them to the levels we specify with the c() function. Be</span>
-<span class="co">#careful here, because the order we specify here will map </span>
-<span class="co">#out to the order of the existing levels. So given that 1 is </span>
-<span class="co">#black and black is the second level (as shown when printing</span>
-<span class="co">#the results above) you want to make sure that in the c()</span>
-<span class="co">#you write black as the second level.</span>
-<span class="kw">levels</span>(banbox<span class="op">$</span>black_f) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;White&quot;</span>, <span class="st">&quot;Black&quot;</span>)
-<span class="kw">table</span>(banbox<span class="op">$</span>black_f)</code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="co">#We are using the levels function to access them and change</span></a>
+<a class="sourceLine" id="cb96-2" title="2"><span class="co">#them to the levels we specify with the c() function. Be</span></a>
+<a class="sourceLine" id="cb96-3" title="3"><span class="co">#careful here, because the order we specify here will map </span></a>
+<a class="sourceLine" id="cb96-4" title="4"><span class="co">#out to the order of the existing levels. So given that 1 is </span></a>
+<a class="sourceLine" id="cb96-5" title="5"><span class="co">#black and black is the second level (as shown when printing</span></a>
+<a class="sourceLine" id="cb96-6" title="6"><span class="co">#the results above) you want to make sure that in the c()</span></a>
+<a class="sourceLine" id="cb96-7" title="7"><span class="co">#you write black as the second level.</span></a>
+<a class="sourceLine" id="cb96-8" title="8"><span class="kw">levels</span>(banbox<span class="op">$</span>black_f) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;White&quot;</span>, <span class="st">&quot;Black&quot;</span>)</a>
+<a class="sourceLine" id="cb96-9" title="9"><span class="kw">table</span>(banbox<span class="op">$</span>black_f)</a></code></pre></div>
 <pre><code>## 
 ## White Black 
 ##  7406  7407</code></pre>
@@ -436,19 +449,19 @@ banbox<span class="op">$</span>black_f &lt;-<span class="st"> </span><span class
 <div id="looking-for-missing-data-and-other-anomalies" class="section level3">
 <h3><span class="header-section-number">2.3.4</span> Looking for missing data and other anomalies</h3>
 <p>You can, for example, use the <code>head()</code> function if you just want to visualise the values for the first few cases in your dataset. The next code for example ask for the values for the first two cases. If you want a different number to be shown you just need to change the number you are passing as an argument.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(banbox, <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="kw">head</span>(banbox, <span class="dv">2</span>)</a></code></pre></div>
 <p>In the same way you could look at the last two cases in your dataset using <code>tail()</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(banbox, <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="kw">tail</span>(banbox, <span class="dv">2</span>)</a></code></pre></div>
 <p>It is good practice to do this to ensure R has read the data correctly and there’s nothing terribly wrong with your dataset. If you have access to STATA you can open the original file in STATA and check if there are any discrepancies, for example. Glimpsing your data in this way can also give you a first impression for what the data looks like.</p>
 <p>One thing you may also want to do is to see if there are any <strong>missing values</strong>. For that we can use the <code>is.na()</code> function. Missing values in R are coded as NA. The code below, for example, asks for NA values for the variable <em>response_black</em> in the <em>banbox</em> object for observations 1 to 10:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>(banbox<span class="op">$</span>response_black[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>])</code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="kw">is.na</span>(banbox<span class="op">$</span>response_black[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>])</a></code></pre></div>
 <pre><code>##  [1] FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE</code></pre>
 <p>The result is a logical vector that tells us if it is true that there is missing (NA) data for each of those first ten observations. You can see that there are 6 observations out of those 10 that have missing values for this variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">is.na</span>(banbox<span class="op">$</span>response_black)) </code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="kw">sum</span>(<span class="kw">is.na</span>(banbox<span class="op">$</span>response_black)) </a></code></pre></div>
 <pre><code>## [1] 7406</code></pre>
 <p>This is asking R to sum how many cases are TRUE NA in this variable. When reading a logical vector as the one we are creating, R will treat the FALSE elements as 0s and the TRUE elements as 1s. So basically the sum() function will count the number of TRUE cases returned by the is.na() function.</p>
 <p>You can use a bit of a hack to get the proportion of missing cases instead of the count:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">is.na</span>(banbox<span class="op">$</span>response_black))</code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="kw">mean</span>(<span class="kw">is.na</span>(banbox<span class="op">$</span>response_black))</a></code></pre></div>
 <pre><code>## [1] 0.4999662</code></pre>
 <p>This code is exploiting the mathematical fact that the mean of binary outcomes (0 or 1) gives you the proportion of ones in your data. As a rule of thumb, if you see more than 5% of the cases declared as NA, you need to start thinking about the implications of this. Beware of formulaic application of rules of thumb such as this though! In this case, we know that 49%% of the observations have missing values in this variable. When you see things like this the first thing to do is to look at the codebook or documentation to try to get some clues as to why there are so many missing cases. With survey data you often have questions that are simply not asked to everybody, so it’s not necessarily that something went very wrong with the data collection, but simply that the variable in question was only used with a subset of the sample. And that, therefore, any analysis you do using this question will only relate to that particular subset of cases.</p>
 <p>There is a whole field of statistics devoted to doing analysis when missing data is a problem. R has extensive capabilities for dealing with missing data -see for example <a href="http://www.crcpress.com/product/isbn/9781439868249">here</a>. For the purpose of this introductory course, however, we only explain how to do analysis that ignore missing data. This is often referred to a <strong>full/complete case analysis</strong>, because you only use observations for which you have full information in all the variables you employ. You would cover techniques for dealing with this sort of issues in more advanced courses.</p>
@@ -457,10 +470,7 @@ banbox<span class="op">$</span>black_f &lt;-<span class="st"> </span><span class
 <div id="data-wrangling-with-dplyr" class="section level2">
 <h2><span class="header-section-number">2.4</span> Data wrangling with dplyr</h2>
 <p>The data analysis workflow has a number of stages. The diagram below (produced by Hadley Wickham) is a nice illustration of this process:</p>
-<div class="figure">
-<img src="imgs/data-science-explore.png" />
-
-</div>
+<p><img src="imgs/data-science-explore.png" /></p>
 <p>We have started to see different ways of bringing data into R. And we have also started to see how we can explore our data. It is now time we start discussing one of the following stages, <strong>transform</strong>. A good deal of time and effort in data analysis is devoted to this. You get your data and then you have to do some transformations to it so that you can answer the questions you want to address in your research. We have already seen, for example, how to turn variables into factors, but there are other things you may want to do.</p>
 <p>R offers a great deal of flexibility in how to transform your data, Here we are going to illustrate some of the functionality of the <em>dplyr</em> package for data carpentry (a term people use to refer to this kind of operations). This package is part of the tydiverse and it aims to provide a friendly and modern take on how to work with dataframes (or tibbles) in R. It offers, as the authors of the package put it, “a flexible grammar of data manipulation”.</p>
 <p>Dplyr aims to provide a function for each basic verbs of data manipulation:</p>
@@ -474,7 +484,7 @@ banbox<span class="op">$</span>black_f &lt;-<span class="st"> </span><span class
 </ul>
 <p>In this session we will introduce and practice some of these. But we won’t have time to cover everything. There is, however, a very nice set of vignettes for this package in the help files, so you can try to go through those if you want a greater degree of detail or more practice.</p>
 <p>Now let’s load the package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -484,50 +494,51 @@ banbox<span class="op">$</span>black_f &lt;-<span class="st"> </span><span class
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 <p>Notice that when you run this package you get a series of warnings in the conseole. It is telling us that some functions from certain packages are being “masked”. One the things with a language like R is that sometimes packages introduce functions that have the same name than others that are already loaded into your session. When that happens the newly loaded ones will over-ride the previous ones. You can still use them but you will have to refer to them explicitly. Otherwise R will assume you are using the function most recently loaded:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Example:</span>
-<span class="co">#If you use load dplyr and then invoke the *filter()* function</span>
-<span class="co">#R will assume you are using the filter function from dplyr</span>
-<span class="co">#rather than the *filter()* function that exist in the *stats*</span>
-<span class="co">#package, which is part of the basic installation of R. If </span>
-<span class="co">#after loading dplyr you want to use the filter function from</span>
-<span class="co">#the stats package you will have to invoke it like this:</span>
-stats<span class="op">::</span><span class="kw">filter</span>()
-<span class="co">#Notice the grammar, first you write the name of the package,</span>
-<span class="co">#then colon twice, and then the name of the function. Don&#39;t </span>
-<span class="co">#run this code. You would need to pass some valid arguments</span>
-<span class="co">#for this to produce meaningful results.</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="co">#Example:</span></a>
+<a class="sourceLine" id="cb110-2" title="2"><span class="co">#If you use load dplyr and then invoke the *filter()* function</span></a>
+<a class="sourceLine" id="cb110-3" title="3"><span class="co">#R will assume you are using the filter function from dplyr</span></a>
+<a class="sourceLine" id="cb110-4" title="4"><span class="co">#rather than the *filter()* function that exist in the *stats*</span></a>
+<a class="sourceLine" id="cb110-5" title="5"><span class="co">#package, which is part of the basic installation of R. If </span></a>
+<a class="sourceLine" id="cb110-6" title="6"><span class="co">#after loading dplyr you want to use the filter function from</span></a>
+<a class="sourceLine" id="cb110-7" title="7"><span class="co">#the stats package you will have to invoke it like this:</span></a>
+<a class="sourceLine" id="cb110-8" title="8">stats<span class="op">::</span><span class="kw">filter</span>()</a>
+<a class="sourceLine" id="cb110-9" title="9"><span class="co">#Notice the grammar, first you write the name of the package,</span></a>
+<a class="sourceLine" id="cb110-10" title="10"><span class="co">#then colon twice, and then the name of the function. Don&#39;t </span></a>
+<a class="sourceLine" id="cb110-11" title="11"><span class="co">#run this code. You would need to pass some valid arguments</span></a>
+<a class="sourceLine" id="cb110-12" title="12"><span class="co">#for this to produce meaningful results.</span></a></code></pre></div>
 </div>
 <div id="using-dplyr-single-verbs" class="section level2">
 <h2><span class="header-section-number">2.5</span> Using dplyr single verbs</h2>
 <p>One of the first operations you may want to carry out when working with dataframes is to subset them based on values of particular variables. Say we want to replicate the results reported by Agan and Starr in 2017. In this earlier paper, these researchers only used data from the period prior to the introduction of Ban the Box legislation and only used data from businesses that asked about criminal records in their online applications. How can we recreate this dataset?</p>
 <p>For this kind of operations we use the <code>filter()</code> function. Like all single verbs in dplyr, the first argument is the tibble (or data frame). The second and subsequent arguments refer to variables within that data frame, selecting rows where the expression is TRUE.</p>
 <p>Ok, so if we look at the dataset we can see that there is a variable called “crimbox” that identifies applications that require information about criminal antecedents and there is a variable called “pre” that identifies whether the application was sent before the legislation was introduced. In this dataset the value 1 is being used to denote positive responses. So, if we want to create the 2017 dataset we would start by selecting only data where the value in these two variables equals 1 as shown below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#We will store the results of filtering the data in a new </span>
-<span class="co">#object that I am calling aer (short for the name of the </span>
-<span class="co">#journal in which the paper was published)</span>
-
-aer2017&lt;-<span class="st"> </span><span class="kw">filter</span>(banbox, crimbox <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, pre <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="co">#We will store the results of filtering the data in a new </span></a>
+<a class="sourceLine" id="cb111-2" title="2"><span class="co">#object that I am calling aer (short for the name of the </span></a>
+<a class="sourceLine" id="cb111-3" title="3"><span class="co">#journal in which the paper was published)</span></a>
+<a class="sourceLine" id="cb111-4" title="4"></a>
+<a class="sourceLine" id="cb111-5" title="5">aer2017&lt;-<span class="st"> </span><span class="kw">filter</span>(banbox, crimbox <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, pre <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
 <p>Notice that the number of cases equals the number of cases reported by the authors in their 2017 paper. That’s cool! So far we are replicating with same results.</p>
-<p>You may have noticed in the code above that I wrote “==”&quot; instead of “=”. Logical operators in R are not written exactly the same way than in normal practice. Keep this in mind when you get error messages from running your code. Often the source of your error may be that you are writing the logical operators the wrong way (as far as R is concerned). Look <a href="https://www.statmethods.net/management/operators.html">here</a> for valid logic operators in R.</p>
+<p>You may have noticed in the code above that I wrote “==”" instead of “=”. Logical operators in R are not written exactly the same way than in normal practice. Keep this in mind when you get error messages from running your code. Often the source of your error may be that you are writing the logical operators the wrong way (as far as R is concerned). Look <a href="https://www.statmethods.net/management/operators.html">here</a> for valid logic operators in R.</p>
 <p>Sometimes you may want to select only a few variables. Earlier we said that real life data may have hundreds of variables and only a few of those may be relevant for your analysis. Say you only want “crime”, “ged” (a ged is a high school equivalence diploma rather than a proper high school diploma and is sometimes seen as inferior), “empgap” (a gap year on employment), “black_f”, “response”, and “daystoresponse” from this dataset. For this kind of operations you use the <code>select()</code> function.</p>
 <p>The syntax of this function is easy. First we name the dataframe object (“aer2017”) and then we list the variables. The order in which we list the variables within the select function will determine the order in which those columns appear in the new dataframe we are creating. So this is a handy function to use if you want to change the order of your columns for some reason. Since I am pretty confident I am not making a mistake I will transform the original “aer2017” tibble rather than creating an entirely new object.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aer2017 &lt;-<span class="st"> </span><span class="kw">select</span>(aer2017, crime, ged, empgap, black_f, response, daystoresponse)</code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1">aer2017 &lt;-<span class="st"> </span><span class="kw">select</span>(aer2017, crime, ged, empgap, black_f, response, daystoresponse)</a></code></pre></div>
 <p>If you now look at the global environment you will see that the “aer2017” tibble has reduced in size and now only has 6 columns. If you view the data you will see these are the 6 variables we selected.</p>
 </div>
 <div id="using-dplyr-for-grouped-operations" class="section level2">
 <h2><span class="header-section-number">2.6</span> Using dplyr for grouped operations</h2>
 <p>So far we have used <code>dplyr</code> single verbs for ungrouped operations. But we can also use some of the functionality of <code>dplyr</code> for obtaining answers to questions that relate to groups of cases within our dataframe. Imagine that you want to know if applicants with a criminal record are less likely to receive a positive response from employers. How could you figure that one out? For answering this kind of questions we can use the <code>group_by()</code> function in conjunction with other <code>dplyr</code> functions. In particular we are going to look at the <code>summarise</code> function.</p>
-<p>First we group the observations by criminal record in a new object, by using as_factor in the call to the crime variable the results will be labelled later on (even though we are not changing the crime variable in the aer2017 dataframe. Keep in mind we are using as_factor because the column crime is a labelled vector rather than a factor or a character vector, and we do this to aid interpretation (it is easier to interpret labels than 0 and 1).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">by_antecedents &lt;-<span class="st"> </span><span class="kw">group_by</span>(aer2017, <span class="kw">as_factor</span>(crime))
-
-<span class="co">#Then we run the summarise function to provide some useful</span>
-<span class="co">#summaries of the groups we are using: the number of cases</span>
-<span class="co">#and the mean of the response variable</span>
-results &lt;-<span class="st"> </span><span class="kw">summarise</span>(by_antecedents,
-  <span class="dt">count =</span> <span class="kw">n</span>(),
-  <span class="dt">outcome =</span> <span class="kw">mean</span>(response, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))
-<span class="co">#autoprint the results stored in the newly created object</span>
-results</code></pre></div>
+<p>First we group the observations by criminal record in a new object, by using as_factor in the call to the crime variable the results will be labelled later on (even though we are not changing the crime variable in the aer2017 dataframe. Keep in mind we are using as_factor because the column crime is a labelled vector rather than a factor or a character vector, and we do this to aid interpretation (it is easier to
+interpret labels than 0 and 1).</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1">by_antecedents &lt;-<span class="st"> </span><span class="kw">group_by</span>(aer2017, <span class="kw">as_factor</span>(crime))</a>
+<a class="sourceLine" id="cb113-2" title="2"></a>
+<a class="sourceLine" id="cb113-3" title="3"><span class="co">#Then we run the summarise function to provide some useful</span></a>
+<a class="sourceLine" id="cb113-4" title="4"><span class="co">#summaries of the groups we are using: the number of cases</span></a>
+<a class="sourceLine" id="cb113-5" title="5"><span class="co">#and the mean of the response variable</span></a>
+<a class="sourceLine" id="cb113-6" title="6">results &lt;-<span class="st"> </span><span class="kw">summarise</span>(by_antecedents,</a>
+<a class="sourceLine" id="cb113-7" title="7">  <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb113-8" title="8">  <span class="dt">outcome =</span> <span class="kw">mean</span>(response, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb113-9" title="9"><span class="co">#autoprint the results stored in the newly created object</span></a>
+<a class="sourceLine" id="cb113-10" title="10">results</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##   `as_factor(crime)` count outcome
 ##   &lt;fct&gt;              &lt;int&gt;   &lt;dbl&gt;
@@ -535,30 +546,35 @@ results</code></pre></div>
 ## 2 Crime               1336  0.0846</code></pre>
 <p>Let’s look at the code in the summarise function above. First we are asking R to place the results in an object we are calling “results”. Then we are specifying that we want to group the data in the way we specified in our <code>group_by()</code> function before, that is by criminal record. Then we pass two arguments. Each of these arguments is creating a new variable in the resulting object called “results”. The first variable we are creating is called “<em>count</em>” by saying this equals “n()” we are specifying to R that this new variable simply counts the number of cases in each of the grouping categories. The second variable we are creating is called “<em>outcome</em>” and to compute this variable we are asking R to compute the mean of the variable response for each of the two groups of applicants defined in “by_antecedents” (those with records, those without). Remember that the variable response in the “aer2017” dataframe was coded as numeric variable, even though in truth is categorical in nature (there was a response, or not, from the employers). It doesn’t really matter. Taking the mean of a binary variable in this case is mathematically equivalent to computing a proportion as we discussed earlier.</p>
 <p>So, what we see here is that about 13.6% of applicants with no criminal record received a positive response from the employers, whereas only 8% of those with criminal records did receive such a response. Given that the assignation of a criminal record was randomised to the applicants, there’s a pretty good chance that no other <a href="https://en.wikipedia.org/wiki/Confounding"><strong>confounders</strong></a> are influencing this outcome. And that is the beauty of randomised experiments. You may be in a position to make stronger claims about your results.</p>
-<p><strong>HOMEWORK 1:</strong> <em>Use what we have learned so far to see if there is an interaction effect between race and criminal records. That is, what would happen if we compare 4 groups: whites with no records, whites with records, blacks with no records, and blacks with records. What do you think? Is there an interaction effect? In other words, is the impact of having a criminal record more accentuated for either of the two racial groups?</em></p>
+<p><strong>HOMEWORK 1:</strong>
+<em>Use what we have learned so far to see if there is an interaction effect between race and criminal records. That is, what would happen if we compare 4 groups: whites with no records, whites with records, blacks with no records, and blacks with records. What do you think? Is there an interaction effect? In other words, is the impact of having a criminal record more accentuated for either of the two racial groups?</em></p>
 </div>
 <div id="making-comparisons-with-numerical-outcomes" class="section level2">
 <h2><span class="header-section-number">2.7</span> Making comparisons with numerical outcomes</h2>
 <p>We have been looking at relationships so far between categorical variables, specifically between having a criminal record (yes or no), race (black or white), and receiving a positive response from employers (yes or no). Often we may be interested in looking at the impact of a factor on a numerical outcome. In the banbox object we have such an outcome measured by the researchers. The variable “daystoresponse” tells us how long it took the employers to provide a positive response. Let’s look at this variable:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(banbox<span class="op">$</span>daystoresponse)</code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="kw">summary</span>(banbox<span class="op">$</span>daystoresponse)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##    0.00    3.00   10.00   19.48   28.00  153.00   14361</code></pre>
 <p>The <code>summary()</code> function provides some useful stats for numerical variables. We obtain the minimum and maximum value, the 25th percentile, the median, the mean, the 75th percentile, and the number of missing data (NA). You can see the number of missing data here is massive. Most cases have missing data on this variable. Clearly this is a function of, first and foremost, the fact that the number of days to receive a positive response will only be collected in cases where there was a positive response! But even accounting for that, it is clear that this information is also missing in many cases that received a positive response. So given all of this, we need to be very careful when interpreting this variable. Yet, because it is the only numeric variable here we will use it to illustrate some handy functions.</p>
 <p>We could do as before and get results by groups. Let’s look at the impact of race on days to response:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">by_race &lt;-<span class="st"> </span><span class="kw">group_by</span>(banbox, black_f)
-results_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">summarise</span>(by_race,
-  <span class="dt">avg_delay =</span> <span class="kw">mean</span>(daystoresponse, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))
-results_<span class="dv">3</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1">by_race &lt;-<span class="st"> </span><span class="kw">group_by</span>(banbox, black_f)</a>
+<a class="sourceLine" id="cb117-2" title="2">results_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">summarise</span>(by_race,</a>
+<a class="sourceLine" id="cb117-3" title="3">  <span class="dt">avg_delay =</span> <span class="kw">mean</span>(daystoresponse, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb117-4" title="4">results_<span class="dv">3</span></a></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   black_f avg_delay
 ##   &lt;fct&gt;       &lt;dbl&gt;
 ## 1 White        18.7
 ## 2 Black        20.4</code></pre>
 <p><strong>Homework 2:</strong></p>
-<p><em>Answer the following questions</em>: <em>2.1 What is a tibble?</em> *2.2 How is a variable name different from a variable label?“<em> </em>2.3 What is a labelled vector?<em> </em>How is the <code>filter()</code> function different from the <code>select()</code> function?*</p>
+<p><em>Answer the following questions</em>:
+<em>2.1 What is a tibble?</em>
+<em>2.2 How is a variable name different from a variable label?"</em>
+<em>2.3 What is a labelled vector?</em>
+<em>How is the <code>filter()</code> function different from the <code>select()</code> function?</em></p>
 <p><strong>Homework 3:</strong></p>
 <p><em>For this course unit you need to write a coursework assignment in which you will use data from a social survey to explore relationships between various variables. Specifically, you will be allowed to use. So you will need to pick one of them and then select a topic (of those listed below) to explore with each of these surveys:</em></p>
-<p>*- The 2018 wave of the European Social Survey, which you can access <a href="https://www.europeansocialsurvey.org/download.html?file=ESS9e01_1&amp;y=2018">here</a> and explore <a href="http://nesstar.ess.nsd.uib.no/webview/">here</a>. From this dataset you will be able to explore the following topic: “victimisation in the last 5 years (crmvct)*</p>
+<p><em>- The 2018 wave of the European Social Survey, which you can access <a href="https://www.europeansocialsurvey.org/download.html?file=ESS9e01_1&amp;y=2018">here</a> and explore <a href="http://nesstar.ess.nsd.uib.no/webview/">here</a>. From this dataset you will be able to explore the following topic: "victimisation in the last 5 years (crmvct)</em></p>
 <p><em>- The 2013-2014 Crime Survey for England and Wales (the Teaching Dataset version) which you can access <a href="https://discover.ukdataservice.ac.uk/catalogue/?sn=7911&amp;type=Data%20catalogue">here</a> or explore <a href="http://nesstar.ukdataservice.ac.uk/webview/">here</a>. From this dataset you will need to focus on one of the following topics “fairness of criminal justice system (fairx)”, “confidence in the police in their neighbourhood (confx)”, or “worry about being a victim of crime (worryx)”</em>.</p>
 <p><strong>As part of this week homework you need to let us know which survey and which topic you want to focus on for your coursework assignment</strong>.</p>
 <p><em>You can explore the datasets and what other variables are available. For your coursework you will need to identify other variables in these surveys that you think may be associated or helpful to understand why people vary in worry of crime, confidence towards the police, etc. At this point you don’t need to identify those other variables, but you may find it useful to explore what’s available in those datasets using NESSTAR (a guide for how to use NESSTAR is available <a href="http://nesstar.com/help/4.0/webview/getting-started/getting-to-know-nesstar-webview.html">here</a> and the existing documentation for those studies</em></p>
@@ -576,11 +592,13 @@ results_<span class="dv">3</span></code></pre></div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -588,12 +606,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -605,6 +622,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

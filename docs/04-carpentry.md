@@ -321,12 +321,12 @@ table(df$isocntry)
 
 ```
 ## 
-##     AT     BE     BG     CY     CZ   DE-E   DE-W     DK     EE     ES 
-##   1016   1029   1001    501   1060    533   1052   1010   1001   1008 
-##     FI     FR GB-GBN GB-NIR     GR     HR     HU     IE     IT     LT 
-##   1042   1009   1006    300   1000   1026   1046   1002   1013   1004 
-##     LU     LV     MT     NL     PL     PT     RO     SE     SI     SK 
-##    508   1010    500   1003   1002   1000   1007   1109   1012   1008
+##     AT     BE     BG     CY     CZ   DE-E   DE-W     DK     EE     ES     FI 
+##   1016   1029   1001    501   1060    533   1052   1010   1001   1008   1042 
+##     FR GB-GBN GB-NIR     GR     HR     HU     IE     IT     LT     LU     LV 
+##   1009   1006    300   1000   1026   1046   1002   1013   1004    508   1010 
+##     MT     NL     PL     PT     RO     SE     SI     SK 
+##    500   1003   1002   1000   1007   1109   1012   1008
 ```
 
 There are 30 countries in the sample. You may consider that for the purposes of your analysis maybe that is too much. For the sake of this tutorial, let's say that maybe you are not really interested in national differences but in regional differences across different parts of Europe. Say you may want to explore whether these attitudes are different across Western/Central Europe, Scandinavian countries, Mediterranean countries, and Eastern Europe. You do not have a variable with these categories but since you have a variable that gives you the nations you could create such a variable. How would you do that?
@@ -488,10 +488,10 @@ table(df$occupation)
 
 ```
 ## 
-##    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15 
-## 1588 1864 1845 8916  129   14  384  768  517  878  313 1921 2202  856 2062 
-##   16   17   18 
-##  271 2471  819
+##    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16 
+## 1588 1864 1845 8916  129   14  384  768  517  878  313 1921 2202  856 2062  271 
+##   17   18 
+## 2471  819
 ```
 
 There are 18 categories here. And it is not clear what they mean.
@@ -566,13 +566,6 @@ Having to look at this every time is not very convenient. You may prefer to simp
 
 ```r
 library(labelled)
-```
-
-```
-## Warning: package 'labelled' was built under R version 3.5.3
-```
-
-```r
 df$f_occup <- to_factor(df$occupation)
 class(df$f_occup)
 ```
@@ -837,10 +830,10 @@ colMeans(is.na(df))
 ```
 
 ```
-##     uniqid at_sexviol     gender        age   politics      urban 
-## 0.00000000 0.04540226 0.00000000 0.00000000 0.24929902 0.00000000 
-## occupation     region    f_occup     occup2 politics_n 
-## 0.00000000 0.00000000 0.00000000 0.00000000 0.24929902
+##     uniqid at_sexviol     gender        age   politics      urban occupation 
+## 0.00000000 0.04540226 0.00000000 0.00000000 0.24929902 0.00000000 0.00000000 
+##     region    f_occup     occup2 politics_n 
+## 0.00000000 0.00000000 0.00000000 0.24929902
 ```
 
 This is suspicious. Only the variables we have created and already sorted seem to have NA. This may be a function of the `haven_labelled` vectors behaving like with the original *politics* variable. Let's explore it. We can use the `val_labels` function from the `labelled` package to extract labels from the whole dataframe like this:
@@ -1042,10 +1035,10 @@ colMeans(is.na(df_f))
 ```
 
 ```
-##       uniqid   at_sexviol     f_gender          age   politics_n 
-## 0.0000000000 0.0454022575 0.0000000000 0.0000000000 0.2492990150 
-##      f_urban      f_occup       region     complete 
-## 0.0006470631 0.0000000000 0.0000000000 0.0000000000
+##       uniqid   at_sexviol     f_gender          age   politics_n      f_urban 
+## 0.0000000000 0.0454022575 0.0000000000 0.0000000000 0.2492990150 0.0006470631 
+##      f_occup       region     complete 
+## 0.0000000000 0.0000000000 0.0000000000
 ```
 
 The function `complete.cases` is returning what cases have missing data **in any of** the variables not in a singular one. It is not unusual for this percentage to be high. You may end up with a massive loss of cases even though the individual variables themselves do not look as bad as the end scenario.
@@ -1068,13 +1061,6 @@ We have covered now a number of functions you can use to explore your data, such
 
 ```r
 library(visdat)
-```
-
-```
-## Warning: package 'visdat' was built under R version 3.5.3
-```
-
-```r
 vis_dat(df_f)
 ```
 

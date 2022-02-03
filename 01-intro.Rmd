@@ -475,11 +475,15 @@ library(skimr)
 
 ```
 
-Once you have loaded the *skimr* package you can use it. Its main function is *skim*. Like *summary* for data frames, skim presents results for all the columns and the statistics will depend on the class of the variable. However, the results are displayed and stored in a nicer way -though we won't get into the details of this right now.
+Once you have loaded the *skimr* package you can use it. Its main function is *skim*. Like *summary* for data frames, skim presents results for all the columns and the statistics will depend on the class of the variable. However, the results are displayed and stored in a nicer way - though we won't get into the details of this right now.
 
 
-```{r}
+```{r, eval = FALSE}
 skim(hate_crimes)
+```
+
+```{r, echo=FALSE}
+knitr::kable(skim(hate_crimes))
 ```
 
 
@@ -498,8 +502,4 @@ Keep in mind though that you should not then panic if you open your next R Studi
 What is more. I would suggest you go to the Tools drop down menu, select Global Options, and make sure you select "Never" where it says "Save workspace". Then click "Apply". This way you will never be asked to save what is in your global environment when you terminate a session.
 
 ![](imgs/neversave.PNG) 
-
-## Lab homework activities for Week 1
-
-Use the various functions we have introduced this week (skim, summary) to obtain summary statistics for all the variables in the *police_locals* data frame that is available in the *fivethirtyeight* package. 
 

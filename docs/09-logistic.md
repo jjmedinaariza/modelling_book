@@ -213,23 +213,18 @@ library(lessR, quietly= TRUE)
 
 ```
 ## 
-## lessR 3.9.0     feedback: gerbing@pdx.edu     web: lessRstats.com/new
-## ---------------------------------------------------------------------
-## 1. d <- Read("")           Read text, Excel, SPSS, SAS or R data file
-##                            d: default data frame, no need for data=
-## 2. l <- Read("", var_labels=TRUE)   Read variable labels into l,
-##                            required name for data frame of labels
-## 3. Help()                  Get help, and, e.g., Help(Read)
-## 4. hs(), bc(), or ca()     All histograms, all bar charts, or both
-## 5. Plot(X) or Plot(X,Y)    For continuous and categorical variables
-## 6. by1= , by2=             Trellis graphics, a plot for each by1, by2
-## 7. reg(Y ~ X, Rmd="eg")    Regression with full interpretative output
-## 8. style("gray")           Grayscale theme, + many others available
-##    style(show=TRUE)        all color/style options and current values
-## 9. getColors()             create many styles of color palettes
+## lessR 4.0.0  feedback: gerbing@pdx.edu  web: lessRstats.com/new
+## ---------------------------------------------------------------
+## > d <- Read("")   Read text, Excel, SPSS, SAS, or R data file
+##   d is default data frame, data= in analysis routines optional
 ## 
-## lessR parameter names now use _'s. Names with a period are deprecated.
-## Ex:  bin_width  instead of  bin.width
+## Learn about reading, writing, and manipulating data, graphics,
+## testing means and proportions, regression, factor analysis,
+## customization, and descriptive statistics from pivot tables.
+##   Enter:  browseVignettes("lessR")
+## 
+## View changes in this new version of lessR.
+##   Enter: help(package=lessR)  Click: Package NEWS
 ```
 
 ```r
@@ -322,11 +317,22 @@ library(arm)
 
 ```
 ## 
-## arm (Version 1.10-1, built: 2018-4-12)
+## arm (Version 1.11-2, built: 2020-7-27)
 ```
 
 ```
-## Working directory is D:/Dropbox/1_Teaching/1 Manchester courses/20452 Modelling Criminological Data/modelling_book
+## Working directory is /Users/reka/Desktop/modelling_book
+```
+
+```
+## 
+## Attaching package: 'arm'
+```
+
+```
+## The following object is masked from 'package:lessR':
+## 
+##     rescale
 ```
 
 ```r
@@ -353,6 +359,25 @@ We can also use **forest plots** in much the same way than we did for linear reg
 
 ```r
 library(sjPlot)
+```
+
+```
+## Registered S3 methods overwritten by 'parameters':
+##   method                           from      
+##   as.double.parameters_kurtosis    datawizard
+##   as.double.parameters_skewness    datawizard
+##   as.double.parameters_smoothness  datawizard
+##   as.numeric.parameters_kurtosis   datawizard
+##   as.numeric.parameters_skewness   datawizard
+##   as.numeric.parameters_smoothness datawizard
+##   print.parameters_distribution    datawizard
+##   print.parameters_kurtosis        datawizard
+##   print.parameters_skewness        datawizard
+##   summary.parameters_kurtosis      datawizard
+##   summary.parameters_skewness      datawizard
+```
+
+```r
 plot_model(fitl_1)
 ```
 
@@ -589,11 +614,11 @@ library(caret)
 ```
 
 ```
-## Loading required package: lattice
+## Loading required package: ggplot2
 ```
 
 ```
-## Loading required package: ggplot2
+## Loading required package: lattice
 ```
 
 ```r

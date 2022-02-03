@@ -187,10 +187,6 @@ say("I hate computers")
 ```
 
 ```
-## Colors cannot be applied in this environment :( Try using a terminal or RStudio.
-```
-
-```
 ## 
 ##  -------------- 
 ## I hate computers 
@@ -216,10 +212,6 @@ You get a random animal in the console repeating the text we passed as an argume
 
 ```r
 say("I hate computers", "cow")
-```
-
-```
-## Colors cannot be applied in this environment :( Try using a terminal or RStudio.
 ```
 
 ```
@@ -258,10 +250,6 @@ Once we put things into these boxes or objects we can use them as arguments in o
 
 ```r
 say(my_text, "cow")
-```
-
-```
-## Colors cannot be applied in this environment :( Try using a terminal or RStudio.
 ```
 
 ```
@@ -560,6 +548,17 @@ Done? Ok, now we are going to look at the data sets that are included in this pa
 
 ```r
 library("fivethirtyeight")
+```
+
+```
+## Some larger datasets need to be installed separately, like senators and
+## house_district_forecast. To install these, we recommend you install the
+## fivethirtyeightdata package by running:
+## install.packages('fivethirtyeightdata', repos =
+## 'https://fivethirtyeightdata.github.io/drat/', type = 'source')
+```
+
+```r
 data(package="fivethirtyeight") #This function will return all the data frames that are available in the named package.
 ```
 
@@ -689,7 +688,7 @@ You will need to install it before anything else. Use the code you have learnt t
 
 
 
-Once you have loaded the *skimr* package you can use it. Its main function is *skim*. Like *summary* for data frames, skim presents results for all the columns and the statistics will depend on the class of the variable. However, the results are displayed and stored in a nicer way -though we won't get into the details of this right now.
+Once you have loaded the *skimr* package you can use it. Its main function is *skim*. Like *summary* for data frames, skim presents results for all the columns and the statistics will depend on the class of the variable. However, the results are displayed and stored in a nicer way - though we won't get into the details of this right now.
 
 
 
@@ -698,45 +697,21 @@ skim(hate_crimes)
 ```
 
 
-Table: (\#tab:unnamed-chunk-31)Data summary
-
-                                       
--------------------------  ------------
-Name                       hate_crimes 
-Number of rows             51          
-Number of columns          13          
-_______________________                
-Column type frequency:                 
-character                  2           
-numeric                    11          
-________________________               
-Group variables            None        
--------------------------  ------------
-
-
-**Variable type: character**
-
-skim_variable    n_missing   complete_rate   min   max   empty   n_unique   whitespace
---------------  ----------  --------------  ----  ----  ------  ---------  -----------
-state                    0               1     4    20       0         51            0
-state_abbrev             0               1     2     2       0         51            0
-
-
-**Variable type: numeric**
-
-skim_variable                  n_missing   complete_rate       mean        sd         p0        p25        p50        p75       p100  hist  
-----------------------------  ----------  --------------  ---------  --------  ---------  ---------  ---------  ---------  ---------  ------
-median_house_inc                       0            1.00   55223.61   9208.48   35521.00   48657.00   54916.00   60719.00   76165.00  ▂▆▇▅▂ 
-share_unemp_seas                       0            1.00       0.05      0.01       0.03       0.04       0.05       0.06       0.07  ▅▇▇▇▂ 
-share_pop_metro                        0            1.00       0.75      0.18       0.31       0.63       0.79       0.90       1.00  ▁▂▅▆▇ 
-share_pop_hs                           0            1.00       0.87      0.03       0.80       0.84       0.87       0.90       0.92  ▃▅▃▆▇ 
-share_non_citizen                      3            0.94       0.05      0.03       0.01       0.03       0.04       0.08       0.13  ▇▆▆▂▂ 
-share_white_poverty                    0            1.00       0.09      0.02       0.04       0.08       0.09       0.10       0.17  ▂▇▃▂▁ 
-gini_index                             0            1.00       0.45      0.02       0.42       0.44       0.45       0.47       0.53  ▆▇▅▁▁ 
-share_non_white                        0            1.00       0.32      0.16       0.06       0.20       0.28       0.42       0.81  ▇▇▆▂▁ 
-share_vote_trump                       0            1.00       0.49      0.12       0.04       0.42       0.49       0.57       0.70  ▁▁▆▇▇ 
-hate_crimes_per_100k_splc              4            0.92       0.30      0.25       0.07       0.14       0.23       0.36       1.52  ▇▂▁▁▁ 
-avg_hatecrimes_per_100k_fbi            1            0.98       2.37      1.71       0.27       1.29       1.99       3.18      10.95  ▇▅▁▁▁ 
+|skim_type |skim_variable               | n_missing| complete_rate| character.min| character.max| character.empty| character.n_unique| character.whitespace| numeric.mean|   numeric.sd|   numeric.p0|  numeric.p25|  numeric.p50|  numeric.p75| numeric.p100|numeric.hist |
+|:---------|:---------------------------|---------:|-------------:|-------------:|-------------:|---------------:|------------------:|--------------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|:------------|
+|character |state                       |         0|     1.0000000|             4|            20|               0|                 51|                    0|           NA|           NA|           NA|           NA|           NA|           NA|           NA|NA           |
+|character |state_abbrev                |         0|     1.0000000|             2|             2|               0|                 51|                    0|           NA|           NA|           NA|           NA|           NA|           NA|           NA|NA           |
+|numeric   |median_house_inc            |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 5.522361e+04| 9208.4781698| 3.552100e+04| 4.865700e+04| 5.491600e+04| 6.071900e+04| 76165.000000|▂▆▇▅▂        |
+|numeric   |share_unemp_seas            |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 4.956860e-02|    0.0106981| 2.800000e-02| 4.200000e-02| 5.100000e-02| 5.750000e-02|     0.073000|▅▇▇▇▂        |
+|numeric   |share_pop_metro             |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 7.501961e-01|    0.1815873| 3.100000e-01| 6.300000e-01| 7.900000e-01| 8.950000e-01|     1.000000|▁▂▅▆▇        |
+|numeric   |share_pop_hs                |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 8.691176e-01|    0.0340732| 7.990000e-01| 8.405000e-01| 8.740000e-01| 8.980000e-01|     0.918000|▃▅▃▆▇        |
+|numeric   |share_non_citizen           |         3|     0.9411765|            NA|            NA|              NA|                 NA|                   NA| 5.458330e-02|    0.0310770| 1.000000e-02| 3.000000e-02| 4.500000e-02| 8.000000e-02|     0.130000|▇▆▆▂▂        |
+|numeric   |share_white_poverty         |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 9.176470e-02|    0.0247148| 4.000000e-02| 7.500000e-02| 9.000000e-02| 1.000000e-01|     0.170000|▂▇▃▂▁        |
+|numeric   |gini_index                  |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 4.537647e-01|    0.0208908| 4.190000e-01| 4.400000e-01| 4.540000e-01| 4.665000e-01|     0.532000|▆▇▅▁▁        |
+|numeric   |share_non_white             |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 3.156863e-01|    0.1649152| 6.000000e-02| 1.950000e-01| 2.800000e-01| 4.200000e-01|     0.810000|▇▇▆▂▁        |
+|numeric   |share_vote_trump            |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 4.900000e-01|    0.1187097| 4.000000e-02| 4.150000e-01| 4.900000e-01| 5.750000e-01|     0.700000|▁▁▆▇▇        |
+|numeric   |hate_crimes_per_100k_splc   |         4|     0.9215686|            NA|            NA|              NA|                 NA|                   NA| 3.040930e-01|    0.2527086| 6.744680e-02| 1.427066e-01| 2.261971e-01| 3.569347e-01|     1.522302|▇▂▁▁▁        |
+|numeric   |avg_hatecrimes_per_100k_fbi |         1|     0.9803922|            NA|            NA|              NA|                 NA|                   NA| 2.367613e+00|    1.7142450| 2.669408e-01| 1.293139e+00| 1.987068e+00| 3.184344e+00|    10.953480|▇▅▁▁▁        |
 
 
 Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 we covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don't know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes [here](https://rawgit.com/maczokni/MSCD/master/Lesson_3.html#visualising-the-differences-between-groups).
@@ -754,8 +729,4 @@ Keep in mind though that you should not then panic if you open your next R Studi
 What is more. I would suggest you go to the Tools drop down menu, select Global Options, and make sure you select "Never" where it says "Save workspace". Then click "Apply". This way you will never be asked to save what is in your global environment when you terminate a session.
 
 ![](imgs/neversave.PNG) 
-
-## Lab homework activities for Week 1
-
-Use the various functions we have introduced this week (skim, summary) to obtain summary statistics for all the variables in the *police_locals* data frame that is available in the *fivethirtyeight* package. 
 

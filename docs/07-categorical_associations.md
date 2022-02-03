@@ -84,8 +84,7 @@ levels(BCS0708$rubbcomm)
 ```
 
 ```
-## [1] "fairly common"     "not at all common" "not very common"  
-## [4] "very common"
+## NULL
 ```
 
 As we can see the order makes little sense. We should reorder the factor levels to make them follow a logical order. There are multiple ways of doing this, some of which we have already seen. This is one possible way of doing it.
@@ -447,7 +446,7 @@ print(levels(BCS0708$bcsvictim))
 ```
 
 ```
-## [1] "not a victim of crime" "victim of crime"
+## NULL
 ```
 
 ```r
@@ -455,7 +454,7 @@ print(levels(BCS0708$rural2))
 ```
 
 ```
-## [1] "rural" "urban"
+## NULL
 ```
 
 We want to reverse this. So that "victim of crime" becomes the first level (appears first in the print out) and "urban" becomes the first level as well. There are various ways of doing that with add-on packages, this is an easy way using base R:

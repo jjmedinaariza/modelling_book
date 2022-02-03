@@ -263,6 +263,11 @@ ggplot(BCS0708, aes(ethgrp2, tcviolent, fill=ethgrp2)) +
 ```
 
 ```
+## Warning: `guides(<scale> = FALSE)` is deprecated. Please use `guides(<scale> =
+## "none")` instead.
+```
+
+```
 ## Warning: Removed 3242 rows containing non-finite values (stat_boxplot).
 ```
 
@@ -279,6 +284,11 @@ ggplot(na.omit(BCS0708[,c("ethgrp2", "tcviolent")]), aes(x=reorder (ethgrp2, tcv
   geom_boxplot() +
   coord_flip() + #We are flipping the coordinates to avoid the overprinting of the factor levels
   guides(fill=FALSE)
+```
+
+```
+## Warning: `guides(<scale> = FALSE)` is deprecated. Please use `guides(<scale> =
+## "none")` instead.
 ```
 
 <img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-8-1.png" width="672" />
@@ -630,8 +640,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained 0.088 
-## Effect size 0.296
+## Variance explained: 0.078 
+## Effect size: 0.28
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.

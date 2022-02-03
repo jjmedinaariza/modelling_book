@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Studying relationships between two factors | Modelling Criminological Data LAWS20452</title>
-  <meta name="description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="description" content="This is the course material for Modelling Criminological Data LAWS20452." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Studying relationships between two factors | Modelling Criminological Data LAWS20452" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="This is the course material for Modelling Criminological Data LAWS20452." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 7 Studying relationships between two factors | Modelling Criminological Data LAWS20452" />
   
-  <meta name="twitter:description" content="This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This is the course material for Modelling Criminological Data LAWS20452." />
   
 
-<meta name="author" content="Juanjo Medina and Reka Solymosi" />
+<meta name="author" content="Reka Solymosi and Eon Kim (based on material developed with Juanjo Medina" />
 
 
-<meta name="date" content="2020-03-01" />
+<meta name="date" content="2022-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"/>
 <link rel="next" href="an-introduction-to-regression.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,28 +51,31 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +84,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -115,6 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -132,7 +137,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html"><i class="fa fa-check"></i><b>1</b> A first lesson about R</a><ul>
+<li class="chapter" data-level="1" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html"><i class="fa fa-check"></i><b>1</b> A first lesson about R</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#install-r-rstudio"><i class="fa fa-check"></i><b>1.1</b> Install R &amp; RStudio</a></li>
 <li class="chapter" data-level="1.2" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#open-up-and-explore-rstudio"><i class="fa fa-check"></i><b>1.2</b> Open up and explore RStudio</a></li>
 <li class="chapter" data-level="1.3" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#customising-the-rstudio-look"><i class="fa fa-check"></i><b>1.3</b> Customising the RStudio look</a></li>
@@ -147,23 +153,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#dataframes"><i class="fa fa-check"></i><b>1.12</b> Dataframes</a></li>
 <li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.13</b> Exploring data</a></li>
 <li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.14</b> Quitting RStudio</a></li>
-<li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#lab-homework-activities-for-week-1"><i class="fa fa-check"></i><b>1.15</b> Lab homework activities for Week 1</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html"><i class="fa fa-check"></i><b>2</b> Causality in randomised experiments</a><ul>
-<li class="chapter" data-level="2.1" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#causality-in-social-sciences"><i class="fa fa-check"></i><b>2.1</b> Causality in social sciences</a></li>
-<li class="chapter" data-level="2.2" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#getting-data-thanks-to-reproducibility"><i class="fa fa-check"></i><b>2.2</b> Getting data thanks to reproducibility</a></li>
-<li class="chapter" data-level="2.3" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#getting-a-sense-for-your-data"><i class="fa fa-check"></i><b>2.3</b> Getting a sense for your data</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#first-steps"><i class="fa fa-check"></i><b>2.3.1</b> First steps</a></li>
-<li class="chapter" data-level="2.3.2" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#on-tibbles-and-labelled-vectors"><i class="fa fa-check"></i><b>2.3.2</b> On tibbles and labelled vectors</a></li>
-<li class="chapter" data-level="2.3.3" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#turning-variables-into-factors-and-changing-the-labels"><i class="fa fa-check"></i><b>2.3.3</b> Turning variables into factors and changing the labels</a></li>
-<li class="chapter" data-level="2.3.4" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#looking-for-missing-data-and-other-anomalies"><i class="fa fa-check"></i><b>2.3.4</b> Looking for missing data and other anomalies</a></li>
+<li class="chapter" data-level="2" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html"><i class="fa fa-check"></i><b>2</b> Getting to know your data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#causality-in-social-sciences"><i class="fa fa-check"></i><b>2.1</b> Causality in social sciences</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#getting-data-thanks-to-reproducibility"><i class="fa fa-check"></i><b>2.2</b> Getting data thanks to reproducibility</a></li>
+<li class="chapter" data-level="2.3" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#getting-a-sense-for-your-data"><i class="fa fa-check"></i><b>2.3</b> Getting a sense for your data</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#first-steps"><i class="fa fa-check"></i><b>2.3.1</b> First steps</a></li>
+<li class="chapter" data-level="2.3.2" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#on-tibbles-and-labelled-vectors"><i class="fa fa-check"></i><b>2.3.2</b> On tibbles and labelled vectors</a></li>
+<li class="chapter" data-level="2.3.3" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#turning-variables-into-factors-and-changing-the-labels"><i class="fa fa-check"></i><b>2.3.3</b> Turning variables into factors and changing the labels</a></li>
+<li class="chapter" data-level="2.3.4" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#looking-for-missing-data-and-other-anomalies"><i class="fa fa-check"></i><b>2.3.4</b> Looking for missing data and other anomalies</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#data-wrangling-with-dplyr"><i class="fa fa-check"></i><b>2.4</b> Data wrangling with dplyr</a></li>
-<li class="chapter" data-level="2.5" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#using-dplyr-single-verbs"><i class="fa fa-check"></i><b>2.5</b> Using dplyr single verbs</a></li>
-<li class="chapter" data-level="2.6" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#using-dplyr-for-grouped-operations"><i class="fa fa-check"></i><b>2.6</b> Using dplyr for grouped operations</a></li>
-<li class="chapter" data-level="2.7" data-path="causality-in-randomised-experiments.html"><a href="causality-in-randomised-experiments.html#making-comparisons-with-numerical-outcomes"><i class="fa fa-check"></i><b>2.7</b> Making comparisons with numerical outcomes</a></li>
+<li class="chapter" data-level="2.4" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#data-wrangling-with-dplyr"><i class="fa fa-check"></i><b>2.4</b> Data wrangling with dplyr</a></li>
+<li class="chapter" data-level="2.5" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#using-dplyr-single-verbs"><i class="fa fa-check"></i><b>2.5</b> Using dplyr single verbs</a></li>
+<li class="chapter" data-level="2.6" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#using-dplyr-for-grouped-operations"><i class="fa fa-check"></i><b>2.6</b> Using dplyr for grouped operations</a></li>
+<li class="chapter" data-level="2.7" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#making-comparisons-with-numerical-outcomes"><i class="fa fa-check"></i><b>2.7</b> Making comparisons with numerical outcomes</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html"><i class="fa fa-check"></i><b>3</b> Data visualisation with R</a><ul>
+<li class="chapter" data-level="3" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html"><i class="fa fa-check"></i><b>3</b> Data visualisation with R</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#anatomy-of-a-plot"><i class="fa fa-check"></i><b>3.2</b> Anatomy of a plot</a></li>
 <li class="chapter" data-level="3.3" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#what-graph-should-i-use"><i class="fa fa-check"></i><b>3.3</b> What graph should I use?</a></li>
@@ -177,20 +185,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.11" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#plotting-categorical-data-bar-charts"><i class="fa fa-check"></i><b>3.11</b> Plotting categorical data: bar charts</a></li>
 <li class="chapter" data-level="3.12" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#further-resources"><i class="fa fa-check"></i><b>3.12</b> Further resources</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-carpentry.html"><a href="data-carpentry.html"><i class="fa fa-check"></i><b>4</b> Data Carpentry</a><ul>
-<li class="chapter" data-level="4.1" data-path="data-carpentry.html"><a href="data-carpentry.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
-<li class="chapter" data-level="4.2" data-path="data-carpentry.html"><a href="data-carpentry.html#a-template-for-your-assignment"><i class="fa fa-check"></i><b>4.2</b> A template for your assignment</a></li>
-<li class="chapter" data-level="4.3" data-path="data-carpentry.html"><a href="data-carpentry.html#thinking-about-your-data-filtering-cases"><i class="fa fa-check"></i><b>4.3</b> Thinking about your data: filtering cases</a></li>
-<li class="chapter" data-level="4.4" data-path="data-carpentry.html"><a href="data-carpentry.html#selecting-variables-using-dplyrselect"><i class="fa fa-check"></i><b>4.4</b> Selecting variables: using <code>dplyr::select</code></a></li>
-<li class="chapter" data-level="4.5" data-path="data-carpentry.html"><a href="data-carpentry.html#creating-summated-scales"><i class="fa fa-check"></i><b>4.5</b> Creating summated scales</a></li>
-<li class="chapter" data-level="4.6" data-path="data-carpentry.html"><a href="data-carpentry.html#collapsing-categories-in-character-variables"><i class="fa fa-check"></i><b>4.6</b> Collapsing categories in character variables</a></li>
-<li class="chapter" data-level="4.7" data-path="data-carpentry.html"><a href="data-carpentry.html#working-with-apparently-cryptic-variable-names-and-levels"><i class="fa fa-check"></i><b>4.7</b> Working with apparently cryptic variable names and levels</a></li>
-<li class="chapter" data-level="4.8" data-path="data-carpentry.html"><a href="data-carpentry.html#recoding-factors"><i class="fa fa-check"></i><b>4.8</b> Recoding factors</a></li>
-<li class="chapter" data-level="4.9" data-path="data-carpentry.html"><a href="data-carpentry.html#understanding-missing-data"><i class="fa fa-check"></i><b>4.9</b> Understanding missing data</a></li>
-<li class="chapter" data-level="4.10" data-path="data-carpentry.html"><a href="data-carpentry.html#exploring-dataframes-visually"><i class="fa fa-check"></i><b>4.10</b> Exploring dataframes visually</a></li>
-<li class="chapter" data-level="4.11" data-path="data-carpentry.html"><a href="data-carpentry.html#further-resources-1"><i class="fa fa-check"></i><b>4.11</b> Further resources</a></li>
+<li class="chapter" data-level="4" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html"><i class="fa fa-check"></i><b>4</b> Refresher on descriptive statistics &amp; data carpentry</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#a-template-for-your-assignment"><i class="fa fa-check"></i><b>4.2</b> A template for your assignment</a></li>
+<li class="chapter" data-level="4.3" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#thinking-about-your-data-filtering-cases"><i class="fa fa-check"></i><b>4.3</b> Thinking about your data: filtering cases</a></li>
+<li class="chapter" data-level="4.4" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#selecting-variables-using-dplyrselect"><i class="fa fa-check"></i><b>4.4</b> Selecting variables: using <code>dplyr::select</code></a></li>
+<li class="chapter" data-level="4.5" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#creating-summated-scales"><i class="fa fa-check"></i><b>4.5</b> Creating summated scales</a></li>
+<li class="chapter" data-level="4.6" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#collapsing-categories-in-character-variables"><i class="fa fa-check"></i><b>4.6</b> Collapsing categories in character variables</a></li>
+<li class="chapter" data-level="4.7" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#working-with-apparently-cryptic-variable-names-and-levels"><i class="fa fa-check"></i><b>4.7</b> Working with apparently cryptic variable names and levels</a></li>
+<li class="chapter" data-level="4.8" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#recoding-factors"><i class="fa fa-check"></i><b>4.8</b> Recoding factors</a></li>
+<li class="chapter" data-level="4.9" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#understanding-missing-data"><i class="fa fa-check"></i><b>4.9</b> Understanding missing data</a></li>
+<li class="chapter" data-level="4.10" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#exploring-dataframes-visually"><i class="fa fa-check"></i><b>4.10</b> Exploring dataframes visually</a></li>
+<li class="chapter" data-level="4.11" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#a-quick-recap-on-descriptive-statistics"><i class="fa fa-check"></i><b>4.11</b> A quick recap on descriptive statistics</a></li>
+<li class="chapter" data-level="4.12" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#further-resources-1"><i class="fa fa-check"></i><b>4.12</b> Further resources</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Foundations of statistical inference: confidence intervals</a><ul>
+<li class="chapter" data-level="5" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Foundations of statistical inference: confidence intervals</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 <li class="chapter" data-level="5.2" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#generating-random-data"><i class="fa fa-check"></i><b>5.2</b> Generating random data</a></li>
 <li class="chapter" data-level="5.3" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#sampling-data-and-sampling-variability"><i class="fa fa-check"></i><b>5.3</b> Sampling data and sampling variability</a></li>
@@ -202,12 +213,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye"><i class="fa fa-check"></i><b>5.9</b> Comparing means visually by using error bars representing confidence intervals: inference by eye</a></li>
 <li class="chapter" data-level="5.10" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#homework-5.1"><i class="fa fa-check"></i><b>5.10</b> HOMEWORK 5.1</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><i class="fa fa-check"></i><b>6</b> Studying relationships between a categorical and a quantitative variable</a><ul>
+<li class="chapter" data-level="6" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><i class="fa fa-check"></i><b>6</b> Studying relationships between a categorical and a quantitative variable</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#the-logic-of-hypothesis-testing"><i class="fa fa-check"></i><b>6.1</b> The logic of hypothesis testing</a></li>
 <li class="chapter" data-level="6.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#comparing-means-across-two-groups-the-t-test"><i class="fa fa-check"></i><b>6.2</b> Comparing means across two groups (the t test)</a></li>
 <li class="chapter" data-level="6.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#what-does-a-significant-effect-mean"><i class="fa fa-check"></i><b>6.3</b> What does a significant effect mean?</a></li>
 <li class="chapter" data-level="6.4" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#power-analysis"><i class="fa fa-check"></i><b>6.4</b> Power analysis</a></li>
-<li class="chapter" data-level="6.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>6.5</b> Comparing means across several groups (ANOVA)</a><ul>
+<li class="chapter" data-level="6.5" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>6.5</b> Comparing means across several groups (ANOVA)</a>
+<ul>
 <li class="chapter" data-level="6.5.1" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>6.5.1</b> The problem with multiple comparisons</a></li>
 <li class="chapter" data-level="6.5.2" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#anova"><i class="fa fa-check"></i><b>6.5.2</b> ANOVA</a></li>
 <li class="chapter" data-level="6.5.3" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.3</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
@@ -217,7 +230,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.7" data-path="studying-relationships-between-a-categorical-and-a-quantitative-variable.html"><a href="studying-relationships-between-a-categorical-and-a-quantitative-variable.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.7</b> Effect size for ANOVA</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between two factors</a><ul>
+<li class="chapter" data-level="7" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between two factors</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#producing-cross-tabulations"><i class="fa fa-check"></i><b>7.1</b> Producing cross tabulations</a></li>
 <li class="chapter" data-level="7.2" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#expected-frequencies-and-chi-square"><i class="fa fa-check"></i><b>7.2</b> Expected frequencies and Chi-Square</a></li>
 <li class="chapter" data-level="7.3" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#residuals"><i class="fa fa-check"></i><b>7.3</b> Residuals</a></li>
@@ -225,7 +239,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#odds-and-odd-ratios"><i class="fa fa-check"></i><b>7.5</b> Odds and odd ratios</a></li>
 <li class="chapter" data-level="7.6" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#homework-7.1"><i class="fa fa-check"></i><b>7.6</b> HOMEWORK 7.1</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html"><i class="fa fa-check"></i><b>8</b> An introduction to regression</a><ul>
+<li class="chapter" data-level="8" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html"><i class="fa fa-check"></i><b>8</b> An introduction to regression</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#introduction-models-in-scientific-research"><i class="fa fa-check"></i><b>8.1</b> Introduction: models in scientific research</a></li>
 <li class="chapter" data-level="8.2" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#motivating-regression"><i class="fa fa-check"></i><b>8.2</b> Motivating regression</a></li>
 <li class="chapter" data-level="8.3" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>8.3</b> Fitting a simple regression model</a></li>
@@ -239,7 +254,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.11" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>8.11</b> Model building and variable selection</a></li>
 <li class="chapter" data-level="8.12" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#homework"><i class="fa fa-check"></i><b>8.12</b> HOMEWORK</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Logistic regression</a><ul>
+<li class="chapter" data-level="9" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Logistic regression</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="logistic-regression.html"><a href="logistic-regression.html#introduction-3"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
 <li class="chapter" data-level="9.2" data-path="logistic-regression.html"><a href="logistic-regression.html#fitting-logistic-regression"><i class="fa fa-check"></i><b>9.2</b> Fitting logistic regression</a></li>
 <li class="chapter" data-level="9.3" data-path="logistic-regression.html"><a href="logistic-regression.html#assessing-model-fit-i-deviance-and-pseudo-r-squared"><i class="fa fa-check"></i><b>9.3</b> Assessing model fit I: deviance and pseudo r squared</a></li>
@@ -268,20 +284,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="studying-relationships-between-two-factors" class="section level1">
+<div id="studying-relationships-between-two-factors" class="section level1" number="7">
 <h1><span class="header-section-number">Chapter 7</span> Studying relationships between two factors</h1>
-<div id="producing-cross-tabulations" class="section level2">
+<div id="producing-cross-tabulations" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Producing cross tabulations</h2>
 <p>In earlier sessions we have covered how to run frequency distributions using the <code>table()</code> function. Cross tabulations, also called <strong>contingency tables</strong>, are essentially crossed frequency distributions, where you plot the frequency distributions of more than one variable simultaneously. This semester we are only going to explore <strong>two-way cross tabulations</strong>, that is contingency tables where we plot the frequency distribution of two variables at the same time. Frequency distributions are a useful way of exploring categorical variables that do not have too many categories. By extension, cross tabulations are a useful way of exploring relationships between two categorical variables that do not have too many levels or categories.</p>
 <p>As we learned during the first week we can get results from R in a variety of ways. You can produce basic tables with some of the core functions in R. However, in order to produce the sort of cross-tabs we will use, I suggest you install and load the package <code>gmodels</code>. This package allows you to produce cross tabulations in a format similar to the one used by commercial statistical packages SPSS and SAS. Since some of you may have some previous experience with SPSS we will use the SPSS format. Cross-tabs with this package are more useful for our purposes than the default you may get with the core R <code>table()</code> function.</p>
 <p>We will begin the session by loading again the BCS 2007/2008 data from previous weeks.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" title="1"><span class="co">##R in Windows have some problems with https addresses, that&#39;s why we need to do this first:</span></a>
-<a class="sourceLine" id="cb458-2" title="2">urlfile&lt;-<span class="st">&#39;https://raw.githubusercontent.com/jjmedinaariza/LAWS70821/master/BCS0708.csv&#39;</span></a>
-<a class="sourceLine" id="cb458-3" title="3"><span class="co">#We create a data frame object reading the data from the remote .csv file</span></a>
-<a class="sourceLine" id="cb458-4" title="4">BCS0708&lt;-<span class="kw">read.csv</span>(<span class="kw">url</span>(urlfile))</a></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="studying-relationships-between-two-factors.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="do">##R in Windows have some problems with https addresses, that&#39;s why we need to do this first:</span></span>
+<span id="cb459-2"><a href="studying-relationships-between-two-factors.html#cb459-2" aria-hidden="true" tabindex="-1"></a>urlfile<span class="ot">&lt;-</span><span class="st">&#39;https://raw.githubusercontent.com/jjmedinaariza/LAWS70821/master/BCS0708.csv&#39;</span></span>
+<span id="cb459-3"><a href="studying-relationships-between-two-factors.html#cb459-3" aria-hidden="true" tabindex="-1"></a><span class="co">#We create a data frame object reading the data from the remote .csv file</span></span>
+<span id="cb459-4"><a href="studying-relationships-between-two-factors.html#cb459-4" aria-hidden="true" tabindex="-1"></a>BCS0708<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">url</span>(urlfile))</span></code></pre></div>
 <p>We will start by producing a cross tabulation of victimisation (“bcsvictim”), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence (“rubbcomm”), another categorical unordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" title="1"><span class="kw">library</span>(gmodels)</a>
-<a class="sourceLine" id="cb459-2" title="2"><span class="kw">with</span>(BCS0708, <span class="kw">CrossTable</span>(rubbcomm, bcsvictim, <span class="dt">prop.chisq =</span> <span class="ot">FALSE</span>, <span class="dt">format =</span> <span class="kw">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="studying-relationships-between-two-factors.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gmodels)</span>
+<span id="cb460-2"><a href="studying-relationships-between-two-factors.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(BCS0708, <span class="fu">CrossTable</span>(rubbcomm, bcsvictim, <span class="at">prop.chisq =</span> <span class="cn">FALSE</span>, <span class="at">format =</span> <span class="fu">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</span></code></pre></div>
 <pre><code>## 
 ##    Cell Contents
 ## |-------------------------|
@@ -321,19 +337,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ------------------|-----------------------|-----------------------|-----------------------|
 ## 
 ## </code></pre>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" title="1"><span class="co">#In CrossTable() we are using as our first argument the name of the variable defining the rows, and as our second argument the name of the variable defining the columns. We are also telling R we don&#39;t want yet any test of statistical significance and that we want the table to look like it would in SPSS.</span></a></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="studying-relationships-between-two-factors.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="co">#In CrossTable() we are using as our first argument the name of the variable defining the rows, and as our second argument the name of the variable defining the columns. We are also telling R we don&#39;t want yet any test of statistical significance and that we want the table to look like it would in SPSS.</span></span></code></pre></div>
 <p>The cells for the central two columns represent the total number of cases in each category, the <strong>row percentages</strong>, the <strong>column percentages</strong>, and the <strong>total percentages</strong>. So you have, for example, 63 people in the category “rubbish is very common” that were victims of a crime, this represents 30.88% of all the people in the “rubbish is very common” category (your row percent), 2.79% of all the people in the “victim of a crime” category (your column percent), and 0.57% of all the people in the sample.</p>
 <p>Notice that although “rubbcomm” is an ordinal variable, the order in which it gets printed does not make logical sense. We can check the order of the encoding using the <code>levels()</code> function.</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb462-1" title="1"><span class="kw">levels</span>(BCS0708<span class="op">$</span>rubbcomm)</a></code></pre></div>
-<pre><code>## [1] &quot;fairly common&quot;     &quot;not at all common&quot; &quot;not very common&quot;  
-## [4] &quot;very common&quot;</code></pre>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="studying-relationships-between-two-factors.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(BCS0708<span class="sc">$</span>rubbcomm)</span></code></pre></div>
+<pre><code>## NULL</code></pre>
 <p>As we can see the order makes little sense. We should reorder the factor levels to make them follow a logical order. There are multiple ways of doing this, some of which we have already seen. This is one possible way of doing it.</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb464-1" title="1">BCS0708<span class="op">$</span>rubbcomm &lt;-<span class="st"> </span><span class="kw">factor</span>(BCS0708<span class="op">$</span>rubbcomm, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;not at all common&quot;</span>, <span class="st">&quot;not very common&quot;</span>, <span class="st">&quot;fairly common&quot;</span>, <span class="st">&quot;very common&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="studying-relationships-between-two-factors.html#cb465-1" aria-hidden="true" tabindex="-1"></a>BCS0708<span class="sc">$</span>rubbcomm <span class="ot">&lt;-</span> <span class="fu">factor</span>(BCS0708<span class="sc">$</span>rubbcomm, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;not at all common&quot;</span>, <span class="st">&quot;not very common&quot;</span>, <span class="st">&quot;fairly common&quot;</span>, <span class="st">&quot;very common&quot;</span>))</span></code></pre></div>
 <p>You are only interested in the proportions or percentages that allow you to make meaningful comparisons. Although you can do cross-tabs for variables in which a priori you don’t think of one of them as the one doing the explaining (your independent variable) and another to be explained (your dependent variable); most often you will already be thinking of them in this way. Here we think of victimisation as the outcome we want to explain and “rubbish in the area” as the factor that may help us to explain variation in victimisation.</p>
 <p>If you have a dependent variable, you need to request only the percentages that allow you to make comparisons across your independent variable (how common rubbish is) for the outcome of interest (victimisation). In this case, with our outcome (victimisation) defining the columns, we would request and compare the row percentages only. On the other hand, if our outcome were the variable defining the rows we would be interested instead in the column percentages. Pay very close attention to this. It is a very common mistake to interpret a cross tab the wrong way if you don’t do as explained here.</p>
 <p>To reiterate then, there are two rules to producing and reading cross tabs the right way. The first rule for reading cross tabulations is that <strong>if your dependent variable is defining the rows then you ask for the column percentages. If, on the other hand, you decided that you preferred to have your dependent variable defining the columns (as seen here), then, you would need to ask for the row percentages</strong>. Make sure you remember this.</p>
 <p>To avoid confusion when looking at the table, you could as well modify the code to only ask for the relevant percentages. In this case we will ask for the row percentages. We can control what gets printed in the main console using the different options of the <code>CrossTable()</code> function. By default this function prints all the percentages, but most of them are not terribly useful for our purposes here. So, we are going to modify the default options by asking R not to print the column nor the total percentages.</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" title="1"><span class="kw">with</span>(BCS0708, <span class="kw">CrossTable</span>(rubbcomm, bcsvictim, <span class="dt">prop.chisq=</span><span class="ot">FALSE</span>, <span class="dt">prop.c=</span><span class="ot">FALSE</span>, <span class="dt">prop.t=</span><span class="ot">FALSE</span>, <span class="dt">format=</span><span class="kw">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="studying-relationships-between-two-factors.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(BCS0708, <span class="fu">CrossTable</span>(rubbcomm, bcsvictim, <span class="at">prop.chisq=</span><span class="cn">FALSE</span>, <span class="at">prop.c=</span><span class="cn">FALSE</span>, <span class="at">prop.t=</span><span class="cn">FALSE</span>, <span class="at">format=</span><span class="fu">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</span></code></pre></div>
 <pre><code>## 
 ##    Cell Contents
 ## |-------------------------|
@@ -368,11 +383,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The second rule for reading cross tabulations the right way is this: <strong>you make the comparisons across the right percentages (see first rule) in the direction where they do not add up to a hundred</strong>. Another way of saying this is that you compare the percentages for each level of your dependent variable across the levels of your independent variable. In this case we would, for example, compare what percentage of people who perceive rubbish as common in their area are victims of crime. We focus in the second column here (being victim of a crime) because typically that’s what we want to study, this is our outcome of interest (e.g., victimisation). We can see rubbish seems to matter a bit. For example, 30.88% of people who live in areas where rubbish is very common have been victimised. By contrast only 15.54% of people who live in areas where rubbish is not at all common have been victimised in the previous year.</p>
 <p>If this is confusing you may enjoy this <a href="http://sonet.nottingham.ac.uk/rlos/ucel/cross_tab_data/main.html">online tutorial</a> on cross-tabulations looking at cause of mortality for music stars. Cross tabs are very commonly used, so it is important you understand well how they work.</p>
 </div>
-<div id="expected-frequencies-and-chi-square" class="section level2">
+<div id="expected-frequencies-and-chi-square" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Expected frequencies and Chi-Square</h2>
 <p>So far we are only describing our sample. Can we infer that these differences that we observe in this sample can be generalised to the population from which this sample was drawn? Every time you draw a sample from the same population the results will be slightly different, we will have a different combination of people in these cells.</p>
 <p>In order to assess that possibility we carry out a test of statistical significance. This test allow us to examine the null hypothesis. So our hypothesis is that there is a relationship between the two variables, while our null hypothesis is that there is not a relationship. In this case, the null hypothesis states that in the population from which this sample was drawn victimisation and how common rubbish is in your area are independent events, that is, they are not related to each other. The materials you read as preparation explained the test that is appropriate for this case, the chi square test. You should know what this test does is to contrast the squared average difference between the observed frequencies and the expected frequencies (divided by the expected frequencies). We can see the expected frequencies for each cell modifying the options of the <code>CrossTable</code> function in the following manner:</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" title="1"><span class="kw">with</span>(BCS0708, <span class="kw">CrossTable</span>(rubbcomm, bcsvictim, <span class="dt">expected =</span> <span class="ot">TRUE</span>, <span class="dt">prop.c =</span> <span class="ot">FALSE</span>, <span class="dt">prop.t =</span> <span class="ot">FALSE</span>, <span class="dt">format =</span> <span class="kw">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="studying-relationships-between-two-factors.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(BCS0708, <span class="fu">CrossTable</span>(rubbcomm, bcsvictim, <span class="at">expected =</span> <span class="cn">TRUE</span>, <span class="at">prop.c =</span> <span class="cn">FALSE</span>, <span class="at">prop.t =</span> <span class="cn">FALSE</span>, <span class="at">format =</span> <span class="fu">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</span></code></pre></div>
 <pre><code>## 
 ##    Cell Contents
 ## |-------------------------|
@@ -432,9 +447,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If this absolute value is large, it will have a small p value associated with and we will be in a position to reject the null hypothesis. We would conclude then that observing such a large chi square is improbable if the null hypothesis is true. In practice we don’t actually do any of this. We just run the Chi Square in our software and look at the p value in much the same way we have done for other tests. But it is helpful to know what the test is actually doing.</p>
 <p>Asking for the expected frequencies with <code>CrossTable()</code> automatically prints the results of the Chi Square test. In this case, you get a Chi Square of 184.04, with 3 degrees of freedom. The probability associated with this particular value is nearly zero (1.180e-39). This value is considerably lower than the standard alpha level of .05. So, these results would lead us to conclude that there is a statistically significant relationship between these two variables. We are able to reject the null hypothesis that these two variables are independent in the population from which this sample was drawn. In other words, this significant Chi Square test means that we can assume that there was indeed a relationship between our indicator of broken windows and victimisation in the population of England and Wales in 2007/2008.</p>
 <p>Notice that R is telling us that the minimum expected frequency is 41.68. Why? The Chi-squared test, for it to works, assumes the cell counts are sufficiently large. Precisely what constitutes ‘sufficiently large’ is a matter of some debate. One rule of thumb is that all expected cell counts should be above 5. If we have small cells one alternative is to rely on the Fisher’s Exact Test rather than in the Chi Square. We don’t have to request it here. Our cells are large enough for Chi Square to work fine. But if we needed, we could obtain the Fisher’s Exact Test with the following code:</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb469-1" title="1"><span class="kw">with</span>(BCS0708, <span class="kw">fisher.test</span>(rubbcomm, bcsvictim))</a></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="studying-relationships-between-two-factors.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(BCS0708, <span class="fu">fisher.test</span>(rubbcomm, bcsvictim))</span></code></pre></div>
 <p>You will most likely get an error message telling you to increase the size of the workspace. When this happens you may try following the recommendation provided (increasing the size of the workspace for the calculation) and using a hybrid approximation of the exact probabilities.</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb470-1" title="1"><span class="kw">fisher.test</span>(BCS0708<span class="op">$</span>rubbcomm, BCS0708<span class="op">$</span>bcsvictim, <span class="dt">workspace =</span> <span class="fl">2e+07</span>, <span class="dt">hybrid =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="studying-relationships-between-two-factors.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(BCS0708<span class="sc">$</span>rubbcomm, BCS0708<span class="sc">$</span>bcsvictim, <span class="at">workspace =</span> <span class="fl">2e+07</span>, <span class="at">hybrid =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Fisher&#39;s Exact Test for Count Data hybrid using asym.chisq. iff
 ##  (exp=5, perc=80, Emin=1)
@@ -444,8 +459,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## alternative hypothesis: two.sided</code></pre>
 <p>The p value is still considerably lower than our alpha level of .05. So, we can still reach the conclusion that the relationship we observe can be generalised to the population.</p>
 <p>Another less extreme solution (if cells are too small) is to use a p value using Monte Carlo simulation. This is a way of proceeding that is similar in philosophy to resampling techniques. To obtain such a Chi Square test you could use the <code>chisq.test()</code> function passing an argument requiring that the p value is obtained via resampling simulation:</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb472-1" title="1">mytable<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">table</span>(BCS0708<span class="op">$</span>rubbcomm, BCS0708<span class="op">$</span>bcsvictim)</a>
-<a class="sourceLine" id="cb472-2" title="2"><span class="kw">chisq.test</span>(mytable<span class="fl">.1</span>, <span class="dt">simulate.p.value =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="studying-relationships-between-two-factors.html#cb473-1" aria-hidden="true" tabindex="-1"></a>mytable<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">table</span>(BCS0708<span class="sc">$</span>rubbcomm, BCS0708<span class="sc">$</span>bcsvictim)</span>
+<span id="cb473-2"><a href="studying-relationships-between-two-factors.html#cb473-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(mytable<span class="fl">.1</span>, <span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test with simulated p-value (based on 2000
 ##  replicates)
@@ -454,11 +469,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## X-squared = 184.04, df = NA, p-value = 0.0004998</code></pre>
 <p>Remember that we didn’t really need the Fisher test or the simulated p values in this case. But there may be occasions when you need it as suggested above.</p>
 </div>
-<div id="residuals" class="section level2">
+<div id="residuals" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Residuals</h2>
 <p>If we look at the observed and expected frequencies in the previous cross-tabulations we will see that there are differences in pretty much all the cells. You can possibly notice as well that some differences are bigger than others. For example, earlier we saw how there are about 21 more people that live in areas where rubbish is very common and experience victimisation than expected under the null hypothesis. Clearly when you see large differences you should expect that the cell in question may be playing a particularly strong role in driving the relationship.</p>
 <p>But how do you know that large is large? A statistic that helps in this regard is the <strong>adjusted standardised residuals</strong>. These residuals give you an idea of the difference between the expected and the observed counts in a standardised scale. Whenever you see differences that are greater (in absolute value) than 2, that’s telling you that the difference between expected and observed frequencies in that particular cell is significant and is driving the results of your Chi Square test. We can requests R to print these residuals with the following code:</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb474-1" title="1"><span class="kw">with</span>(BCS0708, <span class="kw">CrossTable</span>(rubbcomm, bcsvictim, <span class="dt">expected =</span> <span class="ot">TRUE</span>, <span class="dt">prop.chisq =</span> <span class="ot">FALSE</span>, <span class="dt">prop.c =</span> <span class="ot">FALSE</span>,  <span class="dt">prop.t =</span> <span class="ot">FALSE</span>, <span class="dt">asresid =</span> <span class="ot">TRUE</span>, <span class="dt">format =</span> <span class="kw">c</span>(<span class="st">&quot;SPSS&quot;</span>))) </a></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="studying-relationships-between-two-factors.html#cb475-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(BCS0708, <span class="fu">CrossTable</span>(rubbcomm, bcsvictim, <span class="at">expected =</span> <span class="cn">TRUE</span>, <span class="at">prop.chisq =</span> <span class="cn">FALSE</span>, <span class="at">prop.c =</span> <span class="cn">FALSE</span>,  <span class="at">prop.t =</span> <span class="cn">FALSE</span>, <span class="at">asresid =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="fu">c</span>(<span class="st">&quot;SPSS&quot;</span>))) </span></code></pre></div>
 <pre><code>## 
 ##    Cell Contents
 ## |-------------------------|
@@ -509,12 +524,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##        Minimum expected frequency: 41.68495</code></pre>
 <p>You can see here, looking at the column identifying the outcome of interest (victimisation) that the adjusted standardised residual is lower than -12 for the “not at all common” category. That is the largest residual for the outcome of interest. The expected count under the null hypothesis here is much higher than the observed count.</p>
 </div>
-<div id="gamma" class="section level2">
+<div id="gamma" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> Gamma</h2>
 <p>Is this relationship strong? The residuals seem to be suggesting it is not trivial indeed. Apart from looking at the residuals, one of the tests discussed in the required reading as a test for the strength of a relationship is gamma. Gamma is a measure of association that allow us to make a judgement about the strength of this relationship and that we can use with ordinal measures (or as in this case when one variable is ordinal and the other is nominal dichotomous). Gamma is appropriate for testing the relationship between two categorical ordered variables (ordinal-level variables) or between a categorical ordered variable and a categorical unordered variables with only two levels (a dichotomous variable, such as “victimisation”: that only has two levels, you have or you haven’t experienced a victimisation). How can you obtain gamma with R?</p>
 <p>We will use the package <code>vcdExtra</code> for it (which you may need to install and load) to compute gamma. We use the following code:</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb476-1" title="1">mytable<span class="fl">.2</span>&lt;-<span class="kw">table</span>(BCS0708<span class="op">$</span>bcsvictim, BCS0708<span class="op">$</span>rubbcomm) <span class="co">##We first create a new object in tabular form because the function we use to compute Goodman and Kruskal&#39;s Gamma needs an object of that nature.</span></a>
-<a class="sourceLine" id="cb476-2" title="2"><span class="kw">print</span>(mytable<span class="fl">.2</span>) <span class="co">##You can print the content of this object and you will see that it is simply the crosstab with just the counts.</span></a></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="studying-relationships-between-two-factors.html#cb477-1" aria-hidden="true" tabindex="-1"></a>mytable<span class="fl">.2</span><span class="ot">&lt;-</span><span class="fu">table</span>(BCS0708<span class="sc">$</span>bcsvictim, BCS0708<span class="sc">$</span>rubbcomm) <span class="do">##We first create a new object in tabular form because the function we use to compute Goodman and Kruskal&#39;s Gamma needs an object of that nature.</span></span>
+<span id="cb477-2"><a href="studying-relationships-between-two-factors.html#cb477-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mytable<span class="fl">.2</span>) <span class="do">##You can print the content of this object and you will see that it is simply the crosstab with just the counts.</span></span></code></pre></div>
 <pre><code>##                        
 ##                         not at all common not very common fairly common
 ##   not a victim of crime              4614            3173           876
@@ -523,8 +538,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                         very common
 ##   not a victim of crime         141
 ##   victim of crime                63</code></pre>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb478-1" title="1"><span class="kw">library</span>(vcdExtra) <span class="co">##This will load the vcdExtra package (assuming it is already installed)</span></a>
-<a class="sourceLine" id="cb478-2" title="2"><span class="kw">GKgamma</span>(mytable<span class="fl">.2</span>) <span class="co">##This function from the vcdExtra package will compute the Gamma measure of association, between parenthesis you need to identify the object that contains your data.</span></a></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="studying-relationships-between-two-factors.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcdExtra) <span class="do">##This will load the vcdExtra package (assuming it is already installed)</span></span>
+<span id="cb479-2"><a href="studying-relationships-between-two-factors.html#cb479-2" aria-hidden="true" tabindex="-1"></a><span class="fu">GKgamma</span>(mytable<span class="fl">.2</span>) <span class="do">##This function from the vcdExtra package will compute the Gamma measure of association, between parenthesis you need to identify the object that contains your data.</span></span></code></pre></div>
 <pre><code>## gamma        : 0.266 
 ## std. error   : 0.019 
 ## CI           : 0.229 0.302</code></pre>
@@ -532,11 +547,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The larger the absolute value of gamma, the stronger the association. There are not clear rules of thumb in how to interpret Gamma. This value is larger than 0, although closer to 0 than to 1. De Vaus (2002) provides the following rules of thumb: up to .10 (trivial association), .10 to .29 (low to moderate), .30 to .49 (moderate to substantial), .50 to .69 (substantial to very strong), .70 to .89 (very strong), .9 and above (near perfect). On those bases, I would say this particular Gamma estimated at .226 indicates an association of modest size. Notice that the confidence interval is provided. So the estimated gamma with an alpha level of 0.05 is estimated to be anywhere between 0.302 and 0.229. If this confidence interval overlapped with 0 we could not reject the null hypothesis.</p>
 <p>Gamma, however, assumes a “linear” relationship, more in one of the variables, more in the other (for positive relationships), less in one, more in the other (for negative relationships). Here we can see that the percentage of people that experience victimisation is almost the same for those who live in areas where rubbish is fairly common but also for those who live in areas where it is very common. That is, once we reach a certain level of rubbish the risk of victimisation does not go much higher. In situations like this gamma is likely underestimating the strength of the relationship.</p>
 </div>
-<div id="odds-and-odd-ratios" class="section level2">
+<div id="odds-and-odd-ratios" class="section level2" number="7.5">
 <h2><span class="header-section-number">7.5</span> Odds and odd ratios</h2>
 <p>When you have two dichotomous nominal level variables, that is, two nominal level variables that can take only two possible levels, one of the more commonly used measures to indicate the strength of an association are odd ratios. Odd ratios and relative risk are very commonly used in public health and in criminological research. If you have knowledge of betting, you may already know a thing or two about odds.</p>
 <p>They are the statistical equivalent of a tongue twister, so don’t worry too much if you need to keep looking at this handout every time you want to interpret them. We are going to look at the relationship between victimisation and living in a rural/urban setting:</p>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb480-1" title="1"><span class="kw">with</span>(BCS0708, <span class="kw">CrossTable</span>(rural2, bcsvictim, <span class="dt">prop.c =</span> <span class="ot">FALSE</span>, <span class="dt">prop.t =</span> <span class="ot">FALSE</span>, <span class="dt">expected =</span> <span class="ot">TRUE</span>, <span class="dt">format =</span> <span class="kw">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="studying-relationships-between-two-factors.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(BCS0708, <span class="fu">CrossTable</span>(rural2, bcsvictim, <span class="at">prop.c =</span> <span class="cn">FALSE</span>, <span class="at">prop.t =</span> <span class="cn">FALSE</span>, <span class="at">expected =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="fu">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</span></code></pre></div>
 <pre><code>## 
 ##    Cell Contents
 ## |-------------------------|
@@ -605,19 +620,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Our table was set up in such a way that the rows are defined by our “risk factor” and the columns by our outcome. But the first cell represents the intersection of the presence of the risk factor and the absence of the outcome. The easiest way to sort this out is to change the order of the levels in our factor variable identifying the outcome (“bcsvictim”). If we ask R to print the levels of the bcsvictim variable we will see that they are as follow:</p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb482-1" title="1"><span class="kw">print</span>(<span class="kw">levels</span>(BCS0708<span class="op">$</span>bcsvictim))</a></code></pre></div>
-<pre><code>## [1] &quot;not a victim of crime&quot; &quot;victim of crime&quot;</code></pre>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb484-1" title="1"><span class="kw">print</span>(<span class="kw">levels</span>(BCS0708<span class="op">$</span>rural2))</a></code></pre></div>
-<pre><code>## [1] &quot;rural&quot; &quot;urban&quot;</code></pre>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="studying-relationships-between-two-factors.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">levels</span>(BCS0708<span class="sc">$</span>bcsvictim))</span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="studying-relationships-between-two-factors.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">levels</span>(BCS0708<span class="sc">$</span>rural2))</span></code></pre></div>
+<pre><code>## NULL</code></pre>
 <p>We want to reverse this. So that “victim of crime” becomes the first level (appears first in the print out) and “urban” becomes the first level as well. There are various ways of doing that with add-on packages, this is an easy way using base R:</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb486-1" title="1">BCS0708<span class="op">$</span>bcsvictimR &lt;-<span class="st"> </span><span class="kw">factor</span>(BCS0708<span class="op">$</span>bcsvictim, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&#39;victim of crime&#39;</span>,<span class="st">&#39;not a victim of crime&#39;</span>))</a>
-<a class="sourceLine" id="cb486-2" title="2"><span class="kw">print</span>(<span class="kw">levels</span>(BCS0708<span class="op">$</span>bcsvictimR))</a></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="studying-relationships-between-two-factors.html#cb487-1" aria-hidden="true" tabindex="-1"></a>BCS0708<span class="sc">$</span>bcsvictimR <span class="ot">&lt;-</span> <span class="fu">factor</span>(BCS0708<span class="sc">$</span>bcsvictim, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;victim of crime&#39;</span>,<span class="st">&#39;not a victim of crime&#39;</span>))</span>
+<span id="cb487-2"><a href="studying-relationships-between-two-factors.html#cb487-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">levels</span>(BCS0708<span class="sc">$</span>bcsvictimR))</span></code></pre></div>
 <pre><code>## [1] &quot;victim of crime&quot;       &quot;not a victim of crime&quot;</code></pre>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb488-1" title="1">BCS0708<span class="op">$</span>urban &lt;-<span class="st"> </span><span class="kw">factor</span>(BCS0708<span class="op">$</span>rural2, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&#39;urban&#39;</span>,<span class="st">&#39;rural&#39;</span>))</a>
-<a class="sourceLine" id="cb488-2" title="2"><span class="kw">print</span>(<span class="kw">levels</span>(BCS0708<span class="op">$</span>urban))</a></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="studying-relationships-between-two-factors.html#cb489-1" aria-hidden="true" tabindex="-1"></a>BCS0708<span class="sc">$</span>urban <span class="ot">&lt;-</span> <span class="fu">factor</span>(BCS0708<span class="sc">$</span>rural2, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;urban&#39;</span>,<span class="st">&#39;rural&#39;</span>))</span>
+<span id="cb489-2"><a href="studying-relationships-between-two-factors.html#cb489-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">levels</span>(BCS0708<span class="sc">$</span>urban))</span></code></pre></div>
 <pre><code>## [1] &quot;urban&quot; &quot;rural&quot;</code></pre>
 <p>We can now rerun the previous cross tabulation (with the newly created reordered factors) and the table will look as below:</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" title="1"><span class="kw">with</span>(BCS0708, <span class="kw">CrossTable</span>(urban, bcsvictimR, <span class="dt">prop.c =</span> <span class="ot">FALSE</span>, <span class="dt">prop.t =</span> <span class="ot">FALSE</span>, <span class="dt">expected =</span> <span class="ot">TRUE</span>, <span class="dt">format =</span> <span class="kw">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="studying-relationships-between-two-factors.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(BCS0708, <span class="fu">CrossTable</span>(urban, bcsvictimR, <span class="at">prop.c =</span> <span class="cn">FALSE</span>, <span class="at">prop.t =</span> <span class="cn">FALSE</span>, <span class="at">expected =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="fu">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</span></code></pre></div>
 <pre><code>## 
 ##    Cell Contents
 ## |-------------------------|
@@ -663,21 +678,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The <strong>odds</strong> on the other hand contrast the number of individuals with the outcome with those without the outcome for each of the rows. Notice the difference with the risk. So the odds of victimisation for urban dwellers equal the number of victimised urban dwellers (1945) by the number of non-victimised urban dwellers (6757). This is .2878. There are .2878 victimised urban dwellers for every non-victimised urban dweller. And the odds of victimisation for residents of rural areas equal the number of victimised rural residents (413) by the number of non-victimised rural residents (2561). This is .1612. There are .1612 victimised rural residents for every non-victimised rural resident.</p>
 <p>The <strong>odds ratio</strong> is the ratio of these two odds. So the odds ratio of victimisation for urban dwellers to rural residents is the odds of victimisation for urban dwellers (.2878) divided by the odds of victimisation for rural residents (.1612). This yields 1.78. This means that the odds of victimisation are almost 1.78 times higher for urban dwellers than for residents in rural areas.</p>
 <p>You can use R to obtain the odd ratios directly. We can use the <code>vcd</code> package we mentioned earlier. As before we first create an object with the table and then ask for the ordinary odds ratio using the following code:</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb492-1" title="1"><span class="kw">library</span>(vcd)</a>
-<a class="sourceLine" id="cb492-2" title="2">mytable<span class="fl">.3</span>&lt;-<span class="kw">table</span>(BCS0708<span class="op">$</span>urban, BCS0708<span class="op">$</span>bcsvictimR)</a>
-<a class="sourceLine" id="cb492-3" title="3"><span class="kw">oddsratio</span>(mytable<span class="fl">.3</span>, <span class="dt">stratum =</span> <span class="ot">NULL</span>, <span class="dt">log =</span> <span class="ot">FALSE</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="studying-relationships-between-two-factors.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb493-2"><a href="studying-relationships-between-two-factors.html#cb493-2" aria-hidden="true" tabindex="-1"></a>mytable<span class="fl">.3</span><span class="ot">&lt;-</span><span class="fu">table</span>(BCS0708<span class="sc">$</span>urban, BCS0708<span class="sc">$</span>bcsvictimR)</span>
+<span id="cb493-3"><a href="studying-relationships-between-two-factors.html#cb493-3" aria-hidden="true" tabindex="-1"></a><span class="fu">oddsratio</span>(mytable<span class="fl">.3</span>, <span class="at">stratum =</span> <span class="cn">NULL</span>, <span class="at">log =</span> <span class="cn">FALSE</span>) </span></code></pre></div>
 <pre><code>##  odds ratios for  and  
 ## 
 ## [1] 1.784947</code></pre>
 <p>The <code>oddsratio</code> function here is asking for the oddsratio for the table data in the object called <em>mytable.3</em>. The <code>log=FALSE</code> requests an ordinary odds ratio and the <code>stratum</code> option clarifies your data are not stratified.</p>
 <p>What would happen if rather than using the recoded variable (“bcsvictimR”) we use the original one?</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb494-1" title="1">mytable<span class="fl">.4</span>&lt;-<span class="kw">table</span>(BCS0708<span class="op">$</span>urban, BCS0708<span class="op">$</span>bcsvictim)</a>
-<a class="sourceLine" id="cb494-2" title="2"><span class="kw">print</span>(mytable<span class="fl">.4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="studying-relationships-between-two-factors.html#cb495-1" aria-hidden="true" tabindex="-1"></a>mytable<span class="fl">.4</span><span class="ot">&lt;-</span><span class="fu">table</span>(BCS0708<span class="sc">$</span>urban, BCS0708<span class="sc">$</span>bcsvictim)</span>
+<span id="cb495-2"><a href="studying-relationships-between-two-factors.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mytable<span class="fl">.4</span>)</span></code></pre></div>
 <pre><code>##        
 ##         not a victim of crime victim of crime
 ##   urban                  6757            1945
 ##   rural                  2561             413</code></pre>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb496-1" title="1"><span class="kw">oddsratio</span>(mytable<span class="fl">.4</span>, <span class="dt">stratum =</span> <span class="ot">NULL</span>, <span class="dt">log =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="studying-relationships-between-two-factors.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oddsratio</span>(mytable<span class="fl">.4</span>, <span class="at">stratum =</span> <span class="cn">NULL</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>##  odds ratios for  and  
 ## 
 ## [1] 0.5602409</code></pre>
@@ -689,11 +704,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Odd ratios are ratios of odds, not probability ratios. You cannot say that urban dwellers are 1.78 more likely to be victimised. All you can say with an odd ratio is that the odds of being victimised are 1.78 times higher for urban dwellers than for residents in rural areas. Odds and probabilities are different things.</p>
 <p>It is also very important that you interpret these quantities carefully. You will often see media reports announcing things such as that chocolate consumption will double your risk of some terrible disease. What that means is that the percentage of cases of individuals that take chocolate and present the condition is twice as large as those that do not take chocolate and present the condition. But you also need to know what those percentages are to put it in the right context. If those probabilities are very low to start with, well, does it really matter?</p>
 <div class="figure">
-<img src="https://www.explainxkcd.com/wiki/images/1/11/increased_risk.png" alt="increased risk" />
+<img src="https://www.explainxkcd.com/wiki/images/1/11/increased_risk.png" alt="" />
 <p class="caption">increased risk</p>
 </div>
 </div>
-<div id="homework-7.1" class="section level2">
+<div id="homework-7.1" class="section level2" number="7.6">
 <h2><span class="header-section-number">7.6</span> HOMEWORK 7.1</h2>
 <p><em>Select two pairs of categorical variables from the dataset you are using for your coursework assignment. These could be variables you have selected for your coursework assignment if you wish. Then run one crosstabulation for each of these two pairs. Report appropriate statistics and interpret your results for these two crosstabulations.</em></p>
 
@@ -728,6 +743,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

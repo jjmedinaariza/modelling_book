@@ -1,4 +1,4 @@
-# Getting to know your data
+# Causality in randomised experiments
 
 ## Causality in social sciences
 
@@ -349,7 +349,8 @@ Let's look at the code in the summarise function above. First we are asking R to
 
 So, what we see here is that about 13.6% of applicants with no criminal record received a positive response from the employers, whereas only 8% of those with criminal records did receive such a response. Given that the assignation of a criminal record was randomised to the applicants, there's a pretty good chance that no other [**confounders**](https://en.wikipedia.org/wiki/Confounding) are influencing this outcome. And that is the beauty of randomised experiments. You may be in a position to make stronger claims about your results.
 
-
+**HOMEWORK 1:**
+*Use what we have learned so far to see if there is an interaction effect between race and criminal records. That is, what would happen if we compare 4 groups: whites with no records, whites with records, blacks with no records, and blacks with records. What do you think? Is there an interaction effect? In other words, is the impact of having a criminal record more accentuated for either of the two racial groups?* 
 
 ```{r, eval=FALSE, echo=FALSE}
 by_recrace <- group_by(aer2017, as_factor(crime), black_f)
@@ -381,4 +382,24 @@ results_3 <- summarise(by_race,
   avg_delay = mean(daystoresponse, na.rm = TRUE))
 results_3
 ```
+
+**Homework 2:** 
+
+*Answer the following questions*:
+*2.1 What is a tibble?*
+*2.2 How is a variable name different from a variable label?"*
+*2.3 What is a labelled vector?*
+*How is the `filter()` function different from the `select()` function?*
+
+**Homework 3:**
+
+*For this course unit you need to write a coursework assignment in which you will use data from a social survey to explore relationships between various variables. Specifically, you will be allowed to use. So you will need to pick one of them and then select a topic (of those listed below) to explore with each of these surveys:*
+
+*- The 2018 wave of the European Social Survey, which you can access [here](https://www.europeansocialsurvey.org/download.html?file=ESS9e01_1&y=2018) and explore [here](http://nesstar.ess.nsd.uib.no/webview/). From this dataset you will be able to explore the following topic: "victimisation in the last 5 years (crmvct)*
+
+*- The 2013-2014 Crime Survey for England and Wales (the Teaching Dataset version) which you can access [here](https://discover.ukdataservice.ac.uk/catalogue/?sn=7911&type=Data%20catalogue) or explore [here](http://nesstar.ukdataservice.ac.uk/webview/). From this dataset you will need to focus on one of the following topics "fairness of criminal justice system (fairx)", "confidence in the police in their neighbourhood (confx)", or "worry about being a victim of crime (worryx)"*.
+
+**As part of this week homework you need to let us know which survey and which topic you want to focus on for your coursework assignment**. 
+
+*You can explore the datasets and what other variables are available. For your coursework you will need to identify other variables in these surveys that you think may be associated or helpful to understand why people vary in worry of crime, confidence towards the police, etc. At this point you don't need to identify those other variables, but you may find it useful to explore what's available in those datasets using NESSTAR (a guide for how to use NESSTAR is available [here](http://nesstar.com/help/4.0/webview/getting-started/getting-to-know-nesstar-webview.html) and the existing documentation for those studies*
 

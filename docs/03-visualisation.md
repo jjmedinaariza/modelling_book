@@ -71,7 +71,7 @@ Now let's explore the question of number of banning orders for clubs in differen
 
 
 ```r
-ggplot(data = fbo, aes(x = Club.Supported, y=Banning.Orders)) + #data
+ggplot(data = fbo, aes(x = Club.Supported, y=Banning.Orders)) +          #data
    geom_point() +                 #geometry
   theme_bw()                     #backgroud coordinate system
 ```
@@ -437,7 +437,7 @@ table(Boston$dec_medv)
 ```
 ## 
 ##  1  2  3  4  5  6  7  8  9 10 
-## 51 51 51 51 51 51 50 50 50 50
+## 51 51 50 51 50 51 51 50 51 50
 ```
 
 We can now use this new variable to illustrate the use of the `ggridge` package. First you will need to install this package and then load it. You will see all this package does is to extend the functionality of `ggplot2` by adding a new type of geom. Here the variable defining the groups needs to be a factor, so we will tell `ggplot` to treat *dec_medv* as a factor using `as.factor`. Using `as.factor` in this way save us from having to create yet another variable that we are going to store as a factor. Here we are not creating a new variable, we are just telling R to treat this numeric variable *as if* it were a factor. Make sure you understand this difference.
@@ -613,10 +613,6 @@ When looking at scatterplots, sometimes it is useful to summarise the relationsh
 ggplot(Boston, aes(x = medv, y = crim)) +
   geom_point(alpha=.4) +
   geom_line(stat='summary', fun.y=mean)
-```
-
-```
-## Warning: Ignoring unknown parameters: fun.y
 ```
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-42-1.png" width="672" />
@@ -894,7 +890,7 @@ print(levels(BCS0708$walkday))
 ```
 
 ```
-## NULL
+## [1] "a bit unsafe"   "fairly safe"    "or very unsafe" "very safe"
 ```
 
 
@@ -995,6 +991,28 @@ Fourth, **resources for visualisations we don't have the time to cover**. R is w
 
 For example, if you like maps, **R can also be used to produce visualisations of spatial data**. There are various resources to learn how to do this and we teach this in our *Crime Mapping* module in the third year.
 
+**Homework:**
+
+*Download the NCOVR dataset from blackboard. You can look at the pdf provided there to understand better the variables in the dataset. Then read the data into R. You can use the read.csv function for this. So, provided you have the dataset sitting in your working directory you could use the following code to read the data into R:*
+
+
+```r
+ncovr <- read.csv("NAT.csv")
+```
+
+*Produce an appropriate visualisation to compare the distribution of homicide rate in the 1990s comparing Southern and Northern counties. Discuss the results.*
+
+
+
+*Produce a scatterplot to explore the relationship between the homicide rate in the 1970s and the level of unemployment. Make sure you use geom_smooth to draw a line summarising the relationship. Discuss the results.*
+
+
+
+*Is the relationship between homicide in 1970 and unemployment different in Southern and Northern counties? Produce a visualisation to explore this question. Remember the code we use above to look at conditioning on a third variable.* 
+
+
+
+*Now that you have selected a dataset for your essay you should aim to read it into R. Download the files (using code or manually) and then try to read it into R. You may come into problems, don't worry. At least do try. Submit the code you use to do this and let us know, as part of your submission, if you were succesful or not in reading the data into an R object.*
 
 [^1]: Tufte, Edward (2001) *The visual display of quantitative information.* 2nd Edition. Graphic Press.
 [^2]: Few, Stephen (2012) *Show me the numbers: designing graphics and tables to enlighten.* 2nd Edition. Analytics Press.

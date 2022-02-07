@@ -170,8 +170,8 @@ sample(fake_population$IQ, 10)
 ```
 
 ```
-##  [1] 123.02991 108.10296  94.90335 101.76552 102.96829 100.88919 105.88429
-##  [8] 107.06557  90.07606 108.01750
+##  [1] 105.33498  89.91923 110.34449  74.27133  78.27559  88.10284  51.85960
+##  [8]  73.79595  97.45203  58.10007
 ```
 
 First of all notice that `mosaic` masks quite a few functions from various packages. If you want to use them remember to use the `package_I_need::for_function_I_want` formula we covered in previous sessions. 
@@ -184,7 +184,7 @@ mean(sample(fake_population$IQ, 10))
 ```
 
 ```
-## [1] 102.9824
+## [1] 86.37317
 ```
 
 And every time you do this, you will be getting a slightly different mean. Try to rerun the code several times. This is one of the problems with sample data. Not two samples are going to be exactly the same and as a result, every time you compute the mean you will be getting a slightly different value. Run the function three or four times and notice the different means you get as the elements that make up your sample vary.
@@ -198,21 +198,21 @@ do(15) * with(sample(fake_population, 10), mean(IQ))
 
 ```
 ##         with
-## 1   91.83841
-## 2   92.54385
-## 3   99.13335
-## 4  102.72856
-## 5  102.78062
-## 6   94.71675
-## 7   83.25669
-## 8   95.69518
-## 9   97.58754
-## 10 103.38229
-## 11  93.91211
-## 12 105.36669
-## 13  93.90070
-## 14  95.85066
-## 15  96.46357
+## 1  106.22017
+## 2  105.18270
+## 3  100.87614
+## 4  100.62368
+## 5   93.09230
+## 6  102.47644
+## 7  102.10881
+## 8   91.47627
+## 9   86.91715
+## 10 100.52563
+## 11  96.65420
+## 12  94.76000
+## 13  95.61116
+## 14 100.35543
+## 15 105.00081
 ```
 
 So here we have the means that we obtain from 15 different samples from this population. Notice how they vary. We can store the results from an exercise such as this as a variable and plot it:
@@ -278,7 +278,7 @@ mean(sampd_IQ_10$with) #mean of the sample means
 ```
 
 ```
-## [1] 97.17187
+## [1] 97.18912
 ```
 
 ```r
@@ -342,7 +342,7 @@ favstats(~with, data = sampd_IQ_30)
 
 ```
 ##       min       Q1   median       Q3      max     mean       sd     n missing
-##  84.36391 95.10328 97.23989 99.36223 109.4893 97.22025 3.159672 50000       0
+##  84.36466 95.07485 97.22715 99.35524 109.4407 97.20893 3.168994 50000       0
 ```
 
 ```r
@@ -350,8 +350,8 @@ favstats(~with, data = sampd_IQ_100)
 ```
 
 ```
-##       min       Q1   median       Q3      max     mean       sd     n missing
-##  90.40428 96.03429 97.21813 98.38842 103.9214 97.20767 1.743929 50000       0
+##       min       Q1   median       Q3      max    mean       sd     n missing
+##  89.33202 96.02436 97.21006 98.38033 104.6069 97.1994 1.741871 50000       0
 ```
 
 ```r
@@ -359,8 +359,8 @@ favstats(~with, data = sampd_IQ_1000)
 ```
 
 ```
-##       min       Q1   median       Q3     max     mean        sd     n missing
-##  94.84451 96.83374 97.20142 97.56903 99.5329 97.19854 0.5469711 50000       0
+##       min       Q1   median       Q3      max     mean        sd     n missing
+##  94.86825 96.82042 97.18802 97.56334 99.31574 97.19098 0.5490715 50000       0
 ```
 
 
@@ -399,7 +399,7 @@ favstats(~with, data = sampd_CR_30)
 
 ```
 ##         min        Q1    median       Q3      max     mean        sd     n
-##  0.06666667 0.7333333 0.9666667 1.233333 3.166667 1.003719 0.3804143 50000
+##  0.06666667 0.7333333 0.9666667 1.233333 3.066667 1.001147 0.3818984 50000
 ##  missing
 ##        0
 ```
@@ -410,7 +410,7 @@ favstats(~with, data = sampd_CR_100)
 
 ```
 ##   min   Q1 median   Q3  max     mean        sd     n missing
-##  0.36 0.86   0.99 1.13 2.05 1.003114 0.2082509 50000       0
+##  0.32 0.85   0.99 1.13 2.06 1.002126 0.2085133 50000       0
 ```
 
 ```r
@@ -418,8 +418,8 @@ favstats(~with, data = sampd_CR_1000)
 ```
 
 ```
-##    min    Q1 median    Q3   max     mean         sd     n missing
-##  0.751 0.957      1 1.045 1.307 1.001474 0.06548459 50000       0
+##    min    Q1 median    Q3  max     mean         sd     n missing
+##  0.742 0.956      1 1.045 1.29 1.000996 0.06551087 50000       0
 ```
 
 ```r
@@ -463,10 +463,10 @@ se_sampd_IQ_100$sd
 ```
 
 ```
-## [1] 1.743929
+## [1] 1.741871
 ```
 
-The standard error was 1.7439289. If we multiply 1.7439289 times 1.96 we obtain 3.4181007. This means that 95% of the cases in this sampling distribution will have an error that won’t be bigger than that. They will only at most differ from the mean of the sampling distribution by (plus and minus) 3.4181007. However, 5% of the samples will have a margin of error bigger than that (in absolute terms).
+The standard error was 1.7418706. If we multiply 1.7418706 times 1.96 we obtain 3.4140664. This means that 95% of the cases in this sampling distribution will have an error that won’t be bigger than that. They will only at most differ from the mean of the sampling distribution by (plus and minus) 3.4140664. However, 5% of the samples will have a margin of error bigger than that (in absolute terms).
 
 The wonderful thing is that we can use the margin of error to provide information about the degree to which our sample estimate may vary from the population mean. We can use it to give a measure of the uncertainty in our estimation. How?
 
@@ -485,10 +485,10 @@ mean(sample_1$IQ)
 ```
 
 ```
-## [1] 98.99451
+## [1] 99.6274
 ```
 
-When I then take the mean of "IQ" in this sample I get the value of 98.994507. It does not matter if you get a different value. Remember the standard error for the sampling distribution of “IQ” when we took samples of a 100 cases. It was 1.7439289. If we multiply 1.7439289 times 1.96 we obtain 3.4181007.  The upper limit for the confidence interval then will be 98.994507 (my sample mean) plus 3.4181007 (the margin of error) and the lower limit for the confidence interval will be 98.994507 minus 3.4181007. This yields a confidence interval ranging from 95.5764063 to 102.4126077. 
+When I then take the mean of "IQ" in this sample I get the value of 99.6274001. It does not matter if you get a different value. Remember the standard error for the sampling distribution of “IQ” when we took samples of a 100 cases. It was 1.7418706. If we multiply 1.7418706 times 1.96 we obtain 3.4140664.  The upper limit for the confidence interval then will be 99.6274001 (my sample mean) plus 3.4140664 (the margin of error) and the lower limit for the confidence interval will be 99.6274001 minus 3.4140664. This yields a confidence interval ranging from 96.2133337 to 103.0414665. 
 
 Now, if your sample mean would have been different, your confidence interval would have also been different. If you take 10,000 sample means and compute 10,000 confidence intervals they will be different among themselves. In the long run, that is, if you take a large enough numbers of samples and then compute the confidence interval for each of the samples, *95% of those confidence intervals will capture the population mean and 5% will miss it*. Let’s explore this.
 
@@ -597,13 +597,13 @@ t.test(sample_1$IQ)
 ## 	One Sample t-test
 ## 
 ## data:  sample_1$IQ
-## t = 58.162, df = 99, p-value < 2.2e-16
+## t = 55.355, df = 99, p-value < 2.2e-16
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##   95.61727 102.37175
+##   96.05623 103.19857
 ## sample estimates:
 ## mean of x 
-##  98.99451
+##   99.6274
 ```
 
 Ignore for now the few first lines of this output. Just focus on the 95% interval. You will see it is not wildly different from the one we derived using the actual standard error.
@@ -620,13 +620,13 @@ t.test(sample_1$IQ, conf.level = .99)
 ## 	One Sample t-test
 ## 
 ## data:  sample_1$IQ
-## t = 58.162, df = 99, p-value < 2.2e-16
+## t = 55.355, df = 99, p-value < 2.2e-16
 ## alternative hypothesis: true mean is not equal to 0
 ## 99 percent confidence interval:
-##   94.52423 103.46478
+##   94.90043 104.35437
 ## sample estimates:
 ## mean of x 
-##  98.99451
+##   99.6274
 ```
 
 What if you have a factor and want to estimate a confidence interval for a proportion. In our data we have a dichotomous variable that identifies cases as offenders.
@@ -639,7 +639,7 @@ table(sample_1$offender)
 ```
 ## 
 ##  No Yes 
-##  66  34
+##  62  38
 ```
 
 We can use the `prop.test()` function in these cases:
@@ -653,14 +653,14 @@ prop.test(sample_1$offender=="Yes") #We want to estimate the proportion of respo
 ## 
 ## 	1-sample proportions test with continuity correction
 ## 
-## data:  ==  [with success = TRUE]sample_1$offender  [with success = TRUE]Yes  [with success = TRUE]
-## X-squared = 9.61, df = 1, p-value = 0.001935
+## data:  sample_1$offender == "Yes"  [with success = TRUE]
+## X-squared = 5.29, df = 1, p-value = 0.02145
 ## alternative hypothesis: true p is not equal to 0.5
 ## 95 percent confidence interval:
-##  0.2501177 0.4423445
+##  0.2863947 0.4829411
 ## sample estimates:
 ##    p 
-## 0.34
+## 0.38
 ```
 
 You can also specify a different confidence level:
@@ -674,14 +674,14 @@ prop.test(sample_1$offender=="Yes", conf.level = .99)
 ## 
 ## 	1-sample proportions test with continuity correction
 ## 
-## data:  ==  [with success = TRUE]sample_1$offender  [with success = TRUE]Yes  [with success = TRUE]
-## X-squared = 9.61, df = 1, p-value = 0.001935
+## data:  sample_1$offender == "Yes"  [with success = TRUE]
+## X-squared = 5.29, df = 1, p-value = 0.02145
 ## alternative hypothesis: true p is not equal to 0.5
 ## 99 percent confidence interval:
-##  0.227086 0.473612
+##  0.2617674 0.5137428
 ## sample estimates:
 ##    p 
-## 0.34
+## 0.38
 ```
 
 The `prop.test()` function uses a Normal approximation to compute the confidence interval. This approximation may not work well when the outcome of interest is rare or uncommon or with small samples. A number of alternative formulas have been proposed for these cases. Check Wikipedia for "binomial proportion confidence interval". To get R to compute these alternative ways you need to install and load the `binom` package.
@@ -726,8 +726,8 @@ sample_2
 ```
 
 ```
-##  [1] 105.93597  97.39249 114.46043 103.15389  81.59962  93.32657  80.87160
-##  [8]  78.01179  91.06645  90.89693
+##  [1] 132.38048 116.21393  84.27481 113.57432  87.39582  69.44512 109.20445
+##  [8]  62.76150 101.82604 102.00167
 ```
 
 We can then resample (drawing samples from the set of cases in our sample) with replacement. Notice we are not taking samples from the same population but new samples from our sample.
@@ -738,8 +738,8 @@ resample(sample_2)
 ```
 
 ```
-##  [1]  93.32657  80.87160 105.93597  91.06645  91.06645  81.59962  81.59962
-##  [8]  81.59962 103.15389 105.93597
+##  [1] 132.38048 113.57432 132.38048 109.20445 116.21393 113.57432  62.76150
+##  [8]  69.44512 113.57432  62.76150
 ```
 
 You can see how some elements in this resample are repeated from the original sample. In my particular original sample I have one element with the value 113.57432. In my resample from that sample I have three with that value. In your particular sample the combinations can be slightly different.
@@ -760,8 +760,9 @@ qdata(~mean, p = c(.025, .975), resampling_IQ_30_1)
 ```
 
 ```
-##     2.5%    97.5% 
-##  85.6076 100.6655
+##       quantile     p
+## 2.5%  83.87521 0.025
+## 97.5% 94.65529 0.975
 ```
 
 How does this compare to the confidence interval using the t Student distribution?
@@ -776,13 +777,13 @@ t.test(sample_3)
 ## 	One Sample t-test
 ## 
 ## data:  sample_3
-## t = 23.429, df = 29, p-value < 2.2e-16
+## t = 30.973, df = 29, p-value < 2.2e-16
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##   84.85121 101.08254
+##  83.53026 95.34170
 ## sample estimates:
 ## mean of x 
-##  92.96687
+##  89.43598
 ```
 
 What if the sample size was larger?
@@ -795,8 +796,9 @@ qdata(~mean, p = c(.025, .975), resampling_IQ_100_1)
 ```
 
 ```
-##      2.5%     97.5% 
-##  95.61095 102.13736
+##       quantile     p
+## 2.5%  93.66474 0.025
+## 97.5% 99.87918 0.975
 ```
 
 ```r
@@ -808,13 +810,13 @@ t.test(sample_4)
 ## 	One Sample t-test
 ## 
 ## data:  sample_4
-## t = 58.284, df = 99, p-value < 2.2e-16
+## t = 59.136, df = 99, p-value < 2.2e-16
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##   95.33928 102.05956
+##   93.52078 100.01452
 ## sample estimates:
 ## mean of x 
-##  98.69942
+##  96.76765
 ```
 
 As you can see as the sample size grows the differences between the bootstrap confidence interval and the one that relies on the t Student model become more similar.

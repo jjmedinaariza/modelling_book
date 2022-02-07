@@ -72,7 +72,7 @@ Now let's explore the question of number of banning orders for clubs in differen
 
 ```{r}
 
-ggplot(data = fbo, aes(x = Club.Supported, y=Banning.Orders)) + #data
+ggplot(data = fbo, aes(x = Club.Supported, y=Banning.Orders)) +          #data
    geom_point() +                 #geometry
   theme_bw()                     #backgroud coordinate system
 
@@ -807,6 +807,41 @@ Fourth, **resources for visualisations we don't have the time to cover**. R is w
 
 For example, if you like maps, **R can also be used to produce visualisations of spatial data**. There are various resources to learn how to do this and we teach this in our *Crime Mapping* module in the third year.
 
+**Homework:**
+
+*Download the NCOVR dataset from blackboard. You can look at the pdf provided there to understand better the variables in the dataset. Then read the data into R. You can use the read.csv function for this. So, provided you have the dataset sitting in your working directory you could use the following code to read the data into R:*
+
+```{r}
+ncovr <- read.csv("NAT.csv")
+
+```
+
+*Produce an appropriate visualisation to compare the distribution of homicide rate in the 1990s comparing Southern and Northern counties. Discuss the results.*
+
+```{r, eval=FALSE, echo=FALSE}
+ggplot(ncovr, aes(x = HR90)) +
+  geom_histogram(binwidth = 1) +
+  facet_grid(SOUTH ~ .)
+```
+
+*Produce a scatterplot to explore the relationship between the homicide rate in the 1970s and the level of unemployment. Make sure you use geom_smooth to draw a line summarising the relationship. Discuss the results.*
+
+```{r, echo=FALSE, eval=FALSE}
+ggplot(ncovr, aes(x = UE70, y = HR70)) +
+  geom_point(alpha=.4) +
+  geom_smooth(colour="red", size=1, se=FALSE)
+```
+
+*Is the relationship between homicide in 1970 and unemployment different in Southern and Northern counties? Produce a visualisation to explore this question. Remember the code we use above to look at conditioning on a third variable.* 
+
+```{r, eval=FALSE, echo=FALSE}
+ggplot(ncovr, aes(x = UE70, y = HR70, colour = as.factor(SOUTH))) +
+  geom_point(alpha=.1) +
+  geom_smooth(size=1, se=FALSE)
+
+```
+
+*Now that you have selected a dataset for your essay you should aim to read it into R. Download the files (using code or manually) and then try to read it into R. You may come into problems, don't worry. At least do try. Submit the code you use to do this and let us know, as part of your submission, if you were succesful or not in reading the data into an R object.*
 
 [^1]: Tufte, Edward (2001) *The visual display of quantitative information.* 2nd Edition. Graphic Press.
 [^2]: Few, Stephen (2012) *Show me the numbers: designing graphics and tables to enlighten.* 2nd Edition. Analytics Press.

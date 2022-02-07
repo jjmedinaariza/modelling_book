@@ -1,12 +1,12 @@
 --- 
 title: "Modelling Criminological Data LAWS20452"
-author: "Reka Solymosi and Eon Kim (based on material developed with Juanjo Medina"
-date: "2022-02-03"
+author: "Juanjo Medina and Reka Solymosi"
+date: "2020-03-01"
 site: bookdown::bookdown_site
 documentclass: book
 biblio-style: apalike
 link-citations: yes
-description: "This is the course material for Modelling Criminological Data LAWS20452."
+description: "This is the draft for a book on using R for criminologists. The output format for this example is bookdown::gitbook."
 ---
 
 # Preface {-}
